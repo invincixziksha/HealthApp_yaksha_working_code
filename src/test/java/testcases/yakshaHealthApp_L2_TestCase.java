@@ -12,7 +12,6 @@ import org.testng.annotations.Test;
 import coreUtilities.testutils.ApiHelper;
 import coreUtilities.utils.FileOperations;
 import pages.StartupPage;
-import pages.yakshaHealthApp_L1_Pages;
 import pages.yakshaHealthApp_L2_Pages;
 import testBase.AppTestBase;
 import testdata.LocatorsFactory;
@@ -40,10 +39,33 @@ public class yakshaHealthApp_L2_TestCase extends AppTestBase
 		startupPage = new StartupPage(driver);
 	}
 	
-	@Test(priority = 1, groups = {"sanity"}, description="")
-	public void navigateToEmergencyFundCalculator() throws Exception {
+	@Test(priority = 1, groups = {"sanity"}, description="Login to the yakshaHealth App")
+	public void loginToTheYakshaHealthApp() throws Exception {
 		yakshaHealthAppL2Instance = new yakshaHealthApp_L2_Pages(driver);
-		locatorsFactoryInstance=new LocatorsFactory(driver);
+		locatorsFactoryInstance = new LocatorsFactory(driver);
+		String expectedDataFilePath = testDataFilePath+"Login.json";
+		Map<String, String> loginData = new FileOperations().readJson(expectedDataFilePath, "credentials");
+		Assert.assertTrue(yakshaHealthAppL2Instance.loginToTheYakshahealthApp(loginData), "Login failed,, please check manually");
+		Assert.assertTrue(locatorsFactoryInstance.headerNotificationBarIsPresent(driver).isDisplayed(), "Header Notification Bar is not present in the current page, Please check manually");
+
+	}
+	
+	@Test(priority = 2, groups = {"sanity"}, description="Search for a patient name and view the details of the selected patient")
+	public void searchForApatientAndViewDetailsOfSelectedPatient() throws Exception {
+		yakshaHealthAppL2Instance = new yakshaHealthApp_L2_Pages(driver);
+		locatorsFactoryInstance = new LocatorsFactory(driver);
+		String expectedDataFilePath = testDataFilePath+"expected_data.json";
+		Map<String, String> expectedData = new FileOperations().readJson(expectedDataFilePath, "YakshaHealthApp");
+		Assert.assertTrue(yakshaHealthAppL2Instance.searchForPatientAndViewDetailsOfSelectedPatient(expectedData), "User is not able to view the details of the patient, please check manually");
+		Assert.assertTrue(locatorsFactoryInstance.admittingDocFieldIsPresent(driver).isDisplayed(), "AdmittingDoc field is not present in the current page, Please check manually");
+	}
+	
+	@Test(priority = 3, groups = {"sanity"}, description="Tick all check boxes then untick them then close that popup")
+	public void  tickAllCheckBoxesThenUntickthemThenCloseThatPopup() throws Exception {
+		yakshaHealthAppL2Instance = new yakshaHealthApp_L2_Pages(driver);
+		locatorsFactoryInstance = new LocatorsFactory(driver);
+		Assert.assertTrue(yakshaHealthAppL2Instance.tickallCheckBoxesThenUntickthemThenCloseThatPopup(), "Unable to handle the checkBoxes, please check manually");	
+		Assert.assertTrue(locatorsFactoryInstance.checkBoxIsPresent(driver).isDisplayed(), "CheckBox is not present in the current page, Please check manually");
 	}
 	
 	@AfterClass(alwaysRun = true)

@@ -1,11 +1,11 @@
 {
 	"dev":{
-		"url":"https://www.moneycontrol.com/",
+		"url":"https://healthapp.yaksha.com/",
 		"pageloadtimeout":"90",
 		"implicitwaittime":"30"
 	},
 	"prod":{
-		"url":"https://www.moneycontrol.com/",
+		"url":"https://healthapp.yaksha.com/",
 		"pageloadtimeout":"90",
 		"implicitwaittime":"30"
 	}

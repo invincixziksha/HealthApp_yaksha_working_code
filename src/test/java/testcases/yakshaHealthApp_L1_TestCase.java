@@ -20,9 +20,10 @@ public class yakshaHealthApp_L1_TestCase extends AppTestBase
 {
 	Map<String, String> configData;
 	Map<String, String> loginCredentials;
-	String expectedDataFilePath = testDataFilePath+"expected_data.json";
+	String expectedDataFilePath = testDataFilePath + "expected_data.json";
+	String loginFilePath = loginDataFilePath + "Login.json";
 	StartupPage startupPage;
-	yakshaHealthApp_L1_Pages yakshaHealthAppL1Instance ;
+	yakshaHealthApp_L1_Pages yakshaHealthAppL1Instance;
 	LocatorsFactory locatorsFactoryInstance;
 
 	
@@ -39,10 +40,28 @@ public class yakshaHealthApp_L1_TestCase extends AppTestBase
 		startupPage = new StartupPage(driver);
 	}
 	
-	@Test(priority = 1, groups = {"sanity"}, description="")
-	public void navigateToEmergencyFundCalculator() throws Exception {
+	@Test(priority = 1, groups = {"sanity"}, description="Verify the title and url of the current page.")
+	public void verifyTitleOfTheHomePage() throws Exception {
+		
 		yakshaHealthAppL1Instance = new yakshaHealthApp_L1_Pages(driver);
-		locatorsFactoryInstance=new LocatorsFactory(driver);
+		locatorsFactoryInstance = new LocatorsFactory(driver);
+		
+		Map<String, String> loginData = new FileOperations().readJson(loginFilePath, "credentials");
+		Assert.assertTrue(yakshaHealthAppL1Instance.loginToHealthAppByGivenValidCredetial(loginData),"Login failed, Invalid credentials ! Please check manually");
+		
+		Map<String, String> expectedData = new FileOperations().readJson(expectedDataFilePath, "healthApp");
+		Assert.assertEquals(yakshaHealthAppL1Instance.verifyTitleOfThePage(),expectedData.get("dasboardTitle")) ;
+		Assert.assertEquals(yakshaHealthAppL1Instance.verifyURLOfThePage(),expectedData.get("pageUrl")) ;
+		Assert.assertTrue(locatorsFactoryInstance.totalDoctorTextIsPresent(driver).isDisplayed(), "total doctors text is not present in the current page, Please check manually");
+	}
+	
+	@Test(priority = 2, groups = {"sanity"}, description="verify Presence Of All Fields in The Login Page")
+	public void verifySelectCounterPopupIsPresentAndNavigateToNextpage() throws Exception {
+		yakshaHealthAppL1Instance = new yakshaHealthApp_L1_Pages(driver);
+		locatorsFactoryInstance = new LocatorsFactory(driver);
+		
+		Assert.assertTrue(yakshaHealthAppL1Instance.verifySelectCounterPopupIsPresentAndNavigateToNextpage(), "Any of the elememt is not present, please check manually");
+		Assert.assertTrue(locatorsFactoryInstance.addNewButtonIsPresent(driver).isDisplayed(), "total doctors text is not present in the current page, Please check manually");
 	}
 	
 	@AfterClass(alwaysRun = true)

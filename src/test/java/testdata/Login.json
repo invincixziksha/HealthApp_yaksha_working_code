@@ -1,6 +1,6 @@
 {
 	"credentials":{
-		"Username":"xxxx",
-		"Password":"xxxx"
+		"username":"admin",
+		"password":"pass123"
 	}
 }

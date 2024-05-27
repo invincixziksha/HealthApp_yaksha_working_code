@@ -4481,4 +4481,11 @@ public class CommonEvents
 
         return new CommonEvents(driver);
 	}
+	
+	public CommonEvents highlightElement(WebElement element)
+	{
+		JavascriptExecutor jse = (JavascriptExecutor)driver;
+		jse.executeScript("arguments[0].setAttribute('style','border: solid 5px red');", element);
+		return new CommonEvents(driver);
+	}
 }

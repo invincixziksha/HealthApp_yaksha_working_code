@@ -1,52 +1,9 @@
 {
-	"MoneyControlPageTitle":{
-		"HomepageTitle":"Business News Today: Stock and Share Market News, Economy and Finance News, Sensex, Nifty, Global Market, NSE, BSE Live IPO News",
-		"EmergencyFundCalculatorPageTitle":"Emergency Fund Calculator: Contingency Funds, Emergency Savings Calculator, Disaster Emergency Fund Calculator",
-		"FixedDepositInterestCalculatorPageTitle":"FD Calculator | Calculate Fixed Deposit Interest Rates Online",
-		"ProvidentFundCalculatorPageTitle":"PF/Provident Fund Calculator: Employees Provident Fund Calculator, How much amount will you get on EPF withdrawal?, EPF Calculator, PF Interest Calculator"
+	"healthApp":{
+		"dasboardTitle":"DanpheHealth",
+		"pageUrl":"https://healthapp.yaksha.com/Home/Index#/"
 	},
-	"fixedDepositInterestCalculatorCalculatorForm":{
-		"InvestmentAmountValue":"3000000",
-		"InvestmentPeriodValue":"20",
-		"RateOfReturnValue":"20",
-		"TaxRateValue":"20"
-	},
-	"providentFundCalculatorForm":{
-		"yourBasicSalaryMonthly":"35000",
-		"contributioToEPF":"10",
-		"employersContributionToEPF":"30",
-		"avgIncreaseInSalaryYouExpect":"20",
-		"ageWhenYouIntendToRetire":"50",
-		"currentEpfBalanceIfAny":"50000",
-		"currentInterestRate":"10"
-	},
-	"ValuesForEmergencyFieldCalculator":{
-		"MedicalDentalCostAmount":"50000",
-		"VehicleRepairCost":"60000",
-		"OtherCosts":"70000",
-		"lifeInsurancePremiumCost":"50000",
-		"homeAndAutoInsurancePremiumAmount":"60000",
-		"HomeLoanAndOtherImportantEMIsCost":"70000",
-		"monthlyLivingExpensesAmount":"90000",
-		"monthUnemployedData":"11",
-		"Uninsured or unexpected emergencies Amount":"1,80,000",
-		"Annual amount of fixed payments":"1,80,000",
-		"Build a reserve to pay for job loss":"9,90,000",
-		"ResultValue":"Rs 13,50,000"
-	},
-	"ValuesForEMICalculator":{
-		"LoanAmount":"3000000",
-		"LoanPeriod":"20",
-		"interestRate":"10.5",
-		"upfrontCharges":"10000"
-	},
-	"ValuesForLogInAutomation":{
-		"emailId":"Test123678@gmail.com",
-		"password":"1234578",
-		"ValidEmailId":"surya.prakash@invincix.in",
-		"validPassword":"Abhi@123456"
-	},
-	"ErrorMessages":{
-		"invalidUserNameAndPassword":"Invalid User Id/EmailID or Password. Please try again."
+	"YakshaHealthApp":{
+		"SearchBarName":"Sonia Gandhi"
 	}
 }
