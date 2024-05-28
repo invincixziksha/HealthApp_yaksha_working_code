@@ -7,6 +7,7 @@ import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 
 public class yakshaHealthApp_L1_Pages extends StartupPage {
+	//please write all the locators for Money Control page only 
 
 	By usernameTextbox = By.xpath("//input[@id='username_id']");
 	By passwordTextbox = By.xpath("//input[@id='password']");
@@ -19,6 +20,19 @@ public class yakshaHealthApp_L1_Pages extends StartupPage {
 	By new3TextElement = By.xpath("//h5[contains(text(), 'New-3')]");
 	By old1TextElement = By.xpath("//h5[contains(text(), 'Old-1')]");
 	By opdCounterTextElement = By.xpath("//h5[contains(text(), 'OPD-Counter')]");
+	By addNewButtonElement = By.xpath("//button[contains(text(), 'Add New Patient')]");
+	By addNewPatientTextElement = By.xpath("//span[contains(text(), 'Add New Patient')]");
+
+	By firstNameTextFieldElement = By.xpath("//input[@id='newPatFirstName']");
+	By middleNameTextFieldElement = By.xpath("//input[@id='newPatMiddleName']");
+	By lastNameTextfieldElement = By.xpath("//input[@id='newPatLastName']");
+	By ageTextfieldElement = By.xpath("//input[@id='age']");
+	By contactNumberTextfieldElement = By.xpath("//input[@id='phoneNo']");
+
+	By countryDropdownByElement = By.xpath("//select[@id='ddlCountry']");
+	By registerAndBillingButtonElement = By.xpath("//button[contains(text(), 'Register & Billing')]");
+	By errorMessageOfRegisterBillingByElement = By.xpath("//p[contains(text(), 'Some of the inputs are invalid. Please check and try again. !')]");
+	By closeButtonOfAddNewpatientpage = By.xpath("//button[contains(text(), 'Close')]");
 
 
 
@@ -145,6 +159,217 @@ public class yakshaHealthApp_L1_Pages extends StartupPage {
 			throw e;	
 		}
 		return selectCounterPopUpIsPresent;
+	}
+
+	/**@test3
+	 * about this method performKeyBoardOperationToOpenAddNewPatientPopup() 
+	 * @param : null
+	 * @description : it will perfor Key board operation (Alt +N) to open the Add new patient page
+	 * @return : String
+	 * @author : Yaksha
+	 */
+	public String performKeyBoardOperationToOpenAddNewPatientPopup() throws Exception {
+		String  addNewpatientPopUpTextValue = "";
+
+		try {
+			commonEvents.performAltN();
+			WebElement addNewPatientTextWebElement = commonEvents.findElement(addNewPatientTextElement);
+			commonEvents.highlightElement(addNewPatientTextWebElement);
+			commonEvents.isDisplayed(addNewPatientTextElement);
+			addNewpatientPopUpTextValue = commonEvents.getText(addNewPatientTextElement);
+			System.out.println("text of the popup is : " + addNewpatientPopUpTextValue);	
+			Thread.sleep(3000);
+		}catch(Exception e) {
+			throw e;	
+		}
+		return addNewpatientPopUpTextValue;
+	}
+
+	/**@Test4
+	 * about this method fillTheTextFieldInAddNewPatientPopup() 
+	 * @param : get the data from json file as type Map<String, String> expectedData
+	 * @description : enter value in text field of Add New Patient as per json expected data and fetch the value of that text field ,
+	 * @return : fetch the value text field as string type
+	 * @author : Yaksha
+	 */
+	public String fillTheTextFieldInAddNewPatientPopup(Map<String, String> expectedData) throws Exception {
+		String firstNameTextfieldValue = "";
+		try {
+			if(commonEvents.isDisplayed(firstNameTextFieldElement) && 
+					commonEvents.isDisplayed(middleNameTextFieldElement) &&
+					commonEvents.isDisplayed(lastNameTextfieldElement) &&
+					commonEvents.isDisplayed(ageTextfieldElement) &&
+					commonEvents.isDisplayed(contactNumberTextfieldElement))
+			{
+				commonEvents.sendKeys(firstNameTextFieldElement,expectedData.get("firstName"));
+				commonEvents.sendKeys(middleNameTextFieldElement,expectedData.get("middleName"));
+				commonEvents.sendKeys(lastNameTextfieldElement,expectedData.get("lastName"));
+				commonEvents.sendKeys(ageTextfieldElement,expectedData.get("age"));
+				commonEvents.sendKeys(contactNumberTextfieldElement,expectedData.get("contact"));
+
+				firstNameTextfieldValue = commonEvents.getAttribute(firstNameTextFieldElement, "value");
+				System.out.println("FirstName : " + firstNameTextfieldValue);
+				Thread.sleep(2000);
+			}
+		}catch(Exception e) {
+			throw e;
+		}
+		return firstNameTextfieldValue;
+	}
+
+	/**@Test5.1
+	 * about this method verifyFirstNameIsPresent() 
+	 * @param : null
+	 * @description : it will fetch the data from the FirstName textfield
+	 * @return : String
+	 * @author : Yaksha
+	 */
+	public String verifyFirstNameIsPresent() throws Exception {
+		String firstNameTextfieldValue = "";
+
+		try {
+			firstNameTextfieldValue = commonEvents.getAttribute(firstNameTextFieldElement, "value");
+			System.out.println("FirstName : " + firstNameTextfieldValue);
+			Thread.sleep(2000);
+		}catch(Exception e) {
+			throw e;
+		}
+		return firstNameTextfieldValue;
+	}
+
+	/**@Test5.2
+	 * about this method verifyMiddleNameIsPresent() 
+	 * @param : null
+	 * @description : it will fetch the data from the MiddleName Text field
+	 * @return : String
+	 * @author : Yaksha
+	 */
+	public String verifyMiddleNameIsPresent() throws Exception {
+
+		String middleNameTextfieldValue = "";
+
+		try {
+			middleNameTextfieldValue = commonEvents.getAttribute(middleNameTextFieldElement, "value");
+			System.out.println("middleName : " + middleNameTextfieldValue);
+
+		}catch(Exception e) {
+			throw e;
+		}
+		return middleNameTextfieldValue;
+	}
+
+	/**@Test5.3
+	 * about this method verifyLastNameIsPresent() 
+	 * @param : null
+	 * @description : it will fetch the data from the LastName Text field
+	 * @return : String
+	 * @author : Yaksha
+	 */
+	public String verifyLastNameIsPresent() throws Exception {
+
+		String lastNameTextfieldValue = "";
+
+		try {
+
+			lastNameTextfieldValue = commonEvents.getAttribute(lastNameTextfieldElement, "value");
+			System.out.println("lastName : " + lastNameTextfieldValue);
+
+		}catch(Exception e) {
+			throw e;
+		}
+		return lastNameTextfieldValue;
+	}
+
+	/**@Test5.4
+	 * about this method verifyAgeValueIsPresent() 
+	 * @param : null
+	 * @description : it will fetch the data from the age Text field
+	 * @return : String
+	 * @author : Yaksha
+	 */
+	public String verifyAgeValueIsPresent() throws Exception {
+
+		String ageTextfieldValue = "";
+
+		try {
+
+			ageTextfieldValue = commonEvents.getAttribute(ageTextfieldElement, "value");
+			System.out.println("age : " + ageTextfieldValue);
+
+		}catch(Exception e) {
+			throw e;
+		}
+		return ageTextfieldValue;
+	}
+
+	/**@Test5.5
+	 * about this method verifyContactNumberIsPresent() 
+	 * @param : null
+	 * @description : it will fetch the data from the contact Text field
+	 * @return : String
+	 * @author : Yaksha
+	 */
+	public String verifyContactNumberIsPresent() throws Exception {
+
+		String contactTextfieldValue = "";
+
+		try {
+
+			contactTextfieldValue = commonEvents.getAttribute(contactNumberTextfieldElement, "value");
+			System.out.println("contact No. : " + contactTextfieldValue);
+
+			Thread.sleep(2000);
+		}catch(Exception e) {
+			throw e;
+		}
+		return contactTextfieldValue;
+	}
+
+	/**@Test6
+	 * about this method verifyIndiaIsSelectedFromCountryDropdown() 
+	 * @param : get the data from json file as type Map<String, String> expectedData
+	 * @description : it will select the country as per json expected data
+	 * @return : String
+	 * @author : Yaksha
+	 */
+	public String verifyIndiaIsSelectedFromCountryDropdown(Map<String, String> expectedData) throws Exception {
+
+		String selectedCountryName = "";
+
+		try {
+			commonEvents.selectByVisibleText(countryDropdownByElement, expectedData.get("selectedCountryName"));
+			selectedCountryName = commonEvents.getFirstSelectedOptionFromDropdown(countryDropdownByElement, "elementName", "pageName");
+			System.out.println("first selected option from country dropdown : " + selectedCountryName );
+
+			Thread.sleep(2000);
+		}catch(Exception e) {
+			throw e;
+		}
+		return selectedCountryName;
+	}
+
+	/**@test7
+	 * about this method validateErrorMessageWhenClickOnRegisterBillingButton() 
+	 * @param : null
+	 * @description : it is getting the error message and validate the error message ,
+	 * @return : errorMessage as string type
+	 * @author : Yaksha
+	 */
+	public String validateErrorMessageWhenClickOnRegisterBillingButton() throws Exception {
+		String errorMessageOfRegisterBilling="";
+
+		try {
+			commonEvents.click(registerAndBillingButtonElement);
+
+			if(commonEvents.isDisplayed(errorMessageOfRegisterBillingByElement))
+			{
+				errorMessageOfRegisterBilling =  commonEvents.getText(errorMessageOfRegisterBillingByElement);
+				System.out.println("Error Message when click on Register & Billing Button: " + errorMessageOfRegisterBilling);
+			}
+		}catch(Exception e) { 
+			throw e;
+		}
+		return errorMessageOfRegisterBilling;
 	}
 
 }

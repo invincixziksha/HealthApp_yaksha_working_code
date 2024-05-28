@@ -4488,4 +4488,46 @@ public class CommonEvents
 		jse.executeScript("arguments[0].setAttribute('style','border: solid 5px red');", element);
 		return new CommonEvents(driver);
 	}
+	
+	public CommonEvents highlightElementAfterAction(WebElement element)
+	{
+		JavascriptExecutor jse = (JavascriptExecutor)driver;
+		jse.executeScript("arguments[0].setAttribute('style','border: solid 5px yellow');", element);
+		return new CommonEvents(driver);
+	}
+	
+	public void performAltN() {
+        // Create Actions object
+        Actions actions = new Actions(driver);
+        
+        // Perform Alt + N keyboard operation
+        actions.keyDown(Keys.ALT)
+               .sendKeys("n")
+               .keyUp(Keys.ALT)
+               .build()
+               .perform();
+    }
+	
+	/***
+	 * This method is useful to get the default selected value of the dropdown.
+	 * @param by
+	 * @param elementName
+	 * @param pageName
+	 * @return String
+	 * @throws Exception
+	 */
+	public String getFirstSelectedOption(By by) throws Exception
+	{
+		String desiredValue=""; 
+		try
+		{
+			Select select = new Select(getWebElement(by));
+			desiredValue = select.getFirstSelectedOption().getText();
+		}
+		catch(Exception e)
+		{
+			throw e;
+		}
+		return desiredValue;
+	}
 }
