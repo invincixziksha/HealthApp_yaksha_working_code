@@ -4491,7 +4491,6 @@ public class CommonEvents
 		return new CommonEvents(driver);
 	}
 	
-<<<<<<< HEAD
 	public CommonEvents highlightElementAfterAction(WebElement element)
 	{
 		JavascriptExecutor jse = (JavascriptExecutor)driver;
@@ -4533,7 +4532,7 @@ public class CommonEvents
 		}
 		return desiredValue;
 	}
-=======
+
 	public CommonEvents acceptAlert() {
         try {
             Alert alert = driver.switchTo().alert();
@@ -4553,6 +4552,5 @@ public class CommonEvents
 	        }
 	        return new CommonEvents(driver);
 	    }
->>>>>>> f5d36971e39d94fad26883fbd1612a2dc0f6ecfc
 }
 
