@@ -7,9 +7,7 @@ import org.openqa.selenium.WebElement;
 import pages.StartupPage;
 
 public class LocatorsFactory extends StartupPage {
-	//please write all the locators for Money Control page only 
 	
-    // element of health application
 	By totalDoctortextElement = By.xpath("//p[contains(text(), 'Total Doctors')]");
 	By selectCounterPopupElement = By.xpath("//h3//span[contains(text(), 'Select Counter')]");
 	By new1TextElement = By.xpath("//h5[contains(text(), 'New-1')]");
@@ -18,11 +16,13 @@ public class LocatorsFactory extends StartupPage {
 	By old1TextElement = By.xpath("//h5[contains(text(), 'Old-1')]");
 	By opdCounterTextElement = By.xpath("//h5[contains(text(), 'OPD-Counter')]");
 	By addNewButtonElement = By.xpath("//button[contains(text(), 'Add New Patient')]");
-	
-	//l2 locators
+
 	By headerNotificationBar=By.id("header_notification_bar");
 	By admittingDocField=By.xpath("//b[.='Admitting Doc:']");
-	By checkBox=By.xpath("(//label[@class='mt-checkbox mt-checkbox-outline'])[1]//span");
+	By newItemButton=By.xpath("//button[.=' New Item ']");
+	By myFavoritesButton=By.xpath("//a[.=' My Favorites']");
+	By manageRoleTab=By.xpath("//a[.='Manage Role']");
+	By tooltip=By.xpath("//li[contains(text(),'+')]");
 	
 
 	public LocatorsFactory(WebDriver driver) {
@@ -31,9 +31,6 @@ public class LocatorsFactory extends StartupPage {
 	}
 
 
-
-	//Expected data will be fetch from config.json file,path of the json file is:FaceBook_Automation_Dummy/src/main/resources/config.json
-	
 	public WebElement totalDoctorTextIsPresent(WebDriver driver) {
 		WebElement totalDoctorTextWebElement = driver.findElement(totalDoctortextElement);
 		commonEvents.highlightElement(totalDoctorTextWebElement);
@@ -64,13 +61,6 @@ public class LocatorsFactory extends StartupPage {
 	}
 	
 	
-	
-	// l2 scenarios
-
-
-
-
-	
 	public WebElement headerNotificationBarIsPresent(WebDriver driver) {
 		WebElement headerNotificationBarWebElement = driver.findElement(headerNotificationBar);
 		return headerNotificationBarWebElement; 
@@ -80,9 +70,23 @@ public class LocatorsFactory extends StartupPage {
 		WebElement admittingDocFieldWebElement = driver.findElement(admittingDocField);
 		return admittingDocFieldWebElement; 
 	}
-	public WebElement checkBoxIsPresent(WebDriver driver) {
-		WebElement checkBoxWebElement = driver.findElement(checkBox)
-;
-		return checkBoxWebElement; 
+	public WebElement newItemButtonPresent(WebDriver driver) {
+		WebElement newItemButtonWebElement = driver.findElement(newItemButton);
+		return newItemButtonWebElement; 
+	}
+	
+	public WebElement myFavoritesButtonIsPresent(WebDriver driver) {
+		WebElement myFavoritesButtonWebElement = driver.findElement(myFavoritesButton);
+		return myFavoritesButtonWebElement; 
+	}
+	
+	public WebElement manageRoleTabIsPresent(WebDriver driver) {
+		WebElement manageRoleTabWebElement = driver.findElement(manageRoleTab);
+		return manageRoleTabWebElement; 
+	}
+	
+	public WebElement tooltipIsPresent(WebDriver driver) {
+		WebElement tooltipWebElement = driver.findElement(tooltip);
+		return tooltipWebElement; 
 	}
 }
