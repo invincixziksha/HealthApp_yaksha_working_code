@@ -47,7 +47,6 @@ public class yakshaHealthApp_L2_TestCase extends AppTestBase
 		Map<String, String> loginData = new FileOperations().readJson(expectedDataFilePath, "credentials");
 		Assert.assertTrue(yakshaHealthAppL2Instance.loginToTheYakshahealthApp(loginData), "Login failed,, please check manually");
 		Assert.assertTrue(locatorsFactoryInstance.headerNotificationBarIsPresent(driver).isDisplayed(), "Header Notification Bar is not present in the current page, Please check manually");
-
 	}
 	
 	@Test(priority = 2, groups = {"sanity"}, description="Search for a patient name and view the details of the selected patient")
@@ -65,8 +64,17 @@ public class yakshaHealthApp_L2_TestCase extends AppTestBase
 		yakshaHealthAppL2Instance = new yakshaHealthApp_L2_Pages(driver);
 		locatorsFactoryInstance = new LocatorsFactory(driver);
 		Assert.assertTrue(yakshaHealthAppL2Instance.tickallCheckBoxesThenUntickthemThenCloseThatPopup(), "Unable to handle the checkBoxes, please check manually");	
-		Assert.assertTrue(locatorsFactoryInstance.checkBoxIsPresent(driver).isDisplayed(), "CheckBox is not present in the current page, Please check manually");
+		Assert.assertTrue(locatorsFactoryInstance.newItemButtonPresent(driver).isDisplayed(), "CheckBox is not present in the current page, Please check manually");
 	}
+	
+	@Test(priority = 4, groups = {"sanity"}, description="Take screenshot of Doctor page")
+	public void  takeScreenshotOfDoctorPage() throws Exception {
+		yakshaHealthAppL2Instance = new yakshaHealthApp_L2_Pages(driver);
+		locatorsFactoryInstance = new LocatorsFactory(driver);
+		Assert.assertTrue(yakshaHealthAppL2Instance.takeScreenshotOfTheDoctorPage(), "Unable to take the Screenshot , please check manually");	
+	    Assert.assertTrue(locatorsFactoryInstance.myFavoritesButtonIsPresent(driver).isDisplayed(), "My Favorites Button is not present in the current page, Please check manually");
+	}
+	
 	
 	@AfterClass(alwaysRun = true)
 	public void tearDown() {

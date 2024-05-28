@@ -28,10 +28,12 @@ import java.util.function.Function;
 
 import javax.imageio.ImageIO;
 
+import org.openqa.selenium.Alert;
 import org.openqa.selenium.By;
 import org.openqa.selenium.Dimension;
 import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.Keys;
+import org.openqa.selenium.NoAlertPresentException;
 import org.openqa.selenium.NoSuchElementException;
 import org.openqa.selenium.OutputType;
 import org.openqa.selenium.Point;
@@ -4489,6 +4491,7 @@ public class CommonEvents
 		return new CommonEvents(driver);
 	}
 	
+<<<<<<< HEAD
 	public CommonEvents highlightElementAfterAction(WebElement element)
 	{
 		JavascriptExecutor jse = (JavascriptExecutor)driver;
@@ -4530,4 +4533,26 @@ public class CommonEvents
 		}
 		return desiredValue;
 	}
+=======
+	public CommonEvents acceptAlert() {
+        try {
+            Alert alert = driver.switchTo().alert();
+            alert.accept();
+        } catch (NoAlertPresentException e) {
+            System.out.println("No alert present: " + e.getMessage());
+        }
+        return new CommonEvents(driver);
+    }
+	
+	 public CommonEvents dismissAlert() {
+	        try {
+	            Alert alert = driver.switchTo().alert();
+	            alert.dismiss();
+	        } catch (NoAlertPresentException e) {
+	            System.out.println("No alert present: " + e.getMessage());
+	        }
+	        return new CommonEvents(driver);
+	    }
+>>>>>>> f5d36971e39d94fad26883fbd1612a2dc0f6ecfc
 }
+
