@@ -75,7 +75,7 @@ public class CommonEvents
 	{
 		this.driver=driver; 
 	}
-	
+
 	/**
 	 * This method is useful to generate the timestamp in ddMMYYYYHHmmss format
 	 * 
@@ -84,7 +84,7 @@ public class CommonEvents
 	public String getTimeStamp() {
 		return new SimpleDateFormat("ddMMYYYYHHmmss").format(new Date());
 	}
-	
+
 	/**
 	 * This method is used to convert our by type element to webelement
 	 * @param by
@@ -94,7 +94,7 @@ public class CommonEvents
 	{
 		return driver.findElement(by);
 	}
-	
+
 	/**
 	 * This method is used to convert our by type element to List of webelements
 	 * @param by
@@ -104,7 +104,7 @@ public class CommonEvents
 	{
 		return driver.findElements(by);
 	}
-	
+
 	/**
 	 * This method is responsible to find the element from the DOM. 
 	 * If found then it'll return true else it'll return false.
@@ -125,11 +125,11 @@ public class CommonEvents
 		{
 			flag = false;
 		}
-		
+
 		return flag;
 	}
-	
-	
+
+
 	/**
 	 * This method is responsible to find the element from the DOM. 
 	 * If found then it'll return true else it'll return false.
@@ -139,9 +139,9 @@ public class CommonEvents
 	 * @return boolean
 	 */
 	public WebElement findElement(By locator) {
-        return driver.findElement(locator);
-    }
-	
+		return driver.findElement(locator);
+	}
+
 	/**
 	 * This method is responsible to find the element from the DOM. 
 	 * If found then it'll return true else it'll return false.
@@ -151,10 +151,10 @@ public class CommonEvents
 	 * @return boolean
 	 */
 	public boolean isEmpty(By by) {
-        WebElement element = driver.findElement(by);
-        return element.getText().isEmpty();
-    }
-	
+		WebElement element = driver.findElement(by);
+		return element.getText().isEmpty();
+	}
+
 	/**
 	 * This method is responsible to find the element from the DOM. 
 	 * If found then it'll return true else it'll return false.
@@ -175,10 +175,10 @@ public class CommonEvents
 		{
 			flag = false;
 		}
-		
+
 		return flag;
 	}
-	
+
 	/**
 	 * This method is useful to check for a specific web element is displayed on UI or not with in the given time frame
 	 * 
@@ -200,7 +200,7 @@ public class CommonEvents
 		}
 		return isDisplayed;
 	}
-	
+
 	/**
 	 * This method is useful to check for a specific web element is displayed on UI or not with in the given time frame
 	 * 
@@ -222,7 +222,7 @@ public class CommonEvents
 		}
 		return isDisplayed;
 	}
-	
+
 	/**
 	 * This method is responsible to find the element is enabled for the further actions. 
 	 * If found enabled, then it'll return true else it'll return false.
@@ -253,10 +253,10 @@ public class CommonEvents
 		}
 		else
 			throw new Exception(elementName+" is not displayed on "+pageName);
-		
+
 		return flag;
 	}
-	
+
 	/**
 	 * This method is useful to verify whether the web element is enabled or not.
 	 * @param by - {@link By} type
@@ -266,7 +266,7 @@ public class CommonEvents
 	{
 		return getWebElement(by).isEnabled();
 	}
-	
+
 	/**
 	 * This method is responsible to find the element is enabled for the further actions. 
 	 * If found enabled, then it'll return true else it'll return false.
@@ -297,10 +297,10 @@ public class CommonEvents
 		}
 		else
 			throw new Exception(elementName+" is not displayed on "+pageName);
-		
+
 		return flag;
 	}
-	
+
 	/**
 	 * This method is useful to verify whether the web element is enabled or not.
 	 * @param element - {@link WebElement} type
@@ -310,7 +310,7 @@ public class CommonEvents
 	{
 		return element.isEnabled();
 	}
-	
+
 	/**
 	 * This method is responsible to find the element is enabled for the further actions. 
 	 * If found enabled, then it'll return true else it'll return false.
@@ -343,7 +343,7 @@ public class CommonEvents
 			throw new Exception(elementName+" is not displayed on "+pageName);
 		return flag;
 	}
-	
+
 	/**
 	 * This method is useful to verify whether the element is selected or not
 	 * @param by - {@link By} type
@@ -352,7 +352,7 @@ public class CommonEvents
 	public boolean isSelected(By by) {
 		return getWebElement(by).isSelected();
 	}
-	
+
 	/**
 	 * This method is responsible to find the element is enabled for the further actions. 
 	 * If found enabled, then it'll return true else it'll return false.
@@ -385,7 +385,7 @@ public class CommonEvents
 			throw new Exception(elementName+" is not displayed on "+pageName);
 		return flag;
 	}
-	
+
 	/**
 	 * This method is useful to verify whether the element is selected or not
 	 * @param element - {@link WebElement} type
@@ -394,7 +394,7 @@ public class CommonEvents
 	public boolean isSelected(WebElement element) {
 		return element.isSelected();
 	}
-	
+
 	/**
 	 * This method is useful to get the text of the element
 	 * @param by
@@ -421,7 +421,7 @@ public class CommonEvents
 		}
 		return text;
 	}
-	
+
 	/**
 	 * This method is useful to retrieve the text from the web element
 	 * @param by - {@link By} type
@@ -431,7 +431,7 @@ public class CommonEvents
 	{
 		return getWebElement(by).getText();
 	}
-	
+
 	/**
 	 * This method is useful to get the text of the element
 	 * @param element
@@ -460,7 +460,7 @@ public class CommonEvents
 		}
 		return text;
 	}
-	
+
 	/**
 	 * This method is useful to retrieve the text from the web element
 	 * @param element - {@link WebElement} type
@@ -470,7 +470,7 @@ public class CommonEvents
 	{
 		return element.getText();
 	}
-	
+
 	/**
 	 * This method is useful to get the Tag Name of the element
 	 * @param by
@@ -497,7 +497,7 @@ public class CommonEvents
 		}
 		return tagValue;
 	}
-	
+
 	/**
 	 * This method is useful to retrieve the tag name for the respective web element from DOM
 	 * @param by - {@link By} type
@@ -507,7 +507,7 @@ public class CommonEvents
 	{
 		return getWebElement(by).getTagName();
 	}
-	
+
 	/**
 	 * This method is useful to get the Tag Name of the element
 	 * @param element
@@ -536,7 +536,7 @@ public class CommonEvents
 		}
 		return tagValue;
 	}
-	
+
 	/**
 	 * This method is useful to retrieve the tag name for the respective web element from DOM
 	 * @param element - {@link WebElement}  type
@@ -546,7 +546,7 @@ public class CommonEvents
 	{
 		return element.getTagName();
 	}
-	
+
 	/**
 	 * This method is useful to get the desired attribute value based on the given attribute name of the element
 	 * @param by
@@ -571,7 +571,7 @@ public class CommonEvents
 			throw new Exception(elementName+" is not displayed on "+pageName);
 		}
 	}
-	
+
 	/**
 	 * This method is useful to retrieve the desired attribute of the given web element
 	 * @param by - {@link By} type
@@ -582,7 +582,7 @@ public class CommonEvents
 	{
 		return getWebElement(by).getAttribute(attributeName);
 	}
-	
+
 	/**
 	 * This method is useful to get the desired attribute value based on the given attribute name of the element
 	 * @param element
@@ -607,7 +607,7 @@ public class CommonEvents
 			throw new Exception(elementName+" is not displayed on "+pageName);
 		}
 	}
-	
+
 	/**
 	 * This method is useful to retrieve the desired attribute of the given web element
 	 * @param element - {@link WebElement} type
@@ -618,7 +618,7 @@ public class CommonEvents
 	{
 		return element.getAttribute(attributeName);
 	}
-	
+
 	/**
 	 * This method is useful to collect the attribute values for a list of webelements.
 	 * @param by
@@ -646,7 +646,7 @@ public class CommonEvents
 			throw new Exception(elementName+" is not displayed on "+pageName);
 		}
 	}
-	
+
 	/**
 	 * This method is useful to collect the attribute value for a list of webelements.
 	 * @param List<WebElement> elements
@@ -672,9 +672,9 @@ public class CommonEvents
 		{
 			throw new Exception(elementName+" is not displayed on "+pageName);
 		}
-		
+
 	}
-	
+
 	/**
 	 * This method is useful to get the desired css property value based on the given css property name of the element
 	 * 
@@ -700,7 +700,7 @@ public class CommonEvents
 			throw new Exception(elementName+" is not displayed on "+pageName);
 		}
 	}
-	
+
 	/**
 	 * This method is useful to retrieve the CSS property like color, font size, etc for the given web element
 	 * @param by - {@link By} type
@@ -711,7 +711,7 @@ public class CommonEvents
 	{
 		return getWebElement(by).getCssValue(cssProperty);
 	}
-	
+
 	/**
 	 * This method is useful to get the desired css property value based on the given css property name of the element
 	 * 
@@ -737,7 +737,7 @@ public class CommonEvents
 			throw new Exception(elementName+" is not displayed on "+pageName);
 		}
 	}
-	
+
 	/**
 	 * This method is useful to retrieve the CSS property like color, font size, etc for the given web element
 	 * @param element - {@link WebElement} type
@@ -748,7 +748,7 @@ public class CommonEvents
 	{
 		return element.getCssValue(cssProperty);
 	}
-	
+
 	/***
 	 * This method is used to fetch the current browsed url
 	 * @return String
@@ -757,7 +757,7 @@ public class CommonEvents
 	{
 		return driver.getCurrentUrl();
 	}
-	
+
 	/***
 	 * This method is used to fetch the title of the current browser
 	 * @return String
@@ -766,7 +766,7 @@ public class CommonEvents
 	{
 		return driver.getTitle();
 	}
-	
+
 	/***
 	 * This method is used to clear the data present for a text box
 	 * @param by
@@ -793,7 +793,7 @@ public class CommonEvents
 			throw new Exception(elementName+" is not displayed/enabled on "+pageName);
 		}
 	}
-	
+
 	/**
 	 * This method is useful to clear the text box before entering any value to the desired text box	
 	 * @param by - {@link By} type
@@ -804,7 +804,7 @@ public class CommonEvents
 		getWebElement(by).clear();
 		return new CommonEvents(driver);
 	}
-	
+
 	/***
 	 * This method is used to clear the data present for a text box
 	 * @param element
@@ -831,7 +831,7 @@ public class CommonEvents
 			throw new Exception(elementName+" is not displayed/enabled on "+pageName);
 		}
 	}
-	
+
 	/**
 	 * This method is useful to clear the text box before entering any value to the desired text box	
 	 * @param element - {@link WebElement} type
@@ -842,7 +842,7 @@ public class CommonEvents
 		element.clear();
 		return new CommonEvents(driver);
 	}
-	
+
 	/**
 	 * This method is useful to perform click operation on a webelement. Here the elementName and the pageName is used for the logging purpose
 	 * @param element
@@ -870,9 +870,9 @@ public class CommonEvents
 		{
 			throw new Exception(elementName + " is not displayed on " + pageName);
 		}
-		
+
 	}
-	
+
 	/**
 	 * This method is useful to perform click operation on a element. Here the elementName and the pageName is used for the logging purpose
 	 * @param by
@@ -904,7 +904,7 @@ public class CommonEvents
 			throw new Exception(elementName + " is not displayed on " + pageName);
 		}
 	}
-	
+
 	/**
 	 * This method is useful to click on the given web element	
 	 * @param by - {@link By} type
@@ -915,7 +915,7 @@ public class CommonEvents
 		getWebElement(by).click();
 		return new CommonEvents(driver);
 	}
-	
+
 	/**
 	 * This method is useful to click on the given web element	
 	 * @param element - {@link WebElement} type
@@ -926,7 +926,7 @@ public class CommonEvents
 		element.click();
 		return new CommonEvents(driver);
 	}
-	
+
 	/***
 	 * This method is useful to click on the desired element using the {@link Actions} class
 	 * @param by
@@ -947,7 +947,7 @@ public class CommonEvents
 			WebElement element = getWebElement(by);
 			if(element.isEnabled())
 				new Actions(driver).click(element)
-									.perform();
+				.perform();
 			else
 				throw new Exception(elementName + " is not enabled on " + pageName);
 			return new CommonEvents(driver);
@@ -957,7 +957,7 @@ public class CommonEvents
 			throw new Exception(elementName+" is not displayed on "+pageName);
 		}
 	}
-	
+
 	/***
 	 * This method is useful to click on the desired element using the {@link Actions} class
 	 * @param element
@@ -977,7 +977,7 @@ public class CommonEvents
 			waitTillPageLoad(element, 30, pageName);
 			if(element.isEnabled())
 				new Actions(driver).click(element)
-									.perform();
+				.perform();
 			else
 				throw new Exception(elementName + " is not enabled on " + pageName);
 			return new CommonEvents(driver);
@@ -987,7 +987,7 @@ public class CommonEvents
 			throw new Exception(elementName+" is not displayed on "+pageName);
 		}
 	}
-	
+
 	/**
 	 * This method is useful to click on the given web element using {@link Actions} class
 	 * @param by - {@link By} type
@@ -1001,7 +1001,7 @@ public class CommonEvents
 		.perform();
 		return new CommonEvents(driver);
 	}
-	
+
 	/**
 	 * This method is useful to click on the given web element using {@link Actions} class
 	 * @param element - {@link WebElement} type
@@ -1015,7 +1015,7 @@ public class CommonEvents
 		.perform();
 		return new CommonEvents(driver);
 	}
-	
+
 	/***
 	 * This method is useful to click on the desired WebElement using {@link Actions} class. 
 	 * In this first the controller will hover on the desired element then click on that element.
@@ -1036,9 +1036,9 @@ public class CommonEvents
 			waitTillPageLoad(by, 30, pageName);
 			if(getWebElement(by).isEnabled())
 				new Actions(driver).moveToElement(getWebElement(by))
-									.click()
-									.build()
-									.perform();
+				.click()
+				.build()
+				.perform();
 			else
 				throw new Exception(elementName + " is not enabled on " + pageName);
 			return new CommonEvents(driver);
@@ -1048,7 +1048,7 @@ public class CommonEvents
 			throw new Exception(elementName+" is not displayed on "+pageName);
 		}
 	}
-	
+
 	/***
 	 * This method is useful to click on the desired WebElement using {@link Actions} class. 
 	 * In this first the controller will hover on the desired element then click on that element.
@@ -1069,9 +1069,9 @@ public class CommonEvents
 			waitTillPageLoad(element, 30, pageName);
 			if(element.isEnabled())
 				new Actions(driver).moveToElement(element)
-									.click()
-									.build()
-									.perform();
+				.click()
+				.build()
+				.perform();
 			else
 				throw new Exception(elementName+" is not enabled on "+pageName);
 			return new CommonEvents(driver);
@@ -1080,9 +1080,9 @@ public class CommonEvents
 		{
 			throw new Exception(elementName+" is not displayed on "+pageName);
 		}
-		
+
 	}
-	
+
 	/**
 	 * This method is useful to click on the given web element using {@link Actions} class. In this the controller will move to the desired element 
 	 * then will click on the same.
@@ -1098,7 +1098,7 @@ public class CommonEvents
 		.perform();
 		return new CommonEvents(driver);
 	}
-	
+
 	/**
 	 * This method is useful to click on the given web element using {@link Actions} class. In this the controller will move to the desired element 
 	 * then will click on the same.
@@ -1114,7 +1114,7 @@ public class CommonEvents
 		.perform();
 		return new CommonEvents(driver);
 	}
-	
+
 	/**
 	 * This method is useful to click on the given web element using {@link Actions} class. In this the controller will move to the desired element 
 	 * then will click on the same.
@@ -1131,7 +1131,7 @@ public class CommonEvents
 		.perform();
 		return new CommonEvents(driver);
 	}
-	
+
 	/**
 	 * This method is useful to click on the given web element using {@link Actions} class. In this the controller will move to the desired element 
 	 * then will click on the same.
@@ -1147,7 +1147,7 @@ public class CommonEvents
 		.perform();
 		return new CommonEvents(driver);
 	}
-	
+
 	/**
 	 * This method is useful when user has to click on the target element by hovering an another element. In this case user has to mouse hover on
 	 * element1 which is by1 and clicking on element2 which is by2 as per this method.
@@ -1163,7 +1163,7 @@ public class CommonEvents
 		.perform();
 		return new CommonEvents(driver);
 	}
-	
+
 	/**
 	 * This method is useful when user has to click on the target element by hovering an another element. In this case user has to mouse hover on
 	 * element1 which is by1 and clicking on element2 which is by2 as per this method.
@@ -1179,7 +1179,7 @@ public class CommonEvents
 		.perform();
 		return new CommonEvents(driver);
 	}
-	
+
 	/***
 	 * This method is useful to click on the desired WebElement using JavascriptExecutor
 	 * @param element
@@ -1205,7 +1205,7 @@ public class CommonEvents
 			throw new Exception(elementName+" is not displayed on "+pageName);
 		}
 	}
-	
+
 	/***
 	 * This method is useful to click on the desired WebElement using JavascriptExecutor
 	 * @param by
@@ -1231,7 +1231,7 @@ public class CommonEvents
 			throw new Exception(elementName+" is not displayed on "+pageName);
 		}
 	}
-	
+
 	/**
 	 * This method is useful to click on the given web element using {@link JavascriptExecutor}.
 	 * @param by - {@link By} type
@@ -1243,7 +1243,7 @@ public class CommonEvents
 		.executeScript("arguments[0].click()", getWebElement(by));
 		return new CommonEvents(driver);
 	}
-	
+
 	/**
 	 * This method is useful to click on the given web element using {@link JavascriptExecutor}.
 	 * @param element - {@link WebElement} type
@@ -1255,7 +1255,7 @@ public class CommonEvents
 		.executeScript("arguments[0].click()", element);
 		return new CommonEvents(driver);
 	}
-	
+
 	/**
 	 * This method is useful to click on the based on the image of the element is passed as an argument
 	 * 
@@ -1265,22 +1265,22 @@ public class CommonEvents
 	 */
 	public void sikuliClick(String imagePath) throws FindFailed
 	{
-			// Create a screen object
-	        Screen screen = new Screen();
+		// Create a screen object
+		Screen screen = new Screen();
 
-            // Wait for the input box to appear on the screen
-            Pattern buttonPattern = new Pattern(imagePath).similar(0.1d);
-            screen.wait(buttonPattern, 90); // Wait for 10 seconds
+		// Wait for the input box to appear on the screen
+		Pattern buttonPattern = new Pattern(imagePath).similar(0.1d);
+		screen.wait(buttonPattern, 90); // Wait for 10 seconds
 
-            Match inputBoxMatch = screen.find(buttonPattern);
-            System.out.println("sikuli3");
-            // Click on the input box to activate it
-            screen.click(inputBoxMatch);
-            
+		Match inputBoxMatch = screen.find(buttonPattern);
+		System.out.println("sikuli3");
+		// Click on the input box to activate it
+		screen.click(inputBoxMatch);
+
 
 
 	}
-	
+
 	/**
 	 * This method is useful to click on the based on the image of the element is passed as an argument
 	 * 
@@ -1290,58 +1290,58 @@ public class CommonEvents
 	 */
 	public void sikuliType(String imagePath, String inputText) throws FindFailed
 	{
-		
 
-	        // Create a screen object
-	        Screen screen = new Screen();
 
-            // Wait for the input box to appear on the screen
-            Pattern inputBoxPattern = new Pattern(imagePath).similar(0.1d);
-            System.out.println("sikuli1");
-            screen.wait(inputBoxPattern, 90); // Wait for 10 seconds
-//            System.out.println("sikuli2");
-//            // Find the input box on the screen
-//            //
-            Match inputBoxMatch = screen.find(inputBoxPattern);
-            System.out.println("sikuli3");
-            // Click on the input box to activate it
-            screen.click(inputBoxMatch);
-            System.out.println("sikuli4");
-            // Type the input text
-            screen.type(inputBoxMatch, inputText);
-            System.out.println("sikuli5");
-        
+		// Create a screen object
+		Screen screen = new Screen();
 
-        
-    }
-	
+		// Wait for the input box to appear on the screen
+		Pattern inputBoxPattern = new Pattern(imagePath).similar(0.1d);
+		System.out.println("sikuli1");
+		screen.wait(inputBoxPattern, 90); // Wait for 10 seconds
+		//            System.out.println("sikuli2");
+		//            // Find the input box on the screen
+		//            //
+		Match inputBoxMatch = screen.find(inputBoxPattern);
+		System.out.println("sikuli3");
+		// Click on the input box to activate it
+		screen.click(inputBoxMatch);
+		System.out.println("sikuli4");
+		// Type the input text
+		screen.type(inputBoxMatch, inputText);
+		System.out.println("sikuli5");
+
+
+
+	}
+
 	public CommonEvents inputMicrosoftPasswordUsingSikuli(String password, String inputText) throws FindFailed
 	{
-		
+
 
 		Pattern password_input = new Pattern(password).similar(0.1d);
-		
+
 		Screen screen = new Screen();
 		screen.wait(password_input, 60);
 		screen.type(password_input, inputText);
 		screen.type(Key.ENTER);
-		
+
 		return new CommonEvents(driver);
-        
-    }
+
+	}
 
 	public void sikuliTypeEnterKey() throws FindFailed
 	{	
 
-        // Create a screen object
+		// Create a screen object
 		Screen screen = new Screen();
-        try {
-        // Type the Enter key
-		screen.type(Key.ENTER);
-        } catch (Exception e) {
-            e.printStackTrace();
-        }
-    }
+		try {
+			// Type the Enter key
+			screen.type(Key.ENTER);
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+	}
 
 
 
@@ -1404,7 +1404,7 @@ public class CommonEvents
 			throw new Exception(elementName + " is not displayed/enabled in " + pageName);
 		}
 	}
-	
+
 	/***
 	 * This method is useful to enter the value inside the text box.
 	 * @param element - {@link WebElement} type
@@ -1428,9 +1428,9 @@ public class CommonEvents
 		getWebElement(by).sendKeys(textToBeEntered);
 		return new CommonEvents(driver);
 	}
-	
-	
-	
+
+
+
 	/***
 	 * This method is useful to enter the keyboard value inside the text box.
 	 * @param by
@@ -1460,7 +1460,7 @@ public class CommonEvents
 			throw new Exception(elementName + " is not displayed/enabled in " + pageName);
 		}
 	}
-	
+
 	/***
 	 * This method is useful to enter the keyboard value inside the text box.
 	 * @param element
@@ -1489,7 +1489,7 @@ public class CommonEvents
 			throw new Exception(elementName + " is not displayed/enabled in " + pageName);
 		}
 	}
-	
+
 	/***
 	 * This method is useful to enter the value inside the text box.
 	 * @param element - {@link WebElement} type
@@ -1513,7 +1513,7 @@ public class CommonEvents
 		getWebElement(by).sendKeys(key);
 		return new CommonEvents(driver);
 	}
-	
+
 	/***
 	 * This method is useful to enter the value inside the text box.
 	 * @param element
@@ -1533,9 +1533,9 @@ public class CommonEvents
 		{
 			waitTillPageLoad(element, 30, pageName);
 			new Actions(driver).click(element)
-								.sendKeys(textToBeEntered)
-								.build()
-								.perform();
+			.sendKeys(textToBeEntered)
+			.build()
+			.perform();
 			return new CommonEvents(driver);
 		} 
 		catch (Exception e) 
@@ -1565,9 +1565,9 @@ public class CommonEvents
 		{
 			waitTillPageLoad(by, 30, pageName);
 			new Actions(driver).click(webElement)
-								.sendKeys(textToBeEntered)
-								.build()
-								.perform();
+			.sendKeys(textToBeEntered)
+			.build()
+			.perform();
 			return new CommonEvents(driver);
 		}
 		catch (Exception e) 
@@ -1575,7 +1575,7 @@ public class CommonEvents
 			throw new Exception(elementName + " is not displayed/enabled in " + pageName);
 		}
 	}
-	
+
 	/***
 	 * This method is useful to enter the value inside the text box using {@link Actions} class
 	 * @param element - {@link WebElement} type
@@ -1605,7 +1605,7 @@ public class CommonEvents
 		.perform();
 		return new CommonEvents(driver);
 	}
-	
+
 	/***
 	 * This method is useful to enter the keyboard value inside the text box.
 	 * @param by
@@ -1626,9 +1626,9 @@ public class CommonEvents
 		{
 			waitTillPageLoad(by, 30, pageName);
 			new Actions(driver).click(webElement)
-								.sendKeys(webElement, key)
-								.build()
-								.perform();
+			.sendKeys(webElement, key)
+			.build()
+			.perform();
 			return new CommonEvents(driver);
 		} 
 		catch (Exception e) 
@@ -1636,7 +1636,7 @@ public class CommonEvents
 			throw new Exception(elementName + " is not displayed/enabled in " + pageName);
 		}
 	}
-	
+
 	/***
 	 * This method is useful to enter the keyboard value inside the text box.
 	 * @param element
@@ -1656,9 +1656,9 @@ public class CommonEvents
 		{
 			waitTillPageLoad(element, 30, pageName);
 			new Actions(driver).click(element)
-								.sendKeys(element, key)
-								.build()
-								.perform();
+			.sendKeys(element, key)
+			.build()
+			.perform();
 		} 
 		catch (Exception e) 
 		{
@@ -1666,7 +1666,7 @@ public class CommonEvents
 		}
 		return new CommonEvents(driver);
 	}
-	
+
 	/***
 	 * This method is useful to enter the value inside the text box using {@link Actions} class.
 	 * @param element - {@link WebElement} type
@@ -1696,7 +1696,7 @@ public class CommonEvents
 		.perform();
 		return new CommonEvents(driver);
 	}
-	
+
 	/***
 	 * This method is useful to enter the value inside the text box.
 	 * @param element
@@ -1752,7 +1752,7 @@ public class CommonEvents
 		}
 		return new CommonEvents(driver);
 	}
-	
+
 	/***
 	 * This method is useful to enter the value inside the text box using {@link JavascriptExecutor} class
 	 * @param element - {@link WebElement} type
@@ -1814,7 +1814,7 @@ public class CommonEvents
 		}
 		return new CommonEvents(driver);
 	}
-	
+
 	/***
 	 * This method is useful to select the desired option from the drop down by the visible text.
 	 * @param by
@@ -1851,7 +1851,7 @@ public class CommonEvents
 		}
 		return new CommonEvents(driver);
 	}
-	
+
 	/***
 	 * This method is useful to select the desired option from the drop down by the visible text.
 	 * @param element - {@link WebElement} type
@@ -1864,7 +1864,7 @@ public class CommonEvents
 		.selectByVisibleText(option);
 		return new CommonEvents(driver);
 	}
-	
+
 	/***
 	 * This method is useful to select the desired option from the drop down by the visible text.
 	 * @param by - {@link By} type
@@ -1877,7 +1877,7 @@ public class CommonEvents
 		.selectByVisibleText(option);
 		return new CommonEvents(driver);
 	}
-	
+
 	/***
 	 * This method is useful to find out the desired option is present inside the respective drop down or not. If found then it will return true else false.
 	 * @param element
@@ -1904,7 +1904,7 @@ public class CommonEvents
 			throw new Exception(elementName + " is not displayed on " + pageName);
 		}
 	}
-	
+
 	/***
 	 * This method is useful to find out the desired option is present inside the respective drop down or not. If found then it will return true else false.
 	 * @param by
@@ -1931,7 +1931,7 @@ public class CommonEvents
 			throw new Exception(elementName + " is not displayed on " + pageName);
 		}
 	}
-	
+
 	/***
 	 * This method is useful to select the desired option from the drop down based on the value attribute of the respective tag.
 	 * @param by
@@ -1968,7 +1968,7 @@ public class CommonEvents
 		}
 		return new CommonEvents(driver);
 	}
-	
+
 	/***
 	 * This method is useful to select the desired option from the drop down by the visible text.
 	 * @param element - {@link WebElement} type
@@ -1981,7 +1981,7 @@ public class CommonEvents
 		.selectByValue(value);
 		return new CommonEvents(driver);
 	}
-	
+
 	/***
 	 * This method is useful to select the desired option from the drop down by the visible text.
 	 * @param by - {@link By} type
@@ -1994,7 +1994,7 @@ public class CommonEvents
 		.selectByVisibleText(value);
 		return new CommonEvents(driver);
 	}
-	
+
 	/***
 	 * This method is useful to find out the desired option is present for the value attribute or not. if present then it'll return true else false. 
 	 * @param by
@@ -2019,9 +2019,9 @@ public class CommonEvents
 		{
 			throw new Exception(elementName + " is not displayed on " + pageName);
 		}
-		
+
 	}
-	
+
 	/***
 	 * This method is useful to find out the desired option is present for the value attribute or not. if present then it'll return true else false. 
 	 * @param List<WebElement> elements
@@ -2039,7 +2039,7 @@ public class CommonEvents
 			throw new Exception("Page name should not be null");
 		try 
 		{
-			
+
 			List<String> values = getAttributes(elements, "value", elementName, pageName);
 			return values.parallelStream().anyMatch(e->e.trim().equals(value));
 		}
@@ -2047,9 +2047,9 @@ public class CommonEvents
 		{
 			throw new Exception(elementName + " is not displayed on " + pageName);
 		}
-		
+
 	}
-	
+
 	/***
 	 * This method is useful to select the desired option from the drop down based on the index of the option.
 	 * @param by
@@ -2086,7 +2086,7 @@ public class CommonEvents
 		}
 		return new CommonEvents(driver);
 	}
-	
+
 	/***
 	 * This method is useful to select the desired option from the drop down by the visible text.
 	 * @param element - {@link WebElement} type
@@ -2099,7 +2099,7 @@ public class CommonEvents
 		.selectByIndex(index);
 		return new CommonEvents(driver);
 	}
-	
+
 	/***
 	 * This method is useful to select the desired option from the drop down by the visible text.
 	 * @param by - {@link By} type
@@ -2140,10 +2140,10 @@ public class CommonEvents
 		{
 			throw new Exception(elementName+" is not displayed on "+pageName);
 		}
-		
+
 		return flag;
 	}
-	
+
 	/***
 	 * This method is useful to find out the desired option is present for the value attribute or not. if present then it'll return true else false. 
 	 * @param by
@@ -2171,10 +2171,10 @@ public class CommonEvents
 		{
 			throw new Exception(elementName+" is not displayed on "+pageName);
 		}
-		
+
 		return flag;
 	}
-	
+
 	/***
 	 * This method is useful to retrieve all the options present for the drop down,
 	 * @param by
@@ -2213,7 +2213,7 @@ public class CommonEvents
 		}
 		return optionValues;
 	}
-	
+
 	/***
 	 * This method is useful to retrieve all the options present for the drop down,
 	 * @param element
@@ -2251,7 +2251,7 @@ public class CommonEvents
 		}
 		return optionValues;
 	}
-	
+
 	/**
 	 * This method is useful to get all the selected option from the given list. 
 	 * Basically can be used for the multi-select list.
@@ -2291,7 +2291,7 @@ public class CommonEvents
 		}
 		return selectedOptionValues;
 	}
-	
+
 	/**
 	 * This method is useful to get all the selected option from the given list. 
 	 * Basically can be used for the multi-select list.
@@ -2330,7 +2330,7 @@ public class CommonEvents
 		}
 		return selectedOptionValues;
 	}
-	
+
 	/***
 	 * This method is useful to verify whether we can select multiple values from the desired list.
 	 * This will return only true or false based on the result.
@@ -2359,7 +2359,7 @@ public class CommonEvents
 		}
 		return flag;
 	}
-	
+
 	/***
 	 * This method is useful to verify whether we can select multiple values from the desired list.
 	 * This will return only true or false based on the result.
@@ -2388,7 +2388,7 @@ public class CommonEvents
 		}
 		return flag;
 	}
-	
+
 	/***
 	 * This method is useful to get the default selected value of the dropdown.
 	 * @param by
@@ -2416,7 +2416,7 @@ public class CommonEvents
 		}
 		return desiredValue;
 	}
-	
+
 	/***
 	 * This method is useful to get the default selected value of the dropdown.
 	 * @param element
@@ -2444,7 +2444,7 @@ public class CommonEvents
 		}
 		return desiredValue;
 	}
-	
+
 	/***
 	 * This method is useful to handle the web table.
 	 * In this method it will iterate through all the table headers, it'll retrieve the table headers and their position and will store in a map.
@@ -2478,9 +2478,9 @@ public class CommonEvents
 		{
 			throw new Exception(tableName+" is not displayed on "+pageName);
 		}
-		
+
 	}
-	
+
 	/***
 	 * This method is useful to handle the web table.
 	 * In this method it will iterate through all the table headers, it'll retrieve the table headers and their position and will store in a map.
@@ -2515,9 +2515,9 @@ public class CommonEvents
 		{
 			throw new Exception(tableName+" is not displayed on "+pageName);
 		}
-		
+
 	}
-	
+
 	/***
 	 * This method is useful to retrieve the row number of desired data in the given web table.
 	 * @param List<WebElement> tableItems
@@ -2552,9 +2552,9 @@ public class CommonEvents
 		{
 			throw new Exception(tableName+" is not displayed on "+pageName);
 		}
-		
+
 	}
-	
+
 	/***
 	 * This method is useful to retrieve the row number of desired data in the given web table.
 	 * @param by
@@ -2590,7 +2590,7 @@ public class CommonEvents
 		{
 			throw new Exception(tableName+" is not displayed on "+pageName);
 		}
-		
+
 	}
 
 	/***
@@ -2636,7 +2636,7 @@ public class CommonEvents
 			int y = location.getY() - 300;
 			((JavascriptExecutor) driver).executeScript("window.scrollBy(" + x + "," + y + ")");
 			new Actions(driver).moveToElement(element)
-					.perform();
+			.perform();
 		} else {
 			throw new Exception(elementName + " is not displayed on " + pageName);
 		}
@@ -2666,7 +2666,7 @@ public class CommonEvents
 			int y = location.getY() - 300;
 			((JavascriptExecutor) driver).executeScript("window.scrollBy(" + x + "," + y + ")");
 			new Actions(driver).moveToElement(element)
-								.perform();
+			.perform();
 		} else {
 			throw new Exception(elementName + " is not displayed/enabled in " + pageName);
 		}
@@ -2687,7 +2687,7 @@ public class CommonEvents
 			throw new Exception("URL value should not be null");
 		return new CommonEvents(driver);
 	}
-	
+
 	/***
 	 * This method is useful to navigate to the desired application url
 	 * @param url
@@ -2709,10 +2709,10 @@ public class CommonEvents
 	 */
 	public  CommonEvents refreshPage() {
 		driver.navigate()
-				.refresh();
+		.refresh();
 		return new CommonEvents(driver);
 	}
-	
+
 	/***
 	 * This method is useful to navigate back to the previous page
 	 * @return {@link CommonEvents}
@@ -2720,10 +2720,10 @@ public class CommonEvents
 	public CommonEvents navigateBack()
 	{
 		driver.navigate()
-				.back();
+		.back();
 		return new CommonEvents(driver);
 	}
-	
+
 	/***
 	 * This method is useful to move forward to the next page
 	 * @return {@link CommonEvents}
@@ -2731,12 +2731,12 @@ public class CommonEvents
 	public CommonEvents navigateForward()
 	{
 		driver.navigate()
-				.forward();
+		.forward();
 		return new CommonEvents(driver);
 	}
-	
-	
-	
+
+
+
 	/***
 	 * This method is useful to collect the window IDs when multiple windows are getting opened during the automation script execution.
 	 * @return Iterator<String>
@@ -2744,9 +2744,9 @@ public class CommonEvents
 	public Iterator<String> getWindowHandles()
 	{
 		return driver.getWindowHandles()
-						.iterator();
+				.iterator();
 	}
-	
+
 	/**
 	 * This method is used for switching between windows
 	 * 
@@ -2758,12 +2758,12 @@ public class CommonEvents
 	{
 		if(windowId!=null)
 			driver.switchTo()
-					.window(windowId); 
+			.window(windowId); 
 		else
 			throw new Exception("Window id should not be a null value");
 		return new CommonEvents(driver);
 	}
-	
+
 	/***
 	 * This method is responsible to scroll the page till the desired element is visible on the UI. 
 	 * 
@@ -2790,9 +2790,9 @@ public class CommonEvents
 		{
 			throw new Exception(elementName+" is not present in "+pageName);
 		}
-		
+
 	}
-	
+
 	/***
 	 * This method is responsible to scroll the page till the desired element is visible on the UI. 
 	 * 
@@ -2819,9 +2819,9 @@ public class CommonEvents
 		{
 			throw new Exception(elementName+" is not present in "+pageName);
 		}
-		
+
 	}
-	
+
 	/***
 	 * This method is responsible to scroll the page till the footer of the web page.
 	 * 
@@ -2832,7 +2832,7 @@ public class CommonEvents
 		((JavascriptExecutor)driver).executeScript("arguments[0].scrollTo(0, document.body.scrollHeight)");
 		return new CommonEvents(driver);
 	}
-	
+
 	/**
 	 * This method will give user an opportunity to execute the custom script for performing the desired event.
 	 * @param script
@@ -2847,7 +2847,7 @@ public class CommonEvents
 			throw new Exception("The script value should not be null");
 		return new CommonEvents(driver);
 	}
-	
+
 	/***
 	 * This method is useful to resize the current browser window size to the desired window size.
 	 * @param width
@@ -2857,11 +2857,11 @@ public class CommonEvents
 	public CommonEvents setCustomWindowSize(int width, int height)
 	{
 		driver.manage()
-				.window()
-				.setSize(new Dimension(width, height));
+		.window()
+		.setSize(new Dimension(width, height));
 		return new CommonEvents(driver);
 	}
-	
+
 	/***
 	 * This method is useful to drag the desired element to the desired position.
 	 * @param from
@@ -2885,11 +2885,11 @@ public class CommonEvents
 		waitTillPageLoad(from, 30, pageName);
 		waitTillPageLoad(to, 30, pageName);
 		new Actions(driver).dragAndDrop(source, target)
-							.build()
-							.perform();
+		.build()
+		.perform();
 		return new CommonEvents(driver);
 	}
-	
+
 	/***
 	 * This method is useful to drag the desired element to the desired position.
 	 * @param source
@@ -2911,11 +2911,11 @@ public class CommonEvents
 		waitTillPageLoad(source, 30, pageName);
 		waitTillPageLoad(target, 30, pageName);
 		new Actions(driver).dragAndDrop(source, target)
-							.build()
-							.perform();
+		.build()
+		.perform();
 		return new CommonEvents(driver);
 	}
-	
+
 	/***
 	 * This method is useful to drag the desired element to the desired position with the given offset value.
 	 * @param from
@@ -2936,8 +2936,8 @@ public class CommonEvents
 		{
 			waitTillPageLoad(by, 30, pageName);
 			new Actions(driver).dragAndDropBy(getWebElement(by), xOffset, yOffset)
-								.build()
-								.perform();
+			.build()
+			.perform();
 		}
 		catch(Exception e)
 		{
@@ -2945,7 +2945,7 @@ public class CommonEvents
 		}
 		return new CommonEvents(driver);
 	}
-	
+
 	/***
 	 * This method is useful to drag the desired element to the desired position with the given offset value.
 	 * @param element
@@ -2966,8 +2966,8 @@ public class CommonEvents
 		{
 			waitTillPageLoad(element, 30, pageName);
 			new Actions(driver).dragAndDropBy(element, xOffset, yOffset)
-								.build()
-								.perform();
+			.build()
+			.perform();
 		}
 		catch(Exception e)
 		{
@@ -2975,7 +2975,7 @@ public class CommonEvents
 		}
 		return new CommonEvents(driver);
 	}
-	
+
 	/***
 	 * This method is useful to upload the file. 
 	 * In this case the file upload dialog should be displayed on the screen.
@@ -2993,14 +2993,14 @@ public class CommonEvents
 	{
 		Pattern fileName = new Pattern(fileNameFieldImage).similar(0.1d);
 		Pattern openButton = new Pattern(openButtonImage).similar(0.1d);
-		
+
 		Screen screen = new Screen();
 		screen.wait(fileName, 2);
 		screen.type(fileName, fileToBeUploaded);
 		screen.click(openButton);
 		return new CommonEvents(driver);
 	}
-	
+
 	/**
 	 * This method is useful to upload the file using the file injection mechanism.
 	 * @param by
@@ -3010,7 +3010,7 @@ public class CommonEvents
 	 * @return {@link CommonEvents}
 	 * @throws Exception
 	 */
-	
+
 	public CommonEvents fileUploadSelenium(By by, String filePath, String elementName, String pageName) throws Exception
 	{
 		if(elementName==null)
@@ -3027,7 +3027,7 @@ public class CommonEvents
 		}
 		return new CommonEvents(driver);
 	}
-	
+
 	/**
 	 * This method is useful to upload the file using the file injection mechanism.
 	 * @param element
@@ -3037,7 +3037,7 @@ public class CommonEvents
 	 * @return {@link CommonEvents}
 	 * @throws Exception
 	 */
-	
+
 	public CommonEvents fileUploadSelenium(WebElement element, String filePath, String elementName, String pageName) throws Exception
 	{
 		if(elementName==null)
@@ -3054,7 +3054,7 @@ public class CommonEvents
 		}
 		return new CommonEvents(driver);
 	}
-	
+
 	/**
 	 * This method is used to switch inside the frame based on the given index
 	 * 
@@ -3070,12 +3070,12 @@ public class CommonEvents
 		List<WebElement> totalNumberOfFrames = getWebElements(By.tagName("iframe"));
 		if(index<=totalNumberOfFrames.size() && index>=0)
 			driver.switchTo()
-					.frame(index);
+			.frame(index);
 		else
 			throw new IllegalArgumentException("Index value should in between 0 to "+totalNumberOfFrames.size());
 		return new CommonEvents(driver);
 	}
-	
+
 	/**
 	 * This method is used to switch inside the frame based on the given name or id attribute
 	 * 
@@ -3087,7 +3087,7 @@ public class CommonEvents
 		driver.switchTo().frame(nameOrId);
 		return new CommonEvents(driver);
 	}
-	
+
 	/**
 	 * This method is used to switch inside the frame based on the given by type element
 	 * 
@@ -3099,7 +3099,7 @@ public class CommonEvents
 		driver.switchTo().frame(getWebElement(by));
 		return new CommonEvents(driver);
 	}
-	
+
 	/**
 	 * This method is used to switch inside the frame based on the given web element
 	 * 
@@ -3111,7 +3111,7 @@ public class CommonEvents
 		driver.switchTo().frame(element);
 		return new CommonEvents(driver);
 	}
-	
+
 	/**
 	 * This method is used to switch to parent frame from child frame
 	 * @return {@link CommonEvents}
@@ -3121,7 +3121,7 @@ public class CommonEvents
 		driver.switchTo().parentFrame();
 		return new CommonEvents(driver);
 	}
-	
+
 	/**
 	 * This method is used to switch to default page from frame
 	 * @return {@link CommonEvents}
@@ -3131,7 +3131,7 @@ public class CommonEvents
 		driver.switchTo().defaultContent();
 		return new CommonEvents(driver);
 	}
-	
+
 	/***
 	 * This method is useful to capture the screenshot of the current web page and store the same inside current projects Screenshot\Failed folder.
 	 * @param pageName
@@ -3152,13 +3152,13 @@ public class CommonEvents
 		}
 		return new CommonEvents(driver);
 	}
-	
+
 	/**
 	 * This method will help to capture the screenshot in base64 format which will help to attach the screenshot in reports
 	 * @return String
 	 * @throws Exception
 	 */
-	
+
 	public String takeBase64Screenshot() throws Exception
 	{
 		try {
@@ -3169,7 +3169,7 @@ public class CommonEvents
 			throw new Exception(e);
 		}
 	}
-	
+
 	/**
 	 * This method is useful to capture the screenshot of the desired webelement
 	 * @param by
@@ -3196,7 +3196,7 @@ public class CommonEvents
 		}
 		return new CommonEvents(driver);
 	}
-	
+
 	/**
 	 * This method is useful to take the full page screenshot. As a user I need to pass the filePath where I want to save the image
 	 * and also I need to pass the file name which will save my image with the given name.
@@ -3212,17 +3212,17 @@ public class CommonEvents
 		{
 			if(fileName != null)
 				Shutterbug.shootPage(driver, Capture.FULL_SCROLL, 1000, true)
-							.withName(fileName)
-							.save(filePath);
+				.withName(fileName)
+				.save(filePath);
 			else
 				throw new Exception("File name should not be a null value"); 
 		}
-			
+
 		else
 			throw new Exception("File path should not be a null value");
 		return new CommonEvents(driver);
 	}
-	
+
 	/**
 	 * This method is useful to take the full screenshot of the desired WebElement. 
 	 * As a user I need to pass a By type element, the filePath where I want to save the image and also I need to pass the file name 
@@ -3250,8 +3250,8 @@ public class CommonEvents
 				{
 					waitTillPageLoad(by, 30, pageName);
 					Shutterbug.shootElement(driver, by, CaptureElement.FULL_SCROLL, true)
-								.withName(fileName)
-								.save(filePath);
+					.withName(fileName)
+					.save(filePath);
 				}
 				else
 					throw new Exception("File name should not be a null value");
@@ -3263,10 +3263,10 @@ public class CommonEvents
 		{
 			throw new Exception(elementName+" is not displayed on "+pageName);
 		}
-		
+
 		return new CommonEvents(driver);
 	}
-	
+
 	/**
 	 * This method is useful to take the full screenshot of the desired WebElement. 
 	 * As a user I need to pass a By type element, the filePath where I want to save the image and also I need to pass the file name 
@@ -3294,8 +3294,8 @@ public class CommonEvents
 				{
 					waitTillPageLoad(element, 30, pageName);
 					Shutterbug.shootElement(driver, element, CaptureElement.FULL_SCROLL, true)
-								.withName(fileName)
-								.save(filePath);
+					.withName(fileName)
+					.save(filePath);
 				}
 				else
 					throw new Exception("File name should not be a null value");
@@ -3309,7 +3309,7 @@ public class CommonEvents
 		}
 		return new CommonEvents(driver);
 	}
-	
+
 	/**
 	 * This method is useful to take the full frame screenshot. 
 	 * As a user I need to pass a By type element, the filePath where I want to save the image and also I need to pass the file name 
@@ -3337,8 +3337,8 @@ public class CommonEvents
 				{
 					waitTillPageLoad(by, 30, pageName);
 					Shutterbug.shootFrame(driver, getWebElement(by), CaptureElement.FULL_SCROLL, 1000, true)
-								.withName(fileName)
-								.save(filePath);
+					.withName(fileName)
+					.save(filePath);
 				}
 				else
 					throw new Exception("File name should not be a null value");
@@ -3352,7 +3352,7 @@ public class CommonEvents
 		}
 		return new CommonEvents(driver);
 	}
-	
+
 	/***
 	 * This method is useful to compare two different images with same size(dimensions).
 	 * true: If both the images are exactly same
@@ -3368,14 +3368,14 @@ public class CommonEvents
 		{
 			BufferedImage actualImage = ImageIO.read(new File(fileNameWithPath));
 			flag = Shutterbug.shootPage(driver, Capture.FULL_SCROLL, 1000, true)
-										.withName("FullScreenImage")
-										.equals(actualImage);
+					.withName("FullScreenImage")
+					.equals(actualImage);
 		}
 		else
 			throw new Exception("File name path should not be null");
 		return flag;
 	}
-	
+
 	/***
 	 * This method is useful to compare two different images with same size(dimensions).
 	 * true: If both the images are exactly same or below the given deviation value 
@@ -3391,14 +3391,14 @@ public class CommonEvents
 		{
 			BufferedImage actualImage = ImageIO.read(new File(fileNameWithPath));
 			flag = Shutterbug.shootPage(driver, Capture.FULL_SCROLL, 1000, true)
-										.withName("FullScreenImage")
-										.equals(actualImage, deviation);
+					.withName("FullScreenImage")
+					.equals(actualImage, deviation);
 		}
 		else
 			throw new Exception("File name path should not be null");
 		return flag;
 	}
-	
+
 	/***
 	 * This method is useful when user is trying to compare the desired base image with the currently captured image during run
 	 * time. After the comparison, it'll save an image file in the destination(passed as an argument by the user) with the 
@@ -3418,18 +3418,18 @@ public class CommonEvents
 			{
 				BufferedImage actualImage = ImageIO.read(new File(fileNameWithPath));
 				flag = Shutterbug.shootPage(driver, Capture.FULL_SCROLL, 1000, true)
-											.withName("FullScreenImage")
-											.equalsWithDiff(actualImage, destFilePathWithName);
+						.withName("FullScreenImage")
+						.equalsWithDiff(actualImage, destFilePathWithName);
 			}
 			else
 				throw new Exception("Destination file name path should not be null");
 		}
 		else
 			throw new Exception("File name path should not be null");
-		
+
 		return flag;
 	}
-	
+
 	/**
 	 * This method is useful to take the full screenshot of the desired WebElement in runtime and compare with the base image. 
 	 * As a user I need to pass a By type element, the file name with path for validating 
@@ -3457,19 +3457,19 @@ public class CommonEvents
 			{
 				BufferedImage actualImage = ImageIO.read(new File(fileNameWithPath));
 				flag = Shutterbug.shootElement(driver, by, CaptureElement.FULL_SCROLL)
-							.withName(elementName+"Image")
-							.equalsWithDiff(actualImage, destFilePathWithName);
+						.withName(elementName+"Image")
+						.equalsWithDiff(actualImage, destFilePathWithName);
 			}
 			else
 				throw new Exception("Destination file name path should not be null");
 		}
 		else
 			throw new Exception("File name path should not be null");
-		
+
 		return flag;
-		
+
 	}
-	
+
 	/**
 	 * This method is useful to take the full screenshot of the desired WebElement in runtime and compare with the base image. 
 	 * As a user I need to pass a WebElement type element, the file name with path for validating 
@@ -3497,18 +3497,18 @@ public class CommonEvents
 			{
 				BufferedImage actualImage = ImageIO.read(new File(fileNameWithPath));
 				flag = Shutterbug.shootElement(driver, element, CaptureElement.FULL_SCROLL)
-							.withName(elementName+"Image")
-							.equalsWithDiff(actualImage, destFilePathWithName);
+						.withName(elementName+"Image")
+						.equalsWithDiff(actualImage, destFilePathWithName);
 			}
 			else
 				throw new Exception("Destination file name path should not be null");
 		}
 		else
 			throw new Exception("File name path should not be null");
-		
+
 		return flag;
 	}
-	
+
 	/***
 	 * This method is used to compare two different images. 
 	 * User has to pass two different images with their full path for the comparison
@@ -3538,7 +3538,7 @@ public class CommonEvents
 			throw new Exception("Image1 file name path should not be null");
 		return flag;
 	}
-	
+
 	/***
 	 * This method is used to perform pixel wise comparison between two different images 
 	 * @param img1
@@ -3554,7 +3554,7 @@ public class CommonEvents
 			{
 				BufferedImage expectedImage = ImageIO.read(new File(img1));
 				BufferedImage actualImage = ImageIO.read(new File(img2));
-				
+
 				if (expectedImage.getWidth() == actualImage.getWidth() && expectedImage.getHeight() == actualImage.getHeight()) 
 				{
 					for (int x = 0; x < expectedImage.getWidth(); x++) 
@@ -3568,7 +3568,7 @@ public class CommonEvents
 				} else {
 					return false;
 				}
-				
+
 			}
 			else
 				throw new Exception("Image2 file name path should not be null");
@@ -3576,9 +3576,9 @@ public class CommonEvents
 		else
 			throw new Exception("Image1 file name path should not be null");
 		return true;
-		
+
 	}
-	
+
 	/***
 	 * This method will perform the image comparison between two different images and store the difference in another image
 	 * @param img1
@@ -3627,7 +3627,7 @@ public class CommonEvents
 			throw new Exception("Image2 file name path should not be null");		
 		return image3;
 	}
-	
+
 	/***
 	 * This method is useful to generate a random number between the start value and end value-1
 	 * @param startValue
@@ -3637,10 +3637,10 @@ public class CommonEvents
 	public long randomNumber(long startValue, long endValue)
 	{
 		return new Random().longs(startValue, endValue)
-		    				.findFirst()
-		    				.getAsLong();
+				.findFirst()
+				.getAsLong();
 	}
-	
+
 	/***
 	 * This method is useful to generate a random number between the start value and end value-1
 	 * @param startValue
@@ -3650,10 +3650,10 @@ public class CommonEvents
 	public int randomNumber(int startValue, int endValue)
 	{
 		return new Random().ints(startValue, endValue)
-		    				.findFirst()
-		    				.getAsInt();
+				.findFirst()
+				.getAsInt();
 	}
-	
+
 	/***
 	 * This method is useful to get the dimension of the desired WebElement.
 	 * This method will retrieve the width of the element and will be stored inside the map with "Width" key and height will be stored in "Height" key
@@ -3668,7 +3668,7 @@ public class CommonEvents
 		dimension.put("Height", size.getHeight());
 		return dimension;
 	}
-	
+
 	/***
 	 * This method is useful to get the dimension of the desired WebElement.
 	 * This method will retrieve the width of the element and will be stored inside the map with "Width" key and height will be stored in "Height" key
@@ -3683,7 +3683,7 @@ public class CommonEvents
 		dimension.put("Height", size.getHeight());
 		return dimension;
 	}
-	
+
 	/***
 	 * This method is useful to resize the width of the desired element based on the given offset value.
 	 * @param by - {@link By} type
@@ -3695,13 +3695,13 @@ public class CommonEvents
 		Map<String, Integer> dimension = getWebElementDimension(by);
 		WebElement element = getWebElement(by);
 		new Actions(driver).clickAndHold(element)
-				.moveByOffset(dimension.get("Width") + incrementBy, dimension.get("Height"))
-				.release()
-				.build()
-				.perform();
+		.moveByOffset(dimension.get("Width") + incrementBy, dimension.get("Height"))
+		.release()
+		.build()
+		.perform();
 		return new CommonEvents(driver);
 	}
-	
+
 	/***
 	 * This method is useful to resize the width of the desired element based on the given offset value.
 	 * @param element - {@link WebElement} type
@@ -3713,13 +3713,13 @@ public class CommonEvents
 	{
 		Map<String, Integer> dimension = getWebElementDimension(element);
 		new Actions(driver).clickAndHold(element)
-								.moveByOffset(dimension.get("Width")+incrementBy, dimension.get("Height"))
-								.release()
-								.build()
-								.perform();
+		.moveByOffset(dimension.get("Width")+incrementBy, dimension.get("Height"))
+		.release()
+		.build()
+		.perform();
 		return new CommonEvents(driver);
 	}
-	
+
 	/***
 	 * This method is useful to resize the height of the desired element based on the given offset value.
 	 * @param by - {@link By} type
@@ -3731,11 +3731,11 @@ public class CommonEvents
 		Map<String, Integer> dimension = getWebElementDimension(by);
 		WebElement element = getWebElement(by);
 		new Actions(driver).clickAndHold(element)
-				.moveByOffset(dimension.get("Width"), dimension.get("Height") + incrementBy).release().build()
-				.perform();
+		.moveByOffset(dimension.get("Width"), dimension.get("Height") + incrementBy).release().build()
+		.perform();
 		return new CommonEvents(driver);
 	}
-	
+
 	/***
 	 * This method is useful to resize the height of the desired element based on the given offset value.
 	 * @param element
@@ -3746,11 +3746,11 @@ public class CommonEvents
 	{
 		Map<String, Integer> dimension = getWebElementDimension(element);
 		new Actions(driver).clickAndHold(element)
-				.moveByOffset(dimension.get("Width"), dimension.get("Height") + incrementBy).release().build()
-				.perform();
+		.moveByOffset(dimension.get("Width"), dimension.get("Height") + incrementBy).release().build()
+		.perform();
 		return new CommonEvents(driver);
 	}
-	
+
 	/***
 	 * This method is useful to slide the slider handle with the given offset values
 	 * @param by - {@link By} type
@@ -3764,11 +3764,11 @@ public class CommonEvents
 		new Actions(driver).clickAndHold(element).moveByOffset(xOffset, yOffset).release(element).build().perform();
 		return new CommonEvents(driver);
 	}
-	
+
 	/***
 	 * This method is useful to slide the slider handle with the given offset values
 	 * @param element - {@link WebElement} type
-	* @param xOffset - {@link Integer} type: The value should be shifted in the horizontal axis
+	 * @param xOffset - {@link Integer} type: The value should be shifted in the horizontal axis
 	 * @param yOffset - {@link Integer} type: The value should be shifted in the vertical axis
 	 * @return {@link CommonEvents}
 	 */
@@ -3777,7 +3777,7 @@ public class CommonEvents
 		new Actions(driver).clickAndHold(element).moveByOffset(xOffset, yOffset).release(element).build().perform();
 		return new CommonEvents(driver);
 	}
-	
+
 	/**
 	 * This method is useful to wait for the desired element for 60 seconds maximum. If the element is visible within max time limit then
 	 * controller will start executing the next line of code else it'll fail saying element not found
@@ -3833,8 +3833,8 @@ public class CommonEvents
 		.until(ExpectedConditions.elementToBeClickable(getWebElement(by)));
 		return new CommonEvents(driver);
 	}
-	
-	
+
+
 	/***
 	 * This method is useful for locating the element in the DOM
 	 * 
@@ -3862,7 +3862,7 @@ public class CommonEvents
 		}
 		return new CommonEvents(driver);
 	}
-	
+
 	/***
 	 * This method is useful for locating the element in the DOM
 	 * 
@@ -3877,7 +3877,7 @@ public class CommonEvents
 		.until(ExpectedConditions.presenceOfElementLocated(by));
 		return new CommonEvents(driver);
 	}
-	
+
 	/***
 	 * This method is useful to wait for a particular {@link WebElement}'s attribute value contains the desired value
 	 * @param by
@@ -3891,7 +3891,7 @@ public class CommonEvents
 		new WebDriverWait(driver, Duration.ofSeconds(seconds)).until(ExpectedConditions.attributeContains(by, attribute, desiredValue));
 		return new CommonEvents(driver);
 	}
-	
+
 	/***
 	 * This method is useful to wait for a particular {@link WebElement}'s attribute value contains the desired value
 	 * @param element
@@ -3905,7 +3905,7 @@ public class CommonEvents
 		new WebDriverWait(driver, Duration.ofSeconds(seconds)).until(ExpectedConditions.attributeContains(element, attribute, desiredValue));
 		return new CommonEvents(driver);
 	}
-	
+
 	/***
 	 * This method is useful to wait for a particular {@link WebElement}'s attribute value contains the desired value
 	 * @param by - {@link By} type
@@ -3919,7 +3919,7 @@ public class CommonEvents
 		new WebDriverWait(driver, Duration.ofSeconds(seconds)).until(ExpectedConditions.attributeToBe(by, attribute, desiredValue));
 		return new CommonEvents(driver);
 	}
-	
+
 	/***
 	 * This method is useful to wait for a particular {@link WebElement}'s attribute value contains the desired value
 	 * @param element
@@ -3933,7 +3933,7 @@ public class CommonEvents
 		new WebDriverWait(driver, Duration.ofSeconds(seconds)).until(ExpectedConditions.attributeToBe(element, attribute, desiredValue));
 		return new CommonEvents(driver);
 	}
-	
+
 	/***
 	 * This method is useful for users to wait till a specific web element count should be equal to the parsed value
 	 * 
@@ -3947,7 +3947,7 @@ public class CommonEvents
 		new WebDriverWait(driver, Duration.ofSeconds(seconds)).until(ExpectedConditions.numberOfElementsToBe(by, count));
 		return new CommonEvents(driver);
 	}
-	
+
 	/***
 	 * This method is useful for users to wait till a specific web element count should be more than the parsed value
 	 * 
@@ -3961,7 +3961,7 @@ public class CommonEvents
 		new WebDriverWait(driver, Duration.ofSeconds(seconds)).until(ExpectedConditions.numberOfElementsToBeMoreThan(by, count));
 		return new CommonEvents(driver);
 	}
-	
+
 	/***
 	 * This method is useful for users to wait till a specific web element count should be less than the parsed value
 	 * 
@@ -3975,7 +3975,7 @@ public class CommonEvents
 		new WebDriverWait(driver, Duration.ofSeconds(seconds)).until(ExpectedConditions.numberOfElementsToBeLessThan(by, count));
 		return new CommonEvents(driver);
 	}
-	
+
 	/**
 	 * This method is useful to wait till the ajax call gets completed.
 	 * This wait will be based on the given user input seconds.
@@ -3990,12 +3990,12 @@ public class CommonEvents
 		boolean isDisplayed = false;
 		boolean noActive = false;
 		boolean ajaxIsComplete = false;
-		
+
 		while(count<=seconds) 
 		{
 			ajaxIsComplete = (boolean) ((JavascriptExecutor) driver).executeScript("return document.readyState")
-																		.toString()
-																		.equals("complete");
+					.toString()
+					.equals("complete");
 			if(ajaxIsComplete) 
 			{
 				try
@@ -4007,8 +4007,8 @@ public class CommonEvents
 				{
 					isDisplayed = isDisplayed(by, 1);
 				}
-				
-				 
+
+
 				if (noActive || isDisplayed)
 					break;
 				else
@@ -4021,7 +4021,7 @@ public class CommonEvents
 			throw new Exception("The ajax calls for "+pageName+" could not be completed in "+seconds+" seconds");
 		return new CommonEvents(driver);
 	}
-	
+
 	/**
 	 * This method is useful to wait till the ajax call gets completed.
 	 * This wait will be based on the given user input seconds.
@@ -4036,12 +4036,12 @@ public class CommonEvents
 		boolean isDisplayed = false;
 		boolean noActive = false;
 		boolean ajaxIsComplete = false;
-		
+
 		while(count<=seconds) 
 		{
 			ajaxIsComplete = (boolean) ((JavascriptExecutor) driver).executeScript("return document.readyState")
-																		.toString()
-																		.equals("complete");
+					.toString()
+					.equals("complete");
 			if(ajaxIsComplete) 
 			{
 				try
@@ -4053,8 +4053,8 @@ public class CommonEvents
 				{
 					isDisplayed = isDisplayed(element, 1);
 				}
-				
-				 
+
+
 				if (noActive || isDisplayed)
 					break;
 				else
@@ -4067,7 +4067,7 @@ public class CommonEvents
 			throw new Exception("The ajax calls for "+pageName+" could not be completed in "+seconds+" seconds");
 		return new CommonEvents(driver);
 	}
-	
+
 	/***
 	 * This method is useful to wait for a specific WebElement with a polling time.
 	 * 
@@ -4078,10 +4078,10 @@ public class CommonEvents
 	public WebElement fluentWait(By by, long timeDuration)
 	{
 		Wait<WebDriver> wait = new FluentWait<WebDriver>(driver)
-								.withTimeout(Duration.ofSeconds(timeDuration)) 			
-								.pollingEvery(Duration.ofSeconds(2)) 			
-								.ignoring(NoSuchElementException.class)
-								.ignoring(StaleElementReferenceException.class);
+				.withTimeout(Duration.ofSeconds(timeDuration)) 			
+				.pollingEvery(Duration.ofSeconds(2)) 			
+				.ignoring(NoSuchElementException.class)
+				.ignoring(StaleElementReferenceException.class);
 		WebElement element = wait.until(new Function<WebDriver, WebElement>(){
 			public WebElement apply(WebDriver driver ) {
 				return driver.findElement(by);
@@ -4089,7 +4089,7 @@ public class CommonEvents
 		});
 		return element;
 	}
-	
+
 	/***
 	 * This method is useful to wait for a specific WebElement with a polling time.
 	 * 
@@ -4100,10 +4100,10 @@ public class CommonEvents
 	public WebElement fluentWait(final WebElement element, long timeDuration)
 	{
 		Wait<WebDriver> wait = new FluentWait<WebDriver>(driver)
-								.withTimeout(Duration.ofSeconds(timeDuration)) 			
-								.pollingEvery(Duration.ofSeconds(2)) 			
-								.ignoring(NoSuchElementException.class)
-								.ignoring(StaleElementReferenceException.class);
+				.withTimeout(Duration.ofSeconds(timeDuration)) 			
+				.pollingEvery(Duration.ofSeconds(2)) 			
+				.ignoring(NoSuchElementException.class)
+				.ignoring(StaleElementReferenceException.class);
 		WebElement finalElement = wait.until(new Function<WebDriver, WebElement>(){
 			public WebElement apply(WebDriver driver ) {
 				return element;
@@ -4111,7 +4111,7 @@ public class CommonEvents
 		});
 		return finalElement;
 	}
-	
+
 	/***
 	 * This method will execute the script to verify whether the desired element is present in the DOM or not.
 	 * It'll wait till the maximum timeout given by the user. 
@@ -4123,7 +4123,7 @@ public class CommonEvents
 	 * @return {@link CommonEvents}
 	 * @throws Exception
 	 */
-	
+
 	public CommonEvents waitTillElementLocatedInDom(String location, String locatorType, long maxTimeout, String elementName, String pageName) throws Exception
 	{
 		int count=1;
@@ -4174,7 +4174,7 @@ public class CommonEvents
 				else
 					throw new IllegalArgumentException(locatorType+" is not a valid locator type for location. The locator types can be "
 							+ "id or name or className or tagName or cssSelector or xpath");
-				
+
 				if(totalCount>0)
 					break;
 				else {
@@ -4190,7 +4190,7 @@ public class CommonEvents
 			throw new NoSuchElementException(elementName+" is not present in "+pageName);
 		return new CommonEvents(driver);
 	}
-	
+
 	/***
 	 * This method will execute the script to verify whether the desired element is present in the DOM or not.
 	 * It'll wait till the maximum timeout given by the user. 
@@ -4200,7 +4200,7 @@ public class CommonEvents
 	 * @return boolean - If the locator present in the DOM within the max timeout then return true else false
 	 * @throws Exception 
 	 */
-	
+
 	public boolean isElementLocatedInDom(String location, String locatorType, long maxTimeout) throws Exception
 	{
 		int count=1;
@@ -4208,63 +4208,63 @@ public class CommonEvents
 		boolean flag = false;
 		long totalCount = 0;
 		do {
-				if(locatorType.equalsIgnoreCase("xpath"))
-				{
-					String path = "var aCount = document.evaluate(\"count("+location+")\", document, null, XPathResult.ANY_TYPE, null );return aCount.numberValue;";
-					JavascriptExecutor jsExecutor = (JavascriptExecutor) driver;  
-					totalCount =(long) jsExecutor.executeScript(path);
-				}
-				else if(locatorType.equalsIgnoreCase("cssSelector"))
-				{
-					String path = "return document.querySelectorAll(\""+location+"\").length;";
-					JavascriptExecutor jsExecutor = (JavascriptExecutor) driver;  
-					totalCount = Long.parseLong((String) jsExecutor.executeScript(path).toString());
-				}
-				else if(locatorType.equalsIgnoreCase("id"))
-				{
-					String finalLocation = "*[id='"+location+"']";
-					String path = "return document.querySelectorAll(\""+finalLocation+"\").length;";
-					JavascriptExecutor jsExecutor = (JavascriptExecutor) driver;  
-					totalCount = Long.parseLong((String) jsExecutor.executeScript(path).toString());
-				}
-				else if(locatorType.equalsIgnoreCase("name"))
-				{
-					String finalLocation = "*[name='"+location+"']";
-					String path = "return document.querySelectorAll(\""+finalLocation+"\").length;";
-					JavascriptExecutor jsExecutor = (JavascriptExecutor) driver;  
-					totalCount = Long.parseLong((String) jsExecutor.executeScript(path).toString());
-				}
-				else if(locatorType.equalsIgnoreCase("className"))
-				{
-					String finalLocation = "*[class='"+location+"']";
-					String path = "return document.querySelectorAll(\""+finalLocation+"\").length;";
-					JavascriptExecutor jsExecutor = (JavascriptExecutor) driver;  
-					totalCount = Long.parseLong((String) jsExecutor.executeScript(path).toString());
-				}
-				else if(locatorType.equalsIgnoreCase("tagName"))
-				{
-					String path = "return document.querySelectorAll(\""+location+"\").length;";
-					JavascriptExecutor jsExecutor = (JavascriptExecutor) driver;  
-					totalCount = Long.parseLong((String) jsExecutor.executeScript(path).toString());
-				}
-				else
-					throw new IllegalArgumentException(locatorType+" is not a valid locator type for location. The locator types can be "
-							+ "id or name or className or tagName or cssSelector or xpath");
-				
-				if(totalCount>0) {
-					flag = true;
-					break;
-				}
-				else {
-					Thread.sleep(250);
-					count++;
-				}
-			}while(count<=maxCount);
+			if(locatorType.equalsIgnoreCase("xpath"))
+			{
+				String path = "var aCount = document.evaluate(\"count("+location+")\", document, null, XPathResult.ANY_TYPE, null );return aCount.numberValue;";
+				JavascriptExecutor jsExecutor = (JavascriptExecutor) driver;  
+				totalCount =(long) jsExecutor.executeScript(path);
+			}
+			else if(locatorType.equalsIgnoreCase("cssSelector"))
+			{
+				String path = "return document.querySelectorAll(\""+location+"\").length;";
+				JavascriptExecutor jsExecutor = (JavascriptExecutor) driver;  
+				totalCount = Long.parseLong((String) jsExecutor.executeScript(path).toString());
+			}
+			else if(locatorType.equalsIgnoreCase("id"))
+			{
+				String finalLocation = "*[id='"+location+"']";
+				String path = "return document.querySelectorAll(\""+finalLocation+"\").length;";
+				JavascriptExecutor jsExecutor = (JavascriptExecutor) driver;  
+				totalCount = Long.parseLong((String) jsExecutor.executeScript(path).toString());
+			}
+			else if(locatorType.equalsIgnoreCase("name"))
+			{
+				String finalLocation = "*[name='"+location+"']";
+				String path = "return document.querySelectorAll(\""+finalLocation+"\").length;";
+				JavascriptExecutor jsExecutor = (JavascriptExecutor) driver;  
+				totalCount = Long.parseLong((String) jsExecutor.executeScript(path).toString());
+			}
+			else if(locatorType.equalsIgnoreCase("className"))
+			{
+				String finalLocation = "*[class='"+location+"']";
+				String path = "return document.querySelectorAll(\""+finalLocation+"\").length;";
+				JavascriptExecutor jsExecutor = (JavascriptExecutor) driver;  
+				totalCount = Long.parseLong((String) jsExecutor.executeScript(path).toString());
+			}
+			else if(locatorType.equalsIgnoreCase("tagName"))
+			{
+				String path = "return document.querySelectorAll(\""+location+"\").length;";
+				JavascriptExecutor jsExecutor = (JavascriptExecutor) driver;  
+				totalCount = Long.parseLong((String) jsExecutor.executeScript(path).toString());
+			}
+			else
+				throw new IllegalArgumentException(locatorType+" is not a valid locator type for location. The locator types can be "
+						+ "id or name or className or tagName or cssSelector or xpath");
+
+			if(totalCount>0) {
+				flag = true;
+				break;
+			}
+			else {
+				Thread.sleep(250);
+				count++;
+			}
+		}while(count<=maxCount);
 		return flag;
 	}
-	
-	
-	
+
+
+
 	/***
 	 * This method is used to calculate the differences in the given times. As a user while invoking this method we need to pass the format of the time
 	 *  along with the input times. This method will be returning the hour, minutes, seconds difference between two different input times.
@@ -4277,22 +4277,22 @@ public class CommonEvents
 	public Map<String, Long> getTimeDifference(String format, String inputTime1, String inputTime2)
 	{
 		Map<String, Long> timeDifferences = new HashMap<String, Long>();
-		
+
 		DateTimeFormatter dateTimeFormatter = DateTimeFormatter.ofPattern(format);
 		LocalTime time1 = LocalTime.parse(inputTime1, dateTimeFormatter);
 		LocalTime time2 = LocalTime.parse(inputTime2, dateTimeFormatter);
-		
+
 		long hoursDifference = ChronoUnit.HOURS.between(time1, time2);
 		long minutesDifference = ChronoUnit.MINUTES.between(time1, time2)%60;
 		long secondsDifference = ChronoUnit.SECONDS.between(time1, time2)%60;
-		
+
 		timeDifferences.put("hoursDifference", hoursDifference);
 		timeDifferences.put("minutesDifference", minutesDifference);
 		timeDifferences.put("secondsDifference", secondsDifference);
-		
+
 		return timeDifferences;
 	}
-	
+
 	/***
 	 * This method is useful to find the input data is in the desired pattern. As a user we need to pass the regular expression to this method.
 	 * So that based on the regular expression, the method will match the desired input data and after the match, it'll return true or false.
@@ -4305,7 +4305,7 @@ public class CommonEvents
 		java.util.regex.Pattern pattern = java.util.regex.Pattern.compile(regEx);
 		return pattern.matcher(inputData).find();
 	}
-	
+
 	/***
 	 * This method is useful for user to open a new tab in the same focused browser
 	 * @return {@link CommonEvents}
@@ -4315,7 +4315,7 @@ public class CommonEvents
 		driver.switchTo().newWindow(WindowType.TAB);
 		return new CommonEvents(driver);
 	}
-	
+
 	/***
 	 * This method is useful for user to open a new browser window
 	 * @return {@link CommonEvents}
@@ -4325,7 +4325,7 @@ public class CommonEvents
 		driver.switchTo().newWindow(WindowType.WINDOW);
 		return new CommonEvents(driver);
 	}
-	
+
 	/**
 	 * This method is useful to close the current driver focused window
 	 * @return {@link CommonEvents}
@@ -4335,7 +4335,7 @@ public class CommonEvents
 		driver.close();
 		return new CommonEvents(driver);
 	}
-	
+
 	/**
 	 * This method is useful to update the current date format to desired date format.
 	 * @param currentDate - {@link String}: current date value
@@ -4346,10 +4346,10 @@ public class CommonEvents
 	 */
 	public String dateFormatter(String currentDate, String currentFormat, String requiredFormat) throws Exception {
 		DateFormat sdf = new SimpleDateFormat(currentFormat);
-	    Date date = sdf.parse(currentDate);
-	    return new SimpleDateFormat(requiredFormat).format(date);
+		Date date = sdf.parse(currentDate);
+		return new SimpleDateFormat(requiredFormat).format(date);
 	}
-	
+
 	/**
 	 * This method is useful to add some days/weeks/months/years to the given date. The returned date format will be as per the input date format
 	 * @param date - {@link String}: date value
@@ -4375,7 +4375,7 @@ public class CommonEvents
 			throw new Exception(typeToAdd+" is not a valid option. Valid options are days, weeks or years");
 		return dateFormatter.format(calender.getTime());
 	}
-	
+
 	/**
 	 * This method is useful to retrieve the day from the given date.
 	 * @param date - {@link String}: date value in string format
@@ -4385,12 +4385,12 @@ public class CommonEvents
 	 */
 	public int getDayFromDate(String date, String dateFormat) throws Exception {
 		DateFormat dateFormatter = new SimpleDateFormat(dateFormat);
-	    Date parse = dateFormatter.parse(date);
-	    Calendar cal = Calendar.getInstance();
-	    cal.setTime(parse);
-	    return cal.get(Calendar.DAY_OF_MONTH);
+		Date parse = dateFormatter.parse(date);
+		Calendar cal = Calendar.getInstance();
+		cal.setTime(parse);
+		return cal.get(Calendar.DAY_OF_MONTH);
 	}
-	
+
 	/**
 	 * This method is useful to retrieve the month from the given date. Month value stands 0 for January and so on till 11 for December.
 	 * Example: If the given date is 26/07/2015, then this method will return 6 as value. Similarly if the date value is 31-December-2000, then
@@ -4402,12 +4402,12 @@ public class CommonEvents
 	 */
 	public int getMonthFromDate(String date, String dateFormat) throws Exception {
 		DateFormat dateFormatter = new SimpleDateFormat(dateFormat);
-	    Date parse = dateFormatter.parse(date);
-	    Calendar cal = Calendar.getInstance();
-	    cal.setTime(parse);
-	    return cal.get(Calendar.MONTH);
+		Date parse = dateFormatter.parse(date);
+		Calendar cal = Calendar.getInstance();
+		cal.setTime(parse);
+		return cal.get(Calendar.MONTH);
 	}
-	
+
 	/**
 	 * This method is useful to retrieve the year from the given date.
 	 * @param date - {@link String}: date value in string format
@@ -4417,12 +4417,12 @@ public class CommonEvents
 	 */
 	public int getYearFromDate(String date, String dateFormat) throws Exception {
 		DateFormat dateFormatter = new SimpleDateFormat(dateFormat);
-	    Date parse = dateFormatter.parse(date);
-	    Calendar cal = Calendar.getInstance();
-	    cal.setTime(parse);
-	    return cal.get(Calendar.YEAR);
+		Date parse = dateFormatter.parse(date);
+		Calendar cal = Calendar.getInstance();
+		cal.setTime(parse);
+		return cal.get(Calendar.YEAR);
 	}
-	
+
 	/**
 	 * This method is useful to generate the random date between the two give dates. It'll return a random date in "yyyy-mm-dd" format
 	 * @param startDate - {@link String}: desired start date
@@ -4433,42 +4433,42 @@ public class CommonEvents
 	 * @throws Exception
 	 */
 	public String generateRandomDate(String startDate, String startDateFormat, String endDate, String endDateFormat) throws Exception {
-		
+
 		int startDateDay = getDayFromDate(startDate, startDateFormat);
 		int startDateMonth = getMonthFromDate(startDate, startDateFormat);
 		int startDateYear = getYearFromDate(startDate, startDateFormat);
-		
+
 		int endDateDay = getDayFromDate(endDate, endDateFormat);
 		int endDateMonth = getMonthFromDate(endDate, endDateFormat);
 		int endDateYear = getYearFromDate(endDate, endDateFormat);
-		
+
 		LocalDate startingDate = LocalDate.of(startDateYear, startDateMonth+1, startDateDay);
-	    long start = startingDate.toEpochDay();
+		long start = startingDate.toEpochDay();
 
-	    LocalDate endingDate = LocalDate.of(endDateYear, endDateMonth+1, endDateDay);
-	    long end = endingDate.toEpochDay();
+		LocalDate endingDate = LocalDate.of(endDateYear, endDateMonth+1, endDateDay);
+		long end = endingDate.toEpochDay();
 
-	    long randomEpochDay = ThreadLocalRandom.current().longs(start, end).findAny().getAsLong();
-	    String randomDate = LocalDate.ofEpochDay(randomEpochDay).toString();
-	    return randomDate;
+		long randomEpochDay = ThreadLocalRandom.current().longs(start, end).findAny().getAsLong();
+		String randomDate = LocalDate.ofEpochDay(randomEpochDay).toString();
+		return randomDate;
 	}
-	
-	public CommonEvents clickOnAnElementIfItIsPresent(By by) {
-		
-        // Find all matching elements on the page
-        java.util.List<WebElement> elements = driver.findElements(by);
 
-        // Check if any elements are found
-        if (!elements.isEmpty()) {
-            // Click on the first matching element
-            elements.get(0).click();
-        }
-        return new CommonEvents(driver);
+	public CommonEvents clickOnAnElementIfItIsPresent(By by) {
+
+		// Find all matching elements on the page
+		java.util.List<WebElement> elements = driver.findElements(by);
+
+		// Check if any elements are found
+		if (!elements.isEmpty()) {
+			// Click on the first matching element
+			elements.get(0).click();
+		}
+		return new CommonEvents(driver);
 	}
 	public CommonEvents fileUpload(String pathOfTheFile ) throws AWTException
 	{
 		StringSelection selectFile=new StringSelection(pathOfTheFile); 
-//		internally copy the file
+		//		internally copy the file
 		Toolkit.getDefaultToolkit().getSystemClipboard().setContents(selectFile, null);
 		Robot robot=new Robot();
 		robot.keyPress(KeyEvent.VK_CONTROL);
@@ -4481,40 +4481,64 @@ public class CommonEvents
 		robot.keyPress(KeyEvent.VK_ENTER);
 		robot.keyRelease(KeyEvent.VK_ENTER);
 
-        return new CommonEvents(driver);
-	}
-	
-	public CommonEvents highlightElement(WebElement element)
-	{
-		JavascriptExecutor jse = (JavascriptExecutor)driver;
-		jse.executeScript("arguments[0].setAttribute('style','border: solid 5px red');", element);
 		return new CommonEvents(driver);
 	}
-	
+
+	public CommonEvents highlightElement(WebElement element)
+	{
+		JavascriptExecutor jse = (JavascriptExecutor) driver;
+
+		// Add the highlight
+		jse.executeScript("arguments[0].setAttribute('style', 'border: solid 5px green');", element);
+
+		try {
+			// Wait for a specified time (e.g., 500 milliseconds)
+			Thread.sleep(500);
+		} catch (InterruptedException e) {
+			e.printStackTrace();
+		}
+
+		// Remove the highlight
+		jse.executeScript("arguments[0].setAttribute('style', '');", element);
+
+		return new CommonEvents(driver);
+	}
+
 	public CommonEvents highlightElementAfterAction(WebElement element)
 	{
 		JavascriptExecutor jse = (JavascriptExecutor)driver;
-		jse.executeScript("arguments[0].setAttribute('style','border: solid 5px yellow');", element);
+		jse.executeScript("arguments[0].setAttribute('style','border: solid 5px green');", element);
+
+		try {
+			// Wait for a specified time (e.g., 500 milliseconds)
+			Thread.sleep(500);
+		} catch (InterruptedException e) {
+			e.printStackTrace();
+		}
+
+		// Remove the highlight
+		jse.executeScript("arguments[0].setAttribute('style', '');", element);
+
 		return new CommonEvents(driver);
 	}
-	
-	public void performAltN() {
-        // Create Actions object
-        Actions actions = new Actions(driver);
-        
-        // Perform Alt + N keyboard operation
-        actions.keyDown(Keys.ALT)
-               .sendKeys("n")
-               .keyUp(Keys.ALT)
-               .build()
-               .perform();
-    }
-	
+
+	public CommonEvents performAltN() {
+		// Create Actions object
+		Actions actions = new Actions(driver);
+
+		// Perform Alt + N keyboard operation
+		actions.keyDown(Keys.ALT)
+		.sendKeys("n")
+		.keyUp(Keys.ALT)
+		.build()
+		.perform();
+
+		return new CommonEvents(driver);
+	}
+
 	/***
 	 * This method is useful to get the default selected value of the dropdown.
 	 * @param by
-	 * @param elementName
-	 * @param pageName
 	 * @return String
 	 * @throws Exception
 	 */
@@ -4534,23 +4558,39 @@ public class CommonEvents
 	}
 
 	public CommonEvents acceptAlert() {
-        try {
-            Alert alert = driver.switchTo().alert();
-            alert.accept();
-        } catch (NoAlertPresentException e) {
-            System.out.println("No alert present: " + e.getMessage());
-        }
-        return new CommonEvents(driver);
-    }
-	
-	 public CommonEvents dismissAlert() {
-	        try {
-	            Alert alert = driver.switchTo().alert();
-	            alert.dismiss();
-	        } catch (NoAlertPresentException e) {
-	            System.out.println("No alert present: " + e.getMessage());
-	        }
-	        return new CommonEvents(driver);
-	    }
+		try {
+			Alert alert = driver.switchTo().alert();
+			alert.accept();
+		} catch (NoAlertPresentException e) {
+			System.out.println("No alert present: " + e.getMessage());
+		}
+		return new CommonEvents(driver);
+	}
+
+	public CommonEvents dismissAlert() {
+		try {
+			Alert alert = driver.switchTo().alert();
+			alert.dismiss();
+		} catch (NoAlertPresentException e) {
+			System.out.println("No alert present: " + e.getMessage());
+		}
+		return new CommonEvents(driver);
+	}
+
+	public CommonEvents scrollIntoView(WebElement element) {
+		JavascriptExecutor jse = (JavascriptExecutor) driver;
+		jse.executeScript("arguments[0].scrollIntoView(true);", element);
+
+		return new CommonEvents(driver);
+	}
+
+	public boolean isElementVisible(By element) {
+		try {
+			waitTillElementVisible(element, 60);
+			return getWebElement(element).isDisplayed();
+		} catch (NoSuchElementException e) {
+			return false;
+		}
+	}
 }
 

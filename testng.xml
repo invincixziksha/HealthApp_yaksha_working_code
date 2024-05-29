@@ -15,7 +15,7 @@
 		<parameter name="browser" value="chrome" />
 		<parameter name="environment" value="dev" />
 		<classes>
-			<class name="testcases.yakshaHealthApp_L1_TestCase" />
+			<class name="testcases.yakshaHealthApp_L2_TestCase" />
 		</classes>
 	</test> <!-- Test -->
 </suite> <!-- Suite -->

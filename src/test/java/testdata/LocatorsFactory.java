@@ -29,19 +29,29 @@ public class LocatorsFactory extends StartupPage {
 	By errorMessageOfRegisterBillingByElement = By.xpath("//p[contains(text(), 'Some of the inputs are invalid. Please check and try again. !')]");
 	By closeButtonOfAddNewpatientpage = By.xpath("//button[contains(text(), 'Close')]");
 
-
-
+	By errorMessageCloseButton = By.xpath("//a[@class='close-btn']//i[@class='fa fa-times-circle']");
+	By dispensaryToggle = By.xpath("//span[@data-target='#Dispensary']");
+	By prescriptionSubMenu = By.xpath("//ul[@id='Dispensary']//li//a//span[contains(text(),'Prescription')]");
+	By saleSubMenu = By.xpath("//ul[@id='Dispensary']//li//a//span[contains(text(),'Sale')]");
+	By stockSubMenu = By.xpath("//ul[@id='Dispensary']//li//a//span[contains(text(),'Stock')]");
+	By counterSubMenu = By.xpath("//ul[@id='Dispensary']//li//a//span[contains(text(),'Counter')]");
+	By reportsSubMenu = By.xpath("//ul[@id='Dispensary']//li//a//span[contains(text(),'Reports')]");
+	By patientConsumptionSubMenu = By.xpath("//ul[@id='Dispensary']//li//a//span[contains(text(),'Patient Consumption')]");
+	
+//	By dispensaryLeftNavigationMenu = By.xpath("//a[@class='left-nav-active']//span[contains(text(), 'Dispensary')]");
+	By dispensaryLeftNavigationMenu = By.xpath("//a[@href='#/Dispensary']//span[contains(text(), 'Dispensary')]");
+	By settingLeftNavigationMenu = By.xpath("//a[@href='#/Settings']//span[contains(text(), 'Settings')]");
 
 	//l2 locators
 
 	By checkBox=By.xpath("(//label[@class='mt-checkbox mt-checkbox-outline'])[1]//span");
 	By addNewButtonElement = By.xpath("//button[contains(text(), 'Add New Patient')]");
-	By headerNotificationBar=By.id("header_notification_bar");
-	By admittingDocField=By.xpath("//b[.='Admitting Doc:']");
-	By newItemButton=By.xpath("//button[.=' New Item ']");
-	By myFavoritesButton=By.xpath("//a[.=' My Favorites']");
-	By manageRoleTab=By.xpath("//a[.='Manage Role']");
-	By tooltip=By.xpath("//li[contains(text(),'+')]");
+	By headerNotificationBar = By.id("header_notification_bar");
+	By admittingDocField = By.xpath("//b[.='Admitting Doc:']");
+	By newItemButton = By.xpath("//button[.=' New Item ']");
+	By myFavoritesButton = By.xpath("//a[.=' My Favorites']");
+	By manageRoleTab = By.xpath("//a[.='Manage Role']");
+	By tooltipText = By.xpath("//li[contains(text(),'+')]");
 
 
 	public LocatorsFactory(WebDriver driver) {
@@ -76,6 +86,7 @@ public class LocatorsFactory extends StartupPage {
 
 	public WebElement addNewButtonIsPresent(WebDriver driver) {
 		WebElement addNewPatientButtonWebElement = driver.findElement(addNewPatientButtonElement);
+		commonEvents.highlightElementAfterAction(addNewPatientButtonWebElement);
 		return addNewPatientButtonWebElement; 
 	}
 
@@ -91,7 +102,6 @@ public class LocatorsFactory extends StartupPage {
 			{
 				firstNameTextfieldValue = commonEvents.getAttribute(firstNameTextFieldElement, "value");
 				System.out.println("firstName Text value is  : " + firstNameTextfieldValue);
-				Thread.sleep(2000);	
 			}
 		}catch(Exception e) {
 			throw e;
@@ -108,14 +118,13 @@ public class LocatorsFactory extends StartupPage {
 				System.out.println("text value of register Only Button : " + registerOnlyButtonIsPresent);
 				WebElement registerOnlyButtonWebElement = commonEvents.findElement(registerOnlyButtonToHighlight);
 				commonEvents.highlightElementAfterAction(registerOnlyButtonWebElement);
-				Thread.sleep(3000);	
 			}
 		}catch(Exception e) {
 			throw e;
 		}
 		return registerOnlyButtonIsPresent;
 	}
-	
+
 	public String verifyIndiaIsPresent() throws Exception {
 		String selectedCountryValue = "";
 		try {
@@ -123,14 +132,13 @@ public class LocatorsFactory extends StartupPage {
 			{
 				selectedCountryValue = commonEvents.getFirstSelectedOptionFromDropdown(countryDropdownByElement, "elementName", "pageName");
 				System.out.println("selected dropdown value is  : " + selectedCountryValue);
-				Thread.sleep(2000);	
 			}
 		}catch(Exception e) {
 			throw e;
 		}
 		return selectedCountryValue;
 	}
-	
+
 
 	public String verifyErrorMessageIsPresent() throws Exception {
 		String errorMessageValue = "";
@@ -139,13 +147,80 @@ public class LocatorsFactory extends StartupPage {
 			{
 				errorMessageValue =  commonEvents.getText(errorMessageOfRegisterBillingByElement);
 				System.out.println("error message validation by Locators factory class : " + errorMessageValue);
-				commonEvents.jsClick(countryDropdownByElement);
+				commonEvents.jsClick(errorMessageCloseButton);
+				commonEvents.jsClick(closeButtonOfAddNewpatientpage);
 			}
 		}catch(Exception e) {
 			throw e;
 		}
 		return errorMessageValue;
-		
+	}
+
+	public Boolean highLightPresenceOfAllFieldInDispensaryMenu() throws Exception {
+		Boolean highlightPresenceOfElement=false;
+		try {
+			if(commonEvents.isDisplayed(prescriptionSubMenu)&&
+					commonEvents.isDisplayed(saleSubMenu)&&
+					commonEvents.isDisplayed(stockSubMenu)&&
+					commonEvents.isDisplayed(counterSubMenu)&&
+					commonEvents.isDisplayed(reportsSubMenu)&&
+					commonEvents.isDisplayed(patientConsumptionSubMenu)) {
+
+				WebElement prescriptionSubMenuWebElement = driver.findElement(prescriptionSubMenu);
+				commonEvents.highlightElementAfterAction(prescriptionSubMenuWebElement);
+				WebElement saleSubMenuWebElement = driver.findElement(saleSubMenu);
+				commonEvents.highlightElementAfterAction(saleSubMenuWebElement);
+				WebElement stockSubMenuWebElement = driver.findElement(stockSubMenu);
+				commonEvents.highlightElementAfterAction(stockSubMenuWebElement);
+				WebElement counterSubMenuWebElement = driver.findElement(counterSubMenu);
+				commonEvents.highlightElementAfterAction(counterSubMenuWebElement);
+				WebElement reportsSubMenuWebElement = driver.findElement(reportsSubMenu);
+				commonEvents.highlightElementAfterAction(reportsSubMenuWebElement);
+				WebElement patientConsumptionSubMenuWebElement = driver.findElement(patientConsumptionSubMenu);
+				commonEvents.highlightElementAfterAction(patientConsumptionSubMenuWebElement);
+
+				highlightPresenceOfElement= true;
+			}	
+
+		}catch(Exception e) {
+			throw e;	
+		}
+		return highlightPresenceOfElement;
+	}
+	
+	public Boolean verifyFieldIsNotPresentInDispensaryMenu() throws Exception {
+		Boolean highlightDispensaryNavigationMenu=false;
+		try {
+			if(!(commonEvents.isDisplayed(prescriptionSubMenu)&&
+					commonEvents.isDisplayed(saleSubMenu))) {
+
+				WebElement dispensaryNavigationMenuWebElement = driver.findElement(dispensaryLeftNavigationMenu);
+				commonEvents.highlightElementAfterAction(dispensaryNavigationMenuWebElement);
+
+				highlightDispensaryNavigationMenu = true;
+			}	
+
+		}catch(Exception e) {
+			throw e;	
+		}
+		return highlightDispensaryNavigationMenu;
+	}
+	
+	public Boolean settingModuleIsPresent() throws Exception {
+		Boolean settingModuleIsPresent = false;
+		try {
+			if(commonEvents.isDisplayed(settingLeftNavigationMenu)) {
+				
+				WebElement settingLeftNavigationMenuWebElement = driver.findElement(settingLeftNavigationMenu);
+				commonEvents.highlightElementAfterAction(settingLeftNavigationMenuWebElement);
+				
+				settingModuleIsPresent = true;
+			}	
+			
+		}catch(Exception e) {
+			throw e;	
+		}
+		return settingModuleIsPresent;
 	}
 
 	// l2 scenarios
@@ -169,19 +244,24 @@ public class LocatorsFactory extends StartupPage {
 		WebElement newItemButtonWebElement = driver.findElement(newItemButton);
 		return newItemButtonWebElement; 
 	}
-	
+
 	public WebElement myFavoritesButtonIsPresent(WebDriver driver) {
 		WebElement myFavoritesButtonWebElement = driver.findElement(myFavoritesButton);
 		return myFavoritesButtonWebElement; 
 	}
-	
+
 	public WebElement manageRoleTabIsPresent(WebDriver driver) {
 		WebElement manageRoleTabWebElement = driver.findElement(manageRoleTab);
 		return manageRoleTabWebElement; 
 	}
 	
-	public WebElement tooltipIsPresent(WebDriver driver) {
-		WebElement tooltipWebElement = driver.findElement(tooltip);
-		return tooltipWebElement; 
+	public WebElement newItemButtonIsPresent(WebDriver driver) {
+		WebElement newItemButtonWebElement = driver.findElement(newItemButton);
+		return newItemButtonWebElement;
+	}
+	
+	public WebElement tooltipTextIsPresent(WebDriver driver) {
+		WebElement tooltipTextWebElement = driver.findElement(tooltipText);
+		return tooltipTextWebElement;
 	}
 }

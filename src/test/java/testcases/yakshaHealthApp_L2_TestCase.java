@@ -64,7 +64,7 @@ public class yakshaHealthApp_L2_TestCase extends AppTestBase
 		yakshaHealthAppL2Instance = new yakshaHealthApp_L2_Pages(driver);
 		locatorsFactoryInstance = new LocatorsFactory(driver);
 		Assert.assertTrue(yakshaHealthAppL2Instance.tickallCheckBoxesThenUntickthemThenCloseThatPopup(), "Unable to handle the checkBoxes, please check manually");	
-		Assert.assertTrue(locatorsFactoryInstance.newItemButtonPresent(driver).isDisplayed(), "CheckBox is not present in the current page, Please check manually");
+		Assert.assertTrue(locatorsFactoryInstance.newItemButtonIsPresent(driver).isDisplayed(), "new Item Button is not present in the current page, Please check manually");
 	}
 	
 	@Test(priority = 4, groups = {"sanity"}, description="Take screenshot of Doctor page")
@@ -73,6 +73,23 @@ public class yakshaHealthApp_L2_TestCase extends AppTestBase
 		locatorsFactoryInstance = new LocatorsFactory(driver);
 		Assert.assertTrue(yakshaHealthAppL2Instance.takeScreenshotOfTheDoctorPage(), "Unable to take the Screenshot , please check manually");	
 	    Assert.assertTrue(locatorsFactoryInstance.myFavoritesButtonIsPresent(driver).isDisplayed(), "My Favorites Button is not present in the current page, Please check manually");
+	}
+	
+	@Test(priority = 5, groups = {"sanity"}, description="Deactivate a user or employee by managing the alert popup")
+	public void  deactivateUserByManagingTheAlertPopup() throws Exception {
+		yakshaHealthAppL2Instance = new yakshaHealthApp_L2_Pages(driver);
+		locatorsFactoryInstance = new LocatorsFactory(driver);
+		Assert.assertTrue(yakshaHealthAppL2Instance.deactivateUserByManagingAlertPopup(), "Unable to handle the alert popup, please check manually");	
+	    Assert.assertTrue(locatorsFactoryInstance.manageRoleTabIsPresent(driver).isDisplayed(), "Manage Role Tab is not present in the current page, Please check manually");
+	}
+	
+	@Test(priority = 6, groups = {"sanity"}, description="Verify tooltip of an element which is present inside the Appointment page.")
+	public void  verifyTooltipOfAnElement() throws Exception {
+		yakshaHealthAppL2Instance = new yakshaHealthApp_L2_Pages(driver);
+		locatorsFactoryInstance = new LocatorsFactory(driver);
+		Map<String, String> expectedData = new FileOperations().readJson(expectedDataFilePath, "KeyBoardTooltip");
+		Assert.assertEquals(yakshaHealthAppL2Instance.verifyToolTipOfAnElement(), expectedData.get("TooltipValue"),"Verification failed, please check manually");
+	    Assert.assertTrue(locatorsFactoryInstance.tooltipTextIsPresent(driver).isDisplayed(), "Tooltip is not present in the current page, Please check manually");
 	}
 	
 	

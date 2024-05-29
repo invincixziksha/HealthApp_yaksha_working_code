@@ -33,7 +33,7 @@ public class yakshaHealthApp_L2_Pages extends StartupPage {
 	}
 	
 	/**@Test1
-	 * about this method loginToTheYakshahealthApp() 
+	 * about this method loginToTheYakshahealthApp()
 	 * @param : Map<String, String>
 	 * @description : login to the yakshaHealth app by providing valid user name and password
 	 * @return : boolean
@@ -53,9 +53,9 @@ public class yakshaHealthApp_L2_Pages extends StartupPage {
 		}
 		return isDisplayed;
 	}
-
+ 
 	/**@Test2
-	 * about this method searchForPatientAndViewDetailsOfSelectedPatient() 
+	 * about this method searchForPatientAndViewDetailsOfSelectedPatient()
 	 * @param : Map<String, String>
 	 * @description : Search for a patient name and view the details of the selected patient
 	 * @return : boolean
@@ -79,7 +79,7 @@ public class yakshaHealthApp_L2_Pages extends StartupPage {
 		return isClickable;
 	}
 	/**@Test3
-	 * about this method tickallCheckBoxesThenUntickthemThenCloseThatPopup() 
+	 * about this method tickallCheckBoxesThenUntickthemThenCloseThatPopup()
 	 * @param : null
 	 * @description : tick all CheckBoxes Then Untick them Then Close That Popup
 	 * @return : boolean
@@ -103,9 +103,9 @@ public class yakshaHealthApp_L2_Pages extends StartupPage {
 		return isClickable;
 	}
 	
-
+ 
 	/**@Test4
-	 * about this method takeScreenshotOfTheDoctorPage() 
+	 * about this method takeScreenshotOfTheDoctorPage()
 	 * @param : null
 	 * @description : go to the doctor tab and take a screenshot
 	 * @return : boolean
@@ -125,5 +125,49 @@ public class yakshaHealthApp_L2_Pages extends StartupPage {
 		}
 		return isDisplayed;
 	}
-
+	
+	/**@Test5
+	 * about this method deactivateUserByManagingAlertPopup()
+	 * @param : null
+	 * @description : Go to settings then go to security and click on cancel button in the popup
+	 * @return : boolean
+	 * @author : Yaksha
+	 */
+	public boolean deactivateUserByManagingAlertPopup() throws Exception {
+		boolean isHandled=false;
+		try {
+			 commonEvents.click(settingsButton);
+			 commonEvents.click(securityButton);
+			 if(commonEvents.isDisplayed(deactivateButton)){
+				 commonEvents.click(deactivateButton);
+				 commonEvents.dismissAlert();
+				 isHandled=true;
+			 }
+		}catch(Exception e) {
+			throw e;
+		}
+		return isHandled;
+	}
+	
+	/**@Test6
+	 * about this method verifyToolTipOfAnElement()
+	 * @param : null
+	 * @description :go to appointmentTab and verify the tooltip value/text
+	 * @return : String
+	 * @author : Yaksha
+	 */
+	public String verifyToolTipOfAnElement() throws Exception {
+		String tooltipText="";
+		try {
+			 commonEvents.click(appointmentTab);
+			 commonEvents.waitTillElementVisible(keyboardButton,50);
+			 commonEvents.mouseHoverClick(keyboardButton);
+			 commonEvents.waitTillElementVisible(tooltip,50);
+			 tooltipText=commonEvents.getText(tooltip);
+			 System.out.println("Tooltip text value is:" +tooltipText);
+		}catch(Exception e) {
+			throw e;
+		}
+		return tooltipText;
+	}
 }

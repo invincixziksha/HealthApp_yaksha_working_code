@@ -119,6 +119,33 @@ public class yakshaHealthApp_L1_TestCase extends AppTestBase
 		Assert.assertEquals(yakshaHealthAppL1Instance.validateErrorMessageWhenClickOnRegisterBillingButton(), expectedData.get("errorMessageOfRegisterBilling"), "Error Message is not matching with expected, please check manually!");
 		Assert.assertEquals(locatorsFactoryInstance.verifyErrorMessageIsPresent(), expectedData.get("errorMessageOfRegisterBilling"), "Error Message is not matching with expected, please check manually!");
 	}
+	
+	@Test(priority = 8, groups = {"sanity"}, description="Verify that the dispensary arrow is expanding")
+	public void verifyDispensaryArrowIsExpanding() throws Exception {
+		yakshaHealthAppL1Instance = new yakshaHealthApp_L1_Pages(driver);
+		locatorsFactoryInstance = new LocatorsFactory(driver);
+		
+		Assert.assertTrue(yakshaHealthAppL1Instance.verifyDispensaryArrowIsExpanding(), "Any of the elememt is not present, please check manually");
+		Assert.assertTrue(locatorsFactoryInstance.highLightPresenceOfAllFieldInDispensaryMenu(), "Any of the elememt is not present, please check manually");
+	}
+	
+	@Test(priority = 9, groups = {"sanity"}, description="Verify that the dispensary arrow is minimizing.")
+	public void verifyDispensaryArrowIsMinimizing() throws Exception {
+		yakshaHealthAppL1Instance = new yakshaHealthApp_L1_Pages(driver);
+		locatorsFactoryInstance = new LocatorsFactory(driver);
+		
+		Assert.assertTrue(yakshaHealthAppL1Instance.verifyDispensaryArrowIsMinimizing(), "Dispensary Arrow element is not present, please check manually");
+		Assert.assertTrue(locatorsFactoryInstance.verifyFieldIsNotPresentInDispensaryMenu(), "Any of the elememt is not present, please check manually");
+	}
+	
+	@Test(priority = 10, groups = {"sanity"}, description="Verify that the left navigation menu scroll bar is scrolling from Dispensary module to settings module.")
+	public void verifyControlScrollingFromDispensaryToSettingModule() throws Exception {
+		yakshaHealthAppL1Instance = new yakshaHealthApp_L1_Pages(driver);
+		locatorsFactoryInstance = new LocatorsFactory(driver);
+		
+		Assert.assertTrue(yakshaHealthAppL1Instance.verifyControlIsScrollingFromDispensaryToSettingModule(), "Any of the elememt is not present, please check manually");
+		Assert.assertTrue(locatorsFactoryInstance.settingModuleIsPresent(), "Any of the elememt is not present, please check manually");
+	}
 
 
 	@AfterClass(alwaysRun = true)

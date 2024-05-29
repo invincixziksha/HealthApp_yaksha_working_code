@@ -34,6 +34,18 @@ public class yakshaHealthApp_L1_Pages extends StartupPage {
 	By errorMessageOfRegisterBillingByElement = By.xpath("//p[contains(text(), 'Some of the inputs are invalid. Please check and try again. !')]");
 	By closeButtonOfAddNewpatientpage = By.xpath("//button[contains(text(), 'Close')]");
 
+	By dispensaryToggle = By.xpath("//span[@data-target='#Dispensary']");
+	By prescriptionSubMenu = By.xpath("//ul[@id='Dispensary']//li//a//span[contains(text(),'Prescription')]");
+	By saleSubMenu = By.xpath("//ul[@id='Dispensary']//li//a//span[contains(text(),'Sale')]");
+	By stockSubMenu = By.xpath("//ul[@id='Dispensary']//li//a//span[contains(text(),'Stock')]");
+	By counterSubMenu = By.xpath("//ul[@id='Dispensary']//li//a//span[contains(text(),'Counter')]");
+	By reportsSubMenu = By.xpath("//ul[@id='Dispensary']//li//a//span[contains(text(),'Reports')]");
+	By patientConsumptionSubMenu = By.xpath("//ul[@id='Dispensary']//li//a//span[contains(text(),'Patient Consumption')]");
+
+	//	By dispensaryLeftNavigationMenu = By.xpath("//a[@class='left-nav-active']//span[contains(text(), 'Dispensary')]");
+	By dispensaryLeftNavigationMenu = By.xpath("//a[@href='#/Dispensary']//span[contains(text(), 'Dispensary')]");
+	By settingLeftNavigationMenu = By.xpath("//a[@href='#/Settings']//span[contains(text(), 'Settings')]");
+
 
 
 	String pageName = this.getClass().getSimpleName();
@@ -154,7 +166,7 @@ public class yakshaHealthApp_L1_Pages extends StartupPage {
 				selectCounterPopUpIsPresent = true;
 			}
 			commonEvents.click(new1TextElement);
-			Thread.sleep(5000);
+			Thread.sleep(2000);
 		}catch(Exception e) {
 			throw e;	
 		}
@@ -178,7 +190,7 @@ public class yakshaHealthApp_L1_Pages extends StartupPage {
 			commonEvents.isDisplayed(addNewPatientTextElement);
 			addNewpatientPopUpTextValue = commonEvents.getText(addNewPatientTextElement);
 			System.out.println("text of the popup is : " + addNewpatientPopUpTextValue);	
-			Thread.sleep(3000);
+			Thread.sleep(2000);
 		}catch(Exception e) {
 			throw e;	
 		}
@@ -209,7 +221,6 @@ public class yakshaHealthApp_L1_Pages extends StartupPage {
 
 				firstNameTextfieldValue = commonEvents.getAttribute(firstNameTextFieldElement, "value");
 				System.out.println("FirstName : " + firstNameTextfieldValue);
-				Thread.sleep(2000);
 			}
 		}catch(Exception e) {
 			throw e;
@@ -230,7 +241,7 @@ public class yakshaHealthApp_L1_Pages extends StartupPage {
 		try {
 			firstNameTextfieldValue = commonEvents.getAttribute(firstNameTextFieldElement, "value");
 			System.out.println("FirstName : " + firstNameTextfieldValue);
-			Thread.sleep(2000);
+
 		}catch(Exception e) {
 			throw e;
 		}
@@ -318,7 +329,6 @@ public class yakshaHealthApp_L1_Pages extends StartupPage {
 			contactTextfieldValue = commonEvents.getAttribute(contactNumberTextfieldElement, "value");
 			System.out.println("contact No. : " + contactTextfieldValue);
 
-			Thread.sleep(2000);
 		}catch(Exception e) {
 			throw e;
 		}
@@ -341,7 +351,6 @@ public class yakshaHealthApp_L1_Pages extends StartupPage {
 			selectedCountryName = commonEvents.getFirstSelectedOptionFromDropdown(countryDropdownByElement, "elementName", "pageName");
 			System.out.println("first selected option from country dropdown : " + selectedCountryName );
 
-			Thread.sleep(2000);
 		}catch(Exception e) {
 			throw e;
 		}
@@ -372,4 +381,79 @@ public class yakshaHealthApp_L1_Pages extends StartupPage {
 		return errorMessageOfRegisterBilling;
 	}
 
+	/**@test8
+	 * about this method verifyDispensaryArrowIsExpanding() 
+	 * @param : null
+	 * @description : it is verify all fields is present in current page or not 
+	 * @return : true
+	 * @author : Yaksha
+	 */
+	public Boolean verifyDispensaryArrowIsExpanding() throws Exception {
+		Boolean dispensaryNavigationMenuIsExapanding=false;
+		try {
+			commonEvents.jsClick(dispensaryToggle);
+			if(commonEvents.isDisplayed(prescriptionSubMenu)&&
+					commonEvents.isDisplayed(saleSubMenu)&&
+					commonEvents.isDisplayed(stockSubMenu)&&
+					commonEvents.isDisplayed(counterSubMenu)&&
+					commonEvents.isDisplayed(reportsSubMenu)&&
+					commonEvents.isDisplayed(patientConsumptionSubMenu)) {
+
+				dispensaryNavigationMenuIsExapanding = true;
+			}	
+
+		}catch(Exception e) {
+			throw e;	
+		}
+		return dispensaryNavigationMenuIsExapanding;
+	}
+
+	/**@test9
+	 * about this method verifyDispensaryArrowIsMinimizing() 
+	 * @param : null
+	 * @description : it is verify all fields is present in current page or not 
+	 * @return : true
+	 * @author : Yaksha
+	 */
+	public Boolean verifyDispensaryArrowIsMinimizing() throws Exception {
+		Boolean dispensaryNavigationMenuIsMinimizing = false;
+
+		try {
+			commonEvents.jsClick(dispensaryToggle);
+			if(!(commonEvents.isDisplayed(prescriptionSubMenu)&& commonEvents.isDisplayed(saleSubMenu))) {
+
+				dispensaryNavigationMenuIsMinimizing = true;
+			}	
+
+		}catch(Exception e) {
+			throw e;	
+		}
+		return dispensaryNavigationMenuIsMinimizing;
+	}
+
+	/**@test10
+	 * about this method verifyControlScrollingFromDispensaryToSettingModule() 
+	 * @param : null
+	 * @description : it is verify all fields is present in current page or not 
+	 * @return : true
+	 * @author : Yaksha
+	 */
+	public Boolean verifyControlIsScrollingFromDispensaryToSettingModule() throws Exception {
+		Boolean isScrolling = false;
+
+		try {
+			if(commonEvents.isDisplayed(dispensaryLeftNavigationMenu)) {
+
+				WebElement dispensaryNavigationMenuWebElement = driver.findElement(dispensaryLeftNavigationMenu);
+				commonEvents.highlightElementAfterAction(dispensaryNavigationMenuWebElement);
+				commonEvents.jsScrollPageTillElementVisible(settingLeftNavigationMenu, "pageName", "pageName");
+
+				isScrolling = true;
+			}	
+
+		}catch(Exception e) {
+			throw e;	
+		}
+		return isScrolling;
+	}
 }
