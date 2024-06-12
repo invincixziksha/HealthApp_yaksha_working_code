@@ -2,7 +2,10 @@
 	"healthApp":{
 		"dasboardTitle":"DanpheHealth",
 		"pageUrl":"https://healthapp.yaksha.com/Home/Index#/",
-		"addNewpatientPopupTextValue":"Add New Patient"
+		"addNewpatientPopupTextValue":"Add New Patient",
+		"CounterPageUrl":"https://healthapp.yaksha.com/Home/Index#/Dispensary/ActivateCounter",
+		"SalePageUrl":"https://healthapp.yaksha.com/Home/Index#/Dispensary/Sale/New"
+		
 	},
 	"YakshaHealthApp":{
 		"SearchBarName":"Sonia Gandhi"

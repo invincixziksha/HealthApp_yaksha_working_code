@@ -12,7 +12,9 @@ import org.testng.annotations.Test;
 import coreUtilities.testutils.ApiHelper;
 import coreUtilities.utils.FileOperations;
 import pages.StartupPage;
+import pages.doctor_Pages;
 import pages.yakshaHealthApp_L1_Pages;
+import pages.yakshaHealthApp_L2_Pages;
 import testBase.AppTestBase;
 import testdata.LocatorsFactory;
 
@@ -23,7 +25,7 @@ public class doctor_testcase extends AppTestBase
 	String expectedDataFilePath = testDataFilePath + "expected_data.json";
 	String loginFilePath = loginDataFilePath + "Login.json";
 	StartupPage startupPage;
-	yakshaHealthApp_L1_Pages yakshaHealthAppL1Instance;
+	doctor_Pages doctor_PagesInstance;
 	LocatorsFactory locatorsFactoryInstance;
 
 
@@ -43,18 +45,25 @@ public class doctor_testcase extends AppTestBase
 	@Test(priority = 1, groups = {"sanity"}, description="Verify the title and url of  the current page.")
 	public void verifyTitleOfTheHomePage() throws Exception {
 
-		yakshaHealthAppL1Instance = new yakshaHealthApp_L1_Pages(driver);
+		doctor_PagesInstance = new doctor_Pages(driver);
 		locatorsFactoryInstance = new LocatorsFactory(driver);
 
 		Map<String, String> loginData = new FileOperations().readJson(loginFilePath, "credentials");
-		Assert.assertTrue(yakshaHealthAppL1Instance.loginToHealthAppByGivenValidCredetial(loginData),"Login failed, Invalid credentials ! Please check manually");
+		Assert.assertTrue(doctor_PagesInstance.loginToHealthAppByGivenValidCredetial(loginData),"Login failed, Invalid credentials ! Please check manually");
 
 		Map<String, String> expectedData = new FileOperations().readJson(expectedDataFilePath, "healthApp");
-		Assert.assertEquals(yakshaHealthAppL1Instance.verifyTitleOfThePage(),expectedData.get("dasboardTitle")) ;
-		Assert.assertEquals(yakshaHealthAppL1Instance.verifyURLOfThePage(),expectedData.get("pageUrl")) ;
+		Assert.assertEquals(doctor_PagesInstance.verifyTitleOfThePage(),expectedData.get("dasboardTitle")) ;
+		Assert.assertEquals(doctor_PagesInstance.verifyURLOfThePage(),expectedData.get("pageUrl")) ;
 		Assert.assertTrue(locatorsFactoryInstance.totalDoctorTextIsPresent(driver).isDisplayed(), "total doctors text is not present in the current page, Please check manually");
 	}
-
+	
+	@Test(priority = 2, groups = {"sanity"}, description="Verify that Doctor module is present and Go to Doctors Tab")
+	public void  verifyThatDoctorModuleIsPresentAndNavigateDoctorsTab() throws Exception {
+		doctor_PagesInstance = new doctor_Pages(driver);
+		locatorsFactoryInstance = new LocatorsFactory(driver);
+		Assert.assertTrue(doctor_PagesInstance.verifythatDoctorModuleIsPresentAndNavigateDoctorsTab(), "Unable to handle the checkBoxes, please check manually");	
+//		Assert.assertTrue(locatorsFactoryInstance.newItemButtonIsPresent(driver).isDisplayed(), "new Item Button is not present in the current page, Please check manually");
+	}
 	@AfterClass(alwaysRun = true)
 	public void tearDown() {
 		System.out.println("before closing the browser");

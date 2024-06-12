@@ -8,7 +8,7 @@ import pages.StartupPage;
 
 public class LocatorsFactory extends StartupPage {
 
-	//please write all the locators for Money Control page only 
+	 
 
 	// element of health application
 
@@ -53,6 +53,11 @@ public class LocatorsFactory extends StartupPage {
 	By manageRoleTab = By.xpath("//a[.='Manage Role']");
 	By tooltipText = By.xpath("//li[contains(text(),'+')]");
 
+    //Dispensary module locators
+	By registeredPatientTextElement = By.xpath("//p[contains(text(), 'Registered Patient')]");
+	By morningCounter = By.xpath("(//div[@class='counter-item'])[1]");
+	By activeDispensaryField = By.xpath("//label[@class='label label-primary']");
+	By searchPatientTextField = By.id("patient-search");
 
 	public LocatorsFactory(WebDriver driver) {
 		super(driver);
@@ -263,5 +268,27 @@ public class LocatorsFactory extends StartupPage {
 	public WebElement tooltipTextIsPresent(WebDriver driver) {
 		WebElement tooltipTextWebElement = driver.findElement(tooltipText);
 		return tooltipTextWebElement;
+	}
+	
+	//Dispensary module 
+	
+	public WebElement registeredPatientTextElementIsPresent(WebDriver driver) {
+		WebElement registeredPatientTextElementWebElement = driver.findElement(registeredPatientTextElement);
+		return registeredPatientTextElementWebElement;
+	}
+	
+	public WebElement morningCounterIsPresent(WebDriver driver) {
+		WebElement morningCounterWebElement = driver.findElement(morningCounter);
+		return morningCounterWebElement;
+	}
+	
+	public WebElement activeDispensaryFieldIsPresent(WebDriver driver) {
+		WebElement activeDispensaryFiledWebElement = driver.findElement(activeDispensaryField);
+		return activeDispensaryFiledWebElement;
+	}
+	
+	public WebElement searchPatientTextFieldIsPresent(WebDriver driver) {
+		WebElement searchPatientTextFieldWebElement = driver.findElement(searchPatientTextField);
+		return searchPatientTextFieldWebElement;
 	}
 }

@@ -12,7 +12,7 @@ import org.testng.annotations.Test;
 import coreUtilities.testutils.ApiHelper;
 import coreUtilities.utils.FileOperations;
 import pages.StartupPage;
-import pages.yakshaHealthApp_L1_Pages;
+import pages.dispensary_Pages;
 import testBase.AppTestBase;
 import testdata.LocatorsFactory;
 
@@ -23,7 +23,7 @@ public class dispensary_testcase extends AppTestBase
 	String expectedDataFilePath = testDataFilePath + "expected_data.json";
 	String loginFilePath = loginDataFilePath + "Login.json";
 	StartupPage startupPage;
-	yakshaHealthApp_L1_Pages yakshaHealthAppL1Instance;
+	dispensary_Pages dispensary_PagesInstance;
 	LocatorsFactory locatorsFactoryInstance;
 
 
@@ -43,18 +43,53 @@ public class dispensary_testcase extends AppTestBase
 	@Test(priority = 1, groups = {"sanity"}, description="Verify the title and url of  the current page.")
 	public void verifyTitleOfTheHomePage() throws Exception {
 
-		yakshaHealthAppL1Instance = new yakshaHealthApp_L1_Pages(driver);
+		dispensary_PagesInstance = new dispensary_Pages(driver);
 		locatorsFactoryInstance = new LocatorsFactory(driver);
 
 		Map<String, String> loginData = new FileOperations().readJson(loginFilePath, "credentials");
-		Assert.assertTrue(yakshaHealthAppL1Instance.loginToHealthAppByGivenValidCredetial(loginData),"Login failed, Invalid credentials ! Please check manually");
+		Assert.assertTrue(dispensary_PagesInstance.loginToHealthAppByGivenValidCredetial(loginData),"Login failed, Invalid credentials ! Please check manually");
 
 		Map<String, String> expectedData = new FileOperations().readJson(expectedDataFilePath, "healthApp");
-		Assert.assertEquals(yakshaHealthAppL1Instance.verifyTitleOfThePage(),expectedData.get("dasboardTitle")) ;
-		Assert.assertEquals(yakshaHealthAppL1Instance.verifyURLOfThePage(),expectedData.get("pageUrl")) ;
+		Assert.assertEquals(dispensary_PagesInstance.verifyTitleOfThePage(),expectedData.get("dasboardTitle")) ;
+		Assert.assertEquals(dispensary_PagesInstance.verifyURLOfThePage(),expectedData.get("pageUrl")) ;
 		Assert.assertTrue(locatorsFactoryInstance.totalDoctorTextIsPresent(driver).isDisplayed(), "total doctors text is not present in the current page, Please check manually");
 	}
-
+	@Test(priority = 2, groups = {"sanity"}, description="verify the Dispensary module is present or not")
+	public void verifyDispensaryModuleIsPresentOrNot() throws Exception {
+		dispensary_PagesInstance = new dispensary_Pages(driver);
+		locatorsFactoryInstance = new LocatorsFactory(driver);
+		Assert.assertTrue(dispensary_PagesInstance.verifyDispensaryModuleIsPresentOrNot(), "Dispensary Module is not present, please check manually");
+		Assert.assertTrue(locatorsFactoryInstance.registeredPatientTextElementIsPresent(driver).isDisplayed(), "Registered Patient Text Element is not present in the current page, Please check manually");
+	}
+	
+	@Test(priority = 3, groups = {"sanity"}, description="verify all sub-modules are displayed correctly after clicking on the Dispensary Module")
+	public void verifyAllSubModulesArePresent() throws Exception {
+		dispensary_PagesInstance = new dispensary_Pages(driver);
+		locatorsFactoryInstance = new LocatorsFactory(driver);
+		Assert.assertTrue(dispensary_PagesInstance.verifyAllSubModulesArePresent(), "Any of the elememt is not present, please check manually");
+		Assert.assertTrue(locatorsFactoryInstance.morningCounterIsPresent(driver).isDisplayed(), "Morning Counter is not present in the current page, Please check manually");
+	}
+	
+	@Test(priority = 4, groups = {"sanity"}, description="verify all sub-modules are displayed correctly after clicking on the Dispensary Module")
+	public void verifyUrlAlsoVerifyTheAllFields() throws Exception {
+	dispensary_PagesInstance = new dispensary_Pages(driver);
+	locatorsFactoryInstance = new LocatorsFactory(driver);
+	Map<String, String> expectedData = new FileOperations().readJson(expectedDataFilePath, "healthApp");
+	Assert.assertEquals(dispensary_PagesInstance.verifyUrlOfCounterPage(), expectedData.get("CounterPageUrl"), "Url is not matching with expected, please check manually!");
+	Assert.assertTrue(dispensary_PagesInstance.verifyAllFieldsInsideTheCounterPage(), "Any of the elememt is not present, please check manually");
+	Assert.assertTrue(locatorsFactoryInstance.activeDispensaryFieldIsPresent(driver).isDisplayed(),"Active Dispensary Field Is not Present, please check manually!");
+	}
+	
+	@Test(priority = 5, groups = {"sanity"}, description="verify the url of Sale new Page afetr click on Morning Counter Button and also verify the presence off all fields inside the Sale New Page")
+	public void verifyTheUrlOfSalePageAlsoVerifyThePresenceOfAllFields() throws Exception {
+	dispensary_PagesInstance = new dispensary_Pages(driver);
+	locatorsFactoryInstance = new LocatorsFactory(driver);
+	Map<String, String> expectedData = new FileOperations().readJson(expectedDataFilePath, "healthApp");
+	Assert.assertEquals(dispensary_PagesInstance.verifyUrlOfSalePage(), expectedData.get("SalePageUrl"), "Url is not matching with expected, please check manually!");
+	Assert.assertTrue(dispensary_PagesInstance.verifyAllFieldsInsideTheSalePage(), "Any of the elememt is not present, please check manually");
+	Assert.assertTrue(locatorsFactoryInstance.searchPatientTextFieldIsPresent(driver).isDisplayed(),"Search Patient Text Field Is not Present, please check manually!");
+	}
+	
 	@AfterClass(alwaysRun = true)
 	public void tearDown() {
 		System.out.println("before closing the browser");
