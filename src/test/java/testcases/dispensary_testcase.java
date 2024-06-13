@@ -90,6 +90,56 @@ public class dispensary_testcase extends AppTestBase
 	Assert.assertTrue(locatorsFactoryInstance.searchPatientTextFieldIsPresent(driver).isDisplayed(),"Search Patient Text Field Is not Present, please check manually!");
 	}
 	
+	@Test(priority = 6, groups = {"sanity"}, description="Verify that the dispensary arrow is expanding")
+	public void scrollToButtomOfTheSalePageAndVerifyPresenceOfFields() throws Exception {
+		dispensary_PagesInstance = new dispensary_Pages(driver);
+		locatorsFactoryInstance = new LocatorsFactory(driver);	
+		Assert.assertTrue(dispensary_PagesInstance.scrollToButtomOfTheSalePageAndVerifyPresenceOfFields(), "Any of the elememt is not present, please check manually");
+		Assert.assertTrue(locatorsFactoryInstance.creditLimitsAndBalancesTextElementIsPresent(driver).isDisplayed(), "Credit LimitsAndBalances Text Element is not present, please check manually");
+	}
+	
+	@Test(priority = 7, groups = {"sanity"}, description="Perform the keyboard operation to open the  popup and verify that the popup is displayed or not.")
+	public void performTheKeyboardOperationToOpenThePopup() throws Exception {
+		dispensary_PagesInstance = new dispensary_Pages(driver);
+		locatorsFactoryInstance = new LocatorsFactory(driver);
+		Assert.assertTrue(dispensary_PagesInstance.performTheKeyboardOperationToOpenthePopup(), "Not able to do the keyboard operation, please check manually");
+		Assert.assertTrue(locatorsFactoryInstance.firstNameFieldIsPresent(driver).isDisplayed(), "firstName field is not present in the current page, Please check manually");
+	}
+	
+	@Test(priority = 8, groups = {"sanity"}, description="validate the error message in firstname textfield after click on Ok button")
+	public void validateTheErrorMessageInFirstnameTextfield() throws Exception {
+		dispensary_PagesInstance = new dispensary_Pages(driver);
+		locatorsFactoryInstance = new LocatorsFactory(driver);
+		Map<String, String> expectedData = new FileOperations().readJson(expectedDataFilePath, "healthAppErrorMessages");
+		Assert.assertEquals(dispensary_PagesInstance.validateErrorMessageInFirstnameTextfield(),expectedData.get("FirstNameFieldErrorMessage"),"Error message is not present in the current page, Please check manually") ;
+		Assert.assertTrue(locatorsFactoryInstance.errorMeesageInLastNameTextFieldErrorMessageIsPresent(driver).isDisplayed(), "Error message is not present in the current page, Please check manually");
+	}
+	
+	@Test(priority = 9, groups = {"sanity"}, description="Fill all the textfields which are present inside the Add New Patient popup.")
+	public void fillAllTheTextfields() throws Exception {
+		dispensary_PagesInstance = new dispensary_Pages(driver);
+		locatorsFactoryInstance = new LocatorsFactory(driver);
+		Map<String, String> expectedData = new FileOperations().readJson(expectedDataFilePath, "addNewPatientPopup");
+		Assert.assertEquals(dispensary_PagesInstance.fillAllTheTextfieldsInsideTheAddNewPatient(expectedData), expectedData.get("firstName"),"firstName Text is not present in the current page, Please check manually");
+		Assert.assertEquals(locatorsFactoryInstance.ContactNumberTextFieldIsPresent(),expectedData.get("contact"),"Contact field Text is not present in the current page, Please check manually");
+	}
+	
+	@Test(priority = 10, groups = {"sanity"}, description="Check the data which we are entered are present in First Name Field")
+	public void checkTheDataArePresentInFirstNameField() throws Exception {
+		dispensary_PagesInstance = new dispensary_Pages(driver);
+		locatorsFactoryInstance = new LocatorsFactory(driver);
+		Map<String, String> expectedData = new FileOperations().readJson(expectedDataFilePath, "addNewPatientPopup");
+		Assert.assertEquals(dispensary_PagesInstance.checktheDataArePresentInFirstNameField(), expectedData.get("firstName"));
+		Assert.assertEquals(locatorsFactoryInstance.firstNameTextFieldInAddNewPatientIsPresent(),expectedData.get("firstName"),"firstName Text is not present in the current page, Please check manually");
+	}
+	
+	@Test(priority = 11, groups = {"sanity"}, description="Navigate to the Last page of the stock details list pagenation and fetch the total stock value")
+	public void navigateToLastPageOfTheStockDetails() throws Exception {
+		dispensary_PagesInstance = new dispensary_Pages(driver);
+		locatorsFactoryInstance = new LocatorsFactory(driver);
+		Assert.assertTrue(dispensary_PagesInstance.navigateToLastPageOfTheStockDetailsAndFetchTotalStockValue(), "user is not able to navigate to the LastPageOfTheStockDetails, please check manually");
+		Assert.assertTrue(locatorsFactoryInstance.totalStockValueTextIsPresent(driver).isDisplayed(), "Total Stock Value Text is not present in the current page, Please check manually");
+	}
 	@AfterClass(alwaysRun = true)
 	public void tearDown() {
 		System.out.println("before closing the browser");

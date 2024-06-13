@@ -58,6 +58,12 @@ public class LocatorsFactory extends StartupPage {
 	By morningCounter = By.xpath("(//div[@class='counter-item'])[1]");
 	By activeDispensaryField = By.xpath("//label[@class='label label-primary']");
 	By searchPatientTextField = By.id("patient-search");
+	By firstNameField = By.id("newPatFirstName");
+	By errorMeesageInLastNameTextField = By.xpath("//span[.=' Last Name is required.']");
+    By totalStockValueText = By.xpath("//div[@class='right']");
+	By creditLimitsAndBalancesTextElement = By.xpath("//b[contains(text() , 'Credit Limits and Balances')]");
+	By ContactNumberTextFieldInAddNewPatient = By.id("Contact");
+	By firstNameTextFieldInAddNewPatient = By.id("newPatFirstName");
 
 	public LocatorsFactory(WebDriver driver) {
 		super(driver);
@@ -291,4 +297,59 @@ public class LocatorsFactory extends StartupPage {
 		WebElement searchPatientTextFieldWebElement = driver.findElement(searchPatientTextField);
 		return searchPatientTextFieldWebElement;
 	}
+	
+	
+	public WebElement firstNameFieldIsPresent(WebDriver driver) {
+		WebElement firstNameFieldWebElement = driver.findElement(firstNameField);
+		return firstNameFieldWebElement;
+	}
+	
+	public WebElement errorMeesageInLastNameTextFieldErrorMessageIsPresent(WebDriver driver) {
+		WebElement errorMeesageInLastNameTextFieldWebElement = driver.findElement(errorMeesageInLastNameTextField);
+		return errorMeesageInLastNameTextFieldWebElement;
+	}
+	
+	public String ContactNumberTextFieldIsPresent() throws Exception {
+		String ContactNumberTextFieldValue = "";
+		try {
+			if(commonEvents.isDisplayed(firstNameTextFieldElement))
+			{
+				ContactNumberTextFieldValue = commonEvents.getAttribute(ContactNumberTextFieldInAddNewPatient, "value");
+				System.out.println("Contact Number TextField Value  : " + ContactNumberTextFieldValue);
+			}
+		}catch(Exception e) {
+			throw e;
+		}
+		return ContactNumberTextFieldValue;
+	}
+	
+	
+	public String firstNameTextFieldInAddNewPatientIsPresent() throws Exception {
+		String firstNameTextFieldValue = "";
+		try {
+			if(commonEvents.isDisplayed(firstNameTextFieldElement))
+			{
+				firstNameTextFieldValue = commonEvents.getAttribute(firstNameTextFieldInAddNewPatient, "value");
+				System.out.println("firstName TextField Value  : " + firstNameTextFieldValue);
+			}
+		}catch(Exception e) {
+			throw e;
+		}
+		return firstNameTextFieldValue;
+	}
+	
+	
+	public WebElement totalStockValueTextIsPresent(WebDriver driver) {
+		WebElement totalStockValueTextWebElement = driver.findElement(totalStockValueText);
+		return totalStockValueTextWebElement;
+	}
+	
+	
+	public WebElement creditLimitsAndBalancesTextElementIsPresent(WebDriver driver) {
+		WebElement creditLimitsAndBalancesTextElementWebElement = driver.findElement(creditLimitsAndBalancesTextElement);
+		return creditLimitsAndBalancesTextElementWebElement;
+	}
+	
+
+
 }

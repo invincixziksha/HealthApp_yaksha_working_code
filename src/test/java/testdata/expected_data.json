@@ -22,6 +22,9 @@
 	},
 	"KeyBoardTooltip":{
 		"TooltipValue":"ALT + N = New Patient"
+	},
+	"healthAppErrorMessages":{
+		"FirstNameFieldErrorMessage":"First Name is required."
 	}
 
 }

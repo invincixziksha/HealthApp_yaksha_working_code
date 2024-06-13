@@ -32,8 +32,23 @@ public class dispensary_Pages extends StartupPage {
 	By provisionalBillsTab = By.xpath("//a[.='Provisional Bills']");
 	By settlementTab = By.xpath("//a[.='Settlement']");
 	By ProvisionalReturnTab = By.xpath("//a[.='Provisional Return']");
+	By addNewPatientPopup = By.xpath("//div[@class='modelbox-body p2']");
+	By okButton = By.xpath("//button[.=' OK']");
+	By errorMeesageInFirstNameTextField = By.xpath("//span[.=' First Name is required.']");
 
+	By firstNameTextFieldInAddNewPatient = By.id("newPatFirstName");
+	By middelNameTextFieldInAddNewPatient = By.id("newPatMiddleName");
+	By lastNameTextFieldInAddNewPatient = By.id("newPatLastName");
+	By ageTextFieldInAddNewPatient = By.id("Age");
+	By contactNumberTextFieldInAddNewPatient = By.id("Contact");
+    By XButton = By.xpath("//button[.='X']");
+    By lastButtonInstockSubModule = By.xpath("//button[.='Last']");
+    By totalStockValueText = By.xpath("//div[@class='right']");
 
+    By printInvoiceButtonElement = By.xpath("//input[@value='Print Invoice']");
+	By discardButtonElement = By.xpath("//button[contains(text() , 'Discard')]");
+	By invoiceHistoryTextElement = By.xpath("//b[contains(text() , 'Invoice History')]");
+	By creditLimitsAndBalancesTextElement = By.xpath("//b[contains(text() , 'Credit Limits and Balances')]");
 
 	String pageName = this.getClass().getSimpleName();
 	public dispensary_Pages(WebDriver driver) {
@@ -246,6 +261,182 @@ public class dispensary_Pages extends StartupPage {
 				isDisplayed=true;
 			}
 			isDisplayed=true;
+		}catch(Exception e) {
+			throw e;
+		}	
+		return isDisplayed;
+	}
+	
+	
+	/**@Test6
+	 * about this method scrollToButtomOfTheSalePageAndVerifyPresenceOfFields()
+	 * @param : get the data from json file as type Map<String, String> expectedData
+	 * @description : enter value in text field of Add New Patient as per json expected data and fetch the value of that text field ,
+	 * @return : fetch the value text field as string type
+	 * @author : Yaksha
+	 */
+	public Boolean scrollToButtomOfTheSalePageAndVerifyPresenceOfFields() throws Exception {
+		Boolean fieldIsPresent = false;
+ 
+		commonEvents.jsScrollPageTillElementVisible(creditLimitsAndBalancesTextElement,"elementName","pageName");
+ 
+		try {
+			if(commonEvents.isDisplayed(printInvoiceButtonElement) &&
+					commonEvents.isDisplayed(discardButtonElement) &&
+					commonEvents.isDisplayed(invoiceHistoryTextElement) &&
+					commonEvents.isDisplayed(creditLimitsAndBalancesTextElement) ) {
+ 
+				WebElement printInvoiceButtonWebElement = commonEvents.findElement(printInvoiceButtonElement);
+				commonEvents.highlightElement(printInvoiceButtonWebElement);
+				
+				WebElement discardButtonWebElement = commonEvents.findElement(discardButtonElement);
+				commonEvents.highlightElement(discardButtonWebElement);
+				
+				WebElement invoiceHistoryTextWebElement = commonEvents.findElement(invoiceHistoryTextElement);
+				commonEvents.highlightElement(invoiceHistoryTextWebElement);
+				
+				WebElement creditLimitsAndBalancesTextWebElement = commonEvents.findElement(creditLimitsAndBalancesTextElement);
+				commonEvents.highlightElement(creditLimitsAndBalancesTextWebElement);
+ 
+				fieldIsPresent = true;
+ 
+			}
+		}catch(Exception e) {
+			throw e;
+		}
+		return fieldIsPresent;
+	}
+	
+	/**@Test7
+	 * about this method performTheKeyboardOperationToOpenthePopup() 
+	 * @param : null
+	 * @description : perform The Keyboard Operation(alt + N) To Open the Popup
+	 * @return : Boolean
+	 * @author : Yaksha
+	 */
+	public Boolean performTheKeyboardOperationToOpenthePopup() throws Exception {
+		boolean isDisplayed = false;
+		try {
+			commonEvents.performAltN();
+			if(commonEvents.isDisplayed(addNewPatientPopup)){
+				isDisplayed=true;
+			}
+		}catch(Exception e) {
+			throw e;
+		}	
+		return isDisplayed;
+	}
+	
+	
+	/**@Test8
+	 * about this method validateErrorMessageInFirstnameTextfield() 
+	 * @param : null
+	 * @description : validate Error Message In First name Textfield
+	 * @return : String
+	 * @author : Yaksha
+	 */
+	public String validateErrorMessageInFirstnameTextfield() throws Exception {
+		String errorMessageText = "";
+		try {
+			if(commonEvents.isDisplayed(okButton)) {
+			    commonEvents.click(okButton);
+			    Thread.sleep(5000);
+			    errorMessageText = commonEvents.getText(errorMeesageInFirstNameTextField);
+				System.out.println("Error Meesage is  :" + errorMessageText );
+				return errorMessageText;	
+		  }
+		}catch(Exception e) {
+			throw e;
+		}	
+		return errorMessageText;
+	}
+	
+	/**@Test9
+	 * about this method fillAllTheTextfieldsInsideTheAddNewPatient() 
+	 * @param : Map<String, String>
+	 * @description : fill All The Textfields Inside The Add New Patient
+	 * @return : String
+	 * @author : Yaksha
+	 */
+	public String fillAllTheTextfieldsInsideTheAddNewPatient(Map<String, String> expectedData) throws Exception {
+		String firstNameTextfieldValue = "";
+		try {
+			if(commonEvents.isDisplayed(firstNameTextFieldInAddNewPatient) && 
+					commonEvents.isDisplayed(middelNameTextFieldInAddNewPatient) &&
+					commonEvents.isDisplayed(lastNameTextFieldInAddNewPatient) &&
+					commonEvents.isDisplayed(ageTextFieldInAddNewPatient) &&
+					commonEvents.isDisplayed(contactNumberTextFieldInAddNewPatient))
+			{
+				commonEvents.click(firstNameTextFieldInAddNewPatient);
+				commonEvents.sendKeys(firstNameTextFieldInAddNewPatient,expectedData.get("firstName"));
+				
+				commonEvents.click(middelNameTextFieldInAddNewPatient);
+				commonEvents.sendKeys(middelNameTextFieldInAddNewPatient,expectedData.get("middleName"));
+				
+				commonEvents.click(lastNameTextFieldInAddNewPatient);
+				commonEvents.sendKeys(lastNameTextFieldInAddNewPatient,expectedData.get("lastName"));
+				
+				commonEvents.click(ageTextFieldInAddNewPatient);
+				commonEvents.sendKeys(ageTextFieldInAddNewPatient,expectedData.get("age"));
+
+				commonEvents.click(contactNumberTextFieldInAddNewPatient);
+				commonEvents.sendKeys(contactNumberTextFieldInAddNewPatient,expectedData.get("contact"));
+
+				firstNameTextfieldValue = commonEvents.getAttribute(firstNameTextFieldInAddNewPatient, "value");
+				System.out.println("FirstName : " + firstNameTextfieldValue);
+			}
+		}catch(Exception e) {
+			throw e;
+		}
+		return firstNameTextfieldValue;
+	}
+	
+	
+	
+	/**@Test10
+	 * about this method checktheDataArePresentInFirstNameField() 
+	 * @param : null
+	 * @description : check the Data Are Present In First Name Field
+	 * @return : String
+	 * @author : Yaksha
+	 */
+	public String checktheDataArePresentInFirstNameField() throws Exception {
+		String FirstNameFieldValue = "";
+
+		try {
+			if(commonEvents.isDisplayed(firstNameTextFieldInAddNewPatient)) {
+			FirstNameFieldValue = commonEvents.getAttribute(firstNameTextFieldInAddNewPatient, "value");
+			System.out.println("First Name TextField value is : " + FirstNameFieldValue);
+			return FirstNameFieldValue;
+			}
+		}catch(Exception e) {
+			throw e;
+		}
+		return FirstNameFieldValue;
+	}
+	
+	
+	/**@Test11
+	 * about this method navigateToLastPageOfTheStockDetailsAndFetchTotalStockValue() 
+	 * @param : null
+	 * @description : Navigate to the Last page of the stock details list pagenation and fetch the total stock value
+	 * @return : Boolean
+	 * @author : Yaksha
+	 */
+	public Boolean navigateToLastPageOfTheStockDetailsAndFetchTotalStockValue() throws Exception {
+		boolean isDisplayed = false;
+		try {
+			commonEvents.click(XButton);
+			commonEvents.click(stockSubModule);
+			Thread.sleep(3000); 
+			commonEvents.click(lastButtonInstockSubModule);
+			if(commonEvents.isDisplayed(totalStockValueText))
+			{
+				String totalStockValuetext=commonEvents.getText(totalStockValueText, pageName, pageName);
+				System.out.println(totalStockValuetext);
+				isDisplayed=true;
+			}
+
 		}catch(Exception e) {
 			throw e;
 		}	
