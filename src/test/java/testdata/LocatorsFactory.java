@@ -64,6 +64,8 @@ public class LocatorsFactory extends StartupPage {
 	By creditLimitsAndBalancesTextElement = By.xpath("//b[contains(text() , 'Credit Limits and Balances')]");
 	By ContactNumberTextFieldInAddNewPatient = By.id("Contact");
 	By firstNameTextFieldInAddNewPatient = By.id("newPatFirstName");
+	
+	By createRequisitionsButtonElement = By.xpath("//button[@class='btn btn-primary']");
 
 	public LocatorsFactory(WebDriver driver) {
 		super(driver);
@@ -350,6 +352,18 @@ public class LocatorsFactory extends StartupPage {
 		return creditLimitsAndBalancesTextElementWebElement;
 	}
 	
-
+	public String createRequisitionsButtonIsPresent() throws Exception {
+		String createRequisitionsButtonValue = "";
+		try {
+			if(commonEvents.isDisplayed(createRequisitionsButtonElement))
+			{
+				createRequisitionsButtonValue = commonEvents.getText(createRequisitionsButtonElement);
+				System.out.println("create Requisitions Button Value  : " + createRequisitionsButtonValue);
+			}
+		}catch(Exception e) {
+			throw e;
+		}
+		return createRequisitionsButtonValue;
+	}
 
 }

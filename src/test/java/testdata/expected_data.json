@@ -25,6 +25,10 @@
 	},
 	"healthAppErrorMessages":{
 		"FirstNameFieldErrorMessage":"First Name is required."
+	},
+	,
+	"commonStringvalue":{
+		"createRequisitionsButtonValue":"Create Requisition "
 	}
 
 }

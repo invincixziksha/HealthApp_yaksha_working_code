@@ -41,20 +41,26 @@ public class dispensary_Pages extends StartupPage {
 	By lastNameTextFieldInAddNewPatient = By.id("newPatLastName");
 	By ageTextFieldInAddNewPatient = By.id("Age");
 	By contactNumberTextFieldInAddNewPatient = By.id("Contact");
-    By XButton = By.xpath("//button[.='X']");
-    By lastButtonInstockSubModule = By.xpath("//button[.='Last']");
-    By totalStockValueText = By.xpath("//div[@class='right']");
+	By XButton = By.xpath("//button[.='X']");
+	By lastButtonInstockSubModule = By.xpath("//button[.='Last']");
+	By totalStockValueText = By.xpath("//div[@class='right']");
 
-    By printInvoiceButtonElement = By.xpath("//input[@value='Print Invoice']");
+	By printInvoiceButtonElement = By.xpath("//input[@value='Print Invoice']");
 	By discardButtonElement = By.xpath("//button[contains(text() , 'Discard')]");
 	By invoiceHistoryTextElement = By.xpath("//b[contains(text() , 'Invoice History')]");
 	By creditLimitsAndBalancesTextElement = By.xpath("//b[contains(text() , 'Credit Limits and Balances')]");
+
+	By storeDropdownElement = By.xpath("//select[@id='Store']");
+	By totalStockValueOfAllStockElement = By.xpath("//div[@class='right']");
+
+	By requisitionsLinkElement = By.xpath("//a[@routerlink='Requisition']");
+	By createRequisitionsButtonElement = By.xpath("//button[@class='btn btn-primary']");
 
 	String pageName = this.getClass().getSimpleName();
 	public dispensary_Pages(WebDriver driver) {
 		super(driver);
 	}
-	
+
 	/**@Test1
 	 * about this method loginTohealthAppByGivenValidCredetial() 
 	 * @param : Map<String, String>
@@ -124,8 +130,8 @@ public class dispensary_Pages extends StartupPage {
 		}	
 		return urlofThepage;
 	}
-	
-	
+
+
 	/**@Test2
 	 * about this method verifyDispensaryModuleIsPresentOrNot() 
 	 * @param : null
@@ -143,7 +149,7 @@ public class dispensary_Pages extends StartupPage {
 		}	
 		return isDisplayed;
 	}
-	
+
 	/**@Test3
 	 * about this method verifyAllSubModulesArePresent() 
 	 * @param : null
@@ -169,8 +175,8 @@ public class dispensary_Pages extends StartupPage {
 		}	
 		return patientConsumptionSubModuleisDisplayed;
 	}
-	
-	
+
+
 	/**@Test4.1
 	 * about this method verifyUrlOfCounterPage() 
 	 * @param : null
@@ -188,7 +194,7 @@ public class dispensary_Pages extends StartupPage {
 		}	
 		return urlofThepage;
 	}
-	
+
 	/**@Test4.2
 	 * about this method verifyAllFieldsInsideTheCounterPage() 
 	 * @param : null
@@ -240,7 +246,7 @@ public class dispensary_Pages extends StartupPage {
 		}	
 		return urlofThepage;
 	}
-	
+
 	/**@Test5.2
 	 * about this method verifyAllFieldsInsideTheSalePage() 
 	 * @param : null
@@ -266,8 +272,8 @@ public class dispensary_Pages extends StartupPage {
 		}	
 		return isDisplayed;
 	}
-	
-	
+
+
 	/**@Test6
 	 * about this method scrollToButtomOfTheSalePageAndVerifyPresenceOfFields()
 	 * @param : get the data from json file as type Map<String, String> expectedData
@@ -277,36 +283,36 @@ public class dispensary_Pages extends StartupPage {
 	 */
 	public Boolean scrollToButtomOfTheSalePageAndVerifyPresenceOfFields() throws Exception {
 		Boolean fieldIsPresent = false;
- 
+
 		commonEvents.jsScrollPageTillElementVisible(creditLimitsAndBalancesTextElement,"elementName","pageName");
- 
+
 		try {
 			if(commonEvents.isDisplayed(printInvoiceButtonElement) &&
 					commonEvents.isDisplayed(discardButtonElement) &&
 					commonEvents.isDisplayed(invoiceHistoryTextElement) &&
 					commonEvents.isDisplayed(creditLimitsAndBalancesTextElement) ) {
- 
+
 				WebElement printInvoiceButtonWebElement = commonEvents.findElement(printInvoiceButtonElement);
 				commonEvents.highlightElement(printInvoiceButtonWebElement);
-				
+
 				WebElement discardButtonWebElement = commonEvents.findElement(discardButtonElement);
 				commonEvents.highlightElement(discardButtonWebElement);
-				
+
 				WebElement invoiceHistoryTextWebElement = commonEvents.findElement(invoiceHistoryTextElement);
 				commonEvents.highlightElement(invoiceHistoryTextWebElement);
-				
+
 				WebElement creditLimitsAndBalancesTextWebElement = commonEvents.findElement(creditLimitsAndBalancesTextElement);
 				commonEvents.highlightElement(creditLimitsAndBalancesTextWebElement);
- 
+
 				fieldIsPresent = true;
- 
+
 			}
 		}catch(Exception e) {
 			throw e;
 		}
 		return fieldIsPresent;
 	}
-	
+
 	/**@Test7
 	 * about this method performTheKeyboardOperationToOpenthePopup() 
 	 * @param : null
@@ -326,8 +332,8 @@ public class dispensary_Pages extends StartupPage {
 		}	
 		return isDisplayed;
 	}
-	
-	
+
+
 	/**@Test8
 	 * about this method validateErrorMessageInFirstnameTextfield() 
 	 * @param : null
@@ -339,18 +345,18 @@ public class dispensary_Pages extends StartupPage {
 		String errorMessageText = "";
 		try {
 			if(commonEvents.isDisplayed(okButton)) {
-			    commonEvents.click(okButton);
-			    Thread.sleep(5000);
-			    errorMessageText = commonEvents.getText(errorMeesageInFirstNameTextField);
+				commonEvents.click(okButton);
+				Thread.sleep(5000);
+				errorMessageText = commonEvents.getText(errorMeesageInFirstNameTextField);
 				System.out.println("Error Meesage is  :" + errorMessageText );
 				return errorMessageText;	
-		  }
+			}
 		}catch(Exception e) {
 			throw e;
 		}	
 		return errorMessageText;
 	}
-	
+
 	/**@Test9
 	 * about this method fillAllTheTextfieldsInsideTheAddNewPatient() 
 	 * @param : Map<String, String>
@@ -369,13 +375,13 @@ public class dispensary_Pages extends StartupPage {
 			{
 				commonEvents.click(firstNameTextFieldInAddNewPatient);
 				commonEvents.sendKeys(firstNameTextFieldInAddNewPatient,expectedData.get("firstName"));
-				
+
 				commonEvents.click(middelNameTextFieldInAddNewPatient);
 				commonEvents.sendKeys(middelNameTextFieldInAddNewPatient,expectedData.get("middleName"));
-				
+
 				commonEvents.click(lastNameTextFieldInAddNewPatient);
 				commonEvents.sendKeys(lastNameTextFieldInAddNewPatient,expectedData.get("lastName"));
-				
+
 				commonEvents.click(ageTextFieldInAddNewPatient);
 				commonEvents.sendKeys(ageTextFieldInAddNewPatient,expectedData.get("age"));
 
@@ -390,9 +396,9 @@ public class dispensary_Pages extends StartupPage {
 		}
 		return firstNameTextfieldValue;
 	}
-	
-	
-	
+
+
+
 	/**@Test10
 	 * about this method checktheDataArePresentInFirstNameField() 
 	 * @param : null
@@ -405,17 +411,17 @@ public class dispensary_Pages extends StartupPage {
 
 		try {
 			if(commonEvents.isDisplayed(firstNameTextFieldInAddNewPatient)) {
-			FirstNameFieldValue = commonEvents.getAttribute(firstNameTextFieldInAddNewPatient, "value");
-			System.out.println("First Name TextField value is : " + FirstNameFieldValue);
-			return FirstNameFieldValue;
+				FirstNameFieldValue = commonEvents.getAttribute(firstNameTextFieldInAddNewPatient, "value");
+				System.out.println("First Name TextField value is : " + FirstNameFieldValue);
+				return FirstNameFieldValue;
 			}
 		}catch(Exception e) {
 			throw e;
 		}
 		return FirstNameFieldValue;
 	}
-	
-	
+
+
 	/**@Test11
 	 * about this method navigateToLastPageOfTheStockDetailsAndFetchTotalStockValue() 
 	 * @param : null
@@ -441,5 +447,131 @@ public class dispensary_Pages extends StartupPage {
 			throw e;
 		}	
 		return isDisplayed;
+	}
+
+	/**@Test12
+	 * about this method selectAllFromFilterDropdownAndGetTotalStockValue() 
+	 * @param : null
+	 * @description : it will select the value from drop down
+	 * @return : String
+	 * @author : YAKSHA
+	 */
+	public Boolean selectAllFromFilterDropdownAndGetTotalStockValue() throws Exception {
+
+		Boolean allIsSelected = false;
+
+		try {
+			if(commonEvents.isDisplayed(storeDropdownElement)) {
+
+				commonEvents.selectByVisibleText(storeDropdownElement, "All");
+				commonEvents.jsScrollPageTillElementVisible(totalStockValueOfAllStockElement, "", "");
+				String totalStockValueOfAllStock = commonEvents.getText(totalStockValueOfAllStockElement);
+				System.out.println("total stock value of all Stock : "  + totalStockValueOfAllStock );
+				Thread.sleep(3000);
+				allIsSelected = true;
+			}
+
+		}catch(Exception e) {
+			throw e;
+		}
+		return allIsSelected;
+	}
+
+	/**@Test13
+	 * about this method selectMainDispensaryFromFilterDropdownAndGetTotalStockValue() 
+	 * @param : null
+	 * @description : it will select the value from drop down
+	 * @return : String
+	 * @author : YAKSHA
+	 */
+	public Boolean selectMainDispensaryFromFilterDropdownAndGetTotalStockValue() throws Exception {
+
+		Boolean mainDispensaryIsSelected = false;
+
+		try {
+			if(commonEvents.isDisplayed(storeDropdownElement)) {
+
+				commonEvents.selectByVisibleText(storeDropdownElement, "Main Dispensary");
+
+				WebElement storeDropdownWebElement = commonEvents.findElement(storeDropdownElement);
+				commonEvents.highlightElement(storeDropdownWebElement);
+
+				commonEvents.jsScrollPageTillElementVisible(totalStockValueOfAllStockElement, "", "");
+				WebElement totalStockValueOfStockWebElement = commonEvents.findElement(totalStockValueOfAllStockElement);
+				commonEvents.highlightElement(totalStockValueOfStockWebElement);
+
+				String totalStockValueOfMainDispensaryStock = commonEvents.getText(totalStockValueOfAllStockElement);
+				System.out.println("total stock value of Main Dispensary Stock : "  + totalStockValueOfMainDispensaryStock );
+				Thread.sleep(3000);
+				mainDispensaryIsSelected = true;
+			}
+
+		}catch(Exception e) {
+			throw e;
+		}
+		return mainDispensaryIsSelected;
+	}
+
+	/**@Test14
+	 * about this method selectMainStoreFromFilterDropdownAndGetTotalStockValue() 
+	 * @param : null
+	 * @description : it will select the value from drop down
+	 * @return : String
+	 * @author : YAKSHA
+	 */
+	public Boolean selectMainStoreFromFilterDropdownAndGetTotalStockValue() throws Exception {
+
+		Boolean allIsSelected = false;
+
+		try {
+			if(commonEvents.isDisplayed(storeDropdownElement)) {
+
+				commonEvents.selectByVisibleText(storeDropdownElement, "Main store");
+
+				WebElement storeDropdownWebElement = commonEvents.findElement(storeDropdownElement);
+				commonEvents.highlightElement(storeDropdownWebElement);
+
+				commonEvents.jsScrollPageTillElementVisible(totalStockValueOfAllStockElement, "", "");
+				WebElement totalStockValueOfStockWebElement = commonEvents.findElement(totalStockValueOfAllStockElement);
+				commonEvents.highlightElement(totalStockValueOfStockWebElement);
+
+				String totalStockValueOfAllStock = commonEvents.getText(totalStockValueOfAllStockElement);
+				System.out.println("total stock value of Main Store : "  + totalStockValueOfAllStock );
+				Thread.sleep(3000);
+				allIsSelected = true;
+			}
+
+		}catch(Exception e) {
+			throw e;
+		}
+		return allIsSelected;
+	}
+
+	/**@Test15
+	 * about this method clickOnRequisitionsTabAndValidateCreateRequisitionsButtonIsPresent() 
+	 * @param : null
+	 * @description : check the Data Are Present In First Name Field
+	 * @return : String
+	 * @author : YAKSHA
+	 */
+	public String clickOnRequisitionsTabAndValidateCreateRequisitionsButtonIsPresent() throws Exception {
+		String createRequisitionsButtonTextValue = "";
+
+		try {
+			if(commonEvents.isDisplayed(requisitionsLinkElement)) {
+				commonEvents.click(requisitionsLinkElement);
+
+				WebElement createRequisitionsButtonWebElement = commonEvents.findElement(createRequisitionsButtonElement);
+				commonEvents.highlightElement(createRequisitionsButtonWebElement);
+
+				createRequisitionsButtonTextValue = commonEvents.getText(createRequisitionsButtonElement);
+				System.out.println("create Requisitions Button Text Value is : " + createRequisitionsButtonTextValue);
+
+				return createRequisitionsButtonTextValue;
+			}
+		}catch(Exception e) {
+			throw e;
+		}
+		return createRequisitionsButtonTextValue;
 	}
 }

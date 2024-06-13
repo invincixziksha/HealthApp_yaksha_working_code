@@ -140,6 +140,40 @@ public class dispensary_testcase extends AppTestBase
 		Assert.assertTrue(dispensary_PagesInstance.navigateToLastPageOfTheStockDetailsAndFetchTotalStockValue(), "user is not able to navigate to the LastPageOfTheStockDetails, please check manually");
 		Assert.assertTrue(locatorsFactoryInstance.totalStockValueTextIsPresent(driver).isDisplayed(), "Total Stock Value Text is not present in the current page, Please check manually");
 	}
+	
+	@Test(priority = 12, groups = {"sanity"}, description="select \"All\" from the filter by store dropdown field and the get Total stock value")
+	public void selectAllFromFilterDropdownAndGetTotalStockValue() throws Exception {
+		dispensary_PagesInstance = new dispensary_Pages(driver);
+		locatorsFactoryInstance = new LocatorsFactory(driver);
+		Assert.assertTrue(dispensary_PagesInstance.selectAllFromFilterDropdownAndGetTotalStockValue(), "user not able to select the value stock dropdown, please check manually");
+		Assert.assertTrue(locatorsFactoryInstance.totalStockValueTextIsPresent(driver).isDisplayed(), "Total Stock Value Text is not present in the current page, Please check manually");
+	}
+	
+	@Test(priority = 13, groups = {"sanity"}, description="select \"Main Dispensary\" from the filter by store dropdown field and the get Total stock value")
+	public void selectMainDispensaryFromFilterDropdownAndGetTotalStockValue() throws Exception {
+		dispensary_PagesInstance = new dispensary_Pages(driver);
+		locatorsFactoryInstance = new LocatorsFactory(driver);
+		Assert.assertTrue(dispensary_PagesInstance.selectMainDispensaryFromFilterDropdownAndGetTotalStockValue(), "user not able to select the value stock dropdown, please check manually");
+		Assert.assertTrue(locatorsFactoryInstance.totalStockValueTextIsPresent(driver).isDisplayed(), "Total Stock Value Text is not present in the current page, Please check manually");
+	}
+	
+	@Test(priority = 14, groups = {"sanity"}, description="select \"Main Store\" from the filter by store dropdown field and the get Total stock value")
+	public void selectMainStoreFromFilterDropdownAndGetTotalStockValue() throws Exception {
+		dispensary_PagesInstance = new dispensary_Pages(driver);
+		locatorsFactoryInstance = new LocatorsFactory(driver);
+		Assert.assertTrue(dispensary_PagesInstance.selectMainStoreFromFilterDropdownAndGetTotalStockValue(), "user not able to select the value stock dropdown, please check manually");
+		Assert.assertTrue(locatorsFactoryInstance.totalStockValueTextIsPresent(driver).isDisplayed(), "Total Stock Value Text is not present in the current page, Please check manually");
+	}
+	
+	@Test(priority = 15, groups = {"sanity"}, description="validate \"create requisition\" button is present or not")
+	public void clickOnRequisitionsTabAndValidateCreateRequisitionsButtonIsPresent() throws Exception {
+		dispensary_PagesInstance = new dispensary_Pages(driver);
+		locatorsFactoryInstance = new LocatorsFactory(driver);
+		Map<String, String> expectedData = new FileOperations().readJson(expectedDataFilePath, "commonStringvalue");
+		Assert.assertEquals(dispensary_PagesInstance.clickOnRequisitionsTabAndValidateCreateRequisitionsButtonIsPresent(), expectedData.get("createRequisitionsButtonValue"), "Create requisitions value is not matching, please check manually");
+		Assert.assertEquals(locatorsFactoryInstance.createRequisitionsButtonIsPresent(),expectedData.get("createRequisitionsButtonValue"),"firstName Text is not present in the current page, Please check manually");
+	}
+	
 	@AfterClass(alwaysRun = true)
 	public void tearDown() {
 		System.out.println("before closing the browser");
