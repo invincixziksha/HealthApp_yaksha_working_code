@@ -54,7 +54,17 @@ public class dispensary_Pages extends StartupPage {
 	By totalStockValueOfAllStockElement = By.xpath("//div[@class='right']");
 
 	By requisitionsLinkElement = By.xpath("//a[@routerlink='Requisition']");
-	By createRequisitionsButtonElement = By.xpath("//button[@class='btn btn-primary']");
+	By createRequisitionsButtonElement = By.xpath("//button[@class='btn btn-primary']");	
+	By mainDispensaryOption = By.xpath("//option[.='Main Dispensary']");
+	By mainStoreOption = By.xpath("//option[.='Main store']");
+	By requisitionSubModule = By.xpath("//a[.='Requisition']");
+	By  createRequisitionButton = By.xpath("//button[@class='btn btn-primary']");
+	By itemNameTextfield=By.id("itemName0");
+	By  cancelButton = By.xpath("//input[@value='Cancel']");
+	By  viewButton = By.xpath("(//a[contains(text(),'View')])[1]");	
+	By  medicineNameField = By.xpath("//table//tr[@style='text-align:center']//td");
+	By  printButton = By.xpath("//a[@class='btn btn-default']");
+	By  requisitionsListButton = By.xpath("//a[@class='btn btn-primary']");
 
 	String pageName = this.getClass().getSimpleName();
 	public dispensary_Pages(WebDriver driver) {
@@ -135,29 +145,29 @@ public class dispensary_Pages extends StartupPage {
 	/**@Test2
 	 * about this method verifyDispensaryModuleIsPresentOrNot() 
 	 * @param : null
-	 * @description : verify Dispensary Module Is Present
+	 * @description : vverify the Dispensary module is present or not
 	 * @return : Boolean
 	 * @author : Yaksha
 	 */
 	public Boolean verifyDispensaryModuleIsPresentOrNot() throws Exception {
-		boolean isDisplayed = false;
+		boolean dispensaryModuleIsDisplayed = false;
 		try {
 			commonEvents.isDisplayed(dispensaryModule);
-			isDisplayed=true;
+			dispensaryModuleIsDisplayed=true;
 		}catch(Exception e) {
 			throw e;
 		}	
-		return isDisplayed;
+		return dispensaryModuleIsDisplayed;
 	}
 
 	/**@Test3
-	 * about this method verifyAllSubModulesArePresent() 
+	 * about this method verifyAllSubModulesArePresentAndClickOnDispensary() 
 	 * @param : null
-	 * @description : verify All Sub Modules Are Present inside the dispensaryModule
+	 * @description : verify all sub-modules are displayed correctly after clicking on the "Dispensary" Module.
 	 * @return : Boolean
 	 * @author : Yaksha
 	 */
-	public Boolean verifyAllSubModulesArePresent() throws Exception {
+	public Boolean verifyAllSubModulesArePresentAndClickOnDispensary() throws Exception {
 		boolean patientConsumptionSubModuleisDisplayed = false;
 		try {
 			if(commonEvents.isDisplayed(dispensaryModule)){
@@ -168,6 +178,7 @@ public class dispensary_Pages extends StartupPage {
 				commonEvents.isDisplayed(counterSubModule);
 				commonEvents.isDisplayed(reportsSubModule);
 				commonEvents.isDisplayed(patientConsumptionSubModule);
+				commonEvents.click(dispensaryModule);
 				patientConsumptionSubModuleisDisplayed=true;
 			}
 		}catch(Exception e) {
@@ -176,168 +187,57 @@ public class dispensary_Pages extends StartupPage {
 		return patientConsumptionSubModuleisDisplayed;
 	}
 
-
-	/**@Test4.1
-	 * about this method verifyUrlOfCounterPage() 
+	
+	/**@Test4
+	 * about this method scrollToButtomAndVerifytheFields() 
 	 * @param : null
-	 * @description : it will navigate to the URL and validate the URL of the current page.
-	 * @return : String
-	 * @author : Yaksha
-	 */
-	public String verifyUrlOfCounterPage() throws Exception {
-		String urlofThepage = "";
-		try {
-			urlofThepage = commonEvents.getCurrentUrl();
-			System.out.println("URL of the page is  :" + urlofThepage );
-		}catch(Exception e) {
-			throw e;
-		}	
-		return urlofThepage;
-	}
-
-	/**@Test4.2
-	 * about this method verifyAllFieldsInsideTheCounterPage() 
-	 * @param : null
-	 * @description : verify All Fields Inside The Counter Page 
-	 * @return : String
-	 * @author : Yaksha
-	 */
-	public Boolean verifyAllFieldsInsideTheCounterPage() throws Exception {
-		boolean isDisplayed = false;
-		try {
-			if(commonEvents.isDisplayed(dispensaryModule)) {
-				commonEvents.isDisplayed(PrescriptionSubModule);				
-				commonEvents.isDisplayed(saleSubModule);
-				commonEvents.isDisplayed(stockSubModule);
-				commonEvents.isDisplayed(counterSubModule);
-				commonEvents.isDisplayed(reportsSubModule);
-				commonEvents.isDisplayed(patientConsumptionSubModule);
-				commonEvents.isDisplayed(counterSelection);
-				commonEvents.isDisplayed(morningCounter);
-				commonEvents.isDisplayed(eveningCounter);
-				commonEvents.isDisplayed(nightCounter);
-				isDisplayed=true;
-			}
-			isDisplayed=true;
-		}catch(Exception e) {
-			throw e;
-		}	
-		return isDisplayed;
-	}
-	/**@Test5.1
-	 * about this method verifyUrlOfSalePage() 
-	 * @param : null
-	 * @description : it will navigate to the URL and validate the URL of the current page.
-	 * @return : String
-	 * @author : Yaksha
-	 */
-	public String verifyUrlOfSalePage() throws Exception {
-		String urlofThepage = "";
-		try {
-			if(commonEvents.isDisplayed(morningCounter)) {
-				commonEvents.click(morningCounter);
-				Thread.sleep(5000);
-				urlofThepage = commonEvents.getCurrentUrl();
-				System.out.println("URL of the page is  :" + urlofThepage );
-				return urlofThepage;
-			}
-		}catch(Exception e) {
-			throw e;
-		}	
-		return urlofThepage;
-	}
-
-	/**@Test5.2
-	 * about this method verifyAllFieldsInsideTheSalePage() 
-	 * @param : null
-	 * @description :Verify Presence of all fields should be : Sale , Sale List, Return from customer, Return Sale List, Provisional Bills, Settlement, Provisional Return
+	 * @description : scroll to the bottom of the "Sale" page and verify that "Print Invoice" button  , "Discard" button  ,"Invoice History" and  "Credit Limitis and Balance" text are peresent or not.
 	 * @return : Boolean
 	 * @author : Yaksha
 	 */
-	public Boolean verifyAllFieldsInsideTheSalePage() throws Exception {
-		boolean isDisplayed = false;
+	public Boolean scrollToButtomAndVerifytheFields() throws Exception {
+		boolean creditLimitsAndBalancesTextElementIsDisplayed = false;
 		try {
-			if(commonEvents.isDisplayed(saleListTab)) {
-				commonEvents.isDisplayed(saleListTab);
-				commonEvents.isDisplayed(returnFromCustomerTab);
-				commonEvents.isDisplayed(returnSaleListTab);
-				commonEvents.isDisplayed(provisionalBillsTab);
-				commonEvents.isDisplayed(settlementTab);
-				commonEvents.isDisplayed(ProvisionalReturnTab);
-				isDisplayed=true;
-			}
-			isDisplayed=true;
-		}catch(Exception e) {
-			throw e;
-		}	
-		return isDisplayed;
-	}
-
-
-	/**@Test6
-	 * about this method scrollToButtomOfTheSalePageAndVerifyPresenceOfFields()
-	 * @param : get the data from json file as type Map<String, String> expectedData
-	 * @description : enter value in text field of Add New Patient as per json expected data and fetch the value of that text field ,
-	 * @return : fetch the value text field as string type
-	 * @author : Yaksha
-	 */
-	public Boolean scrollToButtomOfTheSalePageAndVerifyPresenceOfFields() throws Exception {
-		Boolean fieldIsPresent = false;
-
-		commonEvents.jsScrollPageTillElementVisible(creditLimitsAndBalancesTextElement,"elementName","pageName");
-
-		try {
+			commonEvents.click(morningCounter);
 			if(commonEvents.isDisplayed(printInvoiceButtonElement) &&
 					commonEvents.isDisplayed(discardButtonElement) &&
 					commonEvents.isDisplayed(invoiceHistoryTextElement) &&
 					commonEvents.isDisplayed(creditLimitsAndBalancesTextElement) ) {
-
-				WebElement printInvoiceButtonWebElement = commonEvents.findElement(printInvoiceButtonElement);
-				commonEvents.highlightElement(printInvoiceButtonWebElement);
-
-				WebElement discardButtonWebElement = commonEvents.findElement(discardButtonElement);
-				commonEvents.highlightElement(discardButtonWebElement);
-
-				WebElement invoiceHistoryTextWebElement = commonEvents.findElement(invoiceHistoryTextElement);
-				commonEvents.highlightElement(invoiceHistoryTextWebElement);
-
-				WebElement creditLimitsAndBalancesTextWebElement = commonEvents.findElement(creditLimitsAndBalancesTextElement);
-				commonEvents.highlightElement(creditLimitsAndBalancesTextWebElement);
-
-				fieldIsPresent = true;
-
-			}
-		}catch(Exception e) {
-			throw e;
-		}
-		return fieldIsPresent;
-	}
-
-	/**@Test7
-	 * about this method performTheKeyboardOperationToOpenthePopup() 
-	 * @param : null
-	 * @description : perform The Keyboard Operation(alt + N) To Open the Popup
-	 * @return : Boolean
-	 * @author : Yaksha
-	 */
-	public Boolean performTheKeyboardOperationToOpenthePopup() throws Exception {
-		boolean isDisplayed = false;
-		try {
-			commonEvents.performAltN();
-			if(commonEvents.isDisplayed(addNewPatientPopup)){
-				isDisplayed=true;
+				    creditLimitsAndBalancesTextElementIsDisplayed=true;
 			}
 		}catch(Exception e) {
 			throw e;
 		}	
-		return isDisplayed;
+		return creditLimitsAndBalancesTextElementIsDisplayed;
+	}
+
+	
+
+	/**@Test5
+	 * about this method performTheKeyboardOperationToOpenthePopup() 
+	 * @param : null
+	 * @description : Perform the keyboard operation to open the  popup and verify that the popup is displayed or not.
+	 * @return : Boolean
+	 * @author : Yaksha
+	 */
+	public Boolean performTheKeyboardOperationToOpenthePopup() throws Exception {
+		boolean createRequisitionButtonIsDisplayedIsDisplayed = false;
+		try {
+			commonEvents.performAltN();
+			if(commonEvents.isDisplayed(addNewPatientPopup)){
+				createRequisitionButtonIsDisplayedIsDisplayed=true;
+			}
+		}catch(Exception e) {
+			throw e;
+		}	
+		return createRequisitionButtonIsDisplayedIsDisplayed;
 	}
 
 
-	/**@Test8
+	/**@Test6
 	 * about this method validateErrorMessageInFirstnameTextfield() 
 	 * @param : null
-	 * @description : validate Error Message In First name Textfield
+	 * @description : Validate the error message in firstname textfield after click on "Ok" button
 	 * @return : String
 	 * @author : Yaksha
 	 */
@@ -357,14 +257,14 @@ public class dispensary_Pages extends StartupPage {
 		return errorMessageText;
 	}
 
-	/**@Test9
-	 * about this method fillAllTheTextfieldsInsideTheAddNewPatient() 
+	/**@Test7
+	 * about this method fillAllTheTextfieldsInsideTheAddNewPatientVerifyTheFirstName() 
 	 * @param : Map<String, String>
-	 * @description : fill All The Textfields Inside The Add New Patient
+	 * @description : Fill all the textfields which are present inside the Add New Patient popup. and verify that value is present after enter the values.
 	 * @return : String
 	 * @author : Yaksha
 	 */
-	public String fillAllTheTextfieldsInsideTheAddNewPatient(Map<String, String> expectedData) throws Exception {
+	public String fillAllTheTextfieldsInsideTheAddNewPatientVerifyTheFirstName(Map<String, String> expectedData) throws Exception {
 		String firstNameTextfieldValue = "";
 		try {
 			if(commonEvents.isDisplayed(firstNameTextFieldInAddNewPatient) && 
@@ -399,30 +299,7 @@ public class dispensary_Pages extends StartupPage {
 
 
 
-	/**@Test10
-	 * about this method checktheDataArePresentInFirstNameField() 
-	 * @param : null
-	 * @description : check the Data Are Present In First Name Field
-	 * @return : String
-	 * @author : Yaksha
-	 */
-	public String checktheDataArePresentInFirstNameField() throws Exception {
-		String FirstNameFieldValue = "";
-
-		try {
-			if(commonEvents.isDisplayed(firstNameTextFieldInAddNewPatient)) {
-				FirstNameFieldValue = commonEvents.getAttribute(firstNameTextFieldInAddNewPatient, "value");
-				System.out.println("First Name TextField value is : " + FirstNameFieldValue);
-				return FirstNameFieldValue;
-			}
-		}catch(Exception e) {
-			throw e;
-		}
-		return FirstNameFieldValue;
-	}
-
-
-	/**@Test11
+	/**@Test8
 	 * about this method navigateToLastPageOfTheStockDetailsAndFetchTotalStockValue() 
 	 * @param : null
 	 * @description : Navigate to the Last page of the stock details list pagenation and fetch the total stock value
@@ -448,130 +325,97 @@ public class dispensary_Pages extends StartupPage {
 		}	
 		return isDisplayed;
 	}
+	
+	
+	/**@Test9
+	 * about this method checkMainDispensaryIsSelectedFromFilterStockDropdown() 
+	 * @param : null
+	 * @description : check "Main Dispensary" is selected from filter stock dropdown and select main store.
+	 * @return : Boolean
+	 * @author : Yaksha
+	 */
+	public Boolean checkMainDispensaryIsSelectedFromFilterStockDropdown() throws Exception {
+		boolean isSelected = false;
+		try {
+			if(commonEvents.isDisplayed(mainDispensaryOption)) {
+				commonEvents.isSelected(mainDispensaryOption);
+				commonEvents.click(mainStoreOption);
+				isSelected = true;
+			}
 
+		}catch(Exception e) {
+			throw e;
+		}	
+		return isSelected;
+	}
+	
+	
+	/**@Test10
+	 * about this method validateCreateRequisitionButtonIsPresent() 
+	 * @param : null
+	 * @description : validate "create requisition" button is present or not
+	 * @return : Boolean
+	 * @author : Yaksha
+	 */
+	public Boolean validateCreateRequisitionButtonIsPresent() throws Exception {
+		boolean createRequisitionButtonIsDisplayed = false;
+		try {
+			if(commonEvents.isDisplayed(requisitionSubModule)) {
+				commonEvents.click(requisitionSubModule);
+				commonEvents.isDisplayed(createRequisitionButton);
+				createRequisitionButtonIsDisplayed=true;
+			}
+
+		}catch(Exception e) {
+			throw e;
+		}	
+		return createRequisitionButtonIsDisplayed;
+	}
+	
+	
+	/**@Test11
+	 * about this method verifyNewItemTextFieldIsPresent() 
+	 * @param : null
+	 * @description : verify "Item Name" text field is present in "Add Requisition" page
+	 * @return : Boolean
+	 * @author : Yaksha
+	 */
+	public Boolean verifyNewItemTextFieldIsPresent() throws Exception {
+		boolean itemNameTextfieldIsDisplayed = false;
+		try {
+				commonEvents.click(createRequisitionButton);
+				if(commonEvents.isDisplayed(itemNameTextfield)){
+					itemNameTextfieldIsDisplayed=true;
+				}
+		}catch(Exception e) {
+			throw e;
+		}	
+		return itemNameTextfieldIsDisplayed;
+	}
+	
+			
 	/**@Test12
-	 * about this method selectAllFromFilterDropdownAndGetTotalStockValue() 
+	 * about this method verifyRequisitionDetailsPrintPageIsDisplayed() 
 	 * @param : null
-	 * @description : it will select the value from drop down
-	 * @return : String
-	 * @author : YAKSHA
+	 * @description : verify Requisition Details Print page
+	 * @return : Boolean
+	 * @author : Yaksha
 	 */
-	public Boolean selectAllFromFilterDropdownAndGetTotalStockValue() throws Exception {
-
-		Boolean allIsSelected = false;
-
+	public Boolean verifyRequisitionDetailsPrintPageIsDisplayed() throws Exception {
+		boolean requisitionsListButtonIsDisplayed = false;
 		try {
-			if(commonEvents.isDisplayed(storeDropdownElement)) {
-
-				commonEvents.selectByVisibleText(storeDropdownElement, "All");
-				commonEvents.jsScrollPageTillElementVisible(totalStockValueOfAllStockElement, "", "");
-				String totalStockValueOfAllStock = commonEvents.getText(totalStockValueOfAllStockElement);
-				System.out.println("total stock value of all Stock : "  + totalStockValueOfAllStock );
-				Thread.sleep(3000);
-				allIsSelected = true;
-			}
+			  commonEvents.click(cancelButton);
+			  commonEvents.click(viewButton);
+			  if(commonEvents.isDisplayed(medicineNameField) &&
+			  commonEvents.isDisplayed(printButton) &&
+			  commonEvents.isDisplayed(requisitionsListButton)) {
+				  requisitionsListButtonIsDisplayed=true;
+			  }
 
 		}catch(Exception e) {
 			throw e;
-		}
-		return allIsSelected;
+		}	
+		return requisitionsListButtonIsDisplayed;
 	}
-
-	/**@Test13
-	 * about this method selectMainDispensaryFromFilterDropdownAndGetTotalStockValue() 
-	 * @param : null
-	 * @description : it will select the value from drop down
-	 * @return : String
-	 * @author : YAKSHA
-	 */
-	public Boolean selectMainDispensaryFromFilterDropdownAndGetTotalStockValue() throws Exception {
-
-		Boolean mainDispensaryIsSelected = false;
-
-		try {
-			if(commonEvents.isDisplayed(storeDropdownElement)) {
-
-				commonEvents.selectByVisibleText(storeDropdownElement, "Main Dispensary");
-
-				WebElement storeDropdownWebElement = commonEvents.findElement(storeDropdownElement);
-				commonEvents.highlightElement(storeDropdownWebElement);
-
-				commonEvents.jsScrollPageTillElementVisible(totalStockValueOfAllStockElement, "", "");
-				WebElement totalStockValueOfStockWebElement = commonEvents.findElement(totalStockValueOfAllStockElement);
-				commonEvents.highlightElement(totalStockValueOfStockWebElement);
-
-				String totalStockValueOfMainDispensaryStock = commonEvents.getText(totalStockValueOfAllStockElement);
-				System.out.println("total stock value of Main Dispensary Stock : "  + totalStockValueOfMainDispensaryStock );
-				Thread.sleep(3000);
-				mainDispensaryIsSelected = true;
-			}
-
-		}catch(Exception e) {
-			throw e;
-		}
-		return mainDispensaryIsSelected;
-	}
-
-	/**@Test14
-	 * about this method selectMainStoreFromFilterDropdownAndGetTotalStockValue() 
-	 * @param : null
-	 * @description : it will select the value from drop down
-	 * @return : String
-	 * @author : YAKSHA
-	 */
-	public Boolean selectMainStoreFromFilterDropdownAndGetTotalStockValue() throws Exception {
-
-		Boolean allIsSelected = false;
-
-		try {
-			if(commonEvents.isDisplayed(storeDropdownElement)) {
-
-				commonEvents.selectByVisibleText(storeDropdownElement, "Main store");
-
-				WebElement storeDropdownWebElement = commonEvents.findElement(storeDropdownElement);
-				commonEvents.highlightElement(storeDropdownWebElement);
-
-				commonEvents.jsScrollPageTillElementVisible(totalStockValueOfAllStockElement, "", "");
-				WebElement totalStockValueOfStockWebElement = commonEvents.findElement(totalStockValueOfAllStockElement);
-				commonEvents.highlightElement(totalStockValueOfStockWebElement);
-
-				String totalStockValueOfAllStock = commonEvents.getText(totalStockValueOfAllStockElement);
-				System.out.println("total stock value of Main Store : "  + totalStockValueOfAllStock );
-				Thread.sleep(3000);
-				allIsSelected = true;
-			}
-
-		}catch(Exception e) {
-			throw e;
-		}
-		return allIsSelected;
-	}
-
-	/**@Test15
-	 * about this method clickOnRequisitionsTabAndValidateCreateRequisitionsButtonIsPresent() 
-	 * @param : null
-	 * @description : check the Data Are Present In First Name Field
-	 * @return : String
-	 * @author : YAKSHA
-	 */
-	public String clickOnRequisitionsTabAndValidateCreateRequisitionsButtonIsPresent() throws Exception {
-		String createRequisitionsButtonTextValue = "";
-
-		try {
-			if(commonEvents.isDisplayed(requisitionsLinkElement)) {
-				commonEvents.click(requisitionsLinkElement);
-
-				WebElement createRequisitionsButtonWebElement = commonEvents.findElement(createRequisitionsButtonElement);
-				commonEvents.highlightElement(createRequisitionsButtonWebElement);
-
-				createRequisitionsButtonTextValue = commonEvents.getText(createRequisitionsButtonElement);
-				System.out.println("create Requisitions Button Text Value is : " + createRequisitionsButtonTextValue);
-
-				return createRequisitionsButtonTextValue;
-			}
-		}catch(Exception e) {
-			throw e;
-		}
-		return createRequisitionsButtonTextValue;
-	}
+	
 }

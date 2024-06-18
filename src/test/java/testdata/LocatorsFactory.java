@@ -41,6 +41,7 @@ public class LocatorsFactory extends StartupPage {
 //	By dispensaryLeftNavigationMenu = By.xpath("//a[@class='left-nav-active']//span[contains(text(), 'Dispensary')]");
 	By dispensaryLeftNavigationMenu = By.xpath("//a[@href='#/Dispensary']//span[contains(text(), 'Dispensary')]");
 	By settingLeftNavigationMenu = By.xpath("//a[@href='#/Settings']//span[contains(text(), 'Settings')]");
+	By printInvoiceButtonElement = By.xpath("//input[@value='Print Invoice']");
 
 	//l2 locators
 
@@ -64,9 +65,15 @@ public class LocatorsFactory extends StartupPage {
 	By creditLimitsAndBalancesTextElement = By.xpath("//b[contains(text() , 'Credit Limits and Balances')]");
 	By ContactNumberTextFieldInAddNewPatient = By.id("Contact");
 	By firstNameTextFieldInAddNewPatient = By.id("newPatFirstName");
-	
+	By mainStoreOption = By.xpath("//option[.='Main store']");	
 	By createRequisitionsButtonElement = By.xpath("//button[@class='btn btn-primary']");
-
+	By  createRequisitionButton = By.xpath("//button[@class='btn btn-primary']");
+	By  addRequisitionText = By.xpath("//span[.='Add Requisition']");
+	By remarksTextField = By.id("remark0");	
+	By quantityTextField = By.xpath("//table//tr[@style='text-align:center']//td[.='1']");
+	By denphehLogo=By.xpath("//div[@class='logo']");
+	
+	
 	public LocatorsFactory(WebDriver driver) {
 		super(driver);
 
@@ -364,6 +371,40 @@ public class LocatorsFactory extends StartupPage {
 			throw e;
 		}
 		return createRequisitionsButtonValue;
+	}
+	
+	
+	public WebElement printInvoiceButtonElementIsPresent(WebDriver driver) {
+		WebElement printInvoiceButtonElementWebElement = driver.findElement(printInvoiceButtonElement);
+		return printInvoiceButtonElementWebElement;
+	}
+	
+	
+	public WebElement mainStoreOptionIsSelected(WebDriver driver) {
+		WebElement mainStoreOptionWebElement = driver.findElement(mainStoreOption);
+		return mainStoreOptionWebElement;
+	}
+	
+	public WebElement createRequisitionButtonIsPresent(WebDriver driver) {
+		WebElement createRequisitionButtonWebElement = driver.findElement(createRequisitionButton);
+		return createRequisitionButtonWebElement;
+	}
+	
+	public WebElement addRequisitionTextIsPresent(WebDriver driver) {
+		WebElement addRequisitionTextWebElement = driver.findElement(addRequisitionText);
+		return addRequisitionTextWebElement;
+	}
+	
+	
+	public WebElement remarksTextFieldIsPresent(WebDriver driver) {
+		WebElement remarksTextFieldWebElement = driver.findElement(remarksTextField);
+		return remarksTextFieldWebElement;
+	}
+	
+	
+	public WebElement denphehLogoIsPresent(WebDriver driver) {
+		WebElement denphehLogoWebElement = driver.findElement(denphehLogo);
+		return denphehLogoWebElement;
 	}
 
 }

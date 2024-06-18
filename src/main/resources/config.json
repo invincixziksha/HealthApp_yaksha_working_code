@@ -1,6 +1,6 @@
 {
 	"dev":{
-		"url":"https://healthapp.yaksha.com/",
+		"url":"https://healthapp.yaksha.com/Account/Logout",
 		"pageloadtimeout":"90",
 		"implicitwaittime":"30"
 	},
