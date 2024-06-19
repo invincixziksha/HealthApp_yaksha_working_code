@@ -138,6 +138,7 @@ public class dispensary_testcase extends AppTestBase
 		Assert.assertTrue(dispensary_PagesInstance.verifyNewItemTextFieldIsPresent(), "NewItem TextField is not present, please check manually");
 		Assert.assertTrue(locatorsFactoryInstance.remarksTextFieldIsPresent(driver).isDisplayed(), "Remarks TextField is not present in the current page, Please check manually");
 	}
+	
 	@Test(priority = 12, groups = {"sanity"}, description="Verify Requisition Details Print page")
 	public void verifyThePageShouldCome() throws Exception {
 		dispensary_PagesInstance = new dispensary_Pages(driver);
@@ -146,12 +147,38 @@ public class dispensary_testcase extends AppTestBase
 		Assert.assertTrue(locatorsFactoryInstance.denphehLogoIsPresent(driver).isDisplayed(), "Denpheh Logo is not present in the current page, Please check manually");
 	}
 	
+	@Test(priority = 13, groups = {"sanity"}, description="Get the medicine name from the Requisition Details Print page")
+	public void getTheMedicineName() throws Exception {
+		dispensary_PagesInstance = new dispensary_Pages(driver);
+		locatorsFactoryInstance = new LocatorsFactory(driver);
+		Assert.assertTrue(dispensary_PagesInstance.getTheMedicineNameFromRequisitionDetailsPrintPage(), "Medicine name is not displayed, please check manually");
+		Assert.assertTrue(locatorsFactoryInstance.dispatchedQtyFieldIsPresent(driver).isDisplayed(), "Dispatched Qty Field is not present in the current page, Please check manually");
+	}
+	
+	@Test(priority = 14, groups = {"sanity"}, description="Get the place holder name of address textfiled and verify  the place holder name")
+	public void getThePlaceHolderName() throws Exception {
+		dispensary_PagesInstance = new dispensary_Pages(driver);
+		locatorsFactoryInstance = new LocatorsFactory(driver);
+		Map<String, String> expectedData = new FileOperations().readJson(expectedDataFilePath, "NewSSUPatientRegistrationPopup");
+		Assert.assertEquals(dispensary_PagesInstance.getThePlaceHolderNameOfAddressTextfiled(expectedData),expectedData.get("AddressFieldPlaceHolder"),"Not able to verify the placeholder name, please check manually");
+		Assert.assertEquals(locatorsFactoryInstance.raceTextFieldPlaceHolderIsPresent(),expectedData.get("RaceFieldPlaceHolder"),"race Textfield is not present in the current page, Please check manually");	
+		}
+	
+	@Test(priority = 15, groups = {"sanity"}, description="Close this New SSU Patient Registration popup by using javaScript")
+	public void performJavaScriptExecutorOperation() throws Exception {
+		dispensary_PagesInstance = new dispensary_Pages(driver);
+		locatorsFactoryInstance = new LocatorsFactory(driver);
+		Assert.assertTrue(dispensary_PagesInstance.closeNewSSUPatientRegistrationPopupByUsingJsExecutor(), "Unable to perform the js Executor operation, please check manually");
+		Assert.assertTrue(locatorsFactoryInstance.listByPatientStatusRadioButtonIsPresent(driver).isSelected(), "RadioButton is not present in the current page, Please check manually");
+	}
+	
+	
 	@AfterClass(alwaysRun = true)
 	public void tearDown() {
 		System.out.println("before closing the browser");
 		browserTearDown();
 	}
-
+	
 	@AfterMethod
 	public void retryIfTestFails() throws Exception {
 		startupPage.navigateToUrl(configData.get("url"));

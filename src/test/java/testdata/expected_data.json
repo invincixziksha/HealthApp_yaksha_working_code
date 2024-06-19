@@ -26,9 +26,11 @@
 	"healthAppErrorMessages":{
 		"FirstNameFieldErrorMessage":"First Name is required."
 	},
-	,
 	"commonStringvalue":{
 		"createRequisitionsButtonValue":"Create Requisition "
+	},
+    "NewSSUPatientRegistrationPopup":{
+		"AddressFieldPlaceHolder":"Address",
+		"RaceFieldPlaceHolder":"race"
 	}
-
 }

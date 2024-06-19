@@ -72,8 +72,10 @@ public class LocatorsFactory extends StartupPage {
 	By remarksTextField = By.id("remark0");	
 	By quantityTextField = By.xpath("//table//tr[@style='text-align:center']//td[.='1']");
 	By denphehLogo=By.xpath("//div[@class='logo']");
-	
-	
+	By dispatchedQtyField=By.xpath("//table//tr//td[.='Dispatched Qty']");
+	By raceField = By.id("race");	
+	By listByPatientStatusRadioButton = By.xpath("//input[@type='radio']");	
+
 	public LocatorsFactory(WebDriver driver) {
 		super(driver);
 
@@ -406,5 +408,29 @@ public class LocatorsFactory extends StartupPage {
 		WebElement denphehLogoWebElement = driver.findElement(denphehLogo);
 		return denphehLogoWebElement;
 	}
-
+	
+	public WebElement dispatchedQtyFieldIsPresent(WebDriver driver) {
+		WebElement dispatchedQtyFieldWebElement = driver.findElement(dispatchedQtyField);
+		return dispatchedQtyFieldWebElement;
+	}
+	
+	public String raceTextFieldPlaceHolderIsPresent() throws Exception {
+		String raceTextFieldPlaceHolder = "";
+		try {
+			if(commonEvents.isDisplayed(raceField))
+			{
+				Thread.sleep(3000);
+				raceTextFieldPlaceHolder = commonEvents.getAttribute(raceField, "placeholder");
+				System.out.println("Race TextField place holder Value  : " + raceTextFieldPlaceHolder);
+			}
+		}catch(Exception e) {
+			throw e;
+		}
+		return raceTextFieldPlaceHolder;
+	}
+	
+	public WebElement listByPatientStatusRadioButtonIsPresent(WebDriver driver) {
+		WebElement listByPatientStatusRadioButtonWebElement = driver.findElement(listByPatientStatusRadioButton);
+		return listByPatientStatusRadioButtonWebElement;
+	}
 }

@@ -65,7 +65,12 @@ public class dispensary_Pages extends StartupPage {
 	By  medicineNameField = By.xpath("//table//tr[@style='text-align:center']//td");
 	By  printButton = By.xpath("//a[@class='btn btn-default']");
 	By  requisitionsListButton = By.xpath("//a[@class='btn btn-primary']");
-
+	By  RequisitionPageTitle = By.xpath("//b[.=' REQUISITION DETAILS PRINT']");
+	By socialServiceModule = By.xpath("//span[.='SocialService']");	
+	By registerNewSSUPatientButton = By.xpath("//a[.=' Register New SSU Patient']");
+	By addressTextField = By.id("address");
+	By xButton = By.xpath("//button[.='X']");
+	
 	String pageName = this.getClass().getSimpleName();
 	public dispensary_Pages(WebDriver driver) {
 		super(driver);
@@ -402,20 +407,88 @@ public class dispensary_Pages extends StartupPage {
 	 * @author : Yaksha
 	 */
 	public Boolean verifyRequisitionDetailsPrintPageIsDisplayed() throws Exception {
-		boolean requisitionsListButtonIsDisplayed = false;
+		boolean RequisitionPageTitleIsDisplayed = false;
 		try {
 			  commonEvents.click(cancelButton);
 			  commonEvents.click(viewButton);
 			  if(commonEvents.isDisplayed(medicineNameField) &&
 			  commonEvents.isDisplayed(printButton) &&
-			  commonEvents.isDisplayed(requisitionsListButton)) {
-				  requisitionsListButtonIsDisplayed=true;
+			  commonEvents.isDisplayed(RequisitionPageTitle)) {
+				  RequisitionPageTitleIsDisplayed=true;
 			  }
 
 		}catch(Exception e) {
 			throw e;
 		}	
-		return requisitionsListButtonIsDisplayed;
+		return RequisitionPageTitleIsDisplayed;
+	}
+	
+	
+	/**@Test13
+	 * about this method getTheMedicineNameFromRequisitionDetailsPrintPage() 
+	 * @param : null
+	 * @description : Get the medicine name from the "Requisition Details Print" page
+	 * @return : Boolean
+	 * @author : Yaksha
+	 */
+	public Boolean getTheMedicineNameFromRequisitionDetailsPrintPage() throws Exception {
+		boolean medicineNameIsDisplayed = false;
+		try {
+			if(commonEvents.isDisplayed(medicineNameField)) {
+			String medicineNameFieldValue=commonEvents.getText(medicineNameField);
+			System.out.println("Medicine Name is  : " + medicineNameFieldValue);
+			medicineNameIsDisplayed=true;
+			}
+		}catch(Exception e) {
+			throw e;
+		}	
+		return medicineNameIsDisplayed;
+	}
+	
+	
+	/**@Test14
+	 * about this method getThePlaceHolderNameOfAddressTextfiled() 
+	 * @param : null
+	 * @description : Get the place holder name of address textfiled and verify  the place holder name.
+	 * @return : String
+	 * @author : Yaksha
+	 */
+	public String getThePlaceHolderNameOfAddressTextfiled(Map<String, String> expectedData) throws Exception {
+		String placeHolderName = "";
+		try {
+			commonEvents.click(socialServiceModule);
+			commonEvents.click(registerNewSSUPatientButton);
+			if(commonEvents.isDisplayed(addressTextField)) {
+				Thread.sleep(3000);
+				placeHolderName = commonEvents.getAttribute(addressTextField,"placeholder");
+				System.out.println("Place holder value of Address field : " + placeHolderName);
+			}
+		}catch(Exception e) {
+			throw e;
+		}	
+		return placeHolderName;
+	}
+	
+	
+	/**@Test15
+	 * about this method closeNewSSUPatientRegistrationPopupByUsingJsExecutor() 
+	 * @param : null
+	 * @description : Close this "New SSU Patient Registration" popup by using javaScript.
+	 * @return : Boolean
+	 * @author : Yaksha
+	 */
+	public Boolean closeNewSSUPatientRegistrationPopupByUsingJsExecutor() throws Exception {
+		boolean IsDisplayed = false;
+		try {
+			if(commonEvents.isDisplayed(xButton)) {
+			  commonEvents.jsClick(xButton);
+			  Thread.sleep(3000);
+			  IsDisplayed=true;
+			}
+		}catch(Exception e) {
+			throw e;
+		}	
+		return IsDisplayed;
 	}
 	
 }
