@@ -172,6 +172,22 @@ public class dispensary_testcase extends AppTestBase
 		Assert.assertTrue(locatorsFactoryInstance.listByPatientStatusRadioButtonIsPresent(driver).isSelected(), "RadioButton is not present in the current page, Please check manually");
 	}
 	
+	@Test(priority = 20, groups = {"sanity"}, description="Taking screenshot of the current page")
+	public void takingScreenshotOfCurrentPage() throws Exception {
+		dispensary_PagesInstance = new dispensary_Pages(driver);
+		locatorsFactoryInstance = new LocatorsFactory(driver);
+		Assert.assertTrue(dispensary_PagesInstance.takingScreenshotOfTheCurrentPage(),"Not able to take the screenshot, please check manually");
+//		Assert.assertTrue(locatorsFactoryInstance.submitButtonIsPresent(driver).isDisplayed(),"Race TextField is not present in the current page, Please check manually");
+	}
+	
+	@Test(priority = 21, groups = {"sanity"}, description="Upload a image in Scanned Images section")
+	public void uploadImageInScannedImagesSection() throws Exception {
+		dispensary_PagesInstance = new dispensary_Pages(driver);
+		locatorsFactoryInstance = new LocatorsFactory(driver);
+		Assert.assertTrue(dispensary_PagesInstance.uploadImageInScannedImagesSection(System.getProperty("user.dir") + "\\testImage\\uploadImage.png"),"Not able to upload the image, please check manually");
+		Assert.assertTrue(locatorsFactoryInstance.saveButtonIsPresent(driver).isDisplayed(),"Save button is not present in the current page, Please check manually");
+	}
+	
 	
 	@AfterClass(alwaysRun = true)
 	public void tearDown() {

@@ -70,6 +70,12 @@ public class dispensary_Pages extends StartupPage {
 	By registerNewSSUPatientButton = By.xpath("//a[.=' Register New SSU Patient']");
 	By addressTextField = By.id("address");
 	By xButton = By.xpath("//button[.='X']");
+	By procurementModule = By.xpath("//span[.='Procurement']");
+	By settingsTab = By.xpath("//a[.=' Settings ']");
+	By invoiceHeadersSubTab = By.xpath("//a[.='Invoice Headers']");
+	By addNewInvoiceHeaderButton = By.xpath("//input[@value='Add New Invoice Header']");
+	By chooseFileButton = By.id("img");
+
 	
 	String pageName = this.getClass().getSimpleName();
 	public dispensary_Pages(WebDriver driver) {
@@ -489,6 +495,56 @@ public class dispensary_Pages extends StartupPage {
 			throw e;
 		}	
 		return IsDisplayed;
+	}
+	
+	/**@Test20
+	 * about this method takingScreenshotOfTheCurrentPage() 
+	 * @param : null
+	 * @description : Taking screenshot of the current page.
+	 * @return : Boolean
+	 * @author : Yaksha
+	 */
+	public Boolean takingScreenshotOfTheCurrentPage() throws Exception {
+		boolean isDisplayed = false;
+		try {
+				commonEvents.takeScreenshot("AddOtherCharges");
+				isDisplayed=true;
+
+		}catch(Exception e) {
+			throw e;
+		}
+		return isDisplayed;
+	}
+	
+	/**@Test21
+	 * about this method uploadImageInScannedImagesSection() 
+	 * @param : Map<String, String>
+	 * @description : Upload a image in Scanned Images section.
+	 * @return : Boolean
+	 * @author : Yaksha
+	 */
+	public Boolean uploadImageInScannedImagesSection(String pathOfTheFile) throws Exception {
+		boolean isUploaded = false;
+		try {
+			commonEvents.click(procurementModule);
+			Thread.sleep(3000);
+			commonEvents.click(settingsTab);
+			Thread.sleep(3000);
+			commonEvents.click(invoiceHeadersSubTab);
+			Thread.sleep(3000);
+			commonEvents.click(addNewInvoiceHeaderButton);
+			Thread.sleep(3000);
+			commonEvents.jsClick(chooseFileButton);
+			Thread.sleep(3000);
+			System.out.println("path of the file" + pathOfTheFile );
+			Thread.sleep(5000);
+			commonEvents.fileUpload(pathOfTheFile);
+			Thread.sleep(3000);
+			isUploaded=true;
+		}catch(Exception e) {
+			throw e;
+		}
+		return isUploaded;
 	}
 	
 }

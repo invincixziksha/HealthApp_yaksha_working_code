@@ -75,7 +75,7 @@ public class LocatorsFactory extends StartupPage {
 	By dispatchedQtyField=By.xpath("//table//tr//td[.='Dispatched Qty']");
 	By raceField = By.id("race");	
 	By listByPatientStatusRadioButton = By.xpath("//input[@type='radio']");	
-
+	By saveButton = By.xpath("//button[.='Save']");
 	public LocatorsFactory(WebDriver driver) {
 		super(driver);
 
@@ -432,5 +432,9 @@ public class LocatorsFactory extends StartupPage {
 	public WebElement listByPatientStatusRadioButtonIsPresent(WebDriver driver) {
 		WebElement listByPatientStatusRadioButtonWebElement = driver.findElement(listByPatientStatusRadioButton);
 		return listByPatientStatusRadioButtonWebElement;
+	}
+	public WebElement saveButtonIsPresent(WebDriver driver) {
+		WebElement saveButtonWebElement = driver.findElement(saveButton);
+		return saveButtonWebElement;
 	}
 }
