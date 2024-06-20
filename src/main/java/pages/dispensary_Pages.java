@@ -1,11 +1,11 @@
 package pages;
 
-import java.util.List;
 import java.util.Map;
 
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
+import org.python.modules.thread.thread;
 
 public class dispensary_Pages extends StartupPage {
 
@@ -87,10 +87,26 @@ public class dispensary_Pages extends StartupPage {
 	By tooltip=By.xpath("//li[contains(text(),'+')]");
 	By countryDropdownByElement = By.xpath("//select[@id='ddlCountry']");
 	By dispensarySaleTabElement = By.xpath("//a[.=' Sale ']");
-	
+
 	By patientSearchTextBoxElement = By.xpath("//input[@id='patient-search']");
 	By listOfpatientlElement = By.xpath("//input[@id='patient-search']//");
-	
+
+	By operationTheatreNavMenuElement = By.xpath("//a[@href='#/OperationTheatre']");
+	By newOtBookingButtonElement = By.xpath("//button[contains(text(), 'New OT Booking')]");
+	By addNewOtButtonElement = By.xpath("//input[@value='Add New OT']");
+	By addInvoiceHeaderCloseButtonElement = By.xpath("//a[.='X']");
+
+	By othersChargesTab = By.xpath("//a[.='Other Charges']");
+	By addOtherChargesButton = By.xpath("//input[@value='Add Other Charges']");
+	By isVATApplicableCheckBox = By.xpath("(//label[@class='mt-checkbox mt-checkbox-outline'])[1]//span");
+	By isActiveCheckBox = By.xpath("(//label[@class='mt-checkbox mt-checkbox-outline'])[2]//span");
+	By isDefaultCheckBox = By.xpath("(//label[@class='mt-checkbox mt-checkbox-outline'])[3]//span");
+	By bookingOTSchedulePageCloseButtonElement = By.xpath("//a[.='X']");
+
+	By procurementModuleSettingTabElement = By.xpath("//a[contains(text(), 'Settings')]");
+	By addOtherChargesCloseButtonElement = By.xpath("//a[@title='Cancel']");
+
+
 
 
 
@@ -537,7 +553,7 @@ public class dispensary_Pages extends StartupPage {
 		}
 		return tooltipText;
 	}
-	
+
 	/**@Test17
 	 * about this method verifyIndiaIsSelectedFromCountryDropdown() 
 	 * @param : get the data from json file as type Map<String, String> expectedData
@@ -547,8 +563,8 @@ public class dispensary_Pages extends StartupPage {
 	 */
 	public String verifyIndiaIsSelectedFromCountryDropdown(Map<String, String> expectedData) throws Exception {
 
-			String selectedCountryName = "" ;
-		
+		String selectedCountryName = "" ;
+
 		commonEvents.click(saleSubModule);
 		commonEvents.performAltN();
 
@@ -556,50 +572,13 @@ public class dispensary_Pages extends StartupPage {
 			commonEvents.selectByVisibleText(countryDropdownByElement, expectedData.get("selectedCountryName"));
 			selectedCountryName = commonEvents.getFirstSelectedOptionFromDropdown(countryDropdownByElement, "elementName", "pageName");
 			System.out.println("first selected option from country dropdown : " + selectedCountryName );
-//			commonEvents.click(xButton);
+			//			commonEvents.click(xButton);
 			return selectedCountryName;
 		}catch(Exception e) {
 			throw e;
 		}	
 	}
-	
-	/**@Test18
-	 * about this method handleAutoSuggestions() 
-	 * @param : null
-	 * @description : Close this "New SSU Patient Registration" popup by using javaScript.
-	 * @return : Boolean
-	 * @author : Yaksha
-	 */
-	public Boolean handleAutoSuggestions(Map<String, String> expectedData) throws Exception {
-		boolean autoSuggestion = false;
-		commonEvents.click(xButton);
-		try {
-			if(commonEvents.isDisplayed(patientSearchTextBoxElement)) {
-//				WebElement medicineSearchTextboxWebElement = commonEvents.findElement(patientSearchTextBoxElement);
-				commonEvents.sendKeys(patientSearchTextBoxElement, expectedData.get("autoSuggestionsValue"));
-				Thread.sleep(10000);
-				List<WebElement> allAutosuggestion = commonEvents.findElements(listOfpatientlElement);
-				
-				for(int i = 0 ; i < allAutosuggestion.size() ; i++)
-				{
-					if(allAutosuggestion.get(i).getText().equalsIgnoreCase("Sonia Gandhi [2312000010]"))
-					{
-						allAutosuggestion.get(i).click();
-						break;
-					}
-				}
-				
-				
-				Thread.sleep(3000);
-				
-				autoSuggestion = true;
-			}
-		}catch(Exception e) {
-			throw e;
-		}	
-		return autoSuggestion;
-	}
-	
+
 	/**@Test19
 	 * about this method takingScreenshotOfTheCurrentPage() 
 	 * @param : null
@@ -609,7 +588,7 @@ public class dispensary_Pages extends StartupPage {
 	 */
 	public Boolean takingScreenshotOfTheCurrentPage() throws Exception {
 		boolean isDisplayed = false;
-//		commonEvents.click(xButton);
+		commonEvents.click(xButton);
 		try {
 			commonEvents.takeScreenshot("AddOtherCharges");
 			isDisplayed=true;
@@ -644,11 +623,102 @@ public class dispensary_Pages extends StartupPage {
 			Thread.sleep(5000);
 			commonEvents.fileUpload(pathOfTheFile);
 			Thread.sleep(3000);
-			isUploaded=true;
+
+			isUploaded = true;
 		}catch(Exception e) {
 			throw e;
 		}
 		return isUploaded;
 	}
-	
+
+	/**@Test20
+	 * about this method handleAlertPopup()
+	 * @param : null
+	 * @description : 
+	 * @return : boolean
+	 * @author : YAKSHA
+	 */
+	public boolean handleAlertPopup() throws Exception {
+
+		boolean isPopupHandled = false;
+
+		commonEvents.click(addInvoiceHeaderCloseButtonElement);
+
+		try {
+			commonEvents.click(operationTheatreNavMenuElement);
+			Thread.sleep(2000);
+			commonEvents.click(newOtBookingButtonElement);
+			Thread.sleep(2000);
+			if(commonEvents.isDisplayed(addNewOtButtonElement)){
+				Thread.sleep(2000);
+				commonEvents.click(addNewOtButtonElement);
+				Thread.sleep(2000);
+				commonEvents.acceptAlert();
+
+				isPopupHandled = true;
+			}
+		}catch(Exception e) {
+			throw e;
+		}
+		return isPopupHandled;
+	}
+
+	/**@Test18
+	 * about this method tickAllCheckboxesThenValidateThenUntick() 
+	 * @param : null
+	 * @description : First, tick all check boxes and validate that the all selected checkboxes are selected or not then untick them then close Add Other Charges.
+	 * @return : Boolean
+	 * @author : Yaksha
+	 */
+	public Boolean handleCheckBox() throws Exception {
+
+		boolean isCheckBoxSelected = false;
+
+		commonEvents.click(bookingOTSchedulePageCloseButtonElement);
+
+		try {
+			if(commonEvents.isDisplayed(procurementModule)) {
+				commonEvents.click(procurementModule);
+
+				commonEvents.click(procurementModuleSettingTabElement);
+				Thread.sleep(3000);
+
+				commonEvents.click(othersChargesTab);	
+				Thread.sleep(3000);
+
+				commonEvents.click(addOtherChargesButton);
+				Thread.sleep(3000);
+
+				commonEvents.click(isVATApplicableCheckBox);
+				Thread.sleep(3000);
+
+				commonEvents.click(isActiveCheckBox);
+				Thread.sleep(3000);
+
+				commonEvents.click(isDefaultCheckBox);
+
+				commonEvents.isSelected(isVATApplicableCheckBox);
+				commonEvents.isSelected(isActiveCheckBox);
+				commonEvents.isSelected(isActiveCheckBox);
+
+				Thread.sleep(3000);
+				commonEvents.click(isVATApplicableCheckBox);
+
+				Thread.sleep(3000);
+				commonEvents.click(isActiveCheckBox);
+
+				Thread.sleep(3000);
+				commonEvents.click(isDefaultCheckBox);
+
+				Thread.sleep(3000);
+				commonEvents.click(addOtherChargesCloseButtonElement);
+
+				isCheckBoxSelected = true;
+			}
+		}catch(Exception e) {
+			throw e;
+		}
+		return isCheckBoxSelected;
+	}
+
 }

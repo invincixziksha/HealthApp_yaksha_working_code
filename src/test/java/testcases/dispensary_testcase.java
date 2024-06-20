@@ -13,6 +13,7 @@ import coreUtilities.testutils.ApiHelper;
 import coreUtilities.utils.FileOperations;
 import pages.StartupPage;
 import pages.dispensary_Pages;
+import pages.yakshaHealthApp_L2_Pages;
 import testBase.AppTestBase;
 import testdata.LocatorsFactory;
 
@@ -54,6 +55,7 @@ public class dispensary_testcase extends AppTestBase
 		Assert.assertEquals(dispensary_PagesInstance.verifyURLOfThePage(),expectedData.get("pageUrl")) ;
 		Assert.assertTrue(locatorsFactoryInstance.totalDoctorTextIsPresent(driver).isDisplayed(), "total doctors text is not present in the current page, Please check manually");
 	}
+	
 	@Test(priority = 2, groups = {"sanity"}, description="verify the Dispensary module is present or not")
 	public void verifyDispensaryModuleIsPresentOrNot() throws Exception {
 		dispensary_PagesInstance = new dispensary_Pages(driver);
@@ -191,29 +193,36 @@ public class dispensary_testcase extends AppTestBase
 		Assert.assertEquals(locatorsFactoryInstance.verifyIndiaIsPresent(), expectedData.get("selectedCountryName"), "selected country is not matching with expected, please check manually!");
 	}
 	
-	@Test(priority = 18, groups = {"sanity"}, description="Auto suggestion")
-	public void handleAutoSuggestion() throws Exception {
-		dispensary_PagesInstance = new dispensary_Pages(driver);
-		locatorsFactoryInstance = new LocatorsFactory(driver);
-		Map<String, String> expectedData = new FileOperations().readJson(expectedDataFilePath, "commonStringvalue");
-		Assert.assertEquals(dispensary_PagesInstance.handleAutoSuggestions(expectedData), expectedData.get("autoSuggestionsValue")," some element is not present in the current page, Please check manually");
-//		Assert.assertEquals(locatorsFactoryInstance.ContactNumberTextFieldIsPresent(),expectedData.get("contact"),"Contact field Text is not present in the current page, Please check manually");
-	}
-	
-	@Test(priority = 19, groups = {"sanity"}, description="Taking screenshot of the current page")
+	@Test(priority = 18, groups = {"sanity"}, description="Taking screenshot of the current page")
 	public void takingScreenshotOfCurrentPage() throws Exception {
 		dispensary_PagesInstance = new dispensary_Pages(driver);
 		locatorsFactoryInstance = new LocatorsFactory(driver);
 		Assert.assertTrue(dispensary_PagesInstance.takingScreenshotOfTheCurrentPage(),"Not able to take the screenshot, please check manually");
-//		Assert.assertTrue(locatorsFactoryInstance.submitButtonIsPresent(driver).isDisplayed(),"Race TextField is not present in the current page, Please check manually");
+		Assert.assertTrue(locatorsFactoryInstance.printInvoiceButtonIsPresent(driver).isDisplayed(),"Race TextField is not present in the current page, Please check manually");
 	}
 	
-	@Test(priority = 20, groups = {"sanity"}, description="Upload a image in Scanned Images section")
+	@Test(priority = 19, groups = {"sanity"}, description="Upload a image in Scanned Images section")
 	public void uploadImageInScannedImagesSection() throws Exception {
 		dispensary_PagesInstance = new dispensary_Pages(driver);
 		locatorsFactoryInstance = new LocatorsFactory(driver);
 		Assert.assertTrue(dispensary_PagesInstance.uploadImageInScannedImagesSection(System.getProperty("user.dir") + "\\testImage\\uploadImage.png"),"Not able to upload the image, please check manually");
 		Assert.assertTrue(locatorsFactoryInstance.saveButtonIsPresent(driver).isDisplayed(),"Save button is not present in the current page, Please check manually");
+	}
+	
+	@Test(priority = 20, groups = {"sanity"}, description="Verify the alert popup is present then Click on Ok button By handling alert popup.")
+	public void  handleAlertPopup() throws Exception {
+		dispensary_PagesInstance = new dispensary_Pages(driver);
+		locatorsFactoryInstance = new LocatorsFactory(driver);
+		Assert.assertTrue(dispensary_PagesInstance.handleAlertPopup(), "Unable to handle the alert popup, please check manually");	
+	    Assert.assertTrue(locatorsFactoryInstance.addNewOTButtonIsPresent(driver).isDisplayed(), "Manage Role Tab is not present in the current page, Please check manually");
+	}
+	
+	@Test(priority = 21, groups = {"sanity"}, description="First, tick all check boxes and validate that the all selected checkboxes are selected or not then untick them then close Add Other Charges.")
+	public void handleCheckBox() throws Exception {
+		dispensary_PagesInstance = new dispensary_Pages(driver);
+		locatorsFactoryInstance = new LocatorsFactory(driver);
+		Assert.assertTrue(dispensary_PagesInstance.handleCheckBox(),"Any of the checkbox is not present, please check manually");
+		Assert.assertTrue(locatorsFactoryInstance.addOtherChargesButtonIsPresent(driver).isDisplayed(),"Submit button is not present in the current page, Please check manually");
 	}
 	
 	@AfterClass(alwaysRun = true)

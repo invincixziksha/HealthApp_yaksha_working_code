@@ -76,6 +76,13 @@ public class LocatorsFactory extends StartupPage {
 	By raceField = By.id("race");	
 	By listByPatientStatusRadioButton = By.xpath("//input[@type='radio']");	
 	By saveButton = By.xpath("//button[.='Save']");
+	
+	By okButton = By.xpath("//button[@id='registerPatient']");
+	By printInvoiceButton = By.xpath("//input[@value='Print Invoice']");
+	By addNewOtButtonElement = By.xpath("//input[@value='Add New OT']");
+	By addOtherChargesButton = By.xpath("//input[@value='Add Other Charges']");
+	
+	
 	public LocatorsFactory(WebDriver driver) {
 		super(driver);
 
@@ -436,5 +443,25 @@ public class LocatorsFactory extends StartupPage {
 	public WebElement saveButtonIsPresent(WebDriver driver) {
 		WebElement saveButtonWebElement = driver.findElement(saveButton);
 		return saveButtonWebElement;
+	}
+	
+	public WebElement okButtonIsPresent(WebDriver driver) {
+		WebElement okButtonWebElement = driver.findElement(okButton);
+		return okButtonWebElement;
+	}
+	
+	public WebElement printInvoiceButtonIsPresent(WebDriver driver) {
+		WebElement printInvoiceButtonWebElement = driver.findElement(printInvoiceButton);
+		return printInvoiceButtonWebElement;
+	}
+	
+	public WebElement addNewOTButtonIsPresent(WebDriver driver) {
+		WebElement addNewOTButtonWebElement = driver.findElement(addNewOtButtonElement);
+		return addNewOTButtonWebElement;
+	}
+	
+	public WebElement addOtherChargesButtonIsPresent(WebDriver driver) {
+		WebElement addOtherChargesButtonWebElement = driver.findElement(addOtherChargesButton);
+		return addOtherChargesButtonWebElement;
 	}
 }
