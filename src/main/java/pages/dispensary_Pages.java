@@ -544,7 +544,7 @@ public class dispensary_Pages extends StartupPage {
 	 */
 	public String verifyIndiaIsSelectedFromCountryDropdown(Map<String, String> expectedData) throws Exception {
 
-		String selectedCountryName = "";
+			String selectedCountryName = "" ;
 		
 		commonEvents.click(saleSubModule);
 		commonEvents.performAltN();
@@ -552,14 +552,13 @@ public class dispensary_Pages extends StartupPage {
 		try {
 			commonEvents.selectByVisibleText(countryDropdownByElement, expectedData.get("selectedCountryName"));
 			selectedCountryName = commonEvents.getFirstSelectedOptionFromDropdown(countryDropdownByElement, "elementName", "pageName");
-//			selectedCountryName = commonEvents.getAttribute(countryDropdownByElement, "value");
 			System.out.println("first selected option from country dropdown : " + selectedCountryName );
-			commonEvents.click(xButton);
+//			commonEvents.click(xButton);
 			return selectedCountryName;
-			
 		}catch(Exception e) {
 			throw e;
 		}
+		
 	}
 	
 	/**@Test18
@@ -597,6 +596,7 @@ public class dispensary_Pages extends StartupPage {
 	 */
 	public Boolean takingScreenshotOfTheCurrentPage() throws Exception {
 		boolean isDisplayed = false;
+		commonEvents.click(xButton);
 		try {
 			commonEvents.takeScreenshot("AddOtherCharges");
 			isDisplayed=true;
