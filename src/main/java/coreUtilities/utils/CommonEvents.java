@@ -141,6 +141,18 @@ public class CommonEvents
 	public WebElement findElement(By locator) {
 		return driver.findElement(locator);
 	}
+	
+	/**
+	 * This method is responsible to find the element from the DOM. 
+	 * If found then it'll return true else it'll return false.
+	 * In this case it'll try to find the element in the entire DOM, so it might consume sometime
+	 * 
+	 * @param by
+	 * @return boolean
+	 */
+	public List<WebElement> findElements(By locator) {
+		return driver.findElements(locator);
+	}
 
 	/**
 	 * This method is responsible to find the element from the DOM. 

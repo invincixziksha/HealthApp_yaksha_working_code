@@ -191,14 +191,14 @@ public class dispensary_testcase extends AppTestBase
 		Assert.assertEquals(locatorsFactoryInstance.verifyIndiaIsPresent(), expectedData.get("selectedCountryName"), "selected country is not matching with expected, please check manually!");
 	}
 	
-//	@Test(priority = 18, groups = {"sanity"}, description="Auto suggestion")
-//	public void handleAutoSuggestion() throws Exception {
-//		dispensary_PagesInstance = new dispensary_Pages(driver);
-//		locatorsFactoryInstance = new LocatorsFactory(driver);
-//		Map<String, String> expectedData = new FileOperations().readJson(expectedDataFilePath, "commonStringvalue");
-//		Assert.assertEquals(dispensary_PagesInstance.handleAutoSuggestions(expectedData), expectedData.get("autoSuggestionsValue")," some element is not present in the current page, Please check manually");
-////		Assert.assertEquals(locatorsFactoryInstance.ContactNumberTextFieldIsPresent(),expectedData.get("contact"),"Contact field Text is not present in the current page, Please check manually");
-//	}
+	@Test(priority = 18, groups = {"sanity"}, description="Auto suggestion")
+	public void handleAutoSuggestion() throws Exception {
+		dispensary_PagesInstance = new dispensary_Pages(driver);
+		locatorsFactoryInstance = new LocatorsFactory(driver);
+		Map<String, String> expectedData = new FileOperations().readJson(expectedDataFilePath, "commonStringvalue");
+		Assert.assertEquals(dispensary_PagesInstance.handleAutoSuggestions(expectedData), expectedData.get("autoSuggestionsValue")," some element is not present in the current page, Please check manually");
+//		Assert.assertEquals(locatorsFactoryInstance.ContactNumberTextFieldIsPresent(),expectedData.get("contact"),"Contact field Text is not present in the current page, Please check manually");
+	}
 	
 	@Test(priority = 19, groups = {"sanity"}, description="Taking screenshot of the current page")
 	public void takingScreenshotOfCurrentPage() throws Exception {
@@ -215,7 +215,6 @@ public class dispensary_testcase extends AppTestBase
 		Assert.assertTrue(dispensary_PagesInstance.uploadImageInScannedImagesSection(System.getProperty("user.dir") + "\\testImage\\uploadImage.png"),"Not able to upload the image, please check manually");
 		Assert.assertTrue(locatorsFactoryInstance.saveButtonIsPresent(driver).isDisplayed(),"Save button is not present in the current page, Please check manually");
 	}
-	
 	
 	@AfterClass(alwaysRun = true)
 	public void tearDown() {

@@ -1,5 +1,6 @@
 package pages;
 
+import java.util.List;
 import java.util.Map;
 
 import org.openqa.selenium.By;
@@ -87,7 +88,9 @@ public class dispensary_Pages extends StartupPage {
 	By countryDropdownByElement = By.xpath("//select[@id='ddlCountry']");
 	By dispensarySaleTabElement = By.xpath("//a[.=' Sale ']");
 	
-	By selectMedicineSearchTextBoxElement = By.xpath("//input[@id='item-box']");
+	By patientSearchTextBoxElement = By.xpath("//input[@id='patient-search']");
+	By listOfpatientlElement = By.xpath("//input[@id='patient-search']//");
+	
 
 
 
@@ -557,8 +560,7 @@ public class dispensary_Pages extends StartupPage {
 			return selectedCountryName;
 		}catch(Exception e) {
 			throw e;
-		}
-		
+		}	
 	}
 	
 	/**@Test18
@@ -569,22 +571,33 @@ public class dispensary_Pages extends StartupPage {
 	 * @author : Yaksha
 	 */
 	public Boolean handleAutoSuggestions(Map<String, String> expectedData) throws Exception {
-		boolean autoSuggestio = false;
-		
+		boolean autoSuggestion = false;
+		commonEvents.click(xButton);
 		try {
-			if(commonEvents.isDisplayed(selectMedicineSearchTextBoxElement)) {
-				WebElement medicineSearchTextboxWebElement = commonEvents.findElement(selectMedicineSearchTextBoxElement);
-				commonEvents.sendKeys(selectMedicineSearchTextBoxElement, expectedData.get("autoSuggestionsValue"));
+			if(commonEvents.isDisplayed(patientSearchTextBoxElement)) {
+//				WebElement medicineSearchTextboxWebElement = commonEvents.findElement(patientSearchTextBoxElement);
+				commonEvents.sendKeys(patientSearchTextBoxElement, expectedData.get("autoSuggestionsValue"));
+				Thread.sleep(10000);
+				List<WebElement> allAutosuggestion = commonEvents.findElements(listOfpatientlElement);
+				
+				for(int i = 0 ; i < allAutosuggestion.size() ; i++)
+				{
+					if(allAutosuggestion.get(i).getText().equalsIgnoreCase("Sonia Gandhi [2312000010]"))
+					{
+						allAutosuggestion.get(i).click();
+						break;
+					}
+				}
 				
 				
 				Thread.sleep(3000);
 				
-				autoSuggestio = true;
+				autoSuggestion = true;
 			}
 		}catch(Exception e) {
 			throw e;
 		}	
-		return autoSuggestio;
+		return autoSuggestion;
 	}
 	
 	/**@Test19
@@ -596,7 +609,7 @@ public class dispensary_Pages extends StartupPage {
 	 */
 	public Boolean takingScreenshotOfTheCurrentPage() throws Exception {
 		boolean isDisplayed = false;
-		commonEvents.click(xButton);
+//		commonEvents.click(xButton);
 		try {
 			commonEvents.takeScreenshot("AddOtherCharges");
 			isDisplayed=true;
@@ -637,4 +650,5 @@ public class dispensary_Pages extends StartupPage {
 		}
 		return isUploaded;
 	}
+	
 }
