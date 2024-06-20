@@ -58,14 +58,14 @@ public class dispensary_Pages extends StartupPage {
 	By mainDispensaryOption = By.xpath("//option[.='Main Dispensary']");
 	By mainStoreOption = By.xpath("//option[.='Main store']");
 	By requisitionSubModule = By.xpath("//a[.='Requisition']");
-	By  createRequisitionButton = By.xpath("//button[@class='btn btn-primary']");
+	By createRequisitionButton = By.xpath("//button[@class='btn btn-primary']");
 	By itemNameTextfield=By.id("itemName0");
-	By  cancelButton = By.xpath("//input[@value='Cancel']");
-	By  viewButton = By.xpath("(//a[contains(text(),'View')])[1]");	
-	By  medicineNameField = By.xpath("//table//tr[@style='text-align:center']//td");
-	By  printButton = By.xpath("//a[@class='btn btn-default']");
-	By  requisitionsListButton = By.xpath("//a[@class='btn btn-primary']");
-	By  RequisitionPageTitle = By.xpath("//b[.=' REQUISITION DETAILS PRINT']");
+	By cancelButton = By.xpath("//input[@value='Cancel']");
+	By viewButton = By.xpath("(//a[contains(text(),'View')])[1]");	
+	By medicineNameField = By.xpath("//table//tr[@style='text-align:center']//td");
+	By printButton = By.xpath("//a[@class='btn btn-default']");
+	By requisitionsListButton = By.xpath("//a[@class='btn btn-primary']");
+	By RequisitionPageTitle = By.xpath("//b[.=' REQUISITION DETAILS PRINT']");
 	By socialServiceModule = By.xpath("//span[.='SocialService']");	
 	By registerNewSSUPatientButton = By.xpath("//a[.=' Register New SSU Patient']");
 	By addressTextField = By.id("address");
@@ -76,7 +76,22 @@ public class dispensary_Pages extends StartupPage {
 	By addNewInvoiceHeaderButton = By.xpath("//input[@value='Add New Invoice Header']");
 	By chooseFileButton = By.id("img");
 
+	By shortCutKeysArrowIconElement = By.xpath("//img[@src='../../../themes/theme-default/images/arrows.svg']");
+	By salesPageTooltipsValueElement = By.xpath("//div[@class='keydropdown']//ul");
+	By dispensarySalesNavigationMenuElement = By.xpath("//span[.='Sale']");
+
+
+	By appointmentTab=By.xpath("(//span[.='Appointment'])[1]");
+	By keyboardButton=By.xpath("//div[@title='Shortcut Keys']");
+	By tooltip=By.xpath("//li[contains(text(),'+')]");
+	By countryDropdownByElement = By.xpath("//select[@id='ddlCountry']");
+	By dispensarySaleTabElement = By.xpath("//a[.=' Sale ']");
 	
+	By selectMedicineSearchTextBoxElement = By.xpath("//input[@id='item-box']");
+
+
+
+
 	String pageName = this.getClass().getSimpleName();
 	public dispensary_Pages(WebDriver driver) {
 		super(driver);
@@ -198,7 +213,7 @@ public class dispensary_Pages extends StartupPage {
 		return patientConsumptionSubModuleisDisplayed;
 	}
 
-	
+
 	/**@Test4
 	 * about this method scrollToButtomAndVerifytheFields() 
 	 * @param : null
@@ -214,7 +229,7 @@ public class dispensary_Pages extends StartupPage {
 					commonEvents.isDisplayed(discardButtonElement) &&
 					commonEvents.isDisplayed(invoiceHistoryTextElement) &&
 					commonEvents.isDisplayed(creditLimitsAndBalancesTextElement) ) {
-				    creditLimitsAndBalancesTextElementIsDisplayed=true;
+				creditLimitsAndBalancesTextElementIsDisplayed=true;
 			}
 		}catch(Exception e) {
 			throw e;
@@ -222,7 +237,7 @@ public class dispensary_Pages extends StartupPage {
 		return creditLimitsAndBalancesTextElementIsDisplayed;
 	}
 
-	
+
 
 	/**@Test5
 	 * about this method performTheKeyboardOperationToOpenthePopup() 
@@ -336,8 +351,8 @@ public class dispensary_Pages extends StartupPage {
 		}	
 		return isDisplayed;
 	}
-	
-	
+
+
 	/**@Test9
 	 * about this method checkMainDispensaryIsSelectedFromFilterStockDropdown() 
 	 * @param : null
@@ -359,8 +374,8 @@ public class dispensary_Pages extends StartupPage {
 		}	
 		return isSelected;
 	}
-	
-	
+
+
 	/**@Test10
 	 * about this method validateCreateRequisitionButtonIsPresent() 
 	 * @param : null
@@ -382,8 +397,8 @@ public class dispensary_Pages extends StartupPage {
 		}	
 		return createRequisitionButtonIsDisplayed;
 	}
-	
-	
+
+
 	/**@Test11
 	 * about this method verifyNewItemTextFieldIsPresent() 
 	 * @param : null
@@ -394,17 +409,17 @@ public class dispensary_Pages extends StartupPage {
 	public Boolean verifyNewItemTextFieldIsPresent() throws Exception {
 		boolean itemNameTextfieldIsDisplayed = false;
 		try {
-				commonEvents.click(createRequisitionButton);
-				if(commonEvents.isDisplayed(itemNameTextfield)){
-					itemNameTextfieldIsDisplayed=true;
-				}
+			commonEvents.click(createRequisitionButton);
+			if(commonEvents.isDisplayed(itemNameTextfield)){
+				itemNameTextfieldIsDisplayed=true;
+			}
 		}catch(Exception e) {
 			throw e;
 		}	
 		return itemNameTextfieldIsDisplayed;
 	}
-	
-			
+
+
 	/**@Test12
 	 * about this method verifyRequisitionDetailsPrintPageIsDisplayed() 
 	 * @param : null
@@ -415,21 +430,21 @@ public class dispensary_Pages extends StartupPage {
 	public Boolean verifyRequisitionDetailsPrintPageIsDisplayed() throws Exception {
 		boolean RequisitionPageTitleIsDisplayed = false;
 		try {
-			  commonEvents.click(cancelButton);
-			  commonEvents.click(viewButton);
-			  if(commonEvents.isDisplayed(medicineNameField) &&
-			  commonEvents.isDisplayed(printButton) &&
-			  commonEvents.isDisplayed(RequisitionPageTitle)) {
-				  RequisitionPageTitleIsDisplayed=true;
-			  }
+			commonEvents.click(cancelButton);
+			commonEvents.click(viewButton);
+			if(commonEvents.isDisplayed(medicineNameField) &&
+					commonEvents.isDisplayed(printButton) &&
+					commonEvents.isDisplayed(RequisitionPageTitle)) {
+				RequisitionPageTitleIsDisplayed=true;
+			}
 
 		}catch(Exception e) {
 			throw e;
 		}	
 		return RequisitionPageTitleIsDisplayed;
 	}
-	
-	
+
+
 	/**@Test13
 	 * about this method getTheMedicineNameFromRequisitionDetailsPrintPage() 
 	 * @param : null
@@ -441,17 +456,17 @@ public class dispensary_Pages extends StartupPage {
 		boolean medicineNameIsDisplayed = false;
 		try {
 			if(commonEvents.isDisplayed(medicineNameField)) {
-			String medicineNameFieldValue=commonEvents.getText(medicineNameField);
-			System.out.println("Medicine Name is  : " + medicineNameFieldValue);
-			medicineNameIsDisplayed=true;
+				String medicineNameFieldValue=commonEvents.getText(medicineNameField);
+				System.out.println("Medicine Name is  : " + medicineNameFieldValue);
+				medicineNameIsDisplayed=true;
 			}
 		}catch(Exception e) {
 			throw e;
 		}	
 		return medicineNameIsDisplayed;
 	}
-	
-	
+
+
 	/**@Test14
 	 * about this method getThePlaceHolderNameOfAddressTextfiled() 
 	 * @param : null
@@ -474,8 +489,8 @@ public class dispensary_Pages extends StartupPage {
 		}	
 		return placeHolderName;
 	}
-	
-	
+
+
 	/**@Test15
 	 * about this method closeNewSSUPatientRegistrationPopupByUsingJsExecutor() 
 	 * @param : null
@@ -487,41 +502,117 @@ public class dispensary_Pages extends StartupPage {
 		boolean IsDisplayed = false;
 		try {
 			if(commonEvents.isDisplayed(xButton)) {
-			  commonEvents.jsClick(xButton);
-			  Thread.sleep(3000);
-			  IsDisplayed=true;
+				commonEvents.jsClick(xButton);
+				Thread.sleep(3000);
+				IsDisplayed=true;
 			}
 		}catch(Exception e) {
 			throw e;
 		}	
 		return IsDisplayed;
 	}
+
+	/**@Test16
+	 * about this method verifyToolTipOfAnElement()
+	 * @param : null
+	 * @description :go to appointmentTab and verify the TOOLTIP value/text
+	 * @return : String
+	 * @author : YAKSHA
+	 */
+	public String verifyToolTipOfAnElement() throws Exception {
+		String tooltipText="";
+		try {
+			commonEvents.click(appointmentTab);
+			commonEvents.click(morningCounter);
+			commonEvents.waitTillElementVisible(keyboardButton,50);
+			commonEvents.mouseHoverClick(keyboardButton);
+			commonEvents.waitTillElementVisible(tooltip,50);
+			tooltipText=commonEvents.getText(tooltip);
+			System.out.println("Tooltip text value is:" +tooltipText);
+		}catch(Exception e) {
+			throw e;
+		}
+		return tooltipText;
+	}
 	
-	/**@Test20
+	/**@Test17
+	 * about this method verifyIndiaIsSelectedFromCountryDropdown() 
+	 * @param : get the data from json file as type Map<String, String> expectedData
+	 * @description : it will select the country as per json expected data
+	 * @return : String
+	 * @author : Yaksha
+	 */
+	public String verifyIndiaIsSelectedFromCountryDropdown(Map<String, String> expectedData) throws Exception {
+
+		String selectedCountryName = "";
+		
+		commonEvents.click(saleSubModule);
+		commonEvents.performAltN();
+
+		try {
+			commonEvents.selectByVisibleText(countryDropdownByElement, expectedData.get("selectedCountryName"));
+			selectedCountryName = commonEvents.getFirstSelectedOptionFromDropdown(countryDropdownByElement, "elementName", "pageName");
+//			selectedCountryName = commonEvents.getAttribute(countryDropdownByElement, "value");
+			System.out.println("first selected option from country dropdown : " + selectedCountryName );
+			commonEvents.click(xButton);
+			return selectedCountryName;
+			
+		}catch(Exception e) {
+			throw e;
+		}
+	}
+	
+	/**@Test18
+	 * about this method handleAutoSuggestions() 
+	 * @param : null
+	 * @description : Close this "New SSU Patient Registration" popup by using javaScript.
+	 * @return : Boolean
+	 * @author : Yaksha
+	 */
+	public Boolean handleAutoSuggestions(Map<String, String> expectedData) throws Exception {
+		boolean autoSuggestio = false;
+		
+		try {
+			if(commonEvents.isDisplayed(selectMedicineSearchTextBoxElement)) {
+				WebElement medicineSearchTextboxWebElement = commonEvents.findElement(selectMedicineSearchTextBoxElement);
+				commonEvents.sendKeys(selectMedicineSearchTextBoxElement, expectedData.get("autoSuggestionsValue"));
+				
+				
+				Thread.sleep(3000);
+				
+				autoSuggestio = true;
+			}
+		}catch(Exception e) {
+			throw e;
+		}	
+		return autoSuggestio;
+	}
+	
+	/**@Test19
 	 * about this method takingScreenshotOfTheCurrentPage() 
 	 * @param : null
 	 * @description : Taking screenshot of the current page.
 	 * @return : Boolean
-	 * @author : Yaksha
+	 * @author : YAKSHA
 	 */
 	public Boolean takingScreenshotOfTheCurrentPage() throws Exception {
 		boolean isDisplayed = false;
 		try {
-				commonEvents.takeScreenshot("AddOtherCharges");
-				isDisplayed=true;
+			commonEvents.takeScreenshot("AddOtherCharges");
+			isDisplayed=true;
 
 		}catch(Exception e) {
 			throw e;
 		}
 		return isDisplayed;
 	}
-	
-	/**@Test21
+
+	/**@Test20
 	 * about this method uploadImageInScannedImagesSection() 
 	 * @param : Map<String, String>
 	 * @description : Upload a image in Scanned Images section.
 	 * @return : Boolean
-	 * @author : Yaksha
+	 * @author : YAKSHA
 	 */
 	public Boolean uploadImageInScannedImagesSection(String pathOfTheFile) throws Exception {
 		boolean isUploaded = false;
@@ -546,5 +637,4 @@ public class dispensary_Pages extends StartupPage {
 		}
 		return isUploaded;
 	}
-	
 }

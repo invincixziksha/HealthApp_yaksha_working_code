@@ -172,7 +172,35 @@ public class dispensary_testcase extends AppTestBase
 		Assert.assertTrue(locatorsFactoryInstance.listByPatientStatusRadioButtonIsPresent(driver).isSelected(), "RadioButton is not present in the current page, Please check manually");
 	}
 	
-	@Test(priority = 20, groups = {"sanity"}, description="Taking screenshot of the current page")
+	@Test(priority = 16, groups = {"sanity"}, description="Verify tooltip of an element which is present inside the Appointment page.")
+	public void  verifyTooltipOfAnElement() throws Exception {
+		dispensary_PagesInstance = new dispensary_Pages(driver);
+		locatorsFactoryInstance = new LocatorsFactory(driver);
+		Map<String, String> expectedData = new FileOperations().readJson(expectedDataFilePath, "KeyBoardTooltip");
+		Assert.assertEquals(dispensary_PagesInstance.verifyToolTipOfAnElement(), expectedData.get("TooltipValue"),"Verification failed, please check manually");
+	    Assert.assertTrue(locatorsFactoryInstance.tooltipTextIsPresent(driver).isDisplayed(), "Tooltip is not present in the current page, Please check manually");
+	}
+	
+	@Test(priority = 17, groups = {"sanity"}, description="Simply select India  from the country dropdown menu and validate India is selected or not.")
+	public void verifyIndiaIsSelectedFromCountryDropdown() throws Exception {
+		dispensary_PagesInstance = new dispensary_Pages(driver);
+		locatorsFactoryInstance = new LocatorsFactory(driver);
+
+		Map<String, String> expectedData = new FileOperations().readJson(expectedDataFilePath, "addNewPatientPopup");
+		Assert.assertEquals(dispensary_PagesInstance.verifyIndiaIsSelectedFromCountryDropdown(expectedData), expectedData.get("selectedCountryName"), "selected country is not matching with expected, please check manually!");
+		Assert.assertEquals(locatorsFactoryInstance.verifyIndiaIsPresent(), expectedData.get("selectedCountryName"), "selected country is not matching with expected, please check manually!");
+	}
+	
+//	@Test(priority = 18, groups = {"sanity"}, description="Auto suggestion")
+//	public void handleAutoSuggestion() throws Exception {
+//		dispensary_PagesInstance = new dispensary_Pages(driver);
+//		locatorsFactoryInstance = new LocatorsFactory(driver);
+//		Map<String, String> expectedData = new FileOperations().readJson(expectedDataFilePath, "commonStringvalue");
+//		Assert.assertEquals(dispensary_PagesInstance.handleAutoSuggestions(expectedData), expectedData.get("autoSuggestionsValue")," some element is not present in the current page, Please check manually");
+////		Assert.assertEquals(locatorsFactoryInstance.ContactNumberTextFieldIsPresent(),expectedData.get("contact"),"Contact field Text is not present in the current page, Please check manually");
+//	}
+	
+	@Test(priority = 19, groups = {"sanity"}, description="Taking screenshot of the current page")
 	public void takingScreenshotOfCurrentPage() throws Exception {
 		dispensary_PagesInstance = new dispensary_Pages(driver);
 		locatorsFactoryInstance = new LocatorsFactory(driver);
@@ -180,7 +208,7 @@ public class dispensary_testcase extends AppTestBase
 //		Assert.assertTrue(locatorsFactoryInstance.submitButtonIsPresent(driver).isDisplayed(),"Race TextField is not present in the current page, Please check manually");
 	}
 	
-	@Test(priority = 21, groups = {"sanity"}, description="Upload a image in Scanned Images section")
+	@Test(priority = 20, groups = {"sanity"}, description="Upload a image in Scanned Images section")
 	public void uploadImageInScannedImagesSection() throws Exception {
 		dispensary_PagesInstance = new dispensary_Pages(driver);
 		locatorsFactoryInstance = new LocatorsFactory(driver);

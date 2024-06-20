@@ -168,5 +168,4 @@ public class FileOperations
 				.forEach(file->absolutePaths.add(file.getAbsolutePath()));
 		return absolutePaths;
 	}
-
 }
