@@ -31,8 +31,17 @@
 		"autoSuggestionsValue":"Sonia"
 	},
     "NewSSUPatientRegistrationPopup":{
+		"firstName":"Abhisek",
+		"middleName":"No",
+		"lastName":"Mohanta",
+		"age":"24",
+		"phoneNo.":"7008777971",
+		"invalidPhoneNo.":"abhisek",
+		"invalidPhoneNoError":"Primary Phone is not proper",
+		"warnningMessage":"Membership Scheme(s) is Mandatory.",
 		"AddressFieldPlaceHolder":"Address",
-		"RaceFieldPlaceHolder":"race"
+		"RaceFieldPlaceHolder":"race",
+		"chooseTargetGroupDropdownFieldPlaceHolder":"Choose Target Group"
 	},
 	"allExpectedCountryOptions": [
         "Nepal", "Afghanistan", "Albania", "Algeria", "Andorra", "Angola",
@@ -69,5 +78,9 @@
         "United Kingdom", "United States", "Uruguay", "Uzbekistan", "Vanuatu",
         "Venezuela, Bolivarian Republic of", "Vietnam", "Western Sahara",  
         "Yemen", "Zambia", "Zimbabwe", "South Korea"
-    ]
+    ],
+    "ProcurementModule":{
+		"shortNameTextField":"Yakshaa",
+		"searchBarData":"Accounts"
+	}
 }
