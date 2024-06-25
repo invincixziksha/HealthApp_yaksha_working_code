@@ -42,10 +42,10 @@ public class yakshaHealthApp_L2_Pages extends StartupPage {
 	public boolean loginToTheYakshahealthApp(Map<String, String> loginData) throws Exception {
 		boolean isDisplayed=false;
 		try {
-			commonEvents.sendKeys(usernameTextfield,loginData.get("username"));	
-			commonEvents.sendKeys(passwordTextfield,loginData.get("password"));	
-			commonEvents.click(signInButton);
-			if(commonEvents.isDisplayed(doctorTab)){
+			userActions.sendKeys(usernameTextfield,loginData.get("username"));	
+			userActions.sendKeys(passwordTextfield,loginData.get("password"));	
+			userActions.click(signInButton);
+			if(userActions.isDisplayed(doctorTab)){
 				isDisplayed=true;
 			}
 		}catch(Exception e) {
@@ -64,13 +64,13 @@ public class yakshaHealthApp_L2_Pages extends StartupPage {
 	public boolean searchForPatientAndViewDetailsOfSelectedPatient(Map<String, String> expectedData) throws Exception {
 		boolean isClickable=false;
 		try {
-			commonEvents.click(billingTab);
-			commonEvents.waitTillElementVisible(new1Counter, 10);
-			commonEvents.jsClick(new1Counter);
-			commonEvents.click(ipBillingTab);
-			commonEvents.sendKeys(searchBar,expectedData.get("SearchBarName"));	
-			if(commonEvents.isDisplayed(viewDetailsButton)){
-				commonEvents.click(viewDetailsButton);
+			userActions.click(billingTab);
+			userActions.waitTillElementVisible(new1Counter, 10);
+			userActions.jsClick(new1Counter);
+			userActions.click(ipBillingTab);
+			userActions.sendKeys(searchBar,expectedData.get("SearchBarName"));	
+			if(userActions.isDisplayed(viewDetailsButton)){
+				userActions.click(viewDetailsButton);
 				isClickable = true;		
 			}
 		}catch(Exception e) {
@@ -88,13 +88,13 @@ public class yakshaHealthApp_L2_Pages extends StartupPage {
 	public boolean tickallCheckBoxesThenUntickthemThenCloseThatPopup() throws Exception {
 		boolean isClickable=false;
 		try {
-			commonEvents.click(editItemsButton);
-			commonEvents.waitTillElementVisible(checkBox,50);
-			commonEvents.jsClick(checkBox);
-			commonEvents.waitTillElementVisible(checkBox,50);
-			commonEvents.jsClick(checkBox);
-			if(commonEvents.isDisplayed(cancelButton)){
-				commonEvents.click(cancelButton);
+			userActions.click(editItemsButton);
+			userActions.waitTillElementVisible(checkBox,50);
+			userActions.jsClick(checkBox);
+			userActions.waitTillElementVisible(checkBox,50);
+			userActions.jsClick(checkBox);
+			if(userActions.isDisplayed(cancelButton)){
+				userActions.click(cancelButton);
 				isClickable=true;
 			}
 		}catch(Exception e) {
@@ -114,10 +114,10 @@ public class yakshaHealthApp_L2_Pages extends StartupPage {
 	public boolean takeScreenshotOfTheDoctorPage() throws Exception {
 		boolean isDisplayed=false;
 		try {
-			if(commonEvents.isDisplayed(doctorTab)){
-				commonEvents.click(doctorTab);
+			if(userActions.isDisplayed(doctorTab)){
+				userActions.click(doctorTab);
 				Thread.sleep(5000);
-				commonEvents.takeScreenshot("DoctorsPage");
+				userActions.takeScreenshot("DoctorsPage");
 				isDisplayed=true;
 			}
 		}catch(Exception e) {
@@ -136,11 +136,11 @@ public class yakshaHealthApp_L2_Pages extends StartupPage {
 	public boolean deactivateUserByManagingAlertPopup() throws Exception {
 		boolean isHandled=false;
 		try {
-			 commonEvents.click(settingsButton);
-			 commonEvents.click(securityButton);
-			 if(commonEvents.isDisplayed(deactivateButton)){
-				 commonEvents.click(deactivateButton);
-				 commonEvents.dismissAlert();
+			 userActions.click(settingsButton);
+			 userActions.click(securityButton);
+			 if(userActions.isDisplayed(deactivateButton)){
+				 userActions.click(deactivateButton);
+				 userActions.dismissAlert();
 				 isHandled=true;
 			 }
 		}catch(Exception e) {
@@ -159,11 +159,11 @@ public class yakshaHealthApp_L2_Pages extends StartupPage {
 	public String verifyToolTipOfAnElement() throws Exception {
 		String tooltipText="";
 		try {
-			 commonEvents.click(appointmentTab);
-			 commonEvents.waitTillElementVisible(keyboardButton,50);
-			 commonEvents.mouseHoverClick(keyboardButton);
-			 commonEvents.waitTillElementVisible(tooltip,50);
-			 tooltipText=commonEvents.getText(tooltip);
+			 userActions.click(appointmentTab);
+			 userActions.waitTillElementVisible(keyboardButton,50);
+			 userActions.mouseHoverClick(keyboardButton);
+			 userActions.waitTillElementVisible(tooltip,50);
+			 tooltipText=userActions.getText(tooltip);
 			 System.out.println("Tooltip text value is:" +tooltipText);
 		}catch(Exception e) {
 			throw e;

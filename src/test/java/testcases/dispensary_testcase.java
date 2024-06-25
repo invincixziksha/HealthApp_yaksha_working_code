@@ -13,7 +13,6 @@ import coreUtilities.testutils.ApiHelper;
 import coreUtilities.utils.FileOperations;
 import pages.StartupPage;
 import pages.dispensary_Pages;
-import pages.yakshaHealthApp_L2_Pages;
 import testBase.AppTestBase;
 import testdata.LocatorsFactory;
 

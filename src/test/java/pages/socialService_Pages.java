@@ -87,22 +87,22 @@ public class socialService_Pages extends StartupPage {
 	public boolean loginToHealthAppByGivenValidCredetial(Map<String, String> expectedData) throws Exception {
 		Boolean textIsDisplayed = false;
 		try {
-			WebElement usernametextFieldWebElement = commonEvents.findElement(usernameTextbox);
-			commonEvents.highlightElement(usernametextFieldWebElement);
-			commonEvents.sendKeys(usernameTextbox,expectedData.get("username"));
+			WebElement usernametextFieldWebElement = userActions.findElement(usernameTextbox);
+			userActions.highlightElement(usernametextFieldWebElement);
+			userActions.sendKeys(usernameTextbox,expectedData.get("username"));
 
-			WebElement passwordtextFieldWebElement = commonEvents.findElement(passwordTextbox);
-			commonEvents.highlightElement(passwordtextFieldWebElement);
-			commonEvents.sendKeys(passwordTextbox,expectedData.get("password"));
+			WebElement passwordtextFieldWebElement = userActions.findElement(passwordTextbox);
+			userActions.highlightElement(passwordtextFieldWebElement);
+			userActions.sendKeys(passwordTextbox,expectedData.get("password"));
 
-			WebElement signinButtonWebElement = commonEvents.findElement(signInButton);
-			commonEvents.highlightElement(signinButtonWebElement);
-			commonEvents.click(signInButton);
+			WebElement signinButtonWebElement = userActions.findElement(signInButton);
+			userActions.highlightElement(signinButtonWebElement);
+			userActions.click(signInButton);
 
-			if(commonEvents.isDisplayed(registeredPatientTextElement))
+			if(userActions.isDisplayed(registeredPatientTextElement))
 			{   
-				WebElement registeredPatientTextWebElement = commonEvents.findElement(registeredPatientTextElement);
-				commonEvents.highlightElement(registeredPatientTextWebElement);
+				WebElement registeredPatientTextWebElement = userActions.findElement(registeredPatientTextElement);
+				userActions.highlightElement(registeredPatientTextWebElement);
 				textIsDisplayed=true;
 			}
 		}catch(Exception e) {
@@ -121,7 +121,7 @@ public class socialService_Pages extends StartupPage {
 	public String verifyTitleOfThePage() throws Exception {
 		String pageTitle = "";
 		try {
-			pageTitle = commonEvents.getTitle();
+			pageTitle = userActions.getTitle();
 			System.out.println("title of the page is  :" + pageTitle );
 		}catch(Exception e) {
 			throw e;
@@ -139,7 +139,7 @@ public class socialService_Pages extends StartupPage {
 	public String verifyURLOfThePage() throws Exception {
 		String urlofThepage = "";
 		try {
-			urlofThepage = commonEvents.getCurrentUrl();
+			urlofThepage = userActions.getCurrentUrl();
 			System.out.println("URL of the page is  :" + urlofThepage );
 		}catch(Exception e) {
 			throw e;
@@ -157,8 +157,8 @@ public class socialService_Pages extends StartupPage {
 	public Boolean verifySocialServiceModuleisPresentAndGoToSocialServiceTab() throws Exception {
 		boolean isDisplayed = false;
 		try {
-			if(commonEvents.isDisplayed(socialServiceModule)){
-				commonEvents.click(socialServiceModule);
+			if(userActions.isDisplayed(socialServiceModule)){
+				userActions.click(socialServiceModule);
 				Thread.sleep(3000);
 				isDisplayed=true;
 			}
@@ -180,7 +180,7 @@ public class socialService_Pages extends StartupPage {
 	public Boolean registerNewSSUPatientButtonisPresent() throws Exception {
 		boolean registerNewSSUPatientButtonisDisplayed = false;
 		try {
-			if(commonEvents.isDisplayed(registerNewSSUPatientButton)) {
+			if(userActions.isDisplayed(registerNewSSUPatientButton)) {
 				registerNewSSUPatientButtonisDisplayed=true;	
 			}
 		}catch(Exception e) {
@@ -199,7 +199,7 @@ public class socialService_Pages extends StartupPage {
 	public Boolean searchbarIsPresentInsideTheSocialServiceTab() throws Exception {
 		boolean searchBarIsDisplayed = false;
 		try {
-			if(commonEvents.isDisplayed(searchBar)){
+			if(userActions.isDisplayed(searchBar)){
 				searchBarIsDisplayed=true;
 			}
 		}catch(Exception e) {
@@ -219,8 +219,8 @@ public class socialService_Pages extends StartupPage {
 	public Boolean verifyNewSSUpatientRegistrationPopupIsDisplayed() throws Exception {
 		boolean NewSSUpatientRegistrationPopupisDisplayed = false;
 		try {
-			commonEvents.click(registerNewSSUPatientButton);
-			if(commonEvents.isDisplayed(NewSSUpatientRegistrationPopup))
+			userActions.click(registerNewSSUPatientButton);
+			if(userActions.isDisplayed(NewSSUpatientRegistrationPopup))
 			{
 				NewSSUpatientRegistrationPopupisDisplayed=true;
 			}
@@ -240,18 +240,18 @@ public class socialService_Pages extends StartupPage {
 	public String fillAllTheTextfieldsinsideTheNewSSUPatientRegistration(Map<String, String> expectedData) throws Exception {
 		String firstNameTextfieldValue = "";
 		try {
-			if(commonEvents.isDisplayed(firstNameTextField) && 
-					commonEvents.isDisplayed(middelNameTextField) &&
-					commonEvents.isDisplayed(lastNameTextField) &&
-					commonEvents.isDisplayed(ageTextField) &&
-					commonEvents.isDisplayed(phoneNumberTextField))
+			if(userActions.isDisplayed(firstNameTextField) && 
+					userActions.isDisplayed(middelNameTextField) &&
+					userActions.isDisplayed(lastNameTextField) &&
+					userActions.isDisplayed(ageTextField) &&
+					userActions.isDisplayed(phoneNumberTextField))
 			{
-				commonEvents.sendKeys(firstNameTextField,expectedData.get("firstName"));	
-				commonEvents.sendKeys(middelNameTextField,expectedData.get("middleName"));
-				commonEvents.sendKeys(lastNameTextField,expectedData.get("lastName"));
-				commonEvents.sendKeys(ageTextField,expectedData.get("age"));
-				commonEvents.sendKeys(phoneNumberTextField,expectedData.get("phoneNo."));
-				firstNameTextfieldValue = commonEvents.getAttribute(firstNameTextField, "value");
+				userActions.sendKeys(firstNameTextField,expectedData.get("firstName"));	
+				userActions.sendKeys(middelNameTextField,expectedData.get("middleName"));
+				userActions.sendKeys(lastNameTextField,expectedData.get("lastName"));
+				userActions.sendKeys(ageTextField,expectedData.get("age"));
+				userActions.sendKeys(phoneNumberTextField,expectedData.get("phoneNo."));
+				firstNameTextfieldValue = userActions.getAttribute(firstNameTextField, "value");
 				System.out.println("FirstName : " + firstNameTextfieldValue);
 			}
 		}catch(Exception e) {
@@ -270,12 +270,12 @@ public class socialService_Pages extends StartupPage {
 	public String enterInvalidDataValidateTheErrorMessage(Map<String, String> expectedData) throws Exception {
 		String phoneNumberTextFieldErrorMessageValue = "";
 		try {
-			if(commonEvents.isDisplayed(phoneNumberTextField))
+			if(userActions.isDisplayed(phoneNumberTextField))
 			{
-				commonEvents.clear(phoneNumberTextField);
-				commonEvents.sendKeys(phoneNumberTextField,expectedData.get("invalidPhoneNo."));
+				userActions.clear(phoneNumberTextField);
+				userActions.sendKeys(phoneNumberTextField,expectedData.get("invalidPhoneNo."));
 				Thread.sleep(3000);
-				phoneNumberTextFieldErrorMessageValue = commonEvents.getText(phoneNumberTextFieldErrorMessage);
+				phoneNumberTextFieldErrorMessageValue = userActions.getText(phoneNumberTextFieldErrorMessage);
 				System.out.println("Error Message is : " + phoneNumberTextFieldErrorMessageValue);
 
 			}
@@ -289,22 +289,180 @@ public class socialService_Pages extends StartupPage {
 	/**@Test8
 	 * about this method selectIndiaFromCountryDropdownMenuAndValidate() 
 	 * @param : null
-	 * @description : Simply select India  from the Country dropdown menu and validate India is selected or not.
+	 * @description : Simply select India from the Country DROPDOWN menu and validate India is selected or not.
 	 * @return : Boolean
-	 * @author : Yaksha
+	 * @author : YAKSHA
 	 */
 	public Boolean selectIndiaFromCountryDropdownMenuAndValidate() throws Exception {
 		boolean isSelected = false;
 		try {
-			if(commonEvents.isDisplayed(countryDropdown))
+			if(userActions.isDisplayed(countryDropdown))
 			{
-				commonEvents.click(selectIndiaIncountryDropdown);
-				commonEvents.isSelected(selectIndiaIncountryDropdown);
+				userActions.click(selectIndiaIncountryDropdown);
+				userActions.isSelected(selectIndiaIncountryDropdown);
 				isSelected=true;
 			}
 		}catch(Exception e) {
 			throw e;
 		}	
 		return isSelected;
+	}
+	
+	/**@Test9
+	 * about this method validateWarnningMessageForMembershipDropDown() 
+	 * @param : Map<String, String>
+	 * @description : Validate the warnning message for the membership dropdown.
+	 * @return : String
+	 * @author : Yaksha
+	 */
+	public String validateWarnningMessageForMembershipDropDown(Map<String, String> expectedData) throws Exception {
+		String warningMessageValue = "";
+		try {
+			if(userActions.isDisplayed(phoneNumberTextField))
+			{
+				if(userActions.isDisplayed(warningMessage)) {
+				warningMessageValue = userActions.getText(warningMessage);
+				System.out.println("Warnning Message is : " + warningMessageValue);
+				}
+			}
+		}catch(Exception e) {
+			throw e;
+		}
+		return warningMessageValue;
+	}
+	
+	
+	/**@Test10
+	 * about this method selectYesFromHasTargetGroupCertificateandValidate() 
+	 * @param : null
+	 * @description : select "Yes" from the "Has target group certificate?" dropdown and validate Yes is selected or not.
+	 * @return : Boolean
+	 * @author : Yaksha
+	 */
+	public Boolean selectYesFromHasTargetGroupCertificateandValidate() throws Exception {
+		boolean isSelected = false;
+		try {
+			 if(userActions.isDisplayed(hasTG_certificateDropdown))
+			 {
+				 userActions.click(selectYesFromhasTG_certificateDropdown);
+				 userActions.isSelected(selectYesFromhasTG_certificateDropdown);
+				 isSelected=true;
+			 }
+		}catch(Exception e) {
+			throw e;
+		}	
+		return isSelected;
+	}
+	
+	
+	/**@Test11
+	 * about this method getPlaceHolderNameVerifyPlaceHolderNameOfAddress() 
+	 * @param : Map<String, String>
+	 * @description : get the place holder name of address textfiled and verify  the place holder name.
+	 * @return : String
+	 * @author : Yaksha
+	 */
+	public String getPlaceHolderNameVerifyPlaceHolderNameOfAddress(Map<String, String> expectedData) throws Exception {
+		String placeHolderValue = "";
+		try {
+				if(userActions.isDisplayed(addressTextField)) {
+				Thread.sleep(3000);
+				placeHolderValue = userActions.getAttribute(addressTextField,"placeholder");
+				System.out.println("Place holder value of Address field : " + placeHolderValue);
+				}
+		}catch(Exception e) {
+			throw e;
+		}
+		return placeHolderValue;
+	}
+	
+	
+	/**@Test12
+	 * about this method verifypresencefieldInNewSSUPatientRegistrationPage() 
+	 * @param : null
+	 * @description : verify the presence of field in "New SSU Patient Registration" page and verify "Patient Information" text is present
+	 * @return : Boolean
+	 * @author : Yaksha
+	 */
+	public Boolean verifypresencefieldInNewSSUPatientRegistrationPage() throws Exception {
+		boolean patientInformationTextIsDisplayed = false;
+		try {
+				 userActions.click(patientInformationBar);
+				 Thread.sleep(3000);
+				 userActions.click(patientInformationBar);
+				  if(userActions.isDisplayed(patientInformationText)) {
+					  patientInformationTextIsDisplayed=true;
+			  }
+		}catch(Exception e) {
+			throw e;
+		}	
+		return patientInformationTextIsDisplayed;
+	}
+	
+	
+	/**@Test13
+	 * about this method closeNewSSUPatientRegistrationPopupByUsingJsExecutor() 
+	 * @param : null
+	 * @description : Close this "New SSU Patient Registration" popup by using javaScript.
+	 * @return : Boolean
+	 * @author : Yaksha
+	 */
+	public Boolean closeNewSSUPatientRegistrationPopupByUsingJsExecutor() throws Exception {
+		boolean IsDisplayed = false;
+		try {
+			if(userActions.isDisplayed(closeButton)) {
+			  userActions.jsClick(closeButton);
+			  Thread.sleep(3000);
+			  IsDisplayed=true;
+			}
+		}catch(Exception e) {
+			throw e;
+		}	
+		return IsDisplayed;
+	}
+	
+	/**@Test14
+	 * about this method scrollToButtomAndVerifytheFields() 
+	 * @param : null
+	 * @description : scroll to the bottom of the "Sale" page and verify that "Print Invoice" button  , "Discard" button  ,"Invoice History" and  "Credit Limitis and Balance" text are peresent or not.
+	 * @return : Boolean
+	 * @author : Yaksha
+	 */
+	public Boolean scrollToButtomAndVerifytheFields() throws Exception {
+		boolean creditLimitsAndBalancesTextElementIsDisplayed = false;
+		try {
+			userActions.click(dispensaryModule);
+			userActions.click(morningCounter);
+			if(userActions.isDisplayed(printInvoiceButtonElement) &&
+					userActions.isDisplayed(discardButtonElement) &&
+					userActions.isDisplayed(invoiceHistoryTextElement) &&
+					userActions.isDisplayed(creditLimitsAndBalancesTextElement) ) {
+				    creditLimitsAndBalancesTextElementIsDisplayed=true;
+			}
+		}catch(Exception e) {
+			throw e;
+		}	
+		return creditLimitsAndBalancesTextElementIsDisplayed;
+	}
+	
+	
+	/**@Test15
+	 * about this method performTheKeyboardOperationToOpenthePopup() 
+	 * @param : null
+	 * @description : Perform the keyboard operation to open the  popup and verify that the popup is displayed or not.
+	 * @return : Boolean
+	 * @author : Yaksha
+	 */
+	public Boolean performTheKeyboardOperationToOpenthePopup() throws Exception {
+		boolean createRequisitionButtonIsDisplayedIsDisplayed = false;
+		try {
+			userActions.performAltN();
+			if(userActions.isDisplayed(addNewPatientPopup)){
+				createRequisitionButtonIsDisplayedIsDisplayed=true;
+			}
+		}catch(Exception e) {
+			throw e;
+		}	
+		return createRequisitionButtonIsDisplayedIsDisplayed;
 	}
 }

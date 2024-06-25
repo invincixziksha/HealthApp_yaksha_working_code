@@ -82,5 +82,16 @@
     "ProcurementModule":{
 		"shortNameTextField":"Yakshaa",
 		"searchBarData":"Accounts"
+	},
+    "operationTheatreModuleStringValue":{
+		"newOTButtonValue":"New OT Booking",
+		"searchBarData":"Suriiyaa",
+        "bookingOTSchedulePageName":"Booking OT Schedule | New Patient",
+        "patientName" : "surya prakash",
+        "diagnosisValue" : "Food Allergy",
+        "surgeryTypeValue" : "Emergency Surgery",
+        "remarksPlaceHolderName" : "Remarks",
+        "surgenNameValue1" : "Dr. pooja Mishra",
+        "surgenNameValue2" : " Dr. pooja Mishra  "
 	}
 }

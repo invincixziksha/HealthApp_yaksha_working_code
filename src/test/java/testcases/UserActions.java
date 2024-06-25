@@ -1,4 +1,4 @@
-package coreUtilities.utils;
+package testcases;
 
 import java.awt.AWTException;
 import java.awt.Robot;
@@ -59,6 +59,7 @@ import com.assertthat.selenium_shutterbug.core.Capture;
 import com.assertthat.selenium_shutterbug.core.CaptureElement;
 import com.assertthat.selenium_shutterbug.core.Shutterbug;
 
+import coreUtilities.utils.CustomException;
 import ru.yandex.qatools.ashot.comparison.ImageDiff;
 import ru.yandex.qatools.ashot.comparison.ImageDiffer;
 
@@ -67,11 +68,11 @@ import ru.yandex.qatools.ashot.comparison.ImageDiffer;
  * This class is responsible to perform all generic or commonly used operations
  *
  */
-public class CommonEvents 
+public class UserActions 
 {
 	public WebDriver driver;
 
-	public CommonEvents(WebDriver driver) 
+	public UserActions(WebDriver driver) 
 	{
 		this.driver=driver; 
 	}
@@ -784,10 +785,10 @@ public class CommonEvents
 	 * @param by
 	 * @param elementName
 	 * @param pageName
-	 * @return {@link CommonEvents}
+	 * @return {@link UserActions}
 	 * @throws Exception
 	 */
-	public CommonEvents clear(By by, String elementName, String pageName) throws Exception
+	public UserActions clear(By by, String elementName, String pageName) throws Exception
 	{
 		if(elementName==null)
 			throw new Exception("Element name should not be null");
@@ -798,7 +799,7 @@ public class CommonEvents
 			waitTillPageLoad(by, 30, pageName);
 			getWebElement(by).click();
 			getWebElement(by).clear();
-			return new CommonEvents(driver);
+			return new UserActions(driver);
 		}
 		catch(Exception e) 
 		{
@@ -809,12 +810,12 @@ public class CommonEvents
 	/**
 	 * This method is useful to clear the text box before entering any value to the desired text box	
 	 * @param by - {@link By} type
-	 * @return {@link CommonEvents}
+	 * @return {@link UserActions}
 	 */
-	public CommonEvents clear(By by)
+	public UserActions clear(By by)
 	{
 		getWebElement(by).clear();
-		return new CommonEvents(driver);
+		return new UserActions(driver);
 	}
 
 	/***
@@ -822,10 +823,10 @@ public class CommonEvents
 	 * @param element
 	 * @param elementName
 	 * @param pageName
-	 * @return {@link CommonEvents}
+	 * @return {@link UserActions}
 	 * @throws Exception
 	 */
-	public CommonEvents clear(WebElement element, String elementName, String pageName) throws Exception
+	public UserActions clear(WebElement element, String elementName, String pageName) throws Exception
 	{
 		if(elementName==null)
 			throw new Exception("Element name should not be null");
@@ -836,7 +837,7 @@ public class CommonEvents
 			waitTillPageLoad(element, 30, pageName);
 			element.click();
 			element.clear();
-			return new CommonEvents(driver);
+			return new UserActions(driver);
 		}
 		catch(Exception e) 
 		{
@@ -847,12 +848,12 @@ public class CommonEvents
 	/**
 	 * This method is useful to clear the text box before entering any value to the desired text box	
 	 * @param element - {@link WebElement} type
-	 * @return {@link CommonEvents}
+	 * @return {@link UserActions}
 	 */
-	public CommonEvents clear(WebElement element)
+	public UserActions clear(WebElement element)
 	{
 		element.clear();
-		return new CommonEvents(driver);
+		return new UserActions(driver);
 	}
 
 	/**
@@ -860,10 +861,10 @@ public class CommonEvents
 	 * @param element
 	 * @param elementName
 	 * @param pageName
-	 * @return {@link CommonEvents}
+	 * @return {@link UserActions}
 	 * @throws Exception
 	 */
-	public CommonEvents click(WebElement element, String elementName, String pageName) throws Exception 
+	public UserActions click(WebElement element, String elementName, String pageName) throws Exception 
 	{
 		if(elementName==null)
 			throw new Exception("Element name should not be null");
@@ -876,7 +877,7 @@ public class CommonEvents
 				element.click();
 			else
 				throw new Exception(elementName + " is not enabled on " + pageName);
-			return new CommonEvents(driver);
+			return new UserActions(driver);
 		}
 		catch(Exception e) 
 		{
@@ -890,10 +891,10 @@ public class CommonEvents
 	 * @param by
 	 * @param elementName
 	 * @param pageName
-	 * @return {@link CommonEvents}
+	 * @return {@link UserActions}
 	 * @throws Exception
 	 */
-	public CommonEvents click(By by, String elementName, String pageName) throws Exception 
+	public UserActions click(By by, String elementName, String pageName) throws Exception 
 	{
 		if(elementName==null)
 			throw new Exception("Element name should not be null");
@@ -909,7 +910,7 @@ public class CommonEvents
 				element.click();
 			else 
 				throw new Exception(elementName + " is not enabled on " + pageName);
-			return new CommonEvents(driver);
+			return new UserActions(driver);
 		}
 		catch(Exception e) 
 		{
@@ -920,23 +921,23 @@ public class CommonEvents
 	/**
 	 * This method is useful to click on the given web element	
 	 * @param by - {@link By} type
-	 * @return {@link CommonEvents}
+	 * @return {@link UserActions}
 	 */
-	public CommonEvents click(By by)
+	public UserActions click(By by)
 	{
 		getWebElement(by).click();
-		return new CommonEvents(driver);
+		return new UserActions(driver);
 	}
 
 	/**
 	 * This method is useful to click on the given web element	
 	 * @param element - {@link WebElement} type
-	 * @return {@link CommonEvents}
+	 * @return {@link UserActions}
 	 */
-	public CommonEvents click(WebElement element)
+	public UserActions click(WebElement element)
 	{
 		element.click();
-		return new CommonEvents(driver);
+		return new UserActions(driver);
 	}
 
 	/***
@@ -944,10 +945,10 @@ public class CommonEvents
 	 * @param by
 	 * @param elementName
 	 * @param pageName
-	 * @return {@link CommonEvents}
+	 * @return {@link UserActions}
 	 * @throws Exception 
 	 */
-	public CommonEvents actionsClick(By by, String elementName, String pageName) throws Exception
+	public UserActions actionsClick(By by, String elementName, String pageName) throws Exception
 	{
 		if(elementName==null)
 			throw new Exception("Element name should not be null");
@@ -962,7 +963,7 @@ public class CommonEvents
 				.perform();
 			else
 				throw new Exception(elementName + " is not enabled on " + pageName);
-			return new CommonEvents(driver);
+			return new UserActions(driver);
 		}
 		catch(Exception e)
 		{
@@ -975,10 +976,10 @@ public class CommonEvents
 	 * @param element
 	 * @param elementName
 	 * @param pageName
-	 * @return {@link CommonEvents}
+	 * @return {@link UserActions}
 	 * @throws Exception 
 	 */
-	public CommonEvents actionsClick(WebElement element, String elementName, String pageName) throws Exception
+	public UserActions actionsClick(WebElement element, String elementName, String pageName) throws Exception
 	{
 		if(elementName==null)
 			throw new Exception("Element name should not be null");
@@ -992,7 +993,7 @@ public class CommonEvents
 				.perform();
 			else
 				throw new Exception(elementName + " is not enabled on " + pageName);
-			return new CommonEvents(driver);
+			return new UserActions(driver);
 		}
 		catch(Exception e) 
 		{
@@ -1003,29 +1004,29 @@ public class CommonEvents
 	/**
 	 * This method is useful to click on the given web element using {@link Actions} class
 	 * @param by - {@link By} type
-	 * @return {@link CommonEvents}
+	 * @return {@link UserActions}
 	 */
-	public CommonEvents actionsClick(By by)
+	public UserActions actionsClick(By by)
 	{
 		new Actions(driver)
 		.click(getWebElement(by))
 		.build()
 		.perform();
-		return new CommonEvents(driver);
+		return new UserActions(driver);
 	}
 
 	/**
 	 * This method is useful to click on the given web element using {@link Actions} class
 	 * @param element - {@link WebElement} type
-	 * @return {@link CommonEvents}
+	 * @return {@link UserActions}
 	 */
-	public CommonEvents actionsClick(WebElement element)
+	public UserActions actionsClick(WebElement element)
 	{
 		new Actions(driver)
 		.click(element)
 		.build()
 		.perform();
-		return new CommonEvents(driver);
+		return new UserActions(driver);
 	}
 
 	/***
@@ -1034,10 +1035,10 @@ public class CommonEvents
 	 * @param by
 	 * @param elementName
 	 * @param pageName
-	 * @return {@link CommonEvents}
+	 * @return {@link UserActions}
 	 * @throws Exception
 	 */
-	public CommonEvents mouseHoverClick(By by, String elementName, String pageName) throws Exception
+	public UserActions mouseHoverClick(By by, String elementName, String pageName) throws Exception
 	{
 		if(elementName==null)
 			throw new Exception("Element name should not be null");
@@ -1053,7 +1054,7 @@ public class CommonEvents
 				.perform();
 			else
 				throw new Exception(elementName + " is not enabled on " + pageName);
-			return new CommonEvents(driver);
+			return new UserActions(driver);
 		}
 		catch(Exception e) 
 		{
@@ -1067,10 +1068,10 @@ public class CommonEvents
 	 * @param element
 	 * @param elementName
 	 * @param pageName
-	 * @return {@link CommonEvents}
+	 * @return {@link UserActions}
 	 * @throws Exception
 	 */
-	public CommonEvents mouseHoverClick(WebElement element, String elementName, String pageName) throws Exception
+	public UserActions mouseHoverClick(WebElement element, String elementName, String pageName) throws Exception
 	{
 		if(elementName==null)
 			throw new Exception("Element name should not be null");
@@ -1086,7 +1087,7 @@ public class CommonEvents
 				.perform();
 			else
 				throw new Exception(elementName+" is not enabled on "+pageName);
-			return new CommonEvents(driver);
+			return new UserActions(driver);
 		}
 		catch(Exception e) 
 		{
@@ -1099,41 +1100,41 @@ public class CommonEvents
 	 * This method is useful to click on the given web element using {@link Actions} class. In this the controller will move to the desired element 
 	 * then will click on the same.
 	 * @param by - {@link By} type
-	 * @return {@link CommonEvents}
+	 * @return {@link UserActions}
 	 */
-	public CommonEvents mouseHoverClick(By by)
+	public UserActions mouseHoverClick(By by)
 	{
 		new Actions(driver)
 		.moveToElement(getWebElement(by))
 		.click()
 		.build()
 		.perform();
-		return new CommonEvents(driver);
+		return new UserActions(driver);
 	}
 
 	/**
 	 * This method is useful to click on the given web element using {@link Actions} class. In this the controller will move to the desired element 
 	 * then will click on the same.
 	 * @param element - {@link WebElement} type
-	 * @return {@link CommonEvents}
+	 * @return {@link UserActions}
 	 */
-	public CommonEvents mouseHoverClick(WebElement element)
+	public UserActions mouseHoverClick(WebElement element)
 	{
 		new Actions(driver)
 		.moveToElement(element)
 		.click()
 		.build()
 		.perform();
-		return new CommonEvents(driver);
+		return new UserActions(driver);
 	}
 
 	/**
 	 * This method is useful to click on the given web element using {@link Actions} class. In this the controller will move to the desired element 
 	 * then will click on the same.
 	 * @param by - {@link By} type
-	 * @return {@link CommonEvents}
+	 * @return {@link UserActions}
 	 */
-	public CommonEvents mouseHoverClickOnElement(By by)
+	public UserActions mouseHoverClickOnElement(By by)
 	{
 		WebElement element = getWebElement(by);
 		new Actions(driver)
@@ -1141,23 +1142,23 @@ public class CommonEvents
 		.click(element)
 		.build()
 		.perform();
-		return new CommonEvents(driver);
+		return new UserActions(driver);
 	}
 
 	/**
 	 * This method is useful to click on the given web element using {@link Actions} class. In this the controller will move to the desired element 
 	 * then will click on the same.
 	 * @param element - {@link WebElement} type
-	 * @return {@link CommonEvents}
+	 * @return {@link UserActions}
 	 */
-	public CommonEvents mouseHoverClickOnElement(WebElement element)
+	public UserActions mouseHoverClickOnElement(WebElement element)
 	{
 		new Actions(driver)
 		.moveToElement(element)
 		.click(element)
 		.build()
 		.perform();
-		return new CommonEvents(driver);
+		return new UserActions(driver);
 	}
 
 	/**
@@ -1165,15 +1166,15 @@ public class CommonEvents
 	 * element1 which is by1 and clicking on element2 which is by2 as per this method.
 	 * @param by1
 	 * @param by2
-	 * @return {@link CommonEvents}
+	 * @return {@link UserActions}
 	 */
-	public CommonEvents mouseHoverClick(By by1, By by2) {
+	public UserActions mouseHoverClick(By by1, By by2) {
 		new Actions(driver)
 		.moveToElement(getWebElement(by1))
 		.click(getWebElement(by2))
 		.build()
 		.perform();
-		return new CommonEvents(driver);
+		return new UserActions(driver);
 	}
 
 	/**
@@ -1181,15 +1182,15 @@ public class CommonEvents
 	 * element1 which is by1 and clicking on element2 which is by2 as per this method.
 	 * @param by1
 	 * @param by2
-	 * @return {@link CommonEvents}
+	 * @return {@link UserActions}
 	 */
-	public CommonEvents mouseHoverClick(WebElement element1, WebElement element2) {
+	public UserActions mouseHoverClick(WebElement element1, WebElement element2) {
 		new Actions(driver)
 		.moveToElement(element1)
 		.click(element2)
 		.build()
 		.perform();
-		return new CommonEvents(driver);
+		return new UserActions(driver);
 	}
 
 	/***
@@ -1197,10 +1198,10 @@ public class CommonEvents
 	 * @param element
 	 * @param elementName
 	 * @param pageName
-	 * @return {@link CommonEvents}
+	 * @return {@link UserActions}
 	 * @throws Exception
 	 */
-	public CommonEvents jsClick(WebElement element, String elementName, String pageName) throws Exception
+	public UserActions jsClick(WebElement element, String elementName, String pageName) throws Exception
 	{
 		if(elementName==null)
 			throw new Exception("Element name should not be null");
@@ -1210,7 +1211,7 @@ public class CommonEvents
 		{
 			waitTillPageLoad(element, 30, pageName);
 			((JavascriptExecutor) driver).executeScript("arguments[0].click()", element);
-			return new CommonEvents(driver);
+			return new UserActions(driver);
 		}
 		catch(Exception e) 
 		{
@@ -1223,10 +1224,10 @@ public class CommonEvents
 	 * @param by
 	 * @param elementName
 	 * @param pageName
-	 * @return {@link CommonEvents}
+	 * @return {@link UserActions}
 	 * @throws Exception
 	 */
-	public CommonEvents jsClick(By by, String elementName, String pageName) throws Exception 
+	public UserActions jsClick(By by, String elementName, String pageName) throws Exception 
 	{
 		if(elementName==null)
 			throw new Exception("Element name should not be null");
@@ -1236,7 +1237,7 @@ public class CommonEvents
 		{
 			waitTillPageLoad(by, 30, pageName);
 			((JavascriptExecutor) driver).executeScript("arguments[0].click()", getWebElement(by));
-			return new CommonEvents(driver);
+			return new UserActions(driver);
 		}
 		catch(Exception e) 
 		{
@@ -1247,32 +1248,32 @@ public class CommonEvents
 	/**
 	 * This method is useful to click on the given web element using {@link JavascriptExecutor}.
 	 * @param by - {@link By} type
-	 * @return {@link CommonEvents}
+	 * @return {@link UserActions}
 	 */
-	public CommonEvents jsClick(By by)
+	public UserActions jsClick(By by)
 	{
 		((JavascriptExecutor) driver)
 		.executeScript("arguments[0].click()", getWebElement(by));
-		return new CommonEvents(driver);
+		return new UserActions(driver);
 	}
 
 	/**
 	 * This method is useful to click on the given web element using {@link JavascriptExecutor}.
 	 * @param element - {@link WebElement} type
-	 * @return {@link CommonEvents}
+	 * @return {@link UserActions}
 	 */
-	public CommonEvents jsClick(WebElement element)
+	public UserActions jsClick(WebElement element)
 	{
 		((JavascriptExecutor) driver)
 		.executeScript("arguments[0].click()", element);
-		return new CommonEvents(driver);
+		return new UserActions(driver);
 	}
 
 	/**
 	 * This method is useful to click on the based on the image of the element is passed as an argument
 	 * 
 	 * @param completeImagePath
-	 * @return {@link CommonEvents}
+	 * @return {@link UserActions}
 	 * @throws FindFailed
 	 */
 	public void sikuliClick(String imagePath) throws FindFailed
@@ -1297,7 +1298,7 @@ public class CommonEvents
 	 * This method is useful to click on the based on the image of the element is passed as an argument
 	 * 
 	 * @param completeImagePath
-	 * @return {@link CommonEvents}
+	 * @return {@link UserActions}
 	 * @throws FindFailed
 	 */
 	public void sikuliType(String imagePath, String inputText) throws FindFailed
@@ -1327,7 +1328,7 @@ public class CommonEvents
 
 	}
 
-	public CommonEvents inputMicrosoftPasswordUsingSikuli(String password, String inputText) throws FindFailed
+	public UserActions inputMicrosoftPasswordUsingSikuli(String password, String inputText) throws FindFailed
 	{
 
 
@@ -1338,7 +1339,7 @@ public class CommonEvents
 		screen.type(password_input, inputText);
 		screen.type(Key.ENTER);
 
-		return new CommonEvents(driver);
+		return new UserActions(driver);
 
 	}
 
@@ -1363,10 +1364,10 @@ public class CommonEvents
 	 * @param textToBeEntered
 	 * @param elementName
 	 * @param pageName
-	 * @return {@link CommonEvents}
+	 * @return {@link UserActions}
 	 * @throws Exception
 	 */
-	public CommonEvents sendKeys(WebElement element,String textToBeEntered, String elementName, String pageName) throws Exception 
+	public UserActions sendKeys(WebElement element,String textToBeEntered, String elementName, String pageName) throws Exception 
 	{
 		if(elementName==null)
 			throw new Exception("Element name should not be null");
@@ -1378,7 +1379,7 @@ public class CommonEvents
 			element.click();
 			element.clear();
 			element.sendKeys(textToBeEntered);
-			return new CommonEvents(driver);
+			return new UserActions(driver);
 		} 
 		catch (Exception e) 
 		{
@@ -1393,10 +1394,10 @@ public class CommonEvents
 	 * @param textToBeEntered
 	 * @param elementName
 	 * @param pageName
-	 * @return {@link CommonEvents}
+	 * @return {@link UserActions}
 	 * @throws Exception
 	 */
-	public CommonEvents sendKeys(By by, String textToBeEntered, String elementName, String pageName) throws Exception 
+	public UserActions sendKeys(By by, String textToBeEntered, String elementName, String pageName) throws Exception 
 	{
 		if(elementName==null)
 			throw new Exception("Element name should not be null");
@@ -1409,7 +1410,7 @@ public class CommonEvents
 			WebElement webElement = getWebElement(by);
 			webElement.clear();
 			webElement.sendKeys(textToBeEntered);
-			return new CommonEvents(driver);
+			return new UserActions(driver);
 		} 
 		catch (Exception e) 
 		{
@@ -1421,24 +1422,24 @@ public class CommonEvents
 	 * This method is useful to enter the value inside the text box.
 	 * @param element - {@link WebElement} type
 	 * @param textToBeEntered - {@link String} type: Any input which must be a string data type
-	 * @return {@link CommonEvents}
+	 * @return {@link UserActions}
 	 */
-	public CommonEvents sendKeys(WebElement element,String textToBeEntered)
+	public UserActions sendKeys(WebElement element,String textToBeEntered)
 	{
 		element.sendKeys(textToBeEntered);
-		return new CommonEvents(driver);
+		return new UserActions(driver);
 	}
 
 	/***
 	 * This method is useful to enter the value inside the text box.
 	 * @param by - {@link By} type
 	 * @param textToBeEntered - {@link String} type: Any input which must be a string data type
-	 * @return {@link CommonEvents}
+	 * @return {@link UserActions}
 	 */
-	public CommonEvents sendKeys(By by, String textToBeEntered)
+	public UserActions sendKeys(By by, String textToBeEntered)
 	{
 		getWebElement(by).sendKeys(textToBeEntered);
-		return new CommonEvents(driver);
+		return new UserActions(driver);
 	}
 
 
@@ -1449,10 +1450,10 @@ public class CommonEvents
 	 * @param key
 	 * @param elementName
 	 * @param pageName
-	 * @return {@link CommonEvents}
+	 * @return {@link UserActions}
 	 * @throws Exception
 	 */
-	public CommonEvents sendKeys(By by, Keys key, String elementName, String pageName) throws Exception 
+	public UserActions sendKeys(By by, Keys key, String elementName, String pageName) throws Exception 
 	{
 		if(elementName==null)
 			throw new Exception("Element name should not be null");
@@ -1465,7 +1466,7 @@ public class CommonEvents
 			webElement.click();
 			webElement.clear();
 			webElement.sendKeys(key);
-			return new CommonEvents(driver);
+			return new UserActions(driver);
 		} 
 		catch (Exception e) 
 		{
@@ -1479,10 +1480,10 @@ public class CommonEvents
 	 * @param key
 	 * @param elementName
 	 * @param pageName
-	 * @return {@link CommonEvents}
+	 * @return {@link UserActions}
 	 * @throws Exception
 	 */
-	public CommonEvents sendKeys(WebElement element, Keys key, String elementName, String pageName) throws Exception 
+	public UserActions sendKeys(WebElement element, Keys key, String elementName, String pageName) throws Exception 
 	{
 		if(elementName==null)
 			throw new Exception("Element name should not be null");
@@ -1494,7 +1495,7 @@ public class CommonEvents
 			element.click();
 			element.clear();
 			element.sendKeys(key);
-			return new CommonEvents(driver);
+			return new UserActions(driver);
 		} 
 		catch (Exception e) 
 		{
@@ -1506,24 +1507,24 @@ public class CommonEvents
 	 * This method is useful to enter the value inside the text box.
 	 * @param element - {@link WebElement} type
 	 * @param key - {@link Keys} type
-	 * @return {@link CommonEvents}
+	 * @return {@link UserActions}
 	 */
-	public CommonEvents sendKeys(WebElement element, Keys key)
+	public UserActions sendKeys(WebElement element, Keys key)
 	{
 		element.sendKeys(key);
-		return new CommonEvents(driver);
+		return new UserActions(driver);
 	}
 
 	/***
 	 * This method is useful to enter the value inside the text box.
 	 * @param by - {@link By} type
 	 * @param key - {@link Keys} type
-	 * @return {@link CommonEvents}
+	 * @return {@link UserActions}
 	 */
-	public CommonEvents sendKeys(By by, Keys key)
+	public UserActions sendKeys(By by, Keys key)
 	{
 		getWebElement(by).sendKeys(key);
-		return new CommonEvents(driver);
+		return new UserActions(driver);
 	}
 
 	/***
@@ -1532,10 +1533,10 @@ public class CommonEvents
 	 * @param textToBeEntered
 	 * @param elementName
 	 * @param pageName
-	 * @return {@link CommonEvents}
+	 * @return {@link UserActions}
 	 * @throws Exception
 	 */
-	public CommonEvents actionsSendKeys(WebElement element, String textToBeEntered, String elementName, String pageName) throws Exception 
+	public UserActions actionsSendKeys(WebElement element, String textToBeEntered, String elementName, String pageName) throws Exception 
 	{
 		if(elementName==null)
 			throw new Exception("Element name should not be null");
@@ -1548,7 +1549,7 @@ public class CommonEvents
 			.sendKeys(textToBeEntered)
 			.build()
 			.perform();
-			return new CommonEvents(driver);
+			return new UserActions(driver);
 		} 
 		catch (Exception e) 
 		{
@@ -1563,10 +1564,10 @@ public class CommonEvents
 	 * @param textToBeEntered
 	 * @param elementName
 	 * @param pageName
-	 * @return {@link CommonEvents}
+	 * @return {@link UserActions}
 	 * @throws Exception
 	 */
-	public CommonEvents actionsSendKeys(By by, String textToBeEntered, String elementName, String pageName) throws Exception 
+	public UserActions actionsSendKeys(By by, String textToBeEntered, String elementName, String pageName) throws Exception 
 	{
 		if(elementName==null)
 			throw new Exception("Element name should not be null");
@@ -1580,7 +1581,7 @@ public class CommonEvents
 			.sendKeys(textToBeEntered)
 			.build()
 			.perform();
-			return new CommonEvents(driver);
+			return new UserActions(driver);
 		}
 		catch (Exception e) 
 		{
@@ -1592,30 +1593,30 @@ public class CommonEvents
 	 * This method is useful to enter the value inside the text box using {@link Actions} class
 	 * @param element - {@link WebElement} type
 	 * @param textToBeEntered - {@link String} type
-	 * @return {@link CommonEvents}
+	 * @return {@link UserActions}
 	 */
-	public CommonEvents actionsSendKeys(WebElement element, String textToBeEntered)
+	public UserActions actionsSendKeys(WebElement element, String textToBeEntered)
 	{
 		new Actions(driver)
 		.sendKeys(element, textToBeEntered)
 		.build()
 		.perform();
-		return new CommonEvents(driver);
+		return new UserActions(driver);
 	}
 
 	/***
 	 * This method is useful to enter the value inside the text box using {@link Actions} class
 	 * @param by - {@link By} type
 	 * @param textToBeEntered - {@link String} type
-	 * @return {@link CommonEvents}
+	 * @return {@link UserActions}
 	 */
-	public CommonEvents actionsSendKeys(By by, String textToBeEntered)
+	public UserActions actionsSendKeys(By by, String textToBeEntered)
 	{
 		new Actions(driver)
 		.sendKeys(getWebElement(by), textToBeEntered)
 		.build()
 		.perform();
-		return new CommonEvents(driver);
+		return new UserActions(driver);
 	}
 
 	/***
@@ -1624,10 +1625,10 @@ public class CommonEvents
 	 * @param key
 	 * @param elementName
 	 * @param pageName
-	 * @return {@link CommonEvents}
+	 * @return {@link UserActions}
 	 * @throws Exception
 	 */
-	public CommonEvents actionsSendKeys(By by, Keys key, String elementName, String pageName) throws Exception 
+	public UserActions actionsSendKeys(By by, Keys key, String elementName, String pageName) throws Exception 
 	{
 		if(elementName==null)
 			throw new Exception("Element name should not be null");
@@ -1641,7 +1642,7 @@ public class CommonEvents
 			.sendKeys(webElement, key)
 			.build()
 			.perform();
-			return new CommonEvents(driver);
+			return new UserActions(driver);
 		} 
 		catch (Exception e) 
 		{
@@ -1655,10 +1656,10 @@ public class CommonEvents
 	 * @param key
 	 * @param elementName
 	 * @param pageName
-	 * @return {@link CommonEvents}
+	 * @return {@link UserActions}
 	 * @throws Exception
 	 */
-	public CommonEvents actionsSendKeys(WebElement element, Keys key, String elementName, String pageName) throws Exception 
+	public UserActions actionsSendKeys(WebElement element, Keys key, String elementName, String pageName) throws Exception 
 	{
 		if(elementName==null)
 			throw new Exception("Element name should not be null");
@@ -1676,37 +1677,37 @@ public class CommonEvents
 		{
 			throw new Exception(elementName + " is not displayed/enabled in " + pageName);
 		}
-		return new CommonEvents(driver);
+		return new UserActions(driver);
 	}
 
 	/***
 	 * This method is useful to enter the value inside the text box using {@link Actions} class.
 	 * @param element - {@link WebElement} type
 	 * @param key - {@link Keys} type
-	 * @return {@link CommonEvents}
+	 * @return {@link UserActions}
 	 */
-	public CommonEvents actionsSendKeys(WebElement element, Keys key)
+	public UserActions actionsSendKeys(WebElement element, Keys key)
 	{
 		new Actions(driver)
 		.sendKeys(element, key)
 		.build()
 		.perform();
-		return new CommonEvents(driver);
+		return new UserActions(driver);
 	}
 
 	/***
 	 * This method is useful to enter the value inside the text box using {@link Actions} class
 	 * @param by - {@link By} type
 	 * @param key - {@link Keys} type
-	 * @return {@link CommonEvents}
+	 * @return {@link UserActions}
 	 */
-	public CommonEvents actionsSendKeys(By by, Keys key)
+	public UserActions actionsSendKeys(By by, Keys key)
 	{
 		new Actions(driver)
 		.sendKeys(getWebElement(by), key)
 		.build()
 		.perform();
-		return new CommonEvents(driver);
+		return new UserActions(driver);
 	}
 
 	/***
@@ -1715,10 +1716,10 @@ public class CommonEvents
 	 * @param textToBeEntered
 	 * @param elementName
 	 * @param pageName
-	 * @return {@link CommonEvents}
+	 * @return {@link UserActions}
 	 * @throws Exception
 	 */
-	public CommonEvents jsSendKeys(WebElement element, String textToBeEntered, String elementName, String pageName) throws Exception 
+	public UserActions jsSendKeys(WebElement element, String textToBeEntered, String elementName, String pageName) throws Exception 
 	{
 		if(elementName==null)
 			throw new Exception("Element name should not be null");
@@ -1733,7 +1734,7 @@ public class CommonEvents
 		{
 			throw new Exception(elementName + " is not displayed/enabled in " + pageName);
 		}
-		return new CommonEvents(driver);
+		return new UserActions(driver);
 	}
 
 	/***
@@ -1743,10 +1744,10 @@ public class CommonEvents
 	 * @param textToBeEntered
 	 * @param elementName
 	 * @param pageName
-	 * @return {@link CommonEvents}
+	 * @return {@link UserActions}
 	 * @throws Exception
 	 */
-	public CommonEvents jsSendKeys(By by, String textToBeEntered, String elementName, String pageName) throws Exception 
+	public UserActions jsSendKeys(By by, String textToBeEntered, String elementName, String pageName) throws Exception 
 	{
 		if(elementName==null)
 			throw new Exception("Element name should not be null");
@@ -1762,33 +1763,33 @@ public class CommonEvents
 		{
 			throw new Exception(elementName + " is not displayed/enabled in " + pageName);
 		}
-		return new CommonEvents(driver);
+		return new UserActions(driver);
 	}
 
 	/***
 	 * This method is useful to enter the value inside the text box using {@link JavascriptExecutor} class
 	 * @param element - {@link WebElement} type
 	 * @param textToBeEntered - {@link String} type
-	 * @return {@link CommonEvents}
+	 * @return {@link UserActions}
 	 */
-	public CommonEvents jsSendKeys(WebElement element, String textToBeEntered)
+	public UserActions jsSendKeys(WebElement element, String textToBeEntered)
 	{
 		((JavascriptExecutor)driver)
 		.executeScript("arguments[0].value='"+textToBeEntered+"';", element);
-		return new CommonEvents(driver);
+		return new UserActions(driver);
 	}
 
 	/***
 	 * This method is useful to enter the value inside the text box using {@link JavascriptExecutor} class
 	 * @param by - {@link By} type
 	 * @param textToBeEntered - {@link String} type
-	 * @return {@link CommonEvents}
+	 * @return {@link UserActions}
 	 */
-	public CommonEvents jsSendKeys(By by, String textToBeEntered)
+	public UserActions jsSendKeys(By by, String textToBeEntered)
 	{
 		((JavascriptExecutor)driver)
 		.executeScript("arguments[0].value='"+textToBeEntered+"';", getWebElement(by));
-		return new CommonEvents(driver);
+		return new UserActions(driver);
 	}
 
 	/***
@@ -1797,10 +1798,10 @@ public class CommonEvents
 	 * @param option
 	 * @param elementName
 	 * @param pageName
-	 * @return {@link CommonEvents}
+	 * @return {@link UserActions}
 	 * @throws Exception
 	 */
-	public CommonEvents selectByVisibleText(WebElement element, String option, String elementName, String pageName) throws Exception 
+	public UserActions selectByVisibleText(WebElement element, String option, String elementName, String pageName) throws Exception 
 	{
 		if(elementName==null)
 			throw new Exception("Element name should not be null");
@@ -1824,7 +1825,7 @@ public class CommonEvents
 		{
 			throw new Exception(elementName + " is not displayed/enabled in " + pageName);
 		}
-		return new CommonEvents(driver);
+		return new UserActions(driver);
 	}
 
 	/***
@@ -1833,10 +1834,10 @@ public class CommonEvents
 	 * @param option
 	 * @param elementName
 	 * @param pageName
-	 * @return {@link CommonEvents}
+	 * @return {@link UserActions}
 	 * @throws Exception
 	 */
-	public CommonEvents selectByVisibleText(By by, String option, String elementName, String pageName) throws Exception 
+	public UserActions selectByVisibleText(By by, String option, String elementName, String pageName) throws Exception 
 	{
 		if(elementName==null)
 			throw new Exception("Element name should not be null");
@@ -1861,33 +1862,33 @@ public class CommonEvents
 		{
 			throw new Exception(elementName + " is not displayed/enabled in " + pageName);
 		}
-		return new CommonEvents(driver);
+		return new UserActions(driver);
 	}
 
 	/***
 	 * This method is useful to select the desired option from the drop down by the visible text.
 	 * @param element - {@link WebElement} type
 	 * @param option - {@link String} type: the option which needs to be selected for the respective drop down
-	 * @return {@link CommonEvents}
+	 * @return {@link UserActions}
 	 */
-	public CommonEvents selectByVisibleText(WebElement element, String option) 
+	public UserActions selectByVisibleText(WebElement element, String option) 
 	{
 		new Select(element)
 		.selectByVisibleText(option);
-		return new CommonEvents(driver);
+		return new UserActions(driver);
 	}
 
 	/***
 	 * This method is useful to select the desired option from the drop down by the visible text.
 	 * @param by - {@link By} type
 	 * @param option - {@link String} type: the option which needs to be selected for the respective drop down
-	 * @return {@link CommonEvents}
+	 * @return {@link UserActions}
 	 */
-	public CommonEvents selectByVisibleText(By by, String option)
+	public UserActions selectByVisibleText(By by, String option)
 	{
 		new Select(getWebElement(by))
 		.selectByVisibleText(option);
-		return new CommonEvents(driver);
+		return new UserActions(driver);
 	}
 
 	/***
@@ -1950,10 +1951,10 @@ public class CommonEvents
 	 * @param value
 	 * @param elementName
 	 * @param pageName
-	 * @return {@link CommonEvents}
+	 * @return {@link UserActions}
 	 * @throws Exception
 	 */
-	public CommonEvents selectByValue(By by, String value, String elementName, String pageName) throws Exception 
+	public UserActions selectByValue(By by, String value, String elementName, String pageName) throws Exception 
 	{
 		if(elementName==null)
 			throw new Exception("Element name should not be null");
@@ -1978,33 +1979,33 @@ public class CommonEvents
 		{
 			throw new Exception(elementName + " is not displayed/enabled in " + pageName);
 		}
-		return new CommonEvents(driver);
+		return new UserActions(driver);
 	}
 
 	/***
 	 * This method is useful to select the desired option from the drop down by the visible text.
 	 * @param element - {@link WebElement} type
 	 * @param value - {@link String} type: the option which needs to be selected for the respective drop down
-	 * @return {@link CommonEvents}
+	 * @return {@link UserActions}
 	 */
-	public CommonEvents selectByValue(WebElement element, String value) 
+	public UserActions selectByValue(WebElement element, String value) 
 	{
 		new Select(element)
 		.selectByValue(value);
-		return new CommonEvents(driver);
+		return new UserActions(driver);
 	}
 
 	/***
 	 * This method is useful to select the desired option from the drop down by the visible text.
 	 * @param by - {@link By} type
 	 * @param value - {@link String} type: the option which needs to be selected for the respective drop down
-	 * @return {@link CommonEvents}
+	 * @return {@link UserActions}
 	 */
-	public CommonEvents selectByValue(By by, String value)
+	public UserActions selectByValue(By by, String value)
 	{
 		new Select(getWebElement(by))
 		.selectByVisibleText(value);
-		return new CommonEvents(driver);
+		return new UserActions(driver);
 	}
 
 	/***
@@ -2068,10 +2069,10 @@ public class CommonEvents
 	 * @param elementName
 	 * @param pageName
 	 * @param value
-	 * @return {@link CommonEvents}
+	 * @return {@link UserActions}
 	 * @throws Exception
 	 */
-	public CommonEvents selectByIndex(By by, String elementName, String pageName, int index) throws Exception 
+	public UserActions selectByIndex(By by, String elementName, String pageName, int index) throws Exception 
 	{
 		if(elementName==null)
 			throw new Exception("Element name should not be null");
@@ -2096,33 +2097,33 @@ public class CommonEvents
 		{
 			throw new Exception(elementName + " is not displayed/enabled in " + pageName);
 		}
-		return new CommonEvents(driver);
+		return new UserActions(driver);
 	}
 
 	/***
 	 * This method is useful to select the desired option from the drop down by the visible text.
 	 * @param element - {@link WebElement} type
 	 * @param index - {@link Integer} type: the index of the option which needs to be selected for the respective drop down
-	 * @return {@link CommonEvents}
+	 * @return {@link UserActions}
 	 */
-	public CommonEvents selectByIndex(WebElement element, int index) 
+	public UserActions selectByIndex(WebElement element, int index) 
 	{
 		new Select(element)
 		.selectByIndex(index);
-		return new CommonEvents(driver);
+		return new UserActions(driver);
 	}
 
 	/***
 	 * This method is useful to select the desired option from the drop down by the visible text.
 	 * @param by - {@link By} type
 	 * @param index - {@link Integer} type: the index of the option which needs to be selected for the respective drop down
-	 * @return {@link CommonEvents}
+	 * @return {@link UserActions}
 	 */
-	public CommonEvents selectByValue(By by, int index)
+	public UserActions selectByValue(By by, int index)
 	{
 		new Select(getWebElement(by))
 		.selectByIndex(index);
-		return new CommonEvents(driver);
+		return new UserActions(driver);
 	}
 
 	/***
@@ -2631,10 +2632,10 @@ public class CommonEvents
 	 * @param element
 	 * @param elementName
 	 * @param pageName
-	 * @return {@link CommonEvents}
+	 * @return {@link UserActions}
 	 * @throws Exception
 	 */
-	public CommonEvents mouseHoverOperation(WebElement element, String elementName, String pageName) throws Exception 
+	public UserActions mouseHoverOperation(WebElement element, String elementName, String pageName) throws Exception 
 	{
 		if(elementName==null)
 			throw new Exception("Element name should not be null");
@@ -2652,7 +2653,7 @@ public class CommonEvents
 		} else {
 			throw new Exception(elementName + " is not displayed on " + pageName);
 		}
-		return new CommonEvents(driver);
+		return new UserActions(driver);
 	}
 
 	/***
@@ -2660,10 +2661,10 @@ public class CommonEvents
 	 * @param by
 	 * @param elementName
 	 * @param pageName
-	 * @return {@link CommonEvents}
+	 * @return {@link UserActions}
 	 * @throws Exception
 	 */
-	public CommonEvents mouseHoverOperation(By by, String elementName, String pageName) throws Exception 
+	public UserActions mouseHoverOperation(By by, String elementName, String pageName) throws Exception 
 	{
 		if(elementName==null)
 			throw new Exception("Element name should not be null");
@@ -2682,69 +2683,69 @@ public class CommonEvents
 		} else {
 			throw new Exception(elementName + " is not displayed/enabled in " + pageName);
 		}
-		return new CommonEvents(driver);
+		return new UserActions(driver);
 	}
 
 	/***
 	 * This method is useful to navigate to the desired application url
 	 * @param url
-	 * @return {@link CommonEvents}
+	 * @return {@link UserActions}
 	 * @throws Exception 
 	 */
-	public CommonEvents navigateTo(String url) throws Exception
+	public UserActions navigateTo(String url) throws Exception
 	{
 		if(url!=null)
 			driver.navigate().to(url);
 		else
 			throw new Exception("URL value should not be null");
-		return new CommonEvents(driver);
+		return new UserActions(driver);
 	}
 
 	/***
 	 * This method is useful to navigate to the desired application url
 	 * @param url
-	 * @return {@link CommonEvents}
+	 * @return {@link UserActions}
 	 * @throws Exception 
 	 */
-	public CommonEvents navigateTo(URL url) throws Exception
+	public UserActions navigateTo(URL url) throws Exception
 	{
 		if(url!=null)
 			driver.navigate().to(url);
 		else
 			throw new Exception("URL should not be null");
-		return new CommonEvents(driver);
+		return new UserActions(driver);
 	}
 
 	/***
 	 * This method is useful to refresh the current focused web page.
-	 * @return {@link CommonEvents}
+	 * @return {@link UserActions}
 	 */
-	public  CommonEvents refreshPage() {
+	public  UserActions refreshPage() {
 		driver.navigate()
 		.refresh();
-		return new CommonEvents(driver);
+		return new UserActions(driver);
 	}
 
 	/***
 	 * This method is useful to navigate back to the previous page
-	 * @return {@link CommonEvents}
+	 * @return {@link UserActions}
 	 */
-	public CommonEvents navigateBack()
+	public UserActions navigateBack()
 	{
 		driver.navigate()
 		.back();
-		return new CommonEvents(driver);
+		return new UserActions(driver);
 	}
 
 	/***
 	 * This method is useful to move forward to the next page
-	 * @return {@link CommonEvents}
+	 * @return {@link UserActions}
 	 */
-	public CommonEvents navigateForward()
+	public UserActions navigateForward()
 	{
 		driver.navigate()
 		.forward();
-		return new CommonEvents(driver);
+		return new UserActions(driver);
 	}
 
 
@@ -2763,17 +2764,17 @@ public class CommonEvents
 	 * This method is used for switching between windows
 	 * 
 	 * @param windowId
-	 * @return {@link CommonEvents}
+	 * @return {@link UserActions}
 	 * @throws Exception 
 	 */
-	public CommonEvents switchToWindow(String windowId) throws Exception
+	public UserActions switchToWindow(String windowId) throws Exception
 	{
 		if(windowId!=null)
 			driver.switchTo()
 			.window(windowId); 
 		else
 			throw new Exception("Window id should not be a null value");
-		return new CommonEvents(driver);
+		return new UserActions(driver);
 	}
 
 	/***
@@ -2782,11 +2783,11 @@ public class CommonEvents
 	 * @param by
 	 * @param elementName
 	 * @param pageName
-	 * @return {@link CommonEvents}
+	 * @return {@link UserActions}
 	 * @throws Exception 
 	 * 
 	 */
-	public CommonEvents jsScrollPageTillElementVisible(By by, String elementName, String pageName) throws Exception
+	public UserActions jsScrollPageTillElementVisible(By by, String elementName, String pageName) throws Exception
 	{
 		if(elementName==null)
 			throw new Exception("Element name should not be null");
@@ -2796,7 +2797,7 @@ public class CommonEvents
 		{
 			waitTillElementLocated(by, 30, elementName, pageName);
 			((JavascriptExecutor)driver).executeScript("arguments[0].scrollIntoView();", getWebElement(by));
-			return new CommonEvents(driver);
+			return new UserActions(driver);
 		}
 		catch(Exception e)
 		{
@@ -2811,11 +2812,11 @@ public class CommonEvents
 	 * @param element
 	 * @param elementName
 	 * @param pageName
-	 * @return {@link CommonEvents}
+	 * @return {@link UserActions}
 	 * @throws Exception 
 	 * 
 	 */
-	public CommonEvents jsScrollPageTillElementVisible(WebElement element, String elementName, String pageName) throws Exception
+	public UserActions jsScrollPageTillElementVisible(WebElement element, String elementName, String pageName) throws Exception
 	{
 		if(elementName==null)
 			throw new Exception("Element name should not be null");
@@ -2825,7 +2826,7 @@ public class CommonEvents
 		{
 			waitTillPageLoad(element, 30, pageName);
 			((JavascriptExecutor)driver).executeScript("arguments[0].scrollIntoView();", element);
-			return new CommonEvents(driver);
+			return new UserActions(driver);
 		}
 		catch(Exception e)
 		{
@@ -2837,41 +2838,41 @@ public class CommonEvents
 	/***
 	 * This method is responsible to scroll the page till the footer of the web page.
 	 * 
-	 * @return {@link CommonEvents}
+	 * @return {@link UserActions}
 	 */
-	public CommonEvents jsScrollTillPageFooter()
+	public UserActions jsScrollTillPageFooter()
 	{
 		((JavascriptExecutor)driver).executeScript("arguments[0].scrollTo(0, document.body.scrollHeight)");
-		return new CommonEvents(driver);
+		return new UserActions(driver);
 	}
 
 	/**
 	 * This method will give user an opportunity to execute the custom script for performing the desired event.
 	 * @param script
-	 * @return {@link CommonEvents}
+	 * @return {@link UserActions}
 	 * @throws Exception 
 	 */
-	public CommonEvents jsScriptExecutor(String script) throws Exception
+	public UserActions jsScriptExecutor(String script) throws Exception
 	{
 		if(script!=null)
 			((JavascriptExecutor)driver).executeScript(script);
 		else
 			throw new Exception("The script value should not be null");
-		return new CommonEvents(driver);
+		return new UserActions(driver);
 	}
 
 	/***
 	 * This method is useful to resize the current browser window size to the desired window size.
 	 * @param width
 	 * @param height
-	 * @return {@link CommonEvents}
+	 * @return {@link UserActions}
 	 */
-	public CommonEvents setCustomWindowSize(int width, int height)
+	public UserActions setCustomWindowSize(int width, int height)
 	{
 		driver.manage()
 		.window()
 		.setSize(new Dimension(width, height));
-		return new CommonEvents(driver);
+		return new UserActions(driver);
 	}
 
 	/***
@@ -2881,10 +2882,10 @@ public class CommonEvents
 	 * @param sourceElementName
 	 * @param targetElementName
 	 * @param pageName
-	 * @return {@link CommonEvents}
+	 * @return {@link UserActions}
 	 * @throws Exception 
 	 */
-	public CommonEvents dragAndDrop(By from, By to, String sourceElementName, String targetElementName, String pageName) throws Exception
+	public UserActions dragAndDrop(By from, By to, String sourceElementName, String targetElementName, String pageName) throws Exception
 	{
 		if(sourceElementName==null)
 			throw new Exception("Source element name should not be null");
@@ -2899,7 +2900,7 @@ public class CommonEvents
 		new Actions(driver).dragAndDrop(source, target)
 		.build()
 		.perform();
-		return new CommonEvents(driver);
+		return new UserActions(driver);
 	}
 
 	/***
@@ -2909,10 +2910,10 @@ public class CommonEvents
 	 * @param sourceElementName
 	 * @param targetElementName
 	 * @param pageName
-	 * @return {@link CommonEvents}
+	 * @return {@link UserActions}
 	 * @throws Exception 
 	 */
-	public CommonEvents dragAndDrop(WebElement source, WebElement target, String sourceElementName, String targetElementName, String pageName) throws Exception
+	public UserActions dragAndDrop(WebElement source, WebElement target, String sourceElementName, String targetElementName, String pageName) throws Exception
 	{
 		if(sourceElementName==null)
 			throw new Exception("Source element name should not be null");
@@ -2925,7 +2926,7 @@ public class CommonEvents
 		new Actions(driver).dragAndDrop(source, target)
 		.build()
 		.perform();
-		return new CommonEvents(driver);
+		return new UserActions(driver);
 	}
 
 	/***
@@ -2935,10 +2936,10 @@ public class CommonEvents
 	 * @param yOffset
 	 * @param elementName
 	 * @param pageName
-	 * @return {@link CommonEvents}
+	 * @return {@link UserActions}
 	 * @throws Exception 
 	 */
-	public CommonEvents dragAndDropBy(By by, int xOffset, int yOffset, String elementName, String pageName) throws Exception
+	public UserActions dragAndDropBy(By by, int xOffset, int yOffset, String elementName, String pageName) throws Exception
 	{
 		if(elementName==null)
 			throw new Exception("Element name should not be null");
@@ -2955,7 +2956,7 @@ public class CommonEvents
 		{
 			throw new Exception(elementName+" is not displayed on "+pageName);
 		}
-		return new CommonEvents(driver);
+		return new UserActions(driver);
 	}
 
 	/***
@@ -2965,10 +2966,10 @@ public class CommonEvents
 	 * @param yOffset
 	 * @param elementName
 	 * @param pageName
-	 * @return {@link CommonEvents}
+	 * @return {@link UserActions}
 	 * @throws Exception 
 	 */
-	public CommonEvents dragAndDropBy(WebElement element, int xOffset, int yOffset, String elementName, String pageName) throws Exception
+	public UserActions dragAndDropBy(WebElement element, int xOffset, int yOffset, String elementName, String pageName) throws Exception
 	{
 		if(elementName==null)
 			throw new Exception("Element name should not be null");
@@ -2985,7 +2986,7 @@ public class CommonEvents
 		{
 			throw new Exception(elementName+" is not displayed on "+pageName);
 		}
-		return new CommonEvents(driver);
+		return new UserActions(driver);
 	}
 
 	/***
@@ -2998,10 +2999,10 @@ public class CommonEvents
 	 * @param fileNameFieldImage
 	 * @param openButtonImage
 	 * @param fileToBeUploaded
-	 * @return {@link CommonEvents}
+	 * @return {@link UserActions}
 	 * @throws FindFailed
 	 */
-	public CommonEvents fileUploadSikuli(String fileNameFieldImage, String openButtonImage, String fileToBeUploaded) throws FindFailed
+	public UserActions fileUploadSikuli(String fileNameFieldImage, String openButtonImage, String fileToBeUploaded) throws FindFailed
 	{
 		Pattern fileName = new Pattern(fileNameFieldImage).similar(0.1d);
 		Pattern openButton = new Pattern(openButtonImage).similar(0.1d);
@@ -3010,7 +3011,7 @@ public class CommonEvents
 		screen.wait(fileName, 2);
 		screen.type(fileName, fileToBeUploaded);
 		screen.click(openButton);
-		return new CommonEvents(driver);
+		return new UserActions(driver);
 	}
 
 	/**
@@ -3019,11 +3020,11 @@ public class CommonEvents
 	 * @param filePath
 	 * @param elementName
 	 * @param pageName
-	 * @return {@link CommonEvents}
+	 * @return {@link UserActions}
 	 * @throws Exception
 	 */
 
-	public CommonEvents fileUploadSelenium(By by, String filePath, String elementName, String pageName) throws Exception
+	public UserActions fileUploadSelenium(By by, String filePath, String elementName, String pageName) throws Exception
 	{
 		if(elementName==null)
 			throw new Exception("Element name should not be null");
@@ -3037,7 +3038,7 @@ public class CommonEvents
 		{
 			throw new Exception(elementName+" is not displayed on "+pageName);
 		}
-		return new CommonEvents(driver);
+		return new UserActions(driver);
 	}
 
 	/**
@@ -3046,11 +3047,11 @@ public class CommonEvents
 	 * @param filePath
 	 * @param elementName
 	 * @param pageName
-	 * @return {@link CommonEvents}
+	 * @return {@link UserActions}
 	 * @throws Exception
 	 */
 
-	public CommonEvents fileUploadSelenium(WebElement element, String filePath, String elementName, String pageName) throws Exception
+	public UserActions fileUploadSelenium(WebElement element, String filePath, String elementName, String pageName) throws Exception
 	{
 		if(elementName==null)
 			throw new Exception("Element name should not be null");
@@ -3064,7 +3065,7 @@ public class CommonEvents
 		{
 			throw new Exception(elementName+" is not displayed on "+pageName);
 		}
-		return new CommonEvents(driver);
+		return new UserActions(driver);
 	}
 
 	/**
@@ -3072,10 +3073,10 @@ public class CommonEvents
 	 * 
 	 * @param index
 	 * @param pageName
-	 * @return {@link CommonEvents}
+	 * @return {@link UserActions}
 	 * @throws Exception 
 	 */
-	public CommonEvents switchToFrame(int index, String pageName) throws Exception
+	public UserActions switchToFrame(int index, String pageName) throws Exception
 	{
 		if(pageName==null)
 			throw new Exception("Page name should not be null");
@@ -3085,72 +3086,72 @@ public class CommonEvents
 			.frame(index);
 		else
 			throw new IllegalArgumentException("Index value should in between 0 to "+totalNumberOfFrames.size());
-		return new CommonEvents(driver);
+		return new UserActions(driver);
 	}
 
 	/**
 	 * This method is used to switch inside the frame based on the given name or id attribute
 	 * 
 	 * @param name or id - {@link String} type: Have to pass either the name or id attribute value of the respective "iframe" tag
-	 * @return {@link CommonEvents}
+	 * @return {@link UserActions}
 	 */
-	public CommonEvents switchToFrame(String nameOrId)
+	public UserActions switchToFrame(String nameOrId)
 	{
 		driver.switchTo().frame(nameOrId);
-		return new CommonEvents(driver);
+		return new UserActions(driver);
 	}
 
 	/**
 	 * This method is used to switch inside the frame based on the given by type element
 	 * 
 	 * @param by - {@link By} type
-	 * @return {@link CommonEvents}
+	 * @return {@link UserActions}
 	 */
-	public CommonEvents switchToFrame(By by)
+	public UserActions switchToFrame(By by)
 	{
 		driver.switchTo().frame(getWebElement(by));
-		return new CommonEvents(driver);
+		return new UserActions(driver);
 	}
 
 	/**
 	 * This method is used to switch inside the frame based on the given web element
 	 * 
 	 * @param element - {@link WebElement} type
-	 * @return {@link CommonEvents}
+	 * @return {@link UserActions}
 	 */
-	public CommonEvents switchToFrame(WebElement element)
+	public UserActions switchToFrame(WebElement element)
 	{
 		driver.switchTo().frame(element);
-		return new CommonEvents(driver);
+		return new UserActions(driver);
 	}
 
 	/**
 	 * This method is used to switch to parent frame from child frame
-	 * @return {@link CommonEvents}
+	 * @return {@link UserActions}
 	 */
-	public CommonEvents switchToParentFrame()
+	public UserActions switchToParentFrame()
 	{
 		driver.switchTo().parentFrame();
-		return new CommonEvents(driver);
+		return new UserActions(driver);
 	}
 
 	/**
 	 * This method is used to switch to default page from frame
-	 * @return {@link CommonEvents}
+	 * @return {@link UserActions}
 	 */
-	public CommonEvents switchToDefaultContent()
+	public UserActions switchToDefaultContent()
 	{
 		driver.switchTo().defaultContent();
-		return new CommonEvents(driver);
+		return new UserActions(driver);
 	}
 
 	/***
 	 * This method is useful to capture the screenshot of the current web page and store the same inside current projects Screenshot\Failed folder.
 	 * @param pageName
-	 * @return {@link CommonEvents}
+	 * @return {@link UserActions}
 	 * @throws Exception
 	 */
-	public CommonEvents takeScreenshot(String pageName) throws Exception 
+	public UserActions takeScreenshot(String pageName) throws Exception 
 	{
 		if(pageName==null)
 			throw new Exception("Page name should not be null");
@@ -3162,7 +3163,7 @@ public class CommonEvents
 		{
 			throw new Exception(e);
 		}
-		return new CommonEvents(driver);
+		return new UserActions(driver);
 	}
 
 	/**
@@ -3187,10 +3188,10 @@ public class CommonEvents
 	 * @param by
 	 * @param elementName
 	 * @param pageName
-	 * @return {@link CommonEvents}
+	 * @return {@link UserActions}
 	 * @throws Exception 
 	 */
-	public CommonEvents takeElementScreenshot(By by, String elementName, String pageName) throws Exception
+	public UserActions takeElementScreenshot(By by, String elementName, String pageName) throws Exception
 	{
 		if(elementName==null)
 			throw new Exception("Element name should not be null");
@@ -3206,7 +3207,7 @@ public class CommonEvents
 		{
 			throw new Exception(elementName+" is not displayed on "+pageName);
 		}
-		return new CommonEvents(driver);
+		return new UserActions(driver);
 	}
 
 	/**
@@ -3215,10 +3216,10 @@ public class CommonEvents
 	 * 
 	 * @param filePath
 	 * @param fileName
-	 * @return {@link CommonEvents}
+	 * @return {@link UserActions}
 	 * @throws Exception 
 	 */
-	public CommonEvents takeFullPageScreenshot(String filePath, String fileName) throws Exception
+	public UserActions takeFullPageScreenshot(String filePath, String fileName) throws Exception
 	{
 		if(filePath != null)
 		{
@@ -3232,7 +3233,7 @@ public class CommonEvents
 
 		else
 			throw new Exception("File path should not be a null value");
-		return new CommonEvents(driver);
+		return new UserActions(driver);
 	}
 
 	/**
@@ -3245,10 +3246,10 @@ public class CommonEvents
 	 * @param fileName
 	 * @param elementName
 	 * @param pageName
-	 * @return {@link CommonEvents}
+	 * @return {@link UserActions}
 	 * @throws Exception 
 	 */
-	public CommonEvents takeElementScreenshot(By by, String filePath, String fileName, String elementName, String pageName) throws Exception
+	public UserActions takeElementScreenshot(By by, String filePath, String fileName, String elementName, String pageName) throws Exception
 	{
 		if(elementName==null)
 			throw new Exception("Element name should not be null");
@@ -3276,7 +3277,7 @@ public class CommonEvents
 			throw new Exception(elementName+" is not displayed on "+pageName);
 		}
 
-		return new CommonEvents(driver);
+		return new UserActions(driver);
 	}
 
 	/**
@@ -3289,10 +3290,10 @@ public class CommonEvents
 	 * @param fileName
 	 * @param elementName
 	 * @param pageName
-	 * @return {@link CommonEvents}
+	 * @return {@link UserActions}
 	 * @throws Exception 
 	 */
-	public CommonEvents takeElementScreenshot(WebElement element, String filePath, String fileName, String elementName, String pageName) throws Exception
+	public UserActions takeElementScreenshot(WebElement element, String filePath, String fileName, String elementName, String pageName) throws Exception
 	{
 		if(elementName==null)
 			throw new Exception("Element name should not be null");
@@ -3319,7 +3320,7 @@ public class CommonEvents
 		{
 			throw new Exception(elementName+" is not displayed on "+pageName);
 		}
-		return new CommonEvents(driver);
+		return new UserActions(driver);
 	}
 
 	/**
@@ -3332,10 +3333,10 @@ public class CommonEvents
 	 * @param fileName
 	 * @param elementName
 	 * @param pageName
-	 * @return {@link CommonEvents}
+	 * @return {@link UserActions}
 	 * @throws Exception 
 	 */
-	public CommonEvents takeFrameScreenshot(By by, String filePath, String fileName, String elementName, String pageName) throws Exception
+	public UserActions takeFrameScreenshot(By by, String filePath, String fileName, String elementName, String pageName) throws Exception
 	{
 		if(elementName==null)
 			throw new Exception("Element name should not be null");
@@ -3362,7 +3363,7 @@ public class CommonEvents
 		{
 			throw new Exception(elementName+" is not displayed on "+pageName);
 		}
-		return new CommonEvents(driver);
+		return new UserActions(driver);
 	}
 
 	/***
@@ -3452,7 +3453,7 @@ public class CommonEvents
 	 * @param fileName
 	 * @param elementName
 	 * @param pageName
-	 * @return {@link CommonEvents}
+	 * @return {@link UserActions}
 	 * @throws Exception 
 	 */
 	public boolean takeElementScreenshotAndCompare(By by, String fileNameWithPath, String destFilePathWithName, String elementName, String pageName) throws Exception
@@ -3492,7 +3493,7 @@ public class CommonEvents
 	 * @param fileName
 	 * @param elementName
 	 * @param pageName
-	 * @return {@link CommonEvents}
+	 * @return {@link UserActions}
 	 * @throws Exception 
 	 */
 	public boolean takeElementScreenshotAndCompare(WebElement element, String fileNameWithPath, String destFilePathWithName, String elementName, String pageName) throws Exception
@@ -3700,9 +3701,9 @@ public class CommonEvents
 	 * This method is useful to resize the width of the desired element based on the given offset value.
 	 * @param by - {@link By} type
 	 * @param incrementBy
-	 * @return {@link CommonEvents}
+	 * @return {@link UserActions}
 	 */
-	public CommonEvents resizeElementWidth(By by, int incrementBy)
+	public UserActions resizeElementWidth(By by, int incrementBy)
 	{
 		Map<String, Integer> dimension = getWebElementDimension(by);
 		WebElement element = getWebElement(by);
@@ -3711,17 +3712,17 @@ public class CommonEvents
 		.release()
 		.build()
 		.perform();
-		return new CommonEvents(driver);
+		return new UserActions(driver);
 	}
 
 	/***
 	 * This method is useful to resize the width of the desired element based on the given offset value.
 	 * @param element - {@link WebElement} type
 	 * @param incrementBy
-	 * @return {@link CommonEvents}
+	 * @return {@link UserActions}
 	 * @throws Exception 
 	 */
-	public CommonEvents resizeElementWidth(WebElement element, int incrementBy) throws Exception
+	public UserActions resizeElementWidth(WebElement element, int incrementBy) throws Exception
 	{
 		Map<String, Integer> dimension = getWebElementDimension(element);
 		new Actions(driver).clickAndHold(element)
@@ -3729,38 +3730,38 @@ public class CommonEvents
 		.release()
 		.build()
 		.perform();
-		return new CommonEvents(driver);
+		return new UserActions(driver);
 	}
 
 	/***
 	 * This method is useful to resize the height of the desired element based on the given offset value.
 	 * @param by - {@link By} type
 	 * @param incrementBy
-	 * @return {@link CommonEvents}
+	 * @return {@link UserActions}
 	 */
-	public CommonEvents resizeElementHeight(By by, int incrementBy)
+	public UserActions resizeElementHeight(By by, int incrementBy)
 	{
 		Map<String, Integer> dimension = getWebElementDimension(by);
 		WebElement element = getWebElement(by);
 		new Actions(driver).clickAndHold(element)
 		.moveByOffset(dimension.get("Width"), dimension.get("Height") + incrementBy).release().build()
 		.perform();
-		return new CommonEvents(driver);
+		return new UserActions(driver);
 	}
 
 	/***
 	 * This method is useful to resize the height of the desired element based on the given offset value.
 	 * @param element
 	 * @param incrementBy
-	 * @return {@link CommonEvents}
+	 * @return {@link UserActions}
 	 */
-	public CommonEvents resizeElementHeight(WebElement element, int incrementBy)
+	public UserActions resizeElementHeight(WebElement element, int incrementBy)
 	{
 		Map<String, Integer> dimension = getWebElementDimension(element);
 		new Actions(driver).clickAndHold(element)
 		.moveByOffset(dimension.get("Width"), dimension.get("Height") + incrementBy).release().build()
 		.perform();
-		return new CommonEvents(driver);
+		return new UserActions(driver);
 	}
 
 	/***
@@ -3768,13 +3769,13 @@ public class CommonEvents
 	 * @param by - {@link By} type
 	 * @param xOffset - {@link Integer} type: The value should be shifted in the horizontal axis
 	 * @param yOffset - {@link Integer} type: The value should be shifted in the vertical axis
-	 * @return {@link CommonEvents}
+	 * @return {@link UserActions}
 	 */
-	public CommonEvents slide(By by, int xOffset, int yOffset)
+	public UserActions slide(By by, int xOffset, int yOffset)
 	{
 		WebElement element = getWebElement(by);
 		new Actions(driver).clickAndHold(element).moveByOffset(xOffset, yOffset).release(element).build().perform();
-		return new CommonEvents(driver);
+		return new UserActions(driver);
 	}
 
 	/***
@@ -3782,12 +3783,12 @@ public class CommonEvents
 	 * @param element - {@link WebElement} type
 	 * @param xOffset - {@link Integer} type: The value should be shifted in the horizontal axis
 	 * @param yOffset - {@link Integer} type: The value should be shifted in the vertical axis
-	 * @return {@link CommonEvents}
+	 * @return {@link UserActions}
 	 */
-	public CommonEvents slide(WebElement element, int xOffset, int yOffset) throws Exception
+	public UserActions slide(WebElement element, int xOffset, int yOffset) throws Exception
 	{
 		new Actions(driver).clickAndHold(element).moveByOffset(xOffset, yOffset).release(element).build().perform();
-		return new CommonEvents(driver);
+		return new UserActions(driver);
 	}
 
 	/**
@@ -3798,10 +3799,10 @@ public class CommonEvents
 	 * @param seconds
 	 * @return CommonEvents
 	 */
-	public CommonEvents waitTillElementVisible(WebElement element, long seconds) {
+	public UserActions waitTillElementVisible(WebElement element, long seconds) {
 		new WebDriverWait(driver, Duration.ofSeconds(seconds))
 		.until(ExpectedConditions.visibilityOf(element));
-		return new CommonEvents(driver);
+		return new UserActions(driver);
 	}
 
 	/**
@@ -3810,12 +3811,12 @@ public class CommonEvents
 	 * 
 	 * @param by
 	 * @param seconds
-	 * @return {@link CommonEvents}
+	 * @return {@link UserActions}
 	 */
-	public CommonEvents waitTillElementVisible(By by, long seconds) {
+	public UserActions waitTillElementVisible(By by, long seconds) {
 		new WebDriverWait(driver, Duration.ofSeconds(seconds))
 		.until(ExpectedConditions.visibilityOf(getWebElement(by)));
-		return new CommonEvents(driver);
+		return new UserActions(driver);
 	}
 
 	/**
@@ -3824,12 +3825,12 @@ public class CommonEvents
 	 * 
 	 * @param element
 	 * @param seconds
-	 * @return {@link CommonEvents}
+	 * @return {@link UserActions}
 	 */
-	public CommonEvents waitTillElementClickable(WebElement element, long seconds) {
+	public UserActions waitTillElementClickable(WebElement element, long seconds) {
 		new WebDriverWait(driver, Duration.ofSeconds(seconds))
 		.until(ExpectedConditions.elementToBeClickable(element));
-		return new CommonEvents(driver);
+		return new UserActions(driver);
 	}
 
 	/**
@@ -3838,12 +3839,12 @@ public class CommonEvents
 	 * 
 	 * @param by
 	 * @param seconds
-	 * @return {@link CommonEvents}
+	 * @return {@link UserActions}
 	 */
-	public CommonEvents waitTillElementClickable(By by, long seconds) {
+	public UserActions waitTillElementClickable(By by, long seconds) {
 		new WebDriverWait(driver, Duration.ofSeconds(seconds))
 		.until(ExpectedConditions.elementToBeClickable(getWebElement(by)));
-		return new CommonEvents(driver);
+		return new UserActions(driver);
 	}
 
 
@@ -3854,10 +3855,10 @@ public class CommonEvents
 	 * @param seconds
 	 * @param elementName
 	 * @param pageName
-	 * @return {@link CommonEvents}
+	 * @return {@link UserActions}
 	 * @throws Exception 
 	 */
-	public CommonEvents waitTillElementLocated(By by, long seconds, String elementName, String pageName) throws Exception
+	public UserActions waitTillElementLocated(By by, long seconds, String elementName, String pageName) throws Exception
 	{
 		if(elementName==null)
 			throw new Exception("Element name should not be null");
@@ -3872,7 +3873,7 @@ public class CommonEvents
 		{
 			throw new Exception(elementName+" is not located on "+pageName);
 		}
-		return new CommonEvents(driver);
+		return new UserActions(driver);
 	}
 
 	/***
@@ -3880,14 +3881,14 @@ public class CommonEvents
 	 * 
 	 * @param by
 	 * @param seconds
-	 * @return {@link CommonEvents}
+	 * @return {@link UserActions}
 	 * @throws Exception 
 	 */
-	public CommonEvents waitTillElementLocated(By by, long seconds)
+	public UserActions waitTillElementLocated(By by, long seconds)
 	{
 		new WebDriverWait(driver, Duration.ofSeconds(seconds))
 		.until(ExpectedConditions.presenceOfElementLocated(by));
-		return new CommonEvents(driver);
+		return new UserActions(driver);
 	}
 
 	/***
@@ -3896,12 +3897,12 @@ public class CommonEvents
 	 * @param seconds
 	 * @param attribute
 	 * @param desiredValue
-	 * @return {@link CommonEvents}
+	 * @return {@link UserActions}
 	 */
-	public CommonEvents waitTillAttributeContains(By by, long seconds, String attribute, String desiredValue)
+	public UserActions waitTillAttributeContains(By by, long seconds, String attribute, String desiredValue)
 	{
 		new WebDriverWait(driver, Duration.ofSeconds(seconds)).until(ExpectedConditions.attributeContains(by, attribute, desiredValue));
-		return new CommonEvents(driver);
+		return new UserActions(driver);
 	}
 
 	/***
@@ -3910,12 +3911,12 @@ public class CommonEvents
 	 * @param seconds
 	 * @param attribute
 	 * @param desiredValue
-	 * @return {@link CommonEvents}
+	 * @return {@link UserActions}
 	 */
-	public CommonEvents waitTillAttributeContains(WebElement element, long seconds, String attribute, String desiredValue) throws Exception
+	public UserActions waitTillAttributeContains(WebElement element, long seconds, String attribute, String desiredValue) throws Exception
 	{
 		new WebDriverWait(driver, Duration.ofSeconds(seconds)).until(ExpectedConditions.attributeContains(element, attribute, desiredValue));
-		return new CommonEvents(driver);
+		return new UserActions(driver);
 	}
 
 	/***
@@ -3924,12 +3925,12 @@ public class CommonEvents
 	 * @param seconds - time in seconds
 	 * @param attribute
 	 * @param desiredValue
-	 * @return {@link CommonEvents}
+	 * @return {@link UserActions}
 	 */
-	public CommonEvents waitTillAttributeToBe(By by, long seconds, String attribute, String desiredValue) throws Exception
+	public UserActions waitTillAttributeToBe(By by, long seconds, String attribute, String desiredValue) throws Exception
 	{
 		new WebDriverWait(driver, Duration.ofSeconds(seconds)).until(ExpectedConditions.attributeToBe(by, attribute, desiredValue));
-		return new CommonEvents(driver);
+		return new UserActions(driver);
 	}
 
 	/***
@@ -3938,12 +3939,12 @@ public class CommonEvents
 	 * @param seconds
 	 * @param attribute
 	 * @param desiredValue
-	 * @return {@link CommonEvents}
+	 * @return {@link UserActions}
 	 */
-	public CommonEvents waitTillAttributeToBe(WebElement element, long seconds, String attribute, String desiredValue)
+	public UserActions waitTillAttributeToBe(WebElement element, long seconds, String attribute, String desiredValue)
 	{
 		new WebDriverWait(driver, Duration.ofSeconds(seconds)).until(ExpectedConditions.attributeToBe(element, attribute, desiredValue));
-		return new CommonEvents(driver);
+		return new UserActions(driver);
 	}
 
 	/***
@@ -3952,12 +3953,12 @@ public class CommonEvents
 	 * @param by - {@link By} type
 	 * @param seconds - time in seconds
 	 * @param count - expected count
-	 * @return {@link CommonEvents}
+	 * @return {@link UserActions}
 	 */
-	public CommonEvents waitTillNumberOfElementsToBe(By by, long seconds, int count) throws Exception
+	public UserActions waitTillNumberOfElementsToBe(By by, long seconds, int count) throws Exception
 	{
 		new WebDriverWait(driver, Duration.ofSeconds(seconds)).until(ExpectedConditions.numberOfElementsToBe(by, count));
-		return new CommonEvents(driver);
+		return new UserActions(driver);
 	}
 
 	/***
@@ -3966,12 +3967,12 @@ public class CommonEvents
 	 * @param by - {@link By} type
 	 * @param seconds - time in seconds
 	 * @param count - expected count
-	 * @return {@link CommonEvents}
+	 * @return {@link UserActions}
 	 */
-	public CommonEvents waitTillNumberOfElementsToBeMoreThan(By by, long seconds, int count)
+	public UserActions waitTillNumberOfElementsToBeMoreThan(By by, long seconds, int count)
 	{
 		new WebDriverWait(driver, Duration.ofSeconds(seconds)).until(ExpectedConditions.numberOfElementsToBeMoreThan(by, count));
-		return new CommonEvents(driver);
+		return new UserActions(driver);
 	}
 
 	/***
@@ -3980,12 +3981,12 @@ public class CommonEvents
 	 * @param by - {@link By} type
 	 * @param seconds - time in seconds
 	 * @param count - expected count
-	 * @return {@link CommonEvents}
+	 * @return {@link UserActions}
 	 */
-	public CommonEvents waitTillNumberOfElementsToBeLessThan(By by, long seconds, int count)
+	public UserActions waitTillNumberOfElementsToBeLessThan(By by, long seconds, int count)
 	{
 		new WebDriverWait(driver, Duration.ofSeconds(seconds)).until(ExpectedConditions.numberOfElementsToBeLessThan(by, count));
-		return new CommonEvents(driver);
+		return new UserActions(driver);
 	}
 
 	/**
@@ -3993,10 +3994,10 @@ public class CommonEvents
 	 * This wait will be based on the given user input seconds.
 	 * @param seconds
 	 * @param pageName
-	 * @return {@link CommonEvents}
+	 * @return {@link UserActions}
 	 * 
 	 */
-	public CommonEvents waitTillPageLoad(By by, int seconds, String pageName) throws Exception
+	public UserActions waitTillPageLoad(By by, int seconds, String pageName) throws Exception
 	{
 		int count = 1;
 		boolean isDisplayed = false;
@@ -4031,7 +4032,7 @@ public class CommonEvents
 		}
 		if(count>seconds)
 			throw new Exception("The ajax calls for "+pageName+" could not be completed in "+seconds+" seconds");
-		return new CommonEvents(driver);
+		return new UserActions(driver);
 	}
 
 	/**
@@ -4039,10 +4040,10 @@ public class CommonEvents
 	 * This wait will be based on the given user input seconds.
 	 * @param seconds
 	 * @param pageName
-	 * @return {@link CommonEvents}
+	 * @return {@link UserActions}
 	 * 
 	 */
-	public CommonEvents waitTillPageLoad(WebElement element, int seconds, String pageName) throws Exception
+	public UserActions waitTillPageLoad(WebElement element, int seconds, String pageName) throws Exception
 	{
 		int count = 1;
 		boolean isDisplayed = false;
@@ -4077,7 +4078,7 @@ public class CommonEvents
 		}
 		if(count>seconds)
 			throw new Exception("The ajax calls for "+pageName+" could not be completed in "+seconds+" seconds");
-		return new CommonEvents(driver);
+		return new UserActions(driver);
 	}
 
 	/***
@@ -4085,7 +4086,7 @@ public class CommonEvents
 	 * 
 	 * @param by
 	 * @param timeDuration
-	 * @return {@link CommonEvents}
+	 * @return {@link UserActions}
 	 */
 	public WebElement fluentWait(By by, long timeDuration)
 	{
@@ -4107,7 +4108,7 @@ public class CommonEvents
 	 * 
 	 * @param element
 	 * @param timeDuration
-	 * @return {@link CommonEvents}
+	 * @return {@link UserActions}
 	 */
 	public WebElement fluentWait(final WebElement element, long timeDuration)
 	{
@@ -4132,11 +4133,11 @@ public class CommonEvents
 	 * @param maxTimeout - This is the maximum time the script will wait for
 	 * @param elementName - Name of the web element
 	 * @param pageName - Page name where the web element is present
-	 * @return {@link CommonEvents}
+	 * @return {@link UserActions}
 	 * @throws Exception
 	 */
 
-	public CommonEvents waitTillElementLocatedInDom(String location, String locatorType, long maxTimeout, String elementName, String pageName) throws Exception
+	public UserActions waitTillElementLocatedInDom(String location, String locatorType, long maxTimeout, String elementName, String pageName) throws Exception
 	{
 		int count=1;
 		long maxCount = maxTimeout*4;
@@ -4200,7 +4201,7 @@ public class CommonEvents
 		}while(count<=maxCount && !flag);
 		if(count==maxCount && flag==false)
 			throw new NoSuchElementException(elementName+" is not present in "+pageName);
-		return new CommonEvents(driver);
+		return new UserActions(driver);
 	}
 
 	/***
@@ -4320,32 +4321,32 @@ public class CommonEvents
 
 	/***
 	 * This method is useful for user to open a new tab in the same focused browser
-	 * @return {@link CommonEvents}
+	 * @return {@link UserActions}
 	 */
-	public CommonEvents openNewTab()
+	public UserActions openNewTab()
 	{
 		driver.switchTo().newWindow(WindowType.TAB);
-		return new CommonEvents(driver);
+		return new UserActions(driver);
 	}
 
 	/***
 	 * This method is useful for user to open a new browser window
-	 * @return {@link CommonEvents}
+	 * @return {@link UserActions}
 	 */
-	public CommonEvents openNewWindow()
+	public UserActions openNewWindow()
 	{
 		driver.switchTo().newWindow(WindowType.WINDOW);
-		return new CommonEvents(driver);
+		return new UserActions(driver);
 	}
 
 	/**
 	 * This method is useful to close the current driver focused window
-	 * @return {@link CommonEvents}
+	 * @return {@link UserActions}
 	 */
-	public CommonEvents closeCurrentWindow()
+	public UserActions closeCurrentWindow()
 	{
 		driver.close();
-		return new CommonEvents(driver);
+		return new UserActions(driver);
 	}
 
 	/**
@@ -4465,7 +4466,7 @@ public class CommonEvents
 		return randomDate;
 	}
 
-	public CommonEvents clickOnAnElementIfItIsPresent(By by) {
+	public UserActions clickOnAnElementIfItIsPresent(By by) {
 
 		// Find all matching elements on the page
 		java.util.List<WebElement> elements = driver.findElements(by);
@@ -4475,9 +4476,9 @@ public class CommonEvents
 			// Click on the first matching element
 			elements.get(0).click();
 		}
-		return new CommonEvents(driver);
+		return new UserActions(driver);
 	}
-	public CommonEvents fileUpload(String pathOfTheFile ) throws AWTException
+	public UserActions fileUpload(String pathOfTheFile ) throws AWTException
 	{
 		StringSelection selectFile=new StringSelection(pathOfTheFile); 
 		//		internally copy the file
@@ -4493,10 +4494,10 @@ public class CommonEvents
 		robot.keyPress(KeyEvent.VK_ENTER);
 		robot.keyRelease(KeyEvent.VK_ENTER);
 
-		return new CommonEvents(driver);
+		return new UserActions(driver);
 	}
 
-	public CommonEvents highlightElement(WebElement element)
+	public UserActions highlightElement(WebElement element)
 	{
 		JavascriptExecutor jse = (JavascriptExecutor) driver;
 
@@ -4513,10 +4514,10 @@ public class CommonEvents
 		// Remove the highlight
 		jse.executeScript("arguments[0].setAttribute('style', '');", element);
 
-		return new CommonEvents(driver);
+		return new UserActions(driver);
 	}
 
-	public CommonEvents highlightElementAfterAction(WebElement element)
+	public UserActions highlightElementAfterAction(WebElement element)
 	{
 		JavascriptExecutor jse = (JavascriptExecutor)driver;
 		jse.executeScript("arguments[0].setAttribute('style','border: solid 5px green');", element);
@@ -4531,10 +4532,10 @@ public class CommonEvents
 		// Remove the highlight
 		jse.executeScript("arguments[0].setAttribute('style', '');", element);
 
-		return new CommonEvents(driver);
+		return new UserActions(driver);
 	}
 
-	public CommonEvents performAltN() {
+	public UserActions performAltN() {
 		// Create Actions object
 		Actions actions = new Actions(driver);
 
@@ -4545,7 +4546,7 @@ public class CommonEvents
 		.build()
 		.perform();
 
-		return new CommonEvents(driver);
+		return new UserActions(driver);
 	}
 
 	/***
@@ -4569,31 +4570,31 @@ public class CommonEvents
 		return desiredValue;
 	}
 
-	public CommonEvents acceptAlert() {
+	public UserActions acceptAlert() {
 		try {
 			Alert alert = driver.switchTo().alert();
 			alert.accept();
 		} catch (NoAlertPresentException e) {
 			System.out.println("No alert present: " + e.getMessage());
 		}
-		return new CommonEvents(driver);
+		return new UserActions(driver);
 	}
 
-	public CommonEvents dismissAlert() {
+	public UserActions dismissAlert() {
 		try {
 			Alert alert = driver.switchTo().alert();
 			alert.dismiss();
 		} catch (NoAlertPresentException e) {
 			System.out.println("No alert present: " + e.getMessage());
 		}
-		return new CommonEvents(driver);
+		return new UserActions(driver);
 	}
 
-	public CommonEvents scrollIntoView(WebElement element) {
+	public UserActions scrollIntoView(WebElement element) {
 		JavascriptExecutor jse = (JavascriptExecutor) driver;
 		jse.executeScript("arguments[0].scrollIntoView(true);", element);
 
-		return new CommonEvents(driver);
+		return new UserActions(driver);
 	}
 
 	public boolean isElementVisible(By element) {

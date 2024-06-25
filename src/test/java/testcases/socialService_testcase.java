@@ -26,7 +26,6 @@ public class socialService_testcase extends AppTestBase
 	socialService_Pages socialService_PagesInstance;
 	LocatorsFactory locatorsFactoryInstance;
 
-
 	@Parameters({"browser", "environment"})
 	@BeforeClass(alwaysRun = true)
 	public void initBrowser(String browser, String environment) throws Exception {
@@ -111,6 +110,65 @@ public class socialService_testcase extends AppTestBase
 		locatorsFactoryInstance = new LocatorsFactory(driver);
 		Assert.assertTrue(socialService_PagesInstance.selectIndiaFromCountryDropdownMenuAndValidate(), "India is not present in this dropdown is not present, please check manually");
 		Assert.assertTrue(locatorsFactoryInstance.countryDropdownIsPresent(driver).isDisplayed(), "country Dropdown is not present in the current page, Please check manually");
+	}
+	
+	@Test(priority = 9, groups = {"sanity"}, description="Validate the warnning message for the membership dropdown.")
+	public void validateWarnningMessageForMembershipDropdown() throws Exception {
+		socialService_PagesInstance = new socialService_Pages(driver);
+		locatorsFactoryInstance = new LocatorsFactory(driver);
+		Map<String, String> expectedData = new FileOperations().readJson(expectedDataFilePath, "NewSSUPatientRegistrationPopup");
+		Assert.assertEquals(socialService_PagesInstance.validateWarnningMessageForMembershipDropDown(expectedData), expectedData.get("warnningMessage"),"Warning message is not present, please check manually");
+		Assert.assertTrue(locatorsFactoryInstance.warningMessageIsPresent(driver).isDisplayed(), "Warning message is not present in the current page, Please check manually");
+	}
+	
+	@Test(priority = 10, groups = {"sanity"}, description="select Yes from the Has target group certificate? dropdown and verify that Target group certificate type and certificate no textfield is present or not ")
+	public void selectYesFromHasTargetGroupCertificateAndValidate() throws Exception {
+		socialService_PagesInstance = new socialService_Pages(driver);
+		locatorsFactoryInstance = new LocatorsFactory(driver);
+		Assert.assertTrue(socialService_PagesInstance.selectYesFromHasTargetGroupCertificateandValidate(), " Yes option is not present in that dropdown, please check manually");
+		Assert.assertTrue(locatorsFactoryInstance.hasTG_certificateDropdownIsPresent(driver).isDisplayed(), "hasTG_certificate Dropdown is not present in the current page, Please check manually");
+	}
+	
+	@Test(priority = 11, groups = {"sanity"}, description="get the place holder name of address textfiled and verify  the place holder name.")
+	public void getPlaceHolderNameVerifyPlaceHolderName() throws Exception {
+		socialService_PagesInstance = new socialService_Pages(driver);
+		locatorsFactoryInstance = new LocatorsFactory(driver);
+		Map<String, String> expectedData = new FileOperations().readJson(expectedDataFilePath, "NewSSUPatientRegistrationPopup");
+		Assert.assertEquals(socialService_PagesInstance.getPlaceHolderNameVerifyPlaceHolderNameOfAddress(expectedData), expectedData.get("AddressFieldPlaceHolder"),"Not able to verify the placeholder name, please check manually");
+		Assert.assertEquals(locatorsFactoryInstance.raceTextFieldPlaceHolderIsPresent(),expectedData.get("RaceFieldPlaceHolder"),"race Textfield is not present in the current page, Please check manually");
+	}
+	
+	@Test(priority = 12, groups = {"sanity"}, description="verify the presence of field in New SSU Patient Registration page and verify Patient Information text is present")
+	public void verifypresencefield() throws Exception {
+		socialService_PagesInstance = new socialService_Pages(driver);
+		locatorsFactoryInstance = new LocatorsFactory(driver);
+		Assert.assertTrue(socialService_PagesInstance.verifypresencefieldInNewSSUPatientRegistrationPage(), "Any of the field is not present, please check manually");
+		Assert.assertTrue(locatorsFactoryInstance.newSsuPatientRegistrationTextFieldIsPresent(driver).isDisplayed(), "new ssu Patient Registration text field is not present in the current page, Please check manually");
+	}
+	
+	@Test(priority = 13, groups = {"sanity"}, description="Close this New SSU Patient Registration popup by using javaScript")
+	public void performJavaScriptExecutorOperation() throws Exception {
+		socialService_PagesInstance = new socialService_Pages(driver);
+		locatorsFactoryInstance = new LocatorsFactory(driver);
+		Assert.assertTrue(socialService_PagesInstance.closeNewSSUPatientRegistrationPopupByUsingJsExecutor(), "Unable to perform the js Executor operation, please check manually");
+		Assert.assertTrue(locatorsFactoryInstance.listByPatientStatusRadioButtonIsPresent(driver).isSelected(), "RadioButton is not present in the current page, Please check manually");
+	}
+	
+	
+	@Test(priority = 14, groups = {"sanity"}, description="scroll to the bottom of the Sale page and verify that Print Invoice button  , Discard button  ,Invoice History and  Credit Limitis and Balance text are peresent or not.")
+	public void scrollToButtomAndVerifyTheFields() throws Exception {
+		socialService_PagesInstance = new socialService_Pages(driver);
+		locatorsFactoryInstance = new LocatorsFactory(driver);
+		Assert.assertTrue(socialService_PagesInstance.scrollToButtomAndVerifytheFields(), "Any of the elememt is not present, please check manually");
+		Assert.assertTrue(locatorsFactoryInstance.printInvoiceButtonElementIsPresent(driver).isDisplayed(), "Print Invoice Button Element is not present in the current page, Please check manually");
+	}
+	
+	@Test(priority = 15, groups = {"sanity"}, description="Perform the keyboard operation to open the  popup and verify that the popup is displayed or not.")
+	public void performTheKeyboardOperationToOpenThePopup() throws Exception {
+		socialService_PagesInstance = new socialService_Pages(driver);
+		locatorsFactoryInstance = new LocatorsFactory(driver);
+		Assert.assertTrue(socialService_PagesInstance.performTheKeyboardOperationToOpenthePopup(), "Not able to do the keyboard operation, please check manually");
+		Assert.assertTrue(locatorsFactoryInstance.firstNameFieldIsPresent(driver).isDisplayed(), "firstName field is not present in the current page, Please check manually");
 	}
 
 	@AfterClass(alwaysRun = true)

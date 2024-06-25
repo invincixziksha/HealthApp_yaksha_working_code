@@ -29,22 +29,22 @@ public class doctor_Pages extends StartupPage {
 	public boolean loginToHealthAppByGivenValidCredetial(Map<String, String> expectedData) throws Exception {
 		Boolean textIsDisplayed = false;
 		try {
-			WebElement usernametextFieldWebElement = commonEvents.findElement(usernameTextbox);
-			commonEvents.highlightElement(usernametextFieldWebElement);
-			commonEvents.sendKeys(usernameTextbox,expectedData.get("username"));
+			WebElement usernametextFieldWebElement = userActions.findElement(usernameTextbox);
+			userActions.highlightElement(usernametextFieldWebElement);
+			userActions.sendKeys(usernameTextbox,expectedData.get("username"));
 
-			WebElement passwordtextFieldWebElement = commonEvents.findElement(passwordTextbox);
-			commonEvents.highlightElement(passwordtextFieldWebElement);
-			commonEvents.sendKeys(passwordTextbox,expectedData.get("password"));
+			WebElement passwordtextFieldWebElement = userActions.findElement(passwordTextbox);
+			userActions.highlightElement(passwordtextFieldWebElement);
+			userActions.sendKeys(passwordTextbox,expectedData.get("password"));
 
-			WebElement signinButtonWebElement = commonEvents.findElement(signInButton);
-			commonEvents.highlightElement(signinButtonWebElement);
-			commonEvents.click(signInButton);
+			WebElement signinButtonWebElement = userActions.findElement(signInButton);
+			userActions.highlightElement(signinButtonWebElement);
+			userActions.click(signInButton);
 
-			if(commonEvents.isDisplayed(registeredPatientTextElement))
+			if(userActions.isDisplayed(registeredPatientTextElement))
 			{   
-				WebElement registeredPatientTextWebElement = commonEvents.findElement(registeredPatientTextElement);
-				commonEvents.highlightElement(registeredPatientTextWebElement);
+				WebElement registeredPatientTextWebElement = userActions.findElement(registeredPatientTextElement);
+				userActions.highlightElement(registeredPatientTextWebElement);
 				textIsDisplayed=true;
 			}
 		}catch(Exception e) {
@@ -63,7 +63,7 @@ public class doctor_Pages extends StartupPage {
 	public String verifyTitleOfThePage() throws Exception {
 		String pageTitle = "";
 		try {
-			pageTitle = commonEvents.getTitle();
+			pageTitle = userActions.getTitle();
 			System.out.println("title of the page is  :" + pageTitle );
 		}catch(Exception e) {
 			throw e;
@@ -81,7 +81,7 @@ public class doctor_Pages extends StartupPage {
 	public String verifyURLOfThePage() throws Exception {
 		String urlofThepage = "";
 		try {
-			urlofThepage = commonEvents.getCurrentUrl();
+			urlofThepage = userActions.getCurrentUrl();
 			System.out.println("URL of the page is  :" + urlofThepage );
 		}catch(Exception e) {
 			throw e;
@@ -101,8 +101,8 @@ public class doctor_Pages extends StartupPage {
 	public Boolean verifythatDoctorModuleIsPresentAndNavigateDoctorsTab() throws Exception {
 		boolean isDisplayed =false;
 		try {
-			if(commonEvents.isDisplayed(doctorTab)){
-			commonEvents.click(doctorTab);
+			if(userActions.isDisplayed(doctorTab)){
+			userActions.click(doctorTab);
 			isDisplayed=true;
 			}
 			}catch(Exception e) {

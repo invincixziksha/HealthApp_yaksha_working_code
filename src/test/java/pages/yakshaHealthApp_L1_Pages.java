@@ -65,22 +65,22 @@ public class yakshaHealthApp_L1_Pages extends StartupPage {
 	public boolean loginToHealthAppByGivenValidCredetial(Map<String, String> expectedData) throws Exception {
 		Boolean textIsDisplayed = false;
 		try {
-			WebElement usernametextFieldWebElement = commonEvents.findElement(usernameTextbox);
-			commonEvents.highlightElement(usernametextFieldWebElement);
-			commonEvents.sendKeys(usernameTextbox,expectedData.get("username"));
+			WebElement usernametextFieldWebElement = userActions.findElement(usernameTextbox);
+			userActions.highlightElement(usernametextFieldWebElement);
+			userActions.sendKeys(usernameTextbox,expectedData.get("username"));
 
-			WebElement passwordtextFieldWebElement = commonEvents.findElement(passwordTextbox);
-			commonEvents.highlightElement(passwordtextFieldWebElement);
-			commonEvents.sendKeys(passwordTextbox,expectedData.get("password"));
+			WebElement passwordtextFieldWebElement = userActions.findElement(passwordTextbox);
+			userActions.highlightElement(passwordtextFieldWebElement);
+			userActions.sendKeys(passwordTextbox,expectedData.get("password"));
 
-			WebElement signinButtonWebElement = commonEvents.findElement(signInButton);
-			commonEvents.highlightElement(signinButtonWebElement);
-			commonEvents.click(signInButton);
+			WebElement signinButtonWebElement = userActions.findElement(signInButton);
+			userActions.highlightElement(signinButtonWebElement);
+			userActions.click(signInButton);
 
-			if(commonEvents.isDisplayed(registeredPatientTextElement))
+			if(userActions.isDisplayed(registeredPatientTextElement))
 			{   
-				WebElement registeredPatientTextWebElement = commonEvents.findElement(registeredPatientTextElement);
-				commonEvents.highlightElement(registeredPatientTextWebElement);
+				WebElement registeredPatientTextWebElement = userActions.findElement(registeredPatientTextElement);
+				userActions.highlightElement(registeredPatientTextWebElement);
 				textIsDisplayed=true;
 			}
 		}catch(Exception e) {
@@ -99,7 +99,7 @@ public class yakshaHealthApp_L1_Pages extends StartupPage {
 	public String verifyTitleOfThePage() throws Exception {
 		String pageTitle = "";
 		try {
-			pageTitle = commonEvents.getTitle();
+			pageTitle = userActions.getTitle();
 			System.out.println("title of the page is  :" + pageTitle );
 		}catch(Exception e) {
 			throw e;
@@ -117,7 +117,7 @@ public class yakshaHealthApp_L1_Pages extends StartupPage {
 	public String verifyURLOfThePage() throws Exception {
 		String urlofThepage = "";
 		try {
-			urlofThepage = commonEvents.getCurrentUrl();
+			urlofThepage = userActions.getCurrentUrl();
 			System.out.println("URL of the page is  :" + urlofThepage );
 		}catch(Exception e) {
 			throw e;
@@ -135,38 +135,38 @@ public class yakshaHealthApp_L1_Pages extends StartupPage {
 	public Boolean verifySelectCounterPopupIsPresentAndNavigateToNextpage() throws Exception {
 		Boolean selectCounterPopUpIsPresent = false;
 
-		WebElement billingNavigationMenuWebElement = commonEvents.findElement(billingNavigationMenuElement);
-		commonEvents.highlightElement(billingNavigationMenuWebElement);
-		commonEvents.click(billingNavigationMenuElement);
+		WebElement billingNavigationMenuWebElement = userActions.findElement(billingNavigationMenuElement);
+		userActions.highlightElement(billingNavigationMenuWebElement);
+		userActions.click(billingNavigationMenuElement);
 		try {
-			if(commonEvents.isDisplayed(selectCounterPopupElement)&&
-					commonEvents.isDisplayed(new1TextElement)&&
-					commonEvents.isDisplayed(new2TextElement)&&
-					commonEvents.isDisplayed(new3TextElement)&&
-					commonEvents.isDisplayed(old1TextElement)&&
-					commonEvents.isDisplayed(opdCounterTextElement)) {
+			if(userActions.isDisplayed(selectCounterPopupElement)&&
+					userActions.isDisplayed(new1TextElement)&&
+					userActions.isDisplayed(new2TextElement)&&
+					userActions.isDisplayed(new3TextElement)&&
+					userActions.isDisplayed(old1TextElement)&&
+					userActions.isDisplayed(opdCounterTextElement)) {
 
-				WebElement selectCounterPopupWebElement = commonEvents.findElement(selectCounterPopupElement);
-				commonEvents.highlightElement(selectCounterPopupWebElement);
+				WebElement selectCounterPopupWebElement = userActions.findElement(selectCounterPopupElement);
+				userActions.highlightElement(selectCounterPopupWebElement);
 
-				WebElement new1TextWebElement = commonEvents.findElement(new1TextElement);
-				commonEvents.highlightElement(new1TextWebElement);
+				WebElement new1TextWebElement = userActions.findElement(new1TextElement);
+				userActions.highlightElement(new1TextWebElement);
 
-				WebElement new2TextWebElement = commonEvents.findElement(new2TextElement);
-				commonEvents.highlightElement(new2TextWebElement);
+				WebElement new2TextWebElement = userActions.findElement(new2TextElement);
+				userActions.highlightElement(new2TextWebElement);
 
-				WebElement new3TextWebElement = commonEvents.findElement(new3TextElement);
-				commonEvents.highlightElement(new3TextWebElement);
+				WebElement new3TextWebElement = userActions.findElement(new3TextElement);
+				userActions.highlightElement(new3TextWebElement);
 
-				WebElement old1TextWebElement = commonEvents.findElement(old1TextElement);
-				commonEvents.highlightElement(old1TextWebElement);
+				WebElement old1TextWebElement = userActions.findElement(old1TextElement);
+				userActions.highlightElement(old1TextWebElement);
 
-				WebElement opdCounterTextWebElement = commonEvents.findElement(opdCounterTextElement);
-				commonEvents.highlightElement(opdCounterTextWebElement);
+				WebElement opdCounterTextWebElement = userActions.findElement(opdCounterTextElement);
+				userActions.highlightElement(opdCounterTextWebElement);
 
 				selectCounterPopUpIsPresent = true;
 			}
-			commonEvents.click(new1TextElement);
+			userActions.click(new1TextElement);
 			Thread.sleep(2000);
 		}catch(Exception e) {
 			throw e;	
@@ -185,11 +185,11 @@ public class yakshaHealthApp_L1_Pages extends StartupPage {
 		String  addNewpatientPopUpTextValue = "";
 
 		try {
-			commonEvents.performAltN();
-			WebElement addNewPatientTextWebElement = commonEvents.findElement(addNewPatientTextElement);
-			commonEvents.highlightElement(addNewPatientTextWebElement);
-			commonEvents.isDisplayed(addNewPatientTextElement);
-			addNewpatientPopUpTextValue = commonEvents.getText(addNewPatientTextElement);
+			userActions.performAltN();
+			WebElement addNewPatientTextWebElement = userActions.findElement(addNewPatientTextElement);
+			userActions.highlightElement(addNewPatientTextWebElement);
+			userActions.isDisplayed(addNewPatientTextElement);
+			addNewpatientPopUpTextValue = userActions.getText(addNewPatientTextElement);
 			System.out.println("text of the popup is : " + addNewpatientPopUpTextValue);	
 			Thread.sleep(2000);
 		}catch(Exception e) {
@@ -208,19 +208,19 @@ public class yakshaHealthApp_L1_Pages extends StartupPage {
 	public String fillTheTextFieldInAddNewPatientPopup(Map<String, String> expectedData) throws Exception {
 		String firstNameTextfieldValue = "";
 		try {
-			if(commonEvents.isDisplayed(firstNameTextFieldElement) && 
-					commonEvents.isDisplayed(middleNameTextFieldElement) &&
-					commonEvents.isDisplayed(lastNameTextfieldElement) &&
-					commonEvents.isDisplayed(ageTextfieldElement) &&
-					commonEvents.isDisplayed(contactNumberTextfieldElement))
+			if(userActions.isDisplayed(firstNameTextFieldElement) && 
+					userActions.isDisplayed(middleNameTextFieldElement) &&
+					userActions.isDisplayed(lastNameTextfieldElement) &&
+					userActions.isDisplayed(ageTextfieldElement) &&
+					userActions.isDisplayed(contactNumberTextfieldElement))
 			{
-				commonEvents.sendKeys(firstNameTextFieldElement,expectedData.get("firstName"));
-				commonEvents.sendKeys(middleNameTextFieldElement,expectedData.get("middleName"));
-				commonEvents.sendKeys(lastNameTextfieldElement,expectedData.get("lastName"));
-				commonEvents.sendKeys(ageTextfieldElement,expectedData.get("age"));
-				commonEvents.sendKeys(contactNumberTextfieldElement,expectedData.get("contact"));
+				userActions.sendKeys(firstNameTextFieldElement,expectedData.get("firstName"));
+				userActions.sendKeys(middleNameTextFieldElement,expectedData.get("middleName"));
+				userActions.sendKeys(lastNameTextfieldElement,expectedData.get("lastName"));
+				userActions.sendKeys(ageTextfieldElement,expectedData.get("age"));
+				userActions.sendKeys(contactNumberTextfieldElement,expectedData.get("contact"));
 
-				firstNameTextfieldValue = commonEvents.getAttribute(firstNameTextFieldElement, "value");
+				firstNameTextfieldValue = userActions.getAttribute(firstNameTextFieldElement, "value");
 				System.out.println("FirstName : " + firstNameTextfieldValue);
 			}
 		}catch(Exception e) {
@@ -240,7 +240,7 @@ public class yakshaHealthApp_L1_Pages extends StartupPage {
 		String firstNameTextfieldValue = "";
 
 		try {
-			firstNameTextfieldValue = commonEvents.getAttribute(firstNameTextFieldElement, "value");
+			firstNameTextfieldValue = userActions.getAttribute(firstNameTextFieldElement, "value");
 			System.out.println("FirstName : " + firstNameTextfieldValue);
 
 		}catch(Exception e) {
@@ -261,7 +261,7 @@ public class yakshaHealthApp_L1_Pages extends StartupPage {
 		String middleNameTextfieldValue = "";
 
 		try {
-			middleNameTextfieldValue = commonEvents.getAttribute(middleNameTextFieldElement, "value");
+			middleNameTextfieldValue = userActions.getAttribute(middleNameTextFieldElement, "value");
 			System.out.println("middleName : " + middleNameTextfieldValue);
 
 		}catch(Exception e) {
@@ -283,7 +283,7 @@ public class yakshaHealthApp_L1_Pages extends StartupPage {
 
 		try {
 
-			lastNameTextfieldValue = commonEvents.getAttribute(lastNameTextfieldElement, "value");
+			lastNameTextfieldValue = userActions.getAttribute(lastNameTextfieldElement, "value");
 			System.out.println("lastName : " + lastNameTextfieldValue);
 
 		}catch(Exception e) {
@@ -305,7 +305,7 @@ public class yakshaHealthApp_L1_Pages extends StartupPage {
 
 		try {
 
-			ageTextfieldValue = commonEvents.getAttribute(ageTextfieldElement, "value");
+			ageTextfieldValue = userActions.getAttribute(ageTextfieldElement, "value");
 			System.out.println("age : " + ageTextfieldValue);
 
 		}catch(Exception e) {
@@ -327,7 +327,7 @@ public class yakshaHealthApp_L1_Pages extends StartupPage {
 
 		try {
 
-			contactTextfieldValue = commonEvents.getAttribute(contactNumberTextfieldElement, "value");
+			contactTextfieldValue = userActions.getAttribute(contactNumberTextfieldElement, "value");
 			System.out.println("contact No. : " + contactTextfieldValue);
 
 		}catch(Exception e) {
@@ -348,8 +348,8 @@ public class yakshaHealthApp_L1_Pages extends StartupPage {
 		String selectedCountryName = "";
 
 		try {
-			commonEvents.selectByVisibleText(countryDropdownByElement, expectedData.get("selectedCountryName"));
-			selectedCountryName = commonEvents.getFirstSelectedOptionFromDropdown(countryDropdownByElement, "elementName", "pageName");
+			userActions.selectByVisibleText(countryDropdownByElement, expectedData.get("selectedCountryName"));
+			selectedCountryName = userActions.getFirstSelectedOptionFromDropdown(countryDropdownByElement, "elementName", "pageName");
 			System.out.println("first selected option from country dropdown : " + selectedCountryName );
 
 		}catch(Exception e) {
@@ -369,11 +369,11 @@ public class yakshaHealthApp_L1_Pages extends StartupPage {
 		String errorMessageOfRegisterBilling="";
 
 		try {
-			commonEvents.click(registerAndBillingButtonElement);
+			userActions.click(registerAndBillingButtonElement);
 
-			if(commonEvents.isDisplayed(errorMessageOfRegisterBillingByElement))
+			if(userActions.isDisplayed(errorMessageOfRegisterBillingByElement))
 			{
-				errorMessageOfRegisterBilling =  commonEvents.getText(errorMessageOfRegisterBillingByElement);
+				errorMessageOfRegisterBilling =  userActions.getText(errorMessageOfRegisterBillingByElement);
 				System.out.println("Error Message when click on Register & Billing Button: " + errorMessageOfRegisterBilling);
 			}
 		}catch(Exception e) { 
@@ -392,13 +392,13 @@ public class yakshaHealthApp_L1_Pages extends StartupPage {
 	public Boolean verifyDispensaryArrowIsExpanding() throws Exception {
 		Boolean dispensaryNavigationMenuIsExapanding=false;
 		try {
-			commonEvents.jsClick(dispensaryToggle);
-			if(commonEvents.isDisplayed(prescriptionSubMenu)&&
-					commonEvents.isDisplayed(saleSubMenu)&&
-					commonEvents.isDisplayed(stockSubMenu)&&
-					commonEvents.isDisplayed(counterSubMenu)&&
-					commonEvents.isDisplayed(reportsSubMenu)&&
-					commonEvents.isDisplayed(patientConsumptionSubMenu)) {
+			userActions.jsClick(dispensaryToggle);
+			if(userActions.isDisplayed(prescriptionSubMenu)&&
+					userActions.isDisplayed(saleSubMenu)&&
+					userActions.isDisplayed(stockSubMenu)&&
+					userActions.isDisplayed(counterSubMenu)&&
+					userActions.isDisplayed(reportsSubMenu)&&
+					userActions.isDisplayed(patientConsumptionSubMenu)) {
 
 				dispensaryNavigationMenuIsExapanding = true;
 			}	
@@ -420,8 +420,8 @@ public class yakshaHealthApp_L1_Pages extends StartupPage {
 		Boolean dispensaryNavigationMenuIsMinimizing = false;
 
 		try {
-			commonEvents.jsClick(dispensaryToggle);
-			if(!(commonEvents.isDisplayed(prescriptionSubMenu)&& commonEvents.isDisplayed(saleSubMenu))) {
+			userActions.jsClick(dispensaryToggle);
+			if(!(userActions.isDisplayed(prescriptionSubMenu)&& userActions.isDisplayed(saleSubMenu))) {
 
 				dispensaryNavigationMenuIsMinimizing = true;
 			}	
@@ -443,11 +443,11 @@ public class yakshaHealthApp_L1_Pages extends StartupPage {
 		Boolean isScrolling = false;
 
 		try {
-			if(commonEvents.isDisplayed(dispensaryLeftNavigationMenu)) {
+			if(userActions.isDisplayed(dispensaryLeftNavigationMenu)) {
 
 				WebElement dispensaryNavigationMenuWebElement = driver.findElement(dispensaryLeftNavigationMenu);
-				commonEvents.highlightElementAfterAction(dispensaryNavigationMenuWebElement);
-				commonEvents.jsScrollPageTillElementVisible(settingLeftNavigationMenu, "pageName", "pageName");
+				userActions.highlightElementAfterAction(dispensaryNavigationMenuWebElement);
+				userActions.jsScrollPageTillElementVisible(settingLeftNavigationMenu, "pageName", "pageName");
 
 				isScrolling = true;
 			}	
