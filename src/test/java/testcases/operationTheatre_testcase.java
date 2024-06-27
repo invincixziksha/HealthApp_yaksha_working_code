@@ -95,6 +95,59 @@ public class operationTheatre_testcase extends AppTestBase
 		Assert.assertEquals(operationTheatre_PagesInstance.verifyBookingOTSchedulePopupPageIsPresent(),expectedData.get("bookingOTSchedulePageName")) ;
 		//		Assert.assertTrue(locatorsFactoryInstance.totalDoctorTextIsPresent(driver).isDisplayed(), "total doctors text is not present in the current page, Please check manually");
 	}
+	
+	@Test(priority = 6, groups = {"sanity"}, description="Fill all the textfields which are present inside the Booking OT Schedule popup and Check the data which we are entered are present in  Type of Surgery Field.")
+	public void verifyEnteredDataIsPresentInTextbox() throws Exception {
+
+		operationTheatre_PagesInstance = new operationTheatre_Pages(driver);
+		locatorsFactoryInstance = new LocatorsFactory(driver);
+		Map<String, String> expectedData = new FileOperations().readJson(expectedDataFilePath, "operationTheatreModuleStringValue");
+		
+		Assert.assertEquals(operationTheatre_PagesInstance.verifyEnteredDataIsPresentInTextbox(expectedData),expectedData.get("surgeryTypeValue")) ;
+//		Assert.assertTrue(locatorsFactoryInstance.totalDoctorTextIsPresent(driver).isDisplayed(), "total doctors text is not present in the current page, Please check manually");
+	}
+	
+	@Test(priority = 7, groups = {"sanity"}, description="Verify \"Remarks\" Text area is enable or not and verify the attribute value of \"Remarks\" text area.")
+	public void verifyTextboxIsEnableAndValidatePlaceholderName() throws Exception {
+
+		operationTheatre_PagesInstance = new operationTheatre_Pages(driver);
+		locatorsFactoryInstance = new LocatorsFactory(driver);
+		Map<String, String> expectedData = new FileOperations().readJson(expectedDataFilePath, "operationTheatreModuleStringValue");
+		
+		Assert.assertEquals(operationTheatre_PagesInstance.verifyTextboxIsEnableAndValidatePlaceholderName(),expectedData.get("remarksPlaceHolderName")) ;
+//		Assert.assertTrue(locatorsFactoryInstance.totalDoctorTextIsPresent(driver).isDisplayed(), "total doctors text is not present in the current page, Please check manually");
+	}
+	
+	@Test(priority = 8, groups = {"sanity"}, description="type \"Dr. pooja Mishra\" in surgen Name textfield and select \"Dr. Pooja Mishra\" from the suggestion after that validate whether the pooja mishra is present in surgen text field or not")
+	public void verifyButtonIsPresentAfterSendValueToSurgenNameTextfield() throws Exception {
+
+		operationTheatre_PagesInstance = new operationTheatre_Pages(driver);
+		locatorsFactoryInstance = new LocatorsFactory(driver);
+		Map<String, String> expectedData = new FileOperations().readJson(expectedDataFilePath, "operationTheatreModuleStringValue");
+		
+		Assert.assertEquals(operationTheatre_PagesInstance.verifyButtonIsPresentAfterSendValueToSurgenNameTextfield(expectedData),expectedData.get("surgenNameValue2")) ;
+//		Assert.assertTrue(locatorsFactoryInstance.totalDoctorTextIsPresent(driver).isDisplayed(), "total doctors text is not present in the current page, Please check manually");
+	}
+	
+	@Test(priority = 9, groups = {"sanity"}, description="Verify that OperationTheatre module is present and Go to OperationTheatre Tab")
+	public void verifyPlusButtonIsPresentAfterClickOnExternalCheckbox() throws Exception {
+		operationTheatre_PagesInstance = new operationTheatre_Pages(driver);
+		locatorsFactoryInstance = new LocatorsFactory(driver);
+		Assert.assertTrue(operationTheatre_PagesInstance.verifyPlusButtonIsPresentAfterClickOnExternalCheckbox(), "OperationTheatre Module is not present, please check manually");
+//		Assert.assertTrue(locatorsFactoryInstance.printButtonWebElementIsPresent(driver).isDisplayed(), "Print button is not present in the current page, Please check manually");
+	}
+	
+	@Test(priority = 10, groups = {"sanity"}, description="Click on \"+\" icon, fill all the details (get the data from json) , click on all checkbox and then click on \"Add\" button then verify the success notifications message")
+	public void verifySuccessNotificationPopupMessage() throws Exception {
+
+		operationTheatre_PagesInstance = new operationTheatre_Pages(driver);
+		locatorsFactoryInstance = new LocatorsFactory(driver);
+		Map<String, String> expectedData = new FileOperations().readJson(expectedDataFilePath, "addExternalReferralPageInfo");
+		
+		Assert.assertEquals(operationTheatre_PagesInstance.verifySuccessNotificationPopupMessage(expectedData),expectedData.get("successNotificationPopupMessage")) ;
+//		Assert.assertTrue(locatorsFactoryInstance.totalDoctorTextIsPresent(driver).isDisplayed(), "total doctors text is not present in the current page, Please check manually");
+	}
+
 
 
 	@AfterClass(alwaysRun = true)

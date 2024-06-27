@@ -3,6 +3,7 @@ package pages;
 import java.util.Map;
 
 import org.openqa.selenium.By;
+import org.openqa.selenium.Keys;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 
@@ -33,6 +34,17 @@ public class operationTheatre_Pages extends StartupPage {
 	
 	By externalCheckBoxElement = By.xpath("//label[@class='is-ref mt-checkbox mt-checkbox-outline']//span");
 	By plusIconButtonElement = By.xpath("//a[@class='btn blue btn-xs btn-ext']");
+	
+	By referrerNameTextFieldElement = By.xpath("//input[@id='referrerName']");
+	By extRefferAddressTextFieldElement = By.xpath("//input[@id='ExtRefferaddress']");
+	By contactNumberTextFieldElement = By.xpath("//input[@id='contactNum']");
+	By emailTextFieldElement = By.xpath("//input[@id='email']");
+	By isIncentiveApplicableCheckboxElement = By.xpath("(//div[@class='icheck-inline']//span)[2]");
+	By addButtonElement = By.xpath("//button[@id='add']");
+	By successNotificationPopupMessageElement = By.xpath("//div[@class='msg-text padding-8-all']");
+	
+	By successNotificationPopupMessageOneElement = By.xpath("//p[@class='msg-status']");
+	By successNotificationPopupMessageTwoElement = By.xpath("//p[@class='main-message']");
 
 	String pageName = this.getClass().getSimpleName();
 	public operationTheatre_Pages(WebDriver driver) {
@@ -190,4 +202,142 @@ public class operationTheatre_Pages extends StartupPage {
 		}	
 		return bookingOTSchedulePopupPageValue;
 	}
+	
+	/**@Test6
+	 * about this method verifyEnteredDataIsPresentInTextbox() 
+	 * @param : null
+	 * @description : it will navigate to the URL and validate the URL of the current page.
+	 * @return : String
+	 * @author : Yaksha
+	 */
+	public String verifyEnteredDataIsPresentInTextbox(Map<String, String> expectedData) throws Exception {
+		String surgeryTypeTextboxAttributeValue = "";
+		try {
+			if(userActions.isDisplayed(bookingOTSchedulePageElement)) {
+				userActions.sendKeys(selectpatientTextboxElement, expectedData.get("patientName"));
+				userActions.sendKeys(diagnosisTextboxElement, expectedData.get("diagnosisValue"));
+				userActions.sendKeys(surgeryTypeTextboxElement, expectedData.get("surgeryTypeValue"));
+				surgeryTypeTextboxAttributeValue = userActions.getAttribute(surgeryTypeTextboxElement, "value");
+				System.out.println("attribute value of surgery Type Textbox : " + surgeryTypeTextboxAttributeValue );
+			}
+		}catch(Exception e) {
+			throw e;
+		}	
+		return surgeryTypeTextboxAttributeValue;
+	}
+	
+	/**@Test7
+	 * about this method verifyEnteredDataIsPresentInTextbox() 
+	 * @param : null
+	 * @description : it will navigate to the URL and validate the URL of the current page.
+	 * @return : String
+	 * @author : Yaksha
+	 */
+	public String verifyTextboxIsEnableAndValidatePlaceholderName() throws Exception {
+		String placeHolderValue = "";
+		try {
+			if(userActions.isDisplayed(remarkTextboxElement)) {
+				userActions.isEnabled(remarkTextboxElement);
+				placeHolderValue = userActions.getAttribute(remarkTextboxElement, "placeholder");
+				System.out.println("attribute value of surgery Type Textbox : " + placeHolderValue );
+			}
+		}catch(Exception e) {
+			throw e;
+		}	
+		return placeHolderValue;
+	}
+	
+	/**@Test8
+	 * about this method verifyEnteredDataIsPresentInTextbox() 
+	 * @param : null
+	 * @description : it will navigate to the URL and validate the URL of the current page.
+	 * @return : String
+	 * @author : Yaksha
+	 */
+	public String verifyButtonIsPresentAfterSendValueToSurgenNameTextfield(Map<String, String> expectedData) throws Exception {
+		String surgenNameButtonAttributeValue = "";
+		try {
+			if(userActions.isDisplayed(surgenNameTextFieldElement)) {
+				userActions.sendKeys(surgenNameTextFieldElement, expectedData.get("surgenNameValue1"));
+				userActions.sendKeys(surgenNameTextFieldElement, Keys.ENTER);
+				Thread.sleep(2000);
+//				userActions.click(anesthetistDoctorTextboxElement);
+				userActions.click(remarkTextboxElement);
+				Thread.sleep(2000);
+				userActions.isDisplayed(surgenNameFirstButtonElement);
+				surgenNameButtonAttributeValue = userActions.getText(surgenNameFirstButtonElement);
+				System.out.println("attribute value of surgen Name Value : " + surgenNameButtonAttributeValue );
+			}
+		}catch(Exception e) {
+			throw e;
+		}	
+		return surgenNameButtonAttributeValue;
+	}
+	
+	/**@Test9
+	 * about this method verifyPlusButtonIsPresentAfterClickOnExternalCheckbox() 
+	 * @param : null
+	 * @description : Verify that OperationTheatre module is present and Go to OperationTheatre Tab.
+	 * @return : Boolean
+	 * @author : Yaksha
+	 */
+	public Boolean verifyPlusButtonIsPresentAfterClickOnExternalCheckbox() throws Exception {
+		boolean plusIconIsDisplayed = false;
+		try {
+			if(userActions.isDisplayed(externalCheckBoxElement)){
+				userActions.click(externalCheckBoxElement);
+				Thread.sleep(3000);
+				userActions.isDisplayed(plusIconButtonElement);
+				
+				plusIconIsDisplayed = true;
+			}
+
+		}catch(Exception e) {
+			throw e;
+		}	
+		return plusIconIsDisplayed;
+	}
+	
+	/**@Test10
+	 * about this method verifySuccessNotificationPopupMessage() 
+	 * @param : null
+	 * @description : it will navigate to the URL and validate the URL of the current page.
+	 * @return : String
+	 * @author : Yaksha
+	 */
+	public String verifySuccessNotificationPopupMessage(Map<String, String> expectedData) throws Exception {
+		String successNotificationPopupMessageValue = "";
+		try {
+			if(userActions.isDisplayed(plusIconButtonElement)) {
+				userActions.click(plusIconButtonElement);
+				
+				userActions.sendKeys(referrerNameTextFieldElement, expectedData.get("referrerName"));
+				userActions.sendKeys(extRefferAddressTextFieldElement, expectedData.get("ExtRefferaddress"));
+				userActions.sendKeys(contactNumberTextFieldElement, expectedData.get("contactNum"));
+				userActions.sendKeys(emailTextFieldElement, expectedData.get("email"));
+//				userActions.sendKeys(surgenNameTextFieldElement, Keys.ENTER);
+				Thread.sleep(1000);
+				userActions.click(isIncentiveApplicableCheckboxElement);
+				userActions.click(addButtonElement);
+				userActions.isDisplayed(successNotificationPopupMessageElement);
+				
+				String actualNotificationValue = userActions.getText(successNotificationPopupMessageElement);
+				System.out.println("success notification popup message text Value : " + actualNotificationValue );
+				
+				String notificationMessageOne = userActions.getText(successNotificationPopupMessageOneElement);
+				System.out.println("notification Message One " + notificationMessageOne);
+				
+				String notificationMessageTwo = userActions.getText(successNotificationPopupMessageTwoElement);
+				System.out.println("notification Message two " + notificationMessageTwo);
+				
+				successNotificationPopupMessageValue = notificationMessageOne + " " +notificationMessageTwo ;
+				System.out.println("success notification popup message text Value : " + successNotificationPopupMessageValue );
+				
+			}
+		}catch(Exception e) {
+			throw e;
+		}	
+		return successNotificationPopupMessageValue;
+	}
+
 }

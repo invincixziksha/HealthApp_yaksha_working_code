@@ -93,5 +93,13 @@
         "remarksPlaceHolderName" : "Remarks",
         "surgenNameValue1" : "Dr. pooja Mishra",
         "surgenNameValue2" : " Dr. pooja Mishra  "
+	},
+	"addExternalReferralPageInfo":{
+		"referrerName":"Surya",
+		"ExtRefferaddress":"INVINCIX",
+		"contactNum":"9124564060",
+		"email":"surya@gmail.com",
+		"successNotificationPopupMessage":"Sucess Updated."
 	}
+
 }
