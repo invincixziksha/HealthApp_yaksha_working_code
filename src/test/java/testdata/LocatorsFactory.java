@@ -96,6 +96,7 @@ public class LocatorsFactory extends StartupPage {
 	By newSsuPatientRegistrationTextField = By.xpath("//strong[.='New SSU Patient Registration']");
 	By closeButton = By.xpath("//button[.=' Close ']");
 	By countryDropdown = By.id("ddlCountry");
+	By crossButtonElement = By.xpath("//button[contains(text(), 'X')]");
 
 	//Social service Module(L2)
 
@@ -573,5 +574,22 @@ public class LocatorsFactory extends StartupPage {
 		WebElement newSsuPatientRegistrationTextFieldWebElement = driver.findElement(newSsuPatientRegistrationTextField);
 		return newSsuPatientRegistrationTextFieldWebElement;
 	}
-
+	
+	//Social service module(L2)
+	
+//	public WebElement saveButtonIsPresent(WebDriver driver) {
+//		WebElement saveButtonWebElement = driver.findElement(saveButton);
+//		return saveButtonWebElement;
+//	}
+//	
+	
+	public WebElement submitButtonIsPresent(WebDriver driver) {
+		WebElement submitButtonWebElement = driver.findElement(submitButton);
+		return submitButtonWebElement;
+	}
+	
+	public WebElement accountOptionIsSelected(WebDriver driver) {
+		WebElement accountOptionWebElement = driver.findElement(accountOption);
+		return accountOptionWebElement;
+	}
 }

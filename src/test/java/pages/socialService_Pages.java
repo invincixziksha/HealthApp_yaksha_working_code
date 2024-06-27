@@ -70,6 +70,11 @@ public class socialService_Pages extends StartupPage {
 	By closeButton = By.xpath("//button[.=' Close ']");
 	By dispensaryModule = By.xpath("//span[.='Dispensary']");
 	By closeButtonPresentInsideTheAddNewPatient = By.xpath("//button[.=' Close ']");
+	
+	By appointmentTab=By.xpath("(//span[.='Appointment'])[1]");
+	By keyboardButton=By.xpath("//div[@title='Shortcut Keys']");
+	By tooltip=By.xpath("//li[contains(text(),'+')]");
+	By crossButtonElement = By.xpath("//button[contains(text(), 'X')]");
 
 
 	String pageName = this.getClass().getSimpleName();
@@ -458,11 +463,170 @@ public class socialService_Pages extends StartupPage {
 		try {
 			userActions.performAltN();
 			if(userActions.isDisplayed(addNewPatientPopup)){
+				
+				
 				createRequisitionButtonIsDisplayedIsDisplayed=true;
 			}
 		}catch(Exception e) {
 			throw e;
 		}	
 		return createRequisitionButtonIsDisplayedIsDisplayed;
+	}
+	
+	/**@Test16
+	 * about this method verifyToolTipOfAnElement()
+	 * @param : null
+	 * @description :go to appointmentTab and verify the TOOLTIP value/text
+	 * @return : String
+	 * @author : YAKSHA
+	 */
+	public String verifyToolTipOfAnElement() throws Exception {
+		String tooltipText="";
+		try {
+			userActions.click(crossButtonElement);
+			userActions.click(appointmentTab);
+			userActions.click(morningCounter);
+			userActions.waitTillElementVisible(keyboardButton,50);
+			userActions.mouseHoverClick(keyboardButton);
+			userActions.waitTillElementVisible(tooltip,50);
+			tooltipText=userActions.getText(tooltip);
+			System.out.println("Tooltip text value is:" +tooltipText);
+		}catch(Exception e) {
+			throw e;
+		}
+		return tooltipText;
+	}
+	
+	
+	/**@Test17
+	 * about this method uploadImageInScannedImagesSection() 
+	 * @param : String
+	 * @description : Upload a image in Scanned Images section and verify that uploaded image is present.
+	 * @return : Boolean
+	 * @author : Yaksha
+	 */
+	public Boolean uploadImageInScannedImagesSection(String pathOfTheFile) throws Exception {
+		boolean isUploaded = false;
+		try {
+			 userActions.click(closeButtonPresentInsideTheAddNewPatient);
+			userActions.click(procurementModule);
+			Thread.sleep(3000);
+			userActions.click(settingsTab);
+			Thread.sleep(3000);
+			userActions.click(invoiceHeadersSubTab);
+			Thread.sleep(3000);
+			userActions.click(addNewInvoiceHeaderButton);
+			Thread.sleep(3000);
+			userActions.jsClick(chooseFileButton);
+			Thread.sleep(3000);
+			System.out.println("path of the file" + pathOfTheFile );
+			Thread.sleep(5000);
+			userActions.fileUpload(pathOfTheFile);
+			Thread.sleep(3000);
+			isUploaded=true;
+		}catch(Exception e) {
+			throw e;
+		}
+		return isUploaded;
+	}
+	
+	
+
+	/**@Test18
+	 * about this method tickAllCheckboxesThenValidateThenUntick() 
+	 * @param : null
+	 * @description : First, tick all check boxes and validate that the all selected checkboxes are selected or not then untick them then close Add Other Charges.
+	 * @return : Boolean
+	 * @author : Yaksha
+	 */
+	public Boolean tickAllCheckboxesThenValidateThenUntick() throws Exception {
+		boolean isDisplayed = false;
+		try {
+			userActions.click(xButton);
+			Thread.sleep(3000);
+			userActions.click(othersChargesTab);	
+			Thread.sleep(3000);
+			userActions.click(addOtherChargesButton);
+			Thread.sleep(3000);
+			userActions.click(isVATApplicableCheckBox);
+			Thread.sleep(3000);
+			userActions.click(isActiveCheckBox);
+			Thread.sleep(3000);
+			userActions.click(isDefaultCheckBox);
+			
+			userActions.isSelected(isVATApplicableCheckBox);
+			userActions.isSelected(isActiveCheckBox);
+			userActions.isSelected(isActiveCheckBox);
+
+			Thread.sleep(3000);
+			userActions.click(isVATApplicableCheckBox);
+			Thread.sleep(3000);
+			userActions.click(isActiveCheckBox);
+			Thread.sleep(3000);
+			userActions.click(isDefaultCheckBox);
+
+			isDisplayed=true;
+		}catch(Exception e) {
+			throw e;
+		}
+		return isDisplayed;
+	}
+	
+	
+	/**@Test19
+	 * about this method takingScreenshotOfTheCurrentPage() 
+	 * @param : null
+	 * @description : Taking screenshot of the current page.
+	 * @return : Boolean
+	 * @author : Yaksha
+	 */
+	public Boolean takingScreenshotOfTheCurrentPage() throws Exception {
+		boolean isDisplayed = false;
+		try {
+			if(userActions.isDisplayed(submitButton)){
+				Thread.sleep(5000);
+				userActions.takeScreenshot("AddOtherCharges");
+				isDisplayed=true;
+			}
+		}catch(Exception e) {
+			throw e;
+		}
+		return isDisplayed;
+	}
+	
+	/**@Test20
+	 * about this method searchSelectItemAsAccountsAndValidateAccountsIsSelected() 
+	 * @param : Map<String, String>
+	 * @description : Search for a Select Item as Accounts and select Accounts  and validate Accounts is selected.
+	 * @return : Boolean
+	 * @author : Yaksha
+	 */
+	public Boolean searchSelectItemAsAccountsAndValidateAccountsIsSelected(Map<String, String> expectedData) throws Exception {
+		boolean accountOptionisDisplayed = false;
+		try {
+			userActions.click(cancelButton);
+			Thread.sleep(3000);
+			userActions.click(reportsSubButton);
+			Thread.sleep(3000);
+			userActions.click(currentStockLevelButton);
+			Thread.sleep(3000);
+			userActions.click(selectedItemDropdown);
+			Thread.sleep(3000);
+			userActions.click(generalInventoryOption);
+			Thread.sleep(3000);
+			userActions.click(selectedItemDropdown);
+			Thread.sleep(3000);
+			userActions.sendKeys(selectItemSearchBar,expectedData.get("searchBarData"));
+			Thread.sleep(3000);
+			userActions.click(accountsItemCheckBox);
+			Thread.sleep(3000);
+
+			if(userActions.isDisplayed(accountOption)) {
+			accountOptionisDisplayed=true;
+			}
+		}catch(Exception e) {
+			throw e;
+		}
+		return accountOptionisDisplayed;
 	}
 }

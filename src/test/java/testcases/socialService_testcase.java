@@ -170,6 +170,50 @@ public class socialService_testcase extends AppTestBase
 		Assert.assertTrue(socialService_PagesInstance.performTheKeyboardOperationToOpenthePopup(), "Not able to do the keyboard operation, please check manually");
 		Assert.assertTrue(locatorsFactoryInstance.firstNameFieldIsPresent(driver).isDisplayed(), "firstName field is not present in the current page, Please check manually");
 	}
+	
+//Social service module(L2)
+	
+	@Test(priority = 16, groups = {"sanity"}, description="Verify tooltip of an element which is present inside the Appointment page.")
+	public void  verifyTooltipOfAnElement() throws Exception {
+		socialService_PagesInstance = new socialService_Pages(driver);
+		locatorsFactoryInstance = new LocatorsFactory(driver);
+		Map<String, String> expectedData = new FileOperations().readJson(expectedDataFilePath, "KeyBoardTooltip");
+		Assert.assertEquals(socialService_PagesInstance.verifyToolTipOfAnElement(), expectedData.get("TooltipValue"),"Verification failed, please check manually");
+	    Assert.assertTrue(locatorsFactoryInstance.tooltipTextIsPresent(driver).isDisplayed(), "Tooltip is not present in the current page, Please check manually");
+	}
+	
+//	@Test(priority = 17, groups = {"sanity"}, description="Upload a image in Scanned Images section")
+//	public void uploadImageInScannedImagesSection() throws Exception {
+//		socialService_PagesInstance = new socialService_Pages(driver);
+//		locatorsFactoryInstance = new LocatorsFactory(driver);
+//		Assert.assertTrue(socialService_PagesInstance.uploadImageInScannedImagesSection(System.getProperty("user.dir") + "\\testImage\\uploadImage.png"),"Not able to upload the image, please check manually");
+//		Assert.assertTrue(locatorsFactoryInstance.saveButtonIsPresent(driver).isDisplayed(),"Save button is not present in the current page, Please check manually");
+//	}
+//	
+//	@Test(priority = 18, groups = {"sanity"}, description="First, tick all check boxes and validate that the all selected checkboxes are selected or not then untick them then close Add Other Charges.")
+//	public void tickAllCheckboxesValidateThenUntick() throws Exception {
+//		socialService_PagesInstance = new socialService_Pages(driver);
+//		locatorsFactoryInstance = new LocatorsFactory(driver);
+//		Assert.assertTrue(socialService_PagesInstance.tickAllCheckboxesThenValidateThenUntick(),"Any of the checkbox is not present, please check manually");
+//		Assert.assertTrue(locatorsFactoryInstance.submitButtonIsPresent(driver).isDisplayed(),"Submit button is not present in the current page, Please check manually");
+//	}
+//	
+//	@Test(priority = 19, groups = {"sanity"}, description="Taking screenshot of the current page")
+//	public void takingScreenshotOfCurrentPage() throws Exception {
+//		socialService_PagesInstance = new socialService_Pages(driver);
+//		locatorsFactoryInstance = new LocatorsFactory(driver);
+//		Assert.assertTrue(socialService_PagesInstance.takingScreenshotOfTheCurrentPage(),"Not able to take the screenshot, please check manually");
+////		Assert.assertTrue(locatorsFactoryInstance.submitButtonIsPresent(driver).isDisplayed(),"Race TextField is not present in the current page, Please check manually");
+//	}
+//	
+//	@Test(priority = 20, groups = {"sanity"}, description="Search for a Select Item as Accounts and select Accounts  and validate Accounts is selected.")
+//	public void searchSelectItemAsAccountsAndValidate() throws Exception {
+//		socialService_PagesInstance = new socialService_Pages(driver);
+//		locatorsFactoryInstance = new LocatorsFactory(driver);
+//		Map<String, String> expectedData = new FileOperations().readJson(expectedDataFilePath, "ProcurementModule");
+//		Assert.assertTrue(socialService_PagesInstance.searchSelectItemAsAccountsAndValidateAccountsIsSelected(expectedData),"User is not abale to handle the search bar, please check manually");
+//		Assert.assertTrue(locatorsFactoryInstance.accountOptionIsSelected(driver).isDisplayed(),"Account option is not selectde, Please check manually");
+//	}
 
 	@AfterClass(alwaysRun = true)
 	public void tearDown() {
