@@ -24,7 +24,8 @@
 		"TooltipValue":"ALT + N = New Patient"
 	},
 	"healthAppErrorMessages":{
-		"FirstNameFieldErrorMessage":"First Name is required."
+		"FirstNameFieldErrorMessage":"First Name is required.",
+		"ConfirmationMessage":"Are you sure you want to Proceed ?"
 	},
 	"commonStringvalue":{
 		"createRequisitionsButtonValue":"Create Requisition ",
@@ -100,6 +101,10 @@
 		"contactNum":"9124564060",
 		"email":"surya@gmail.com",
 		"successNotificationPopupMessage":"Sucess Updated."
-	}
+	},
+	"PageTitle":{
+		"AddNewPatientPageTitle":"Add New Patient",
+		"AddRequisitionPageName":"Add Requisition"
 
+	}
 }

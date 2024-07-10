@@ -35,9 +35,18 @@ public class dispensary_Pages extends StartupPage {
 	By addNewPatientPopup = By.xpath("//div[@class='modelbox-body p2']");
 	By okButton = By.xpath("//button[.=' OK']");
 	By errorMeesageInFirstNameTextField = By.xpath("//span[.=' First Name is required.']");
+	By addNewPatientPageTitle = By.xpath("//span[.='Add New Patient']");
+	By patientConsuptionTab = By.xpath("//a[.=' Patient Consumption ']");
+	By newConsuptionButton = By.xpath("//button[@class='btn green btn-success']");
+	By saveConsuptionButton = By.id("btn-save");
+	By confirmMessage = By.xpath("//p[.='Are you sure you want to Proceed ?']");
+	By confirmButton = By.id("id_btn_confirm_confirmation");
+	By newConsumptionEntryPageCancelButton = By.xpath("//a[@title='Cancel']");
+//	By mainStoreOption = By.xpath("//option[.='Main store']");
+	By filterByStoreDropdown = By.id("Store");
 
 	By firstNameTextFieldInAddNewPatient = By.id("newPatFirstName");
-	By middelNameTextFieldInAddNewPatient = By.id("newPatMiddleName");
+	By middleNameTextFieldInAddNewPatient = By.id("newPatMiddleName");
 	By lastNameTextFieldInAddNewPatient = By.id("newPatLastName");
 	By ageTextFieldInAddNewPatient = By.id("Age");
 	By contactNumberTextFieldInAddNewPatient = By.id("Contact");
@@ -101,14 +110,10 @@ public class dispensary_Pages extends StartupPage {
 	By isActiveCheckBox = By.xpath("(//label[@class='mt-checkbox mt-checkbox-outline'])[2]//span");
 	By isDefaultCheckBox = By.xpath("(//label[@class='mt-checkbox mt-checkbox-outline'])[3]//span");
 	By bookingOTSchedulePageCloseButtonElement = By.xpath("//a[.='X']");
-
 	By procurementModuleSettingTabElement = By.xpath("//a[contains(text(), 'Settings')]");
 	By addOtherChargesCloseButtonElement = By.xpath("//a[@title='Cancel']");
-
-
-
-
-
+	By requisitionTab = By.xpath("//a[.='Requisition']");
+	By addRequisitionsPageName = By.xpath("//span[.='Add Requisition']");
 
 	String pageName = this.getClass().getSimpleName();
 	public dispensary_Pages(WebDriver driver) {
@@ -207,7 +212,7 @@ public class dispensary_Pages extends StartupPage {
 	/**@Test3
 	 * about this method verifyAllSubModulesArePresentAndClickOnDispensary() 
 	 * @param : null
-	 * @description : verify all sub-modules are displayed correctly after clicking on the "Dispensary" Module.
+	 * @description : verify all sub-modules are displayed correctly after clicking on the expand icon of  "Dispensary" Module.
 	 * @return : Boolean
 	 * @author : Yaksha
 	 */
@@ -235,7 +240,7 @@ public class dispensary_Pages extends StartupPage {
 	/**@Test4
 	 * about this method scrollToButtomAndVerifytheFields() 
 	 * @param : null
-	 * @description : scroll to the bottom of the "Sale" page and verify that "Print Invoice" button  , "Discard" button  ,"Invoice History" and  "Credit Limitis and Balance" text are peresent or not.
+	 * @description :scroll to the bottom of the "Sale" page and verify that "Print Invoice" button  , "Discard" button  ,"Invoice History" and  "Credit Limitis and Balance" text are peresent or not?
 	 * @return : Boolean
 	 * @author : Yaksha
 	 */
@@ -243,6 +248,10 @@ public class dispensary_Pages extends StartupPage {
 		boolean creditLimitsAndBalancesTextElementIsDisplayed = false;
 		try {
 			userActions.click(morningCounter);
+			Thread.sleep(3000);
+			WebElement creditLimitsAndBalancesTextElementWebElement=userActions.findElement(creditLimitsAndBalancesTextElement);
+			userActions.scrollIntoView(creditLimitsAndBalancesTextElementWebElement);
+			Thread.sleep(3000);
 			if(userActions.isDisplayed(printInvoiceButtonElement) &&
 					userActions.isDisplayed(discardButtonElement) &&
 					userActions.isDisplayed(invoiceHistoryTextElement) &&
@@ -260,28 +269,28 @@ public class dispensary_Pages extends StartupPage {
 	/**@Test5
 	 * about this method performTheKeyboardOperationToOpenthePopup() 
 	 * @param : null
-	 * @description : Perform the keyboard operation to open the  popup and verify that the popup is displayed or not.
+	 * @description :Perform the keyboard operation to open the "Add New Patient" popup Page  and verify that the popup is displayed or not.
 	 * @return : Boolean
 	 * @author : Yaksha
 	 */
-	public Boolean performTheKeyboardOperationToOpenthePopup() throws Exception {
-		boolean createRequisitionButtonIsDisplayedIsDisplayed = false;
+	public String performTheKeyboardOperationToOpenthePopup() throws Exception {
+		String pageName = "";
 		try {
 			userActions.performAltN();
-			if(userActions.isDisplayed(addNewPatientPopup)){
-				createRequisitionButtonIsDisplayedIsDisplayed=true;
-			}
+			userActions.isDisplayed(addNewPatientPopup);
+			pageName=userActions.getText(addNewPatientPageTitle);
+			System.out.println("Add New Patient page title is :" + pageName);
 		}catch(Exception e) {
 			throw e;
 		}	
-		return createRequisitionButtonIsDisplayedIsDisplayed;
+		return pageName;
 	}
 
 
 	/**@Test6
 	 * about this method validateErrorMessageInFirstnameTextfield() 
 	 * @param : null
-	 * @description : Validate the error message in firstname textfield after click on "Ok" button
+	 * @description : Validate the error message in "Add New Patient" form's  firstname textfield after clicking on "Ok" Button without filling any information in the form
 	 * @return : String
 	 * @author : Yaksha
 	 */
@@ -301,39 +310,24 @@ public class dispensary_Pages extends StartupPage {
 		return errorMessageText;
 	}
 
-	/**@Test7
-	 * about this method fillAllTheTextfieldsInsideTheAddNewPatientVerifyTheFirstName() 
+	/**@Test7.1
+	 * about this method fillfirstNameTextFieldVerifyTheFirstName() 
 	 * @param : Map<String, String>
-	 * @description : Fill all the textfields which are present inside the Add New Patient popup. and verify that value is present after enter the values.
+	 * @description : fill First Name TextField and Verify First name
 	 * @return : String
 	 * @author : Yaksha
 	 */
-	public String fillAllTheTextfieldsInsideTheAddNewPatientVerifyTheFirstName(Map<String, String> expectedData) throws Exception {
-		String firstNameTextfieldValue = "";
+	public String fillfirstNameTextFieldVerifyTheFirstName(Map<String, String> expectedData) throws Exception {
+		String firstNameTextfieldValue= "";
 		try {
-			if(userActions.isDisplayed(firstNameTextFieldInAddNewPatient) && 
-					userActions.isDisplayed(middelNameTextFieldInAddNewPatient) &&
-					userActions.isDisplayed(lastNameTextFieldInAddNewPatient) &&
-					userActions.isDisplayed(ageTextFieldInAddNewPatient) &&
-					userActions.isDisplayed(contactNumberTextFieldInAddNewPatient))
+			if(userActions.isDisplayed(firstNameTextFieldInAddNewPatient))
 			{
 				userActions.click(firstNameTextFieldInAddNewPatient);
 				userActions.sendKeys(firstNameTextFieldInAddNewPatient,expectedData.get("firstName"));
 
-				userActions.click(middelNameTextFieldInAddNewPatient);
-				userActions.sendKeys(middelNameTextFieldInAddNewPatient,expectedData.get("middleName"));
-
-				userActions.click(lastNameTextFieldInAddNewPatient);
-				userActions.sendKeys(lastNameTextFieldInAddNewPatient,expectedData.get("lastName"));
-
-				userActions.click(ageTextFieldInAddNewPatient);
-				userActions.sendKeys(ageTextFieldInAddNewPatient,expectedData.get("age"));
-
-				userActions.click(contactNumberTextFieldInAddNewPatient);
-				userActions.sendKeys(contactNumberTextFieldInAddNewPatient,expectedData.get("contact"));
-
 				firstNameTextfieldValue = userActions.getAttribute(firstNameTextFieldInAddNewPatient, "value");
 				System.out.println("FirstName : " + firstNameTextfieldValue);
+								
 			}
 		}catch(Exception e) {
 			throw e;
@@ -341,383 +335,201 @@ public class dispensary_Pages extends StartupPage {
 		return firstNameTextfieldValue;
 	}
 
-
-
-	/**@Test8
-	 * about this method navigateToLastPageOfTheStockDetailsAndFetchTotalStockValue() 
-	 * @param : null
-	 * @description : Navigate to the Last page of the stock details list pagenation and fetch the total stock value
-	 * @return : Boolean
-	 * @author : Yaksha
-	 */
-	public Boolean navigateToLastPageOfTheStockDetailsAndFetchTotalStockValue() throws Exception {
-		boolean isDisplayed = false;
-		try {
-			userActions.click(XButton);
-			userActions.click(stockSubModule);
-			Thread.sleep(3000); 
-			userActions.click(lastButtonInstockSubModule);
-			if(userActions.isDisplayed(totalStockValueText))
-			{
-				String totalStockValuetext=userActions.getText(totalStockValueText, pageName, pageName);
-				System.out.println(totalStockValuetext);
-				isDisplayed=true;
-			}
-
-		}catch(Exception e) {
-			throw e;
-		}	
-		return isDisplayed;
-	}
-
-
-	/**@Test9
-	 * about this method checkMainDispensaryIsSelectedFromFilterStockDropdown() 
-	 * @param : null
-	 * @description : check "Main Dispensary" is selected from filter stock dropdown and select main store.
-	 * @return : Boolean
-	 * @author : Yaksha
-	 */
-	public Boolean checkMainDispensaryIsSelectedFromFilterStockDropdown() throws Exception {
-		boolean isSelected = false;
-		try {
-			if(userActions.isDisplayed(mainDispensaryOption)) {
-				userActions.isSelected(mainDispensaryOption);
-				userActions.click(mainStoreOption);
-				isSelected = true;
-			}
-
-		}catch(Exception e) {
-			throw e;
-		}	
-		return isSelected;
-	}
-
-
-	/**@Test10
-	 * about this method validateCreateRequisitionButtonIsPresent() 
-	 * @param : null
-	 * @description : validate "create requisition" button is present or not
-	 * @return : Boolean
-	 * @author : Yaksha
-	 */
-	public Boolean validateCreateRequisitionButtonIsPresent() throws Exception {
-		boolean createRequisitionButtonIsDisplayed = false;
-		try {
-			if(userActions.isDisplayed(requisitionSubModule)) {
-				userActions.click(requisitionSubModule);
-				userActions.isDisplayed(createRequisitionButton);
-				createRequisitionButtonIsDisplayed=true;
-			}
-
-		}catch(Exception e) {
-			throw e;
-		}	
-		return createRequisitionButtonIsDisplayed;
-	}
-
-
-	/**@Test11
-	 * about this method verifyNewItemTextFieldIsPresent() 
-	 * @param : null
-	 * @description : verify "Item Name" text field is present in "Add Requisition" page
-	 * @return : Boolean
-	 * @author : Yaksha
-	 */
-	public Boolean verifyNewItemTextFieldIsPresent() throws Exception {
-		boolean itemNameTextfieldIsDisplayed = false;
-		try {
-			userActions.click(createRequisitionButton);
-			if(userActions.isDisplayed(itemNameTextfield)){
-				itemNameTextfieldIsDisplayed=true;
-			}
-		}catch(Exception e) {
-			throw e;
-		}	
-		return itemNameTextfieldIsDisplayed;
-	}
-
-
-	/**@Test12
-	 * about this method verifyRequisitionDetailsPrintPageIsDisplayed() 
-	 * @param : null
-	 * @description : verify Requisition Details Print page
-	 * @return : Boolean
-	 * @author : Yaksha
-	 */
-	public Boolean verifyRequisitionDetailsPrintPageIsDisplayed() throws Exception {
-		boolean RequisitionPageTitleIsDisplayed = false;
-		try {
-			userActions.click(cancelButton);
-			userActions.click(viewButton);
-			if(userActions.isDisplayed(medicineNameField) &&
-					userActions.isDisplayed(printButton) &&
-					userActions.isDisplayed(RequisitionPageTitle)) {
-				RequisitionPageTitleIsDisplayed=true;
-			}
-
-		}catch(Exception e) {
-			throw e;
-		}	
-		return RequisitionPageTitleIsDisplayed;
-	}
-
-
-	/**@Test13
-	 * about this method getTheMedicineNameFromRequisitionDetailsPrintPage() 
-	 * @param : null
-	 * @description : Get the medicine name from the "Requisition Details Print" page
-	 * @return : Boolean
-	 * @author : Yaksha
-	 */
-	public Boolean getTheMedicineNameFromRequisitionDetailsPrintPage() throws Exception {
-		boolean medicineNameIsDisplayed = false;
-		try {
-			if(userActions.isDisplayed(medicineNameField)) {
-				String medicineNameFieldValue=userActions.getText(medicineNameField);
-				System.out.println("Medicine Name is  : " + medicineNameFieldValue);
-				medicineNameIsDisplayed=true;
-			}
-		}catch(Exception e) {
-			throw e;
-		}	
-		return medicineNameIsDisplayed;
-	}
-
-
-	/**@Test14
-	 * about this method getThePlaceHolderNameOfAddressTextfiled() 
-	 * @param : null
-	 * @description : Get the place holder name of address textfiled and verify  the place holder name.
-	 * @return : String
-	 * @author : Yaksha
-	 */
-	public String getThePlaceHolderNameOfAddressTextfiled(Map<String, String> expectedData) throws Exception {
-		String placeHolderName = "";
-		try {
-			userActions.click(socialServiceModule);
-			userActions.click(registerNewSSUPatientButton);
-			if(userActions.isDisplayed(addressTextField)) {
-				Thread.sleep(3000);
-				placeHolderName = userActions.getAttribute(addressTextField,"placeholder");
-				System.out.println("Place holder value of Address field : " + placeHolderName);
-			}
-		}catch(Exception e) {
-			throw e;
-		}	
-		return placeHolderName;
-	}
-
-
-	/**@Test15
-	 * about this method closeNewSSUPatientRegistrationPopupByUsingJsExecutor() 
-	 * @param : null
-	 * @description : Close this "New SSU Patient Registration" popup by using javaScript.
-	 * @return : Boolean
-	 * @author : Yaksha
-	 */
-	public Boolean closeNewSSUPatientRegistrationPopupByUsingJsExecutor() throws Exception {
-		boolean IsDisplayed = false;
-		try {
-			if(userActions.isDisplayed(xButton)) {
-				userActions.jsClick(xButton);
-				Thread.sleep(3000);
-				IsDisplayed=true;
-			}
-		}catch(Exception e) {
-			throw e;
-		}	
-		return IsDisplayed;
-	}
-
-	/**@Test16
-	 * about this method verifyToolTipOfAnElement()
-	 * @param : null
-	 * @description :go to appointmentTab and verify the TOOLTIP value/text
-	 * @return : String
-	 * @author : YAKSHA
-	 */
-	public String verifyToolTipOfAnElement() throws Exception {
-		String tooltipText="";
-		try {
-			userActions.click(appointmentTab);
-			userActions.click(morningCounter);
-			userActions.waitTillElementVisible(keyboardButton,50);
-			userActions.mouseHoverClick(keyboardButton);
-			userActions.waitTillElementVisible(tooltip,50);
-			tooltipText=userActions.getText(tooltip);
-			System.out.println("Tooltip text value is:" +tooltipText);
-		}catch(Exception e) {
-			throw e;
-		}
-		return tooltipText;
-	}
-
-	/**@Test17
-	 * about this method verifyIndiaIsSelectedFromCountryDropdown() 
-	 * @param : get the data from json file as type Map<String, String> expectedData
-	 * @description : it will select the country as per json expected data
-	 * @return : String
-	 * @author : Yaksha
-	 */
-	public String verifyIndiaIsSelectedFromCountryDropdown(Map<String, String> expectedData) throws Exception {
-
-		String selectedCountryName = "" ;
-
-		userActions.click(saleSubModule);
-		userActions.performAltN();
-
-		try {
-			userActions.selectByVisibleText(countryDropdownByElement, expectedData.get("selectedCountryName"));
-			selectedCountryName = userActions.getFirstSelectedOptionFromDropdown(countryDropdownByElement, "elementName", "pageName");
-			System.out.println("first selected option from country dropdown : " + selectedCountryName );
-			//			userActions.click(xButton);
-			return selectedCountryName;
-		}catch(Exception e) {
-			throw e;
-		}	
-	}
-
-	/**@Test19
-	 * about this method takingScreenshotOfTheCurrentPage() 
-	 * @param : null
-	 * @description : Taking screenshot of the current page.
-	 * @return : Boolean
-	 * @author : YAKSHA
-	 */
-	public Boolean takingScreenshotOfTheCurrentPage() throws Exception {
-		boolean isDisplayed = false;
-		userActions.click(xButton);
-		try {
-			userActions.takeScreenshot("AddOtherCharges");
-			isDisplayed=true;
-
-		}catch(Exception e) {
-			throw e;
-		}
-		return isDisplayed;
-	}
-
-	/**@Test20
-	 * about this method uploadImageInScannedImagesSection() 
+	/**@Test7.2
+	 * about this method fillmiddelNameTextFieldVerifyThemiddleName() 
 	 * @param : Map<String, String>
-	 * @description : Upload a image in Scanned Images section.
-	 * @return : Boolean
-	 * @author : YAKSHA
+	 * @description : fill Middle Name TextField and Verify middle name
+	 * @return : String
+	 * @author : Yaksha
 	 */
-	public Boolean uploadImageInScannedImagesSection(String pathOfTheFile) throws Exception {
-		boolean isUploaded = false;
+	public String fillmiddelNameTextFieldVerifyThemiddleName(Map<String, String> expectedData) throws Exception {
+		String middleNameTextfieldValue= "";
 		try {
-			userActions.click(procurementModule);
-			Thread.sleep(3000);
-			userActions.click(settingsTab);
-			Thread.sleep(3000);
-			userActions.click(invoiceHeadersSubTab);
-			Thread.sleep(3000);
-			userActions.click(addNewInvoiceHeaderButton);
-			Thread.sleep(3000);
-			userActions.jsClick(chooseFileButton);
-			Thread.sleep(3000);
-			System.out.println("path of the file" + pathOfTheFile );
-			Thread.sleep(5000);
-			userActions.fileUpload(pathOfTheFile);
-			Thread.sleep(3000);
+			if(userActions.isDisplayed(middleNameTextFieldInAddNewPatient))
+			{
+				
+				userActions.click(middleNameTextFieldInAddNewPatient);
+				userActions.sendKeys(middleNameTextFieldInAddNewPatient,expectedData.get("middleName"));
 
-			isUploaded = true;
-		}catch(Exception e) {
-			throw e;
-		}
-		return isUploaded;
-	}
-
-	/**@Test20
-	 * about this method handleAlertPopup()
-	 * @param : null
-	 * @description : 
-	 * @return : boolean
-	 * @author : YAKSHA
-	 */
-	public boolean handleAlertPopup() throws Exception {
-
-		boolean isPopupHandled = false;
-
-		userActions.click(addInvoiceHeaderCloseButtonElement);
-
-		try {
-			userActions.click(operationTheatreNavMenuElement);
-			Thread.sleep(2000);
-			userActions.click(newOtBookingButtonElement);
-			Thread.sleep(2000);
-			if(userActions.isDisplayed(addNewOtButtonElement)){
-				Thread.sleep(2000);
-				userActions.click(addNewOtButtonElement);
-				Thread.sleep(2000);
-				userActions.acceptAlert();
-
-				isPopupHandled = true;
+				middleNameTextfieldValue = userActions.getAttribute(middleNameTextFieldInAddNewPatient, "value");
+				System.out.println("Middle name : " + middleNameTextfieldValue);
+								
 			}
 		}catch(Exception e) {
 			throw e;
 		}
-		return isPopupHandled;
+		return middleNameTextfieldValue;
 	}
 
-	/**@Test18
-	 * about this method tickAllCheckboxesThenValidateThenUntick() 
+	/**@Test7.3
+	 * about this method filllastNameTextfieldVerifylastName() 
+	 * @param : Map<String, String>
+	 * @description : fill Last Name TextField and Verify Last name
+	 * @return : String
+	 * @author : Yaksha
+	 */
+	public String filllastNameTextfieldVerifylastName(Map<String, String> expectedData) throws Exception {
+		String lastNameTextfieldValue= "";
+		try {
+			if(userActions.isDisplayed(lastNameTextFieldInAddNewPatient))
+			{
+				
+				userActions.click(lastNameTextFieldInAddNewPatient);
+				userActions.sendKeys(lastNameTextFieldInAddNewPatient,expectedData.get("lastName"));
+
+				lastNameTextfieldValue = userActions.getAttribute(lastNameTextFieldInAddNewPatient, "value");
+				System.out.println("Last name : " + lastNameTextfieldValue);
+								
+			}
+		}catch(Exception e) {
+			throw e;
+		}
+		return lastNameTextfieldValue;
+	}
+	
+	/**@Test7.4
+	 * about this method fillAgeTextFieldVerifyTheAge() 
+	 * @param : Map<String, String>
+	 * @description : fill age and Verify the age.
+	 * @return : String
+	 * @author : Yaksha
+	 */
+	public String fillAgeTextFieldVerifyTheAge(Map<String, String> expectedData) throws Exception {
+		String ageTextfieldValue= "";
+		try {
+			if(userActions.isDisplayed(ageTextFieldInAddNewPatient))
+			{
+				
+				userActions.click(ageTextFieldInAddNewPatient);
+				userActions.sendKeys(ageTextFieldInAddNewPatient,expectedData.get("age"));
+
+				ageTextfieldValue = userActions.getAttribute(ageTextFieldInAddNewPatient, "value");
+				System.out.println("Age is : " + ageTextfieldValue);
+								
+			}
+		}catch(Exception e) {
+			throw e;
+		}
+		return ageTextfieldValue;
+	}
+	
+	
+	
+	/**@Test7.5
+	 * about this method fillContactNumberTextFieldVerifyContactNumber() 
+	 * @param : Map<String, String>
+	 * @description : fill Contact Number TextField and Verify Contact Number
+	 * @return : String
+	 * @author : Yaksha
+	 */
+	public String fillContactNumberTextFieldVerifyContactNumber(Map<String, String> expectedData) throws Exception {
+		String contactNumberTextfieldValue= "";
+		try {
+			if(userActions.isDisplayed(contactNumberTextFieldInAddNewPatient))
+			{
+				
+				userActions.click(contactNumberTextFieldInAddNewPatient);
+				userActions.sendKeys(contactNumberTextFieldInAddNewPatient,expectedData.get("contact"));
+				
+				contactNumberTextfieldValue = userActions.getAttribute(contactNumberTextFieldInAddNewPatient, "value");
+				System.out.println("Contact Number is : " + contactNumberTextfieldValue);
+								
+			}
+		}catch(Exception e) {
+			throw e;
+		}
+		return contactNumberTextfieldValue;
+	}	
+	
+	/**@Test8
+	 * about this method validateTheConfirmMessageOnTheNewConsumptionEntryPage() 
 	 * @param : null
-	 * @description : First, tick all check boxes and validate that the all selected checkboxes are selected or not then untick them then close Add Other Charges.
+	 * @description : On the "New Consumption Entry's page, validate the confirm! Message that is "Are you sure you want to Proceed ?"
 	 * @return : Boolean
 	 * @author : Yaksha
 	 */
-	public Boolean handleCheckBox() throws Exception {
-
-		boolean isCheckBoxSelected = false;
-
-		userActions.click(bookingOTSchedulePageCloseButtonElement);
-
+	public String validateTheConfirmMessageOnTheNewConsumptionEntryPage() throws Exception {
+		String confirmMessageText = "";
 		try {
-			if(userActions.isDisplayed(procurementModule)) {
-				userActions.click(procurementModule);
-
-				userActions.click(procurementModuleSettingTabElement);
-				Thread.sleep(3000);
-
-				userActions.click(othersChargesTab);	
-				Thread.sleep(3000);
-
-				userActions.click(addOtherChargesButton);
-				Thread.sleep(3000);
-
-				userActions.click(isVATApplicableCheckBox);
-				Thread.sleep(3000);
-
-				userActions.click(isActiveCheckBox);
-				Thread.sleep(3000);
-
-				userActions.click(isDefaultCheckBox);
-
-				userActions.isSelected(isVATApplicableCheckBox);
-				userActions.isSelected(isActiveCheckBox);
-				userActions.isSelected(isActiveCheckBox);
-
-				Thread.sleep(3000);
-				userActions.click(isVATApplicableCheckBox);
-
-				Thread.sleep(3000);
-				userActions.click(isActiveCheckBox);
-
-				Thread.sleep(3000);
-				userActions.click(isDefaultCheckBox);
-
-				Thread.sleep(3000);
-				userActions.click(addOtherChargesCloseButtonElement);
-
-				isCheckBoxSelected = true;
-			}
+			userActions.click(xButton);
+			userActions.click(patientConsuptionTab);
+			userActions.click(newConsuptionButton);
+			userActions.click(saveConsuptionButton);
+			confirmMessageText=userActions.getText(confirmMessage);
+			System.out.println("Confirmation message is :" +confirmMessageText);
 		}catch(Exception e) {
 			throw e;
-		}
-		return isCheckBoxSelected;
+		}	
+		return confirmMessageText;
 	}
-
+	
+	
+	/**@Test9
+	 * about this method selectMainStoreFromFilterSelectMainStoreFromFilter() 
+	 * @param : null
+	 * @description : on the Stock page,select Main store from Filter by store dropdown and verify that Main store is selected and stock value are filtered by the selected store name 
+	 * @return : Boolean
+	 * @author : Yaksha
+	 */
+	public Boolean selectMainStoreFromFilterSelectMainStoreFromFilter() throws Exception {
+		boolean mainStoreDropDownIsSelected = false;
+		try {
+			 userActions.click(confirmButton);
+			 userActions.click(newConsumptionEntryPageCancelButton);
+			 userActions.click(stockSubModule);
+			 if(userActions.isDisplayed(filterByStoreDropdown)) {
+				 userActions.click(filterByStoreDropdown);
+				 userActions.click(mainStoreOption);
+//				 userActions.click(filterByStoreDropdown);
+				 Thread.sleep(3000);
+				 mainStoreDropDownIsSelected=true;
+			 }
+		}catch(Exception e) {
+			throw e;
+		}	
+		return mainStoreDropDownIsSelected;
+	}
+	
+	
+	/**@Test10
+	 * about this method validateCreateRequisitionButtonIsPresentGoToThisPageThenValidateThePageName() 
+	 * @param : null
+	 * @description : on the stock page , please validate clicking "Create Requisition" button navigate to "Add Requisitions" page and validate the page Name.
+	 * @return : Boolean
+	 * @author : Yaksha
+	 */
+	public String validateCreateRequisitionButtonIsPresentGoToThisPageThenValidateThePageName() throws Exception {
+		String addRequisitionsPageNameText = "";
+		try {
+			userActions.isSelected(stockSubModule);
+			userActions.click(requisitionTab);
+			userActions.isDisplayed(createRequisitionButton);
+			userActions.click(createRequisitionButton);
+			addRequisitionsPageNameText=userActions.getText(addRequisitionsPageName);
+			System.out.println("Add Requisitions Page Name Text is : " +addRequisitionsPageNameText);
+		}catch(Exception e) {
+			throw e;
+		}	
+		return addRequisitionsPageNameText;
+	}
+	
+	
+	
+	/**@Test11
+	 * about this method byClickingOnThatButtonSomeTextFieldsAreDisplyed() 
+	 * @param : null
+	 * @description : on the Add Requisition page, clicking the + icon button on right hand side of Remarks text box add a  the New set of elements to add a new records and validate New Item text field, Quantity Text field and Remark text box are present or not 2nd rows?
+	 * @return : Boolean
+	 * @author : Yaksha
+	 */
+	public Boolean byClickingOnThatButtonSomeTextFieldsAreDisplyed() throws Exception {
+		boolean mainStoreDropDownIsSelected = false;
+		try {
+			 
+			 
+		}catch(Exception e) {
+			throw e;
+		}	
+		return mainStoreDropDownIsSelected;
+	}
 }

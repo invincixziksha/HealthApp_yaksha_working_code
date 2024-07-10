@@ -79,7 +79,7 @@ public class UserActions
 
 	/**
 	 * This method is useful to generate the timestamp in ddMMYYYYHHmmss format
-	 * 
+	 *
 	 * @return Timestamp in String format
 	 */
 	public String getTimeStamp() {

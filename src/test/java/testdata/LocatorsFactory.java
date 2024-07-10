@@ -19,6 +19,8 @@ public class LocatorsFactory extends StartupPage {
 	By new3TextElement = By.xpath("//h5[contains(text(), 'New-3')]");
 	By old1TextElement = By.xpath("//h5[contains(text(), 'Old-1')]"); 
 	By opdCounterTextElement = By.xpath("//h5[contains(text(), 'OPD-Counter')]");
+	By confirmMessage = By.xpath("//p[.='Are you sure you want to Proceed ?']");
+	By mainStoreDropDown = By.xpath("//option[.='Main store']");
 
 	By addNewPatientButtonElement = By.xpath("//button[contains(text(), 'Add New Patient')]");
 	By registerAndBillingButtonElement = By.xpath("//button[contains(text(), 'Register & Billing')]");
@@ -28,6 +30,7 @@ public class LocatorsFactory extends StartupPage {
 	By countryDropdownByElement = By.xpath("//select[@id='ddlCountry']");
 	By errorMessageOfRegisterBillingByElement = By.xpath("//p[contains(text(), 'Some of the inputs are invalid. Please check and try again. !')]");
 	By closeButtonOfAddNewpatientpage = By.xpath("//button[contains(text(), 'Close')]");
+	By ageTextFieldInAddNewPatient = By.id("Age");
 
 	By errorMessageCloseButton = By.xpath("//a[@class='close-btn']//i[@class='fa fa-times-circle']");
 	By dispensaryToggle = By.xpath("//span[@data-target='#Dispensary']");
@@ -37,6 +40,7 @@ public class LocatorsFactory extends StartupPage {
 	By counterSubMenu = By.xpath("//ul[@id='Dispensary']//li//a//span[contains(text(),'Counter')]");
 	By reportsSubMenu = By.xpath("//ul[@id='Dispensary']//li//a//span[contains(text(),'Reports')]");
 	By patientConsumptionSubMenu = By.xpath("//ul[@id='Dispensary']//li//a//span[contains(text(),'Patient Consumption')]");
+	By addRequisitionsPageName = By.xpath("//span[.='Add Requisition']");
 
 	//	By dispensaryLeftNavigationMenu = By.xpath("//a[@class='left-nav-active']//span[contains(text(), 'Dispensary')]");
 	By dispensaryLeftNavigationMenu = By.xpath("//a[@href='#/Dispensary']//span[contains(text(), 'Dispensary')]");
@@ -360,19 +364,34 @@ public class LocatorsFactory extends StartupPage {
 		WebElement errorMeesageInLastNameTextFieldWebElement = driver.findElement(errorMeesageInLastNameTextField);
 		return errorMeesageInLastNameTextFieldWebElement;
 	}
-
-	public String ContactNumberTextFieldIsPresent() throws Exception {
-		String ContactNumberTextFieldValue = "";
+	
+	public WebElement confirmMessageIsPresent(WebDriver driver) {
+		WebElement confirmMessageWebElement = driver.findElement(confirmMessage);
+		return confirmMessageWebElement;
+	}
+	public WebElement mainStoreDropDownIsPresent(WebDriver driver) {
+		WebElement mainStoreDropDownWebElement = driver.findElement(mainStoreDropDown);
+		return mainStoreDropDownWebElement;
+	}
+	
+	public WebElement addRequisitionsPageNameIsPresent(WebDriver driver) {
+		WebElement addRequisitionsPageNameWebElement = driver.findElement(addRequisitionsPageName);
+		return addRequisitionsPageNameWebElement;
+	}
+	
+	
+	public String ageTextFieldIsPresent() throws Exception {
+		String ageTextFieldValue = "";
 		try {
-			if(userActions.isDisplayed(firstNameTextFieldElement))
+			if(userActions.isDisplayed(ageTextFieldInAddNewPatient))
 			{
-				ContactNumberTextFieldValue = userActions.getAttribute(ContactNumberTextFieldInAddNewPatient, "value");
-				System.out.println("Contact Number TextField Value  : " + ContactNumberTextFieldValue);
+				ageTextFieldValue = userActions.getAttribute(ageTextFieldInAddNewPatient, "value");
+				System.out.println("Age TextField Value  : " + ageTextFieldValue);
 			}
 		}catch(Exception e) {
 			throw e;
 		}
-		return ContactNumberTextFieldValue;
+		return ageTextFieldValue;
 	}
 
 
