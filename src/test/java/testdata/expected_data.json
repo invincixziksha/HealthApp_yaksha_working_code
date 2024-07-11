@@ -104,7 +104,8 @@
 	},
 	"PageTitle":{
 		"AddNewPatientPageTitle":"Add New Patient",
-		"AddRequisitionPageName":"Add Requisition"
+		"AddRequisitionPageName":"Add Requisition",
+		"pageNameAfterClickingOnView":"REQUISITION DETAILS PRINT"
 
 	}
 }

@@ -114,6 +114,15 @@ public class dispensary_Pages extends StartupPage {
 	By addOtherChargesCloseButtonElement = By.xpath("//a[@title='Cancel']");
 	By requisitionTab = By.xpath("//a[.='Requisition']");
 	By addRequisitionsPageName = By.xpath("//span[.='Add Requisition']");
+	By plusIcon = By.xpath("//i[@class='fa fa-plus btn btn-success']");
+	By itemNameTextField = By.id("itemName1");
+	By quantityTextField = By.id("req_qty1");
+	By remarkTextField = By.id("remark1");
+	By cancelButtonInAddRequisition = By.xpath("//input[@value='Cancel']");
+	By viewIconiconOfRecentlyCreatedDocument = By.xpath("(//a[contains(text(),'View')])[1]");
+	By requisitionDetailsPrintPageName = By.xpath("//b[.=' REQUISITION DETAILS PRINT']");	
+	By medicineName = By.xpath("(//table[@class='table table-striped table-hover req_table']//tr[@style='text-align:center']//td)[1]");
+	By closeButton = By.xpath("//button[.=' Close ']");
 
 	String pageName = this.getClass().getSimpleName();
 	public dispensary_Pages(WebDriver driver) {
@@ -523,13 +532,130 @@ public class dispensary_Pages extends StartupPage {
 	 * @author : Yaksha
 	 */
 	public Boolean byClickingOnThatButtonSomeTextFieldsAreDisplyed() throws Exception {
-		boolean mainStoreDropDownIsSelected = false;
+		boolean isDisplayed = false;
 		try {
-			 
+			 userActions.click(plusIcon);
+			 if(userActions.isDisplayed(itemNameTextField)&& 
+				 userActions.isDisplayed(quantityTextField)&&
+				 userActions.isDisplayed(remarkTextField)) {
+				 isDisplayed=true;
+			 }
 			 
 		}catch(Exception e) {
 			throw e;
 		}	
-		return mainStoreDropDownIsSelected;
+		return isDisplayed;
+	}
+	
+	
+	/**@Test12.1
+	 * about this method verifyPageNameOfRequisitionDetailsPage() 
+	 * @param : null
+	 * @description : On the "Requisition" page, verify that view button under "action" navigate to the "Requisition Details Print" page and validate the page name is  "Requisition Details Print" 
+	 * @return : String
+	 * @author : Yaksha
+	 */
+	public String verifyPageNameOfRequisitionDetailsPage() throws Exception {
+		String pageName = "";
+		try {
+			userActions.click(cancelButtonInAddRequisition);
+			userActions.click(viewIconiconOfRecentlyCreatedDocument);
+			pageName=userActions.getText(requisitionDetailsPrintPageName);
+			System.out.println("Page name is :" +pageName);			 
+		}catch(Exception e) {
+			throw e;
+		}	
+		return pageName;
+	}
+	
+	
+	/**@Test12.2
+	 * about this method validateTheButtonsArePresentOrNot() 
+	 * @param : null
+	 * @description :  validate "print" and "Requisitions List" button are present
+	 * @return : Boolean
+	 * @author : Yaksha
+	 */
+	public Boolean validateTheButtonsArePresentOrNot() throws Exception {
+		boolean requisitionsListButtonisDisplayed = false;
+		try {
+
+			 if(userActions.isDisplayed(printButton)&& 
+				 userActions.isDisplayed(requisitionsListButton)) {
+				 requisitionsListButtonisDisplayed=true;
+			 }
+			 
+		}catch(Exception e) {
+			throw e;
+		}	
+		return requisitionsListButtonisDisplayed;
+	}
+	
+	
+	/**@Test13
+	 * about this method getTheMedicineNameFromTable() 
+	 * @param : null
+	 * @description :  On the "Requisition Details Print" page, Get the medicine name from the "Requisition Details Print" table and  validate the medicine name is not blank.
+	 * @return : Boolean
+	 * @author : Yaksha
+	 */
+	public Boolean getTheMedicineNameFromTable() throws Exception {
+		boolean medicineNameDisplayed = false;
+		try {
+
+			 if(userActions.isDisplayed(medicineName)) {
+				 String MedicineName=userActions.getText(medicineName);
+				 System.out.println("Medicine name is :" +MedicineName);
+				 medicineNameDisplayed=true;
+			 }
+			 
+		}catch(Exception e) {
+			throw e;
+		}	
+		return medicineNameDisplayed;
+	}
+	
+
+	/**@Test14
+	 * about this method inAddressFieldValidateThePlaceHolderNameAndPrintOnConsole() 
+	 * @param : null
+	 * @description : On the "New SSU Patient Registration" under social service module, get the place holder name of "Address" textfiled of  "New SSU Patient Registration" page and verify  the place holder name.
+	 * @return : String
+	 * @author : Yaksha
+	 */
+	public String inAddressFieldValidateThePlaceHolderNameAndPrintOnConsole() throws Exception {
+		String placeHolderValue = "";
+		try {
+			userActions.click(socialServiceModule);
+			userActions.click(registerNewSSUPatientButton);
+			userActions.click(addressTextField);
+			placeHolderValue = userActions.getAttribute(addressTextField,"placeholder");
+			System.out.println("Place holder value of Address field : " + placeHolderValue);
+			
+		}catch(Exception e) {
+			throw e;
+		}	
+		return placeHolderValue;
+	}
+	
+	/**@Test15
+	 * about this method closeNewSSUPatientRegistrationPopupByUsingJsExecutor() 
+	 * @param : null
+	 * @description : On the "New SSU Patient Registration" page, Close this "New SSU Patient Registration" popup page by using javaScript.
+	 * @return : Boolean
+	 * @author : Yaksha
+	 */
+	public Boolean closeNewSSUPatientRegistrationPopupByUsingJsExecutor() throws Exception {
+		boolean IsDisplayed = false;
+		try {
+			if(userActions.isDisplayed(closeButton)) {
+			  userActions.jsClick(closeButton);
+			  Thread.sleep(3000);
+			  IsDisplayed=true;
+			}
+		}catch(Exception e) {
+			throw e;
+		}	
+		return IsDisplayed;
 	}
 }

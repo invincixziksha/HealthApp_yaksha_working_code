@@ -101,6 +101,9 @@ public class LocatorsFactory extends StartupPage {
 	By closeButton = By.xpath("//button[.=' Close ']");
 	By countryDropdown = By.id("ddlCountry");
 	By crossButtonElement = By.xpath("//button[contains(text(), 'X')]");
+	By remarkTextField = By.id("remark1");
+	By requisitionsListButton = By.xpath("//a[@class='btn btn-primary']");
+	By medicineQuantity = By.xpath("(//table[@class='table table-striped table-hover req_table']//tr[@style='text-align:center']//td)[2]");
 
 	//Social service Module(L2)
 
@@ -379,7 +382,21 @@ public class LocatorsFactory extends StartupPage {
 		return addRequisitionsPageNameWebElement;
 	}
 	
+
+	public WebElement remarkTextFieldIsPresent(WebDriver driver) {
+		WebElement remarkTextFieldWebElement = driver.findElement(remarkTextField);
+		return remarkTextFieldWebElement;
+	}
+
+	public WebElement medicineQuantityIsPresent(WebDriver driver) {
+		WebElement medicineQuantityWebElement = driver.findElement(medicineQuantity);
+		return medicineQuantityWebElement;
+	}
 	
+	public WebElement requisitionsListButtonIsPresent(WebDriver driver) {
+		WebElement requisitionsListButtonWebElement = driver.findElement(requisitionsListButton);
+		return requisitionsListButtonWebElement;
+	}
 	public String ageTextFieldIsPresent() throws Exception {
 		String ageTextFieldValue = "";
 		try {
