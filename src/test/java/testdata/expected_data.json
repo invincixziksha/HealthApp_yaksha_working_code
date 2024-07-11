@@ -21,7 +21,7 @@
 		"errorMessageOfRegisterBilling":"Some of the inputs are invalid. Please check and try again. !"
 	},
 	"KeyBoardTooltip":{
-		"TooltipValue":"ALT + N = New Patient"
+		"newPatientTooltipValue":"ALT + N = New Patient"
 	},
 	"healthAppErrorMessages":{
 		"FirstNameFieldErrorMessage":"First Name is required.",
@@ -105,6 +105,8 @@
 	"PageTitle":{
 		"AddNewPatientPageTitle":"Add New Patient",
 		"AddRequisitionPageName":"Add Requisition"
-
+	},
+	"percentageValue":{
+		"vatInPercentageValue":"10"
 	}
 }

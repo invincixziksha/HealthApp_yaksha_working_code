@@ -4605,5 +4605,17 @@ public class UserActions
 			return false;
 		}
 	}
+	
+	public String validateAlertMessage() {
+		String alertMessageValue = "";
+		try {
+			Alert alert = driver.switchTo().alert();
+			alertMessageValue = alert.getText();
+			alert.accept();
+		} catch (NoAlertPresentException e) {
+			System.out.println("No alert present: " + e.getMessage());
+		}
+		return alertMessageValue;
+	}
 }
 

@@ -42,7 +42,7 @@ public class dispensary_Pages extends StartupPage {
 	By confirmMessage = By.xpath("//p[.='Are you sure you want to Proceed ?']");
 	By confirmButton = By.id("id_btn_confirm_confirmation");
 	By newConsumptionEntryPageCancelButton = By.xpath("//a[@title='Cancel']");
-//	By mainStoreOption = By.xpath("//option[.='Main store']");
+	//	By mainStoreOption = By.xpath("//option[.='Main store']");
 	By filterByStoreDropdown = By.id("Store");
 
 	By firstNameTextFieldInAddNewPatient = By.id("newPatFirstName");
@@ -114,6 +114,15 @@ public class dispensary_Pages extends StartupPage {
 	By addOtherChargesCloseButtonElement = By.xpath("//a[@title='Cancel']");
 	By requisitionTab = By.xpath("//a[.='Requisition']");
 	By addRequisitionsPageName = By.xpath("//span[.='Add Requisition']");
+
+
+
+	//L2 Scenarios
+	By appointmentModule = By.xpath("(//span[.='Appointment'])[1]");
+	By newOneSelectCounterElement = By.xpath("//div[@class='counter-item']//h5[contains(text(), 'New-1 ')]");
+	By keyboardButtonElement = By.xpath("//div[@title='Shortcut Keys']");
+	By altPlusNtooltipMessageElement = By.xpath("//li[contains(text(),'+')]");
+	By vatInPercentageTextFieldElement = By.xpath("//input[@id='VAT']");
 
 	String pageName = this.getClass().getSimpleName();
 	public dispensary_Pages(WebDriver driver) {
@@ -327,7 +336,7 @@ public class dispensary_Pages extends StartupPage {
 
 				firstNameTextfieldValue = userActions.getAttribute(firstNameTextFieldInAddNewPatient, "value");
 				System.out.println("FirstName : " + firstNameTextfieldValue);
-								
+
 			}
 		}catch(Exception e) {
 			throw e;
@@ -347,13 +356,13 @@ public class dispensary_Pages extends StartupPage {
 		try {
 			if(userActions.isDisplayed(middleNameTextFieldInAddNewPatient))
 			{
-				
+
 				userActions.click(middleNameTextFieldInAddNewPatient);
 				userActions.sendKeys(middleNameTextFieldInAddNewPatient,expectedData.get("middleName"));
 
 				middleNameTextfieldValue = userActions.getAttribute(middleNameTextFieldInAddNewPatient, "value");
 				System.out.println("Middle name : " + middleNameTextfieldValue);
-								
+
 			}
 		}catch(Exception e) {
 			throw e;
@@ -373,20 +382,20 @@ public class dispensary_Pages extends StartupPage {
 		try {
 			if(userActions.isDisplayed(lastNameTextFieldInAddNewPatient))
 			{
-				
+
 				userActions.click(lastNameTextFieldInAddNewPatient);
 				userActions.sendKeys(lastNameTextFieldInAddNewPatient,expectedData.get("lastName"));
 
 				lastNameTextfieldValue = userActions.getAttribute(lastNameTextFieldInAddNewPatient, "value");
 				System.out.println("Last name : " + lastNameTextfieldValue);
-								
+
 			}
 		}catch(Exception e) {
 			throw e;
 		}
 		return lastNameTextfieldValue;
 	}
-	
+
 	/**@Test7.4
 	 * about this method fillAgeTextFieldVerifyTheAge() 
 	 * @param : Map<String, String>
@@ -399,22 +408,22 @@ public class dispensary_Pages extends StartupPage {
 		try {
 			if(userActions.isDisplayed(ageTextFieldInAddNewPatient))
 			{
-				
+
 				userActions.click(ageTextFieldInAddNewPatient);
 				userActions.sendKeys(ageTextFieldInAddNewPatient,expectedData.get("age"));
 
 				ageTextfieldValue = userActions.getAttribute(ageTextFieldInAddNewPatient, "value");
 				System.out.println("Age is : " + ageTextfieldValue);
-								
+
 			}
 		}catch(Exception e) {
 			throw e;
 		}
 		return ageTextfieldValue;
 	}
-	
-	
-	
+
+
+
 	/**@Test7.5
 	 * about this method fillContactNumberTextFieldVerifyContactNumber() 
 	 * @param : Map<String, String>
@@ -427,20 +436,20 @@ public class dispensary_Pages extends StartupPage {
 		try {
 			if(userActions.isDisplayed(contactNumberTextFieldInAddNewPatient))
 			{
-				
+
 				userActions.click(contactNumberTextFieldInAddNewPatient);
 				userActions.sendKeys(contactNumberTextFieldInAddNewPatient,expectedData.get("contact"));
-				
+
 				contactNumberTextfieldValue = userActions.getAttribute(contactNumberTextFieldInAddNewPatient, "value");
 				System.out.println("Contact Number is : " + contactNumberTextfieldValue);
-								
+
 			}
 		}catch(Exception e) {
 			throw e;
 		}
 		return contactNumberTextfieldValue;
 	}	
-	
+
 	/**@Test8
 	 * about this method validateTheConfirmMessageOnTheNewConsumptionEntryPage() 
 	 * @param : null
@@ -462,8 +471,8 @@ public class dispensary_Pages extends StartupPage {
 		}	
 		return confirmMessageText;
 	}
-	
-	
+
+
 	/**@Test9
 	 * about this method selectMainStoreFromFilterSelectMainStoreFromFilter() 
 	 * @param : null
@@ -474,23 +483,23 @@ public class dispensary_Pages extends StartupPage {
 	public Boolean selectMainStoreFromFilterSelectMainStoreFromFilter() throws Exception {
 		boolean mainStoreDropDownIsSelected = false;
 		try {
-			 userActions.click(confirmButton);
-			 userActions.click(newConsumptionEntryPageCancelButton);
-			 userActions.click(stockSubModule);
-			 if(userActions.isDisplayed(filterByStoreDropdown)) {
-				 userActions.click(filterByStoreDropdown);
-				 userActions.click(mainStoreOption);
-//				 userActions.click(filterByStoreDropdown);
-				 Thread.sleep(3000);
-				 mainStoreDropDownIsSelected=true;
-			 }
+			userActions.click(confirmButton);
+			userActions.click(newConsumptionEntryPageCancelButton);
+			userActions.click(stockSubModule);
+			if(userActions.isDisplayed(filterByStoreDropdown)) {
+				userActions.click(filterByStoreDropdown);
+				userActions.click(mainStoreOption);
+				//				 userActions.click(filterByStoreDropdown);
+				Thread.sleep(3000);
+				mainStoreDropDownIsSelected=true;
+			}
 		}catch(Exception e) {
 			throw e;
 		}	
 		return mainStoreDropDownIsSelected;
 	}
-	
-	
+
+
 	/**@Test10
 	 * about this method validateCreateRequisitionButtonIsPresentGoToThisPageThenValidateThePageName() 
 	 * @param : null
@@ -512,9 +521,9 @@ public class dispensary_Pages extends StartupPage {
 		}	
 		return addRequisitionsPageNameText;
 	}
-	
-	
-	
+
+
+
 	/**@Test11
 	 * about this method byClickingOnThatButtonSomeTextFieldsAreDisplyed() 
 	 * @param : null
@@ -525,11 +534,201 @@ public class dispensary_Pages extends StartupPage {
 	public Boolean byClickingOnThatButtonSomeTextFieldsAreDisplyed() throws Exception {
 		boolean mainStoreDropDownIsSelected = false;
 		try {
-			 
-			 
+
+
 		}catch(Exception e) {
 			throw e;
 		}	
 		return mainStoreDropDownIsSelected;
+	}
+
+
+
+
+
+	//L2 Scenarios
+	/**@Test16
+	 * about this method verifyToolTipOfAnElement()
+	 * @param : null
+	 * @description :go to appointmentTab and verify the TOOLTIP value/text
+	 * @return : String
+	 * @author : YAKSHA
+	 */
+	public String verifyToolTipOfAnElement() throws Exception {
+		String tooltipText = "";
+		try {
+			userActions.click(appointmentModule);
+			userActions.click(newOneSelectCounterElement);
+			userActions.waitTillElementVisible(keyboardButtonElement,50);
+			userActions.mouseHoverClick(keyboardButtonElement);
+			userActions.waitTillElementVisible(altPlusNtooltipMessageElement,50);
+			tooltipText = userActions.getText(altPlusNtooltipMessageElement);
+			System.out.println("New Patient Tooltip text value is:" + tooltipText );
+		}catch(Exception e) {
+			throw e;
+		}
+		return tooltipText;
+	}
+
+	/**@Test17
+	 * about this method verifyIndiaIsSelectedFromCountryDropdown() 
+	 * @param : get the data from json file as type Map<String, String> expectedData
+	 * @description : it will select the country as per json expected data
+	 * @return : String
+	 * @author : YAKSHA
+	 */
+	public String verifyIndiaIsSelectedFromCountryDropdown(Map<String, String> expectedData) throws Exception {
+
+		String selectedCountryName = "" ;
+
+		userActions.click(saleSubModule);
+		userActions.performAltN();
+
+		try {
+			userActions.selectByVisibleText(countryDropdownByElement, expectedData.get("selectedCountryName"));
+			selectedCountryName = userActions.getFirstSelectedOptionFromDropdown(countryDropdownByElement, "elementName", "pageName");
+			System.out.println("first selected option from country dropdown : " + selectedCountryName );
+			return selectedCountryName;
+		}catch(Exception e) {
+			throw e;
+		}	
+	}
+
+	/**@Test18
+	 * about this method takingScreenshotOfTheCurrentPage() 
+	 * @param : null
+	 * @description : Taking screenshot of the current page.
+	 * @return : Boolean
+	 * @author : YAKSHA
+	 */
+	public Boolean takingScreenshotOfTheCurrentPage() throws Exception {
+		boolean isDisplayed = false;
+		userActions.click(xButton);
+		try {
+			userActions.takeScreenshot("Sale page of DIspensary Module");
+			isDisplayed = true;
+
+		}catch(Exception e) {
+			throw e;
+		}
+		return isDisplayed;
+	}
+
+	/**@Test19
+	 * about this method uploadImageInScannedImagesSection() 
+	 * @param : Map<String, String>
+	 * @description : Upload a image in Scanned Images section.
+	 * @return : Boolean
+	 * @author : YAKSHA
+	 */
+	public Boolean uploadImageInScannedImagesSection(String pathOfTheFile) throws Exception {
+		boolean isUploaded = false;
+		try {
+			userActions.click(procurementModule);
+			Thread.sleep(3000);
+			userActions.click(settingsTab);
+			Thread.sleep(3000);
+			userActions.click(invoiceHeadersSubTab);
+			Thread.sleep(3000);
+			userActions.click(addNewInvoiceHeaderButton);
+			Thread.sleep(3000);
+			userActions.jsClick(chooseFileButton);
+			Thread.sleep(3000);
+			System.out.println("path of the file" + pathOfTheFile );
+			Thread.sleep(5000);
+			userActions.fileUpload(pathOfTheFile);
+			Thread.sleep(3000);
+
+			isUploaded = true;
+		}catch(Exception e) {
+			throw e;
+		}
+		return isUploaded;
+	}
+
+	/**@Test20
+	 * about this method handleAlertPopup()
+	 * @param : null
+	 * @description : 
+	 * @return : boolean
+	 * @author : YAKSHA
+	 */
+	public boolean handleAlertPopup() throws Exception {
+
+		boolean isPopupHandled = false;
+
+		userActions.click(addInvoiceHeaderCloseButtonElement);
+
+		try {
+			userActions.click(operationTheatreNavMenuElement);
+			Thread.sleep(2000);
+			userActions.click(newOtBookingButtonElement);
+			Thread.sleep(2000);
+			if(userActions.isDisplayed(addNewOtButtonElement)){
+				Thread.sleep(2000);
+				userActions.click(addNewOtButtonElement);
+				Thread.sleep(2000);
+				//				userActions.validateAlertMessage();
+				userActions.acceptAlert();
+				isPopupHandled = true;
+			}
+		}catch(Exception e) {
+			throw e;
+		}
+		return isPopupHandled;
+	}
+
+	/**@Test21
+	 * about this method tickAllCheckboxesThenValidateThenUntick() 
+	 * @param : null
+	 * @description : First, tick all check boxes and validate that the all selected checkboxes are selected or not then untick them then close Add Other Charges.
+	 * @return : Boolean
+	 * @author : YAKSHA
+	 */
+	public Boolean handleCheckBox(Map<String, String> expectedData) throws Exception {
+
+		boolean isCheckBoxSelected = false;
+
+		userActions.click(bookingOTSchedulePageCloseButtonElement);
+
+		try {
+			if(userActions.isDisplayed(procurementModule)) {
+				userActions.click(procurementModule);
+
+				userActions.click(procurementModuleSettingTabElement);
+				Thread.sleep(2000);
+
+				userActions.click(othersChargesTab);	
+				Thread.sleep(2000);
+
+				userActions.click(addOtherChargesButton);
+				Thread.sleep(2000);
+
+				userActions.click(isVATApplicableCheckBox);
+				Thread.sleep(2000);
+
+				userActions.click(isActiveCheckBox);
+				Thread.sleep(2000);
+
+				userActions.click(isDefaultCheckBox);
+
+				userActions.isSelected(isVATApplicableCheckBox);
+				userActions.isSelected(isActiveCheckBox);
+				userActions.isSelected(isActiveCheckBox);
+
+				if(userActions.isDisplayed(vatInPercentageTextFieldElement))
+				{   
+					userActions.clear(vatInPercentageTextFieldElement);
+					userActions.sendKeys(vatInPercentageTextFieldElement,expectedData.get("vatInPercentageValue"));
+				}
+
+//				userActions.click(addOtherChargesCloseButtonElement);
+
+				isCheckBoxSelected = true;
+			}
+		}catch(Exception e) {
+			throw e;
+		}
+		return isCheckBoxSelected;
 	}
 }

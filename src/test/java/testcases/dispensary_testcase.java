@@ -147,6 +147,59 @@ public class dispensary_testcase extends AppTestBase
 //		Assert.assertTrue(locatorsFactoryInstance.mainStoreDropDownIsPresent(driver).isSelected(), "Main Store DropDown is selected in the current page, Please check manually");
 	}
 	
+	@Test(priority = 16, groups = {"sanity"}, description="On the Appointment module, under the\"New visit\" tab, verify tooltips which is present on keyboard icon.")
+	public void  verifyTooltipOfAnElement() throws Exception {
+		dispensary_PagesInstance = new dispensary_Pages(driver);
+		locatorsFactoryInstance = new LocatorsFactory(driver);
+		Map<String, String> expectedData = new FileOperations().readJson(expectedDataFilePath, "KeyBoardTooltip");
+		Assert.assertEquals(dispensary_PagesInstance.verifyToolTipOfAnElement(), expectedData.get("newPatientTooltipValue"),"Verification failed, please check manually");
+	    Assert.assertTrue(locatorsFactoryInstance.tooltipTextIsPresent(driver).isDisplayed(), "Tooltip is not present in the current page, Please check manually");
+	}
+	
+	@Test(priority = 17, groups = {"sanity"}, description="Simply select India  from the country dropdown menu and validate India is selected or not.")
+	public void verifyIndiaIsSelectedFromCountryDropdown() throws Exception {
+		dispensary_PagesInstance = new dispensary_Pages(driver);
+		locatorsFactoryInstance = new LocatorsFactory(driver);
+
+		Map<String, String> expectedData = new FileOperations().readJson(expectedDataFilePath, "addNewPatientPopup");
+		Assert.assertEquals(dispensary_PagesInstance.verifyIndiaIsSelectedFromCountryDropdown(expectedData), expectedData.get("selectedCountryName"), "selected country is not matching with expected, please check manually!");
+		Assert.assertEquals(locatorsFactoryInstance.verifyIndiaIsPresent(), expectedData.get("selectedCountryName"), "selected country is not matching with expected, please check manually!");
+	}
+	
+	@Test(priority = 18, groups = {"sanity"}, description="On the Dispensary module's \"Sale\" page, Taking screenshot of the current page after closing the \"Add New Patient\" form.")
+	public void takingScreenshotOfCurrentPage() throws Exception {
+		dispensary_PagesInstance = new dispensary_Pages(driver);
+		locatorsFactoryInstance = new LocatorsFactory(driver);
+		Assert.assertTrue(dispensary_PagesInstance.takingScreenshotOfTheCurrentPage(),"Not able to take the screenshot, please check manually");
+		Assert.assertTrue(locatorsFactoryInstance.printInvoiceButtonIsPresent(driver).isDisplayed(),"Race TextField is not present in the current page, Please check manually");
+	}
+	
+	@Test(priority = 19, groups = {"sanity"}, description="Upload a image in Scanned Images section")
+	public void uploadImageInScannedImagesSection() throws Exception {
+		dispensary_PagesInstance = new dispensary_Pages(driver);
+		locatorsFactoryInstance = new LocatorsFactory(driver);
+		Assert.assertTrue(dispensary_PagesInstance.uploadImageInScannedImagesSection(System.getProperty("user.dir") + "\\testImage\\uploadImage.png"),"Not able to upload the image, please check manually");
+		Assert.assertTrue(locatorsFactoryInstance.saveButtonIsPresent(driver).isDisplayed(),"Save button is not present in the current page, Please check manually");
+	}
+	
+	@Test(priority = 20, groups = {"sanity"}, description="On Operation Theatre module, Verify clicking \"New OT Booking\" button popup \"Booking OT Schedule | New Patient\" form. \r\n"
+			+ "As well as try to book a New OT Booking without patient Name popup the alert message \"Patient not Selected! Please Select the patient first!\".")
+	public void  handleAlertPopup() throws Exception {
+		dispensary_PagesInstance = new dispensary_Pages(driver);
+		locatorsFactoryInstance = new LocatorsFactory(driver);
+		Assert.assertTrue(dispensary_PagesInstance.handleAlertPopup(), "Unable to handle the alert popup, please check manually");	
+	    Assert.assertTrue(locatorsFactoryInstance.addNewOTButtonIsPresent(driver).isDisplayed(), "Manage Role Tab is not present in the current page, Please check manually");
+	}
+	
+	@Test(priority = 21, groups = {"sanity"}, description="On Procurement module's \"Add Other Charges\" page, First, tick all check boxes and validate that the all selected checkboxes are selected or not and validate the VAT (IN %) text field is present or after click on VAT is applicable checkbox. ")
+	public void handleCheckBox() throws Exception {
+		dispensary_PagesInstance = new dispensary_Pages(driver);
+		locatorsFactoryInstance = new LocatorsFactory(driver);
+		Map<String, String> expectedData = new FileOperations().readJson(expectedDataFilePath, "percentageValue");
+		Assert.assertTrue(dispensary_PagesInstance.handleCheckBox(expectedData),"Any of the checkbox is not present, please check manually");
+		Assert.assertTrue(locatorsFactoryInstance.vatInPercentageTextboxIsPresent(),"vat in percentage textbox is not present in the current page, Please check manually");
+	}
+	
 	@AfterClass(alwaysRun = true)
 	public void tearDown() {
 		System.out.println("before closing the browser");

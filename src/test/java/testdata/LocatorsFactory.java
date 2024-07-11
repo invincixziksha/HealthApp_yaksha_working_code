@@ -108,16 +108,13 @@ public class LocatorsFactory extends StartupPage {
 	By submitButton = By.id("btn-add");
 	By accountOption = By.xpath("//span[.='Accounts']");
 	By printButton = By.xpath("//button[.='Print']");
-	
-	
-	
-	
-	
+
 	
 	//OperationTheatre Module(L1)
 
 //	By printButton = By.xpath("//button[.='Print']");
 	By ssuPatientListText = By.xpath("//a[.=' SSU Patient List ']");
+	By vatInPercentageTextFieldElement = By.xpath("//input[@id='VAT']");
 
 
 
@@ -610,5 +607,21 @@ public class LocatorsFactory extends StartupPage {
 	public WebElement accountOptionIsSelected(WebDriver driver) {
 		WebElement accountOptionWebElement = driver.findElement(accountOption);
 		return accountOptionWebElement;
+	}
+	
+	public Boolean vatInPercentageTextboxIsPresent() throws Exception {
+		Boolean vatInPercentageTextboxIsPresent = false;
+		try {
+			if(userActions.isDisplayed(vatInPercentageTextFieldElement))
+			{
+				WebElement vatInPercentageTextFieldElementWebElement = userActions.findElement(vatInPercentageTextFieldElement);
+				userActions.highlightElement(vatInPercentageTextFieldElementWebElement);
+				Thread.sleep(2000);
+				vatInPercentageTextboxIsPresent = true;
+			}
+		}catch(Exception e) {
+			throw e;
+		}
+		return vatInPercentageTextboxIsPresent;
 	}
 }
