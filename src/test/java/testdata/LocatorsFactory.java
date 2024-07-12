@@ -4,11 +4,11 @@ import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 
-import pages.StartupPage;
+import testcases.UserActions;
 
-public class LocatorsFactory extends StartupPage {
+public class LocatorsFactory extends UserActions {
 
-
+	UserActions userActions = new UserActions(driver);
 
 	// element of health application
 

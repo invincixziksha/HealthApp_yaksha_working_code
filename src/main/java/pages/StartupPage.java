@@ -2,19 +2,19 @@ package pages;
 
 import org.openqa.selenium.WebDriver;
 
-import testcases.UserActions;
+import coreUtilities.utils.CommonEvents;
 
 
 public class StartupPage {
 	
 	public WebDriver driver;
-//	public CommonEvents commonEvents;
-	public UserActions userActions;
+	public CommonEvents commonEvents;
+//	public UserActions userActions;
 
 	
 	public StartupPage(WebDriver driver) {
 		this.driver = driver;
-		userActions = new UserActions(driver);
+		commonEvents = new CommonEvents(driver);
 	}
 	
 //	public LoginPage navigateToLoginPage() {
@@ -23,7 +23,7 @@ public class StartupPage {
 	
 	public void navigateToUrl(String url) throws Exception {
 		
-		userActions.navigateTo(url);		 
+		commonEvents.navigateTo(url);		 
 	}
 
 }

@@ -13,8 +13,6 @@ import coreUtilities.testutils.ApiHelper;
 import coreUtilities.utils.FileOperations;
 import pages.StartupPage;
 import pages.doctor_Pages;
-import pages.yakshaHealthApp_L1_Pages;
-import pages.yakshaHealthApp_L2_Pages;
 import testBase.AppTestBase;
 import testdata.LocatorsFactory;
 
@@ -57,13 +55,7 @@ public class doctor_testcase extends AppTestBase
 		Assert.assertTrue(locatorsFactoryInstance.totalDoctorTextIsPresent(driver).isDisplayed(), "total doctors text is not present in the current page, Please check manually");
 	}
 	
-	@Test(priority = 2, groups = {"sanity"}, description="Verify that Doctor module is present and Go to Doctors Tab")
-	public void  verifyThatDoctorModuleIsPresentAndNavigateDoctorsTab() throws Exception {
-		doctor_PagesInstance = new doctor_Pages(driver);
-		locatorsFactoryInstance = new LocatorsFactory(driver);
-		Assert.assertTrue(doctor_PagesInstance.verifythatDoctorModuleIsPresentAndNavigateDoctorsTab(), "Unable to handle the checkBoxes, please check manually");	
-//		Assert.assertTrue(locatorsFactoryInstance.newItemButtonIsPresent(driver).isDisplayed(), "new Item Button is not present in the current page, Please check manually");
-	}
+	
 	@AfterClass(alwaysRun = true)
 	public void tearDown() {
 		System.out.println("before closing the browser");

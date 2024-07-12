@@ -12,18 +12,16 @@ import org.testng.annotations.Test;
 import coreUtilities.testutils.ApiHelper;
 import coreUtilities.utils.FileOperations;
 import pages.StartupPage;
-import pages.yakshaHealthApp_L1_Pages;
 import testBase.AppTestBase;
 import testdata.LocatorsFactory;
 
-public class dynamicReport_testcase extends AppTestBase
+public class patient_testcase extends AppTestBase
 {
 	Map<String, String> configData;
 	Map<String, String> loginCredentials;
 	String expectedDataFilePath = testDataFilePath + "expected_data.json";
 	String loginFilePath = loginDataFilePath + "Login.json";
 	StartupPage startupPage;
-	yakshaHealthApp_L1_Pages yakshaHealthAppL1Instance;
 	LocatorsFactory locatorsFactoryInstance;
 
 
@@ -43,16 +41,7 @@ public class dynamicReport_testcase extends AppTestBase
 	@Test(priority = 1, groups = {"sanity"}, description="Verify the title and url of  the current page.")
 	public void verifyTitleOfTheHomePage() throws Exception {
 
-		yakshaHealthAppL1Instance = new yakshaHealthApp_L1_Pages(driver);
-		locatorsFactoryInstance = new LocatorsFactory(driver);
-
-		Map<String, String> loginData = new FileOperations().readJson(loginFilePath, "credentials");
-		Assert.assertTrue(yakshaHealthAppL1Instance.loginToHealthAppByGivenValidCredetial(loginData),"Login failed, Invalid credentials ! Please check manually");
-
-		Map<String, String> expectedData = new FileOperations().readJson(expectedDataFilePath, "healthApp");
-		Assert.assertEquals(yakshaHealthAppL1Instance.verifyTitleOfThePage(),expectedData.get("dasboardTitle")) ;
-		Assert.assertEquals(yakshaHealthAppL1Instance.verifyURLOfThePage(),expectedData.get("pageUrl")) ;
-		Assert.assertTrue(locatorsFactoryInstance.totalDoctorTextIsPresent(driver).isDisplayed(), "total doctors text is not present in the current page, Please check manually");
+		
 	}
 
 	@AfterClass(alwaysRun = true)

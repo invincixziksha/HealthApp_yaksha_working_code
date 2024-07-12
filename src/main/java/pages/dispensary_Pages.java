@@ -148,22 +148,22 @@ public class dispensary_Pages extends StartupPage {
 	public boolean loginToHealthAppByGivenValidCredetial(Map<String, String> expectedData) throws Exception {
 		Boolean textIsDisplayed = false;
 		try {
-			WebElement usernametextFieldWebElement = userActions.findElement(usernameTextbox);
-			userActions.highlightElement(usernametextFieldWebElement);
-			userActions.sendKeys(usernameTextbox,expectedData.get("username"));
+			WebElement usernametextFieldWebElement = commonEvents.findElement(usernameTextbox);
+			commonEvents.highlightElement(usernametextFieldWebElement);
+			commonEvents.sendKeys(usernameTextbox,expectedData.get("username"));
 
-			WebElement passwordtextFieldWebElement = userActions.findElement(passwordTextbox);
-			userActions.highlightElement(passwordtextFieldWebElement);
-			userActions.sendKeys(passwordTextbox,expectedData.get("password"));
+			WebElement passwordtextFieldWebElement = commonEvents.findElement(passwordTextbox);
+			commonEvents.highlightElement(passwordtextFieldWebElement);
+			commonEvents.sendKeys(passwordTextbox,expectedData.get("password"));
 
-			WebElement signinButtonWebElement = userActions.findElement(signInButton);
-			userActions.highlightElement(signinButtonWebElement);
-			userActions.click(signInButton);
+			WebElement signinButtonWebElement = commonEvents.findElement(signInButton);
+			commonEvents.highlightElement(signinButtonWebElement);
+			commonEvents.click(signInButton);
 
-			if(userActions.isDisplayed(registeredPatientTextElement))
+			if(commonEvents.isDisplayed(registeredPatientTextElement))
 			{   
-				WebElement registeredPatientTextWebElement = userActions.findElement(registeredPatientTextElement);
-				userActions.highlightElement(registeredPatientTextWebElement);
+				WebElement registeredPatientTextWebElement = commonEvents.findElement(registeredPatientTextElement);
+				commonEvents.highlightElement(registeredPatientTextWebElement);
 				textIsDisplayed=true;
 			}
 		}catch(Exception e) {
@@ -182,7 +182,7 @@ public class dispensary_Pages extends StartupPage {
 	public String verifyTitleOfThePage() throws Exception {
 		String pageTitle = "";
 		try {
-			pageTitle = userActions.getTitle();
+			pageTitle = commonEvents.getTitle();
 			System.out.println("title of the page is  :" + pageTitle );
 		}catch(Exception e) {
 			throw e;
@@ -200,7 +200,7 @@ public class dispensary_Pages extends StartupPage {
 	public String verifyURLOfThePage() throws Exception {
 		String urlofThepage = "";
 		try {
-			urlofThepage = userActions.getCurrentUrl();
+			urlofThepage = commonEvents.getCurrentUrl();
 			System.out.println("URL of the page is  :" + urlofThepage );
 		}catch(Exception e) {
 			throw e;
@@ -219,7 +219,7 @@ public class dispensary_Pages extends StartupPage {
 	public Boolean verifyDispensaryModuleIsPresentOrNot() throws Exception {
 		boolean dispensaryModuleIsDisplayed = false;
 		try {
-			userActions.isDisplayed(dispensaryModule);
+			commonEvents.isDisplayed(dispensaryModule);
 			dispensaryModuleIsDisplayed=true;
 		}catch(Exception e) {
 			throw e;
@@ -237,15 +237,15 @@ public class dispensary_Pages extends StartupPage {
 	public Boolean verifyAllSubModulesArePresentAndClickOnDispensary() throws Exception {
 		boolean patientConsumptionSubModuleisDisplayed = false;
 		try {
-			if(userActions.isDisplayed(dispensaryModule)){
-				userActions.jsClick(dispensaryToggle);
-				userActions.isDisplayed(PrescriptionSubModule);				
-				userActions.isDisplayed(saleSubModule);
-				userActions.isDisplayed(stockSubModule);
-				userActions.isDisplayed(counterSubModule);
-				userActions.isDisplayed(reportsSubModule);
-				userActions.isDisplayed(patientConsumptionSubModule);
-				userActions.click(dispensaryModule);
+			if(commonEvents.isDisplayed(dispensaryModule)){
+				commonEvents.jsClick(dispensaryToggle);
+				commonEvents.isDisplayed(PrescriptionSubModule);				
+				commonEvents.isDisplayed(saleSubModule);
+				commonEvents.isDisplayed(stockSubModule);
+				commonEvents.isDisplayed(counterSubModule);
+				commonEvents.isDisplayed(reportsSubModule);
+				commonEvents.isDisplayed(patientConsumptionSubModule);
+				commonEvents.click(dispensaryModule);
 				patientConsumptionSubModuleisDisplayed=true;
 			}
 		}catch(Exception e) {
@@ -265,15 +265,15 @@ public class dispensary_Pages extends StartupPage {
 	public Boolean scrollToButtomAndVerifytheFields() throws Exception {
 		boolean creditLimitsAndBalancesTextElementIsDisplayed = false;
 		try {
-			userActions.click(morningCounter);
+			commonEvents.click(morningCounter);
 			Thread.sleep(3000);
-			WebElement creditLimitsAndBalancesTextElementWebElement=userActions.findElement(creditLimitsAndBalancesTextElement);
-			userActions.scrollIntoView(creditLimitsAndBalancesTextElementWebElement);
+			WebElement creditLimitsAndBalancesTextElementWebElement=commonEvents.findElement(creditLimitsAndBalancesTextElement);
+			commonEvents.scrollIntoView(creditLimitsAndBalancesTextElementWebElement);
 			Thread.sleep(3000);
-			if(userActions.isDisplayed(printInvoiceButtonElement) &&
-					userActions.isDisplayed(discardButtonElement) &&
-					userActions.isDisplayed(invoiceHistoryTextElement) &&
-					userActions.isDisplayed(creditLimitsAndBalancesTextElement) ) {
+			if(commonEvents.isDisplayed(printInvoiceButtonElement) &&
+					commonEvents.isDisplayed(discardButtonElement) &&
+					commonEvents.isDisplayed(invoiceHistoryTextElement) &&
+					commonEvents.isDisplayed(creditLimitsAndBalancesTextElement) ) {
 				creditLimitsAndBalancesTextElementIsDisplayed=true;
 			}
 		}catch(Exception e) {
@@ -294,9 +294,9 @@ public class dispensary_Pages extends StartupPage {
 	public String performTheKeyboardOperationToOpenthePopup() throws Exception {
 		String pageName = "";
 		try {
-			userActions.performAltN();
-			userActions.isDisplayed(addNewPatientPopup);
-			pageName=userActions.getText(addNewPatientPageTitle);
+			commonEvents.performAltN();
+			commonEvents.isDisplayed(addNewPatientPopup);
+			pageName=commonEvents.getText(addNewPatientPageTitle);
 			System.out.println("Add New Patient page title is :" + pageName);
 		}catch(Exception e) {
 			throw e;
@@ -315,10 +315,10 @@ public class dispensary_Pages extends StartupPage {
 	public String validateErrorMessageInFirstnameTextfield() throws Exception {
 		String errorMessageText = "";
 		try {
-			if(userActions.isDisplayed(okButton)) {
-				userActions.click(okButton);
+			if(commonEvents.isDisplayed(okButton)) {
+				commonEvents.click(okButton);
 				Thread.sleep(5000);
-				errorMessageText = userActions.getText(errorMeesageInFirstNameTextField);
+				errorMessageText = commonEvents.getText(errorMeesageInFirstNameTextField);
 				System.out.println("Error Meesage is  :" + errorMessageText );
 				return errorMessageText;	
 			}
@@ -338,12 +338,12 @@ public class dispensary_Pages extends StartupPage {
 	public String fillfirstNameTextFieldVerifyTheFirstName(Map<String, String> expectedData) throws Exception {
 		String firstNameTextfieldValue= "";
 		try {
-			if(userActions.isDisplayed(firstNameTextFieldInAddNewPatient))
+			if(commonEvents.isDisplayed(firstNameTextFieldInAddNewPatient))
 			{
-				userActions.click(firstNameTextFieldInAddNewPatient);
-				userActions.sendKeys(firstNameTextFieldInAddNewPatient,expectedData.get("firstName"));
+				commonEvents.click(firstNameTextFieldInAddNewPatient);
+				commonEvents.sendKeys(firstNameTextFieldInAddNewPatient,expectedData.get("firstName"));
 
-				firstNameTextfieldValue = userActions.getAttribute(firstNameTextFieldInAddNewPatient, "value");
+				firstNameTextfieldValue = commonEvents.getAttribute(firstNameTextFieldInAddNewPatient, "value");
 				System.out.println("FirstName : " + firstNameTextfieldValue);
 
 			}
@@ -363,13 +363,13 @@ public class dispensary_Pages extends StartupPage {
 	public String fillmiddelNameTextFieldVerifyThemiddleName(Map<String, String> expectedData) throws Exception {
 		String middleNameTextfieldValue= "";
 		try {
-			if(userActions.isDisplayed(middleNameTextFieldInAddNewPatient))
+			if(commonEvents.isDisplayed(middleNameTextFieldInAddNewPatient))
 			{
 
-				userActions.click(middleNameTextFieldInAddNewPatient);
-				userActions.sendKeys(middleNameTextFieldInAddNewPatient,expectedData.get("middleName"));
+				commonEvents.click(middleNameTextFieldInAddNewPatient);
+				commonEvents.sendKeys(middleNameTextFieldInAddNewPatient,expectedData.get("middleName"));
 
-				middleNameTextfieldValue = userActions.getAttribute(middleNameTextFieldInAddNewPatient, "value");
+				middleNameTextfieldValue = commonEvents.getAttribute(middleNameTextFieldInAddNewPatient, "value");
 				System.out.println("Middle name : " + middleNameTextfieldValue);
 
 			}
@@ -389,13 +389,13 @@ public class dispensary_Pages extends StartupPage {
 	public String filllastNameTextfieldVerifylastName(Map<String, String> expectedData) throws Exception {
 		String lastNameTextfieldValue= "";
 		try {
-			if(userActions.isDisplayed(lastNameTextFieldInAddNewPatient))
+			if(commonEvents.isDisplayed(lastNameTextFieldInAddNewPatient))
 			{
 
-				userActions.click(lastNameTextFieldInAddNewPatient);
-				userActions.sendKeys(lastNameTextFieldInAddNewPatient,expectedData.get("lastName"));
+				commonEvents.click(lastNameTextFieldInAddNewPatient);
+				commonEvents.sendKeys(lastNameTextFieldInAddNewPatient,expectedData.get("lastName"));
 
-				lastNameTextfieldValue = userActions.getAttribute(lastNameTextFieldInAddNewPatient, "value");
+				lastNameTextfieldValue = commonEvents.getAttribute(lastNameTextFieldInAddNewPatient, "value");
 				System.out.println("Last name : " + lastNameTextfieldValue);
 
 			}
@@ -415,13 +415,13 @@ public class dispensary_Pages extends StartupPage {
 	public String fillAgeTextFieldVerifyTheAge(Map<String, String> expectedData) throws Exception {
 		String ageTextfieldValue= "";
 		try {
-			if(userActions.isDisplayed(ageTextFieldInAddNewPatient))
+			if(commonEvents.isDisplayed(ageTextFieldInAddNewPatient))
 			{
 
-				userActions.click(ageTextFieldInAddNewPatient);
-				userActions.sendKeys(ageTextFieldInAddNewPatient,expectedData.get("age"));
+				commonEvents.click(ageTextFieldInAddNewPatient);
+				commonEvents.sendKeys(ageTextFieldInAddNewPatient,expectedData.get("age"));
 
-				ageTextfieldValue = userActions.getAttribute(ageTextFieldInAddNewPatient, "value");
+				ageTextfieldValue = commonEvents.getAttribute(ageTextFieldInAddNewPatient, "value");
 				System.out.println("Age is : " + ageTextfieldValue);
 
 			}
@@ -443,13 +443,13 @@ public class dispensary_Pages extends StartupPage {
 	public String fillContactNumberTextFieldVerifyContactNumber(Map<String, String> expectedData) throws Exception {
 		String contactNumberTextfieldValue= "";
 		try {
-			if(userActions.isDisplayed(contactNumberTextFieldInAddNewPatient))
+			if(commonEvents.isDisplayed(contactNumberTextFieldInAddNewPatient))
 			{
 
-				userActions.click(contactNumberTextFieldInAddNewPatient);
-				userActions.sendKeys(contactNumberTextFieldInAddNewPatient,expectedData.get("contact"));
+				commonEvents.click(contactNumberTextFieldInAddNewPatient);
+				commonEvents.sendKeys(contactNumberTextFieldInAddNewPatient,expectedData.get("contact"));
 
-				contactNumberTextfieldValue = userActions.getAttribute(contactNumberTextFieldInAddNewPatient, "value");
+				contactNumberTextfieldValue = commonEvents.getAttribute(contactNumberTextFieldInAddNewPatient, "value");
 				System.out.println("Contact Number is : " + contactNumberTextfieldValue);
 
 			}
@@ -469,11 +469,11 @@ public class dispensary_Pages extends StartupPage {
 	public String validateTheConfirmMessageOnTheNewConsumptionEntryPage() throws Exception {
 		String confirmMessageText = "";
 		try {
-			userActions.click(xButton);
-			userActions.click(patientConsuptionTab);
-			userActions.click(newConsuptionButton);
-			userActions.click(saveConsuptionButton);
-			confirmMessageText=userActions.getText(confirmMessage);
+			commonEvents.click(xButton);
+			commonEvents.click(patientConsuptionTab);
+			commonEvents.click(newConsuptionButton);
+			commonEvents.click(saveConsuptionButton);
+			confirmMessageText=commonEvents.getText(confirmMessage);
 			System.out.println("Confirmation message is :" +confirmMessageText);
 		}catch(Exception e) {
 			throw e;
@@ -492,13 +492,13 @@ public class dispensary_Pages extends StartupPage {
 	public Boolean selectMainStoreFromFilterSelectMainStoreFromFilter() throws Exception {
 		boolean mainStoreDropDownIsSelected = false;
 		try {
-			userActions.click(confirmButton);
-			userActions.click(newConsumptionEntryPageCancelButton);
-			userActions.click(stockSubModule);
-			if(userActions.isDisplayed(filterByStoreDropdown)) {
-				userActions.click(filterByStoreDropdown);
-				userActions.click(mainStoreOption);
-				//				 userActions.click(filterByStoreDropdown);
+			commonEvents.click(confirmButton);
+			commonEvents.click(newConsumptionEntryPageCancelButton);
+			commonEvents.click(stockSubModule);
+			if(commonEvents.isDisplayed(filterByStoreDropdown)) {
+				commonEvents.click(filterByStoreDropdown);
+				commonEvents.click(mainStoreOption);
+				//				 commonEvents.click(filterByStoreDropdown);
 				Thread.sleep(3000);
 				mainStoreDropDownIsSelected=true;
 			}
@@ -519,11 +519,11 @@ public class dispensary_Pages extends StartupPage {
 	public String validateCreateRequisitionButtonIsPresentGoToThisPageThenValidateThePageName() throws Exception {
 		String addRequisitionsPageNameText = "";
 		try {
-			userActions.isSelected(stockSubModule);
-			userActions.click(requisitionTab);
-			userActions.isDisplayed(createRequisitionButton);
-			userActions.click(createRequisitionButton);
-			addRequisitionsPageNameText=userActions.getText(addRequisitionsPageName);
+			commonEvents.isSelected(stockSubModule);
+			commonEvents.click(requisitionTab);
+			commonEvents.isDisplayed(createRequisitionButton);
+			commonEvents.click(createRequisitionButton);
+			addRequisitionsPageNameText=commonEvents.getText(addRequisitionsPageName);
 			System.out.println("Add Requisitions Page Name Text is : " +addRequisitionsPageNameText);
 		}catch(Exception e) {
 			throw e;
@@ -543,10 +543,10 @@ public class dispensary_Pages extends StartupPage {
 	public Boolean byClickingOnThatButtonSomeTextFieldsAreDisplyed() throws Exception {
 		boolean isDisplayed = false;
 		try {
-			 userActions.click(plusIcon);
-			 if(userActions.isDisplayed(itemNameTextField)&& 
-				 userActions.isDisplayed(quantityTextField)&&
-				 userActions.isDisplayed(remarkTextField)) {
+			 commonEvents.click(plusIcon);
+			 if(commonEvents.isDisplayed(itemNameTextField)&& 
+				 commonEvents.isDisplayed(quantityTextField)&&
+				 commonEvents.isDisplayed(remarkTextField)) {
 				 isDisplayed=true;
 			 }
 		}catch(Exception e) {
@@ -566,9 +566,9 @@ public class dispensary_Pages extends StartupPage {
 	public String verifyPageNameOfRequisitionDetailsPage() throws Exception {
 		String pageName = "";
 		try {
-			userActions.click(cancelButtonInAddRequisition);
-			userActions.click(viewIconiconOfRecentlyCreatedDocument);
-			pageName=userActions.getText(requisitionDetailsPrintPageName);
+			commonEvents.click(cancelButtonInAddRequisition);
+			commonEvents.click(viewIconiconOfRecentlyCreatedDocument);
+			pageName=commonEvents.getText(requisitionDetailsPrintPageName);
 			System.out.println("Page name is :" +pageName);			 
 		}catch(Exception e) {
 			throw e;
@@ -588,8 +588,8 @@ public class dispensary_Pages extends StartupPage {
 		boolean requisitionsListButtonisDisplayed = false;
 		try {
 
-			 if(userActions.isDisplayed(printButton)&& 
-				 userActions.isDisplayed(requisitionsListButton)) {
+			 if(commonEvents.isDisplayed(printButton)&& 
+				 commonEvents.isDisplayed(requisitionsListButton)) {
 				 requisitionsListButtonisDisplayed=true;
 			 }
 			 
@@ -611,8 +611,8 @@ public class dispensary_Pages extends StartupPage {
 		boolean medicineNameDisplayed = false;
 		try {
 
-			 if(userActions.isDisplayed(medicineName)) {
-				 String MedicineName=userActions.getText(medicineName);
+			 if(commonEvents.isDisplayed(medicineName)) {
+				 String MedicineName=commonEvents.getText(medicineName);
 				 System.out.println("Medicine name is :" +MedicineName);
 				 medicineNameDisplayed=true;
 			 }
@@ -634,10 +634,10 @@ public class dispensary_Pages extends StartupPage {
 	public String inAddressFieldValidateThePlaceHolderNameAndPrintOnConsole() throws Exception {
 		String placeHolderValue = "";
 		try {
-			userActions.click(socialServiceModule);
-			userActions.click(registerNewSSUPatientButton);
-			userActions.click(addressTextField);
-			placeHolderValue = userActions.getAttribute(addressTextField,"placeholder");
+			commonEvents.click(socialServiceModule);
+			commonEvents.click(registerNewSSUPatientButton);
+			commonEvents.click(addressTextField);
+			placeHolderValue = commonEvents.getAttribute(addressTextField,"placeholder");
 			System.out.println("Place holder value of Address field : " + placeHolderValue);
 			
 		}catch(Exception e) {
@@ -656,8 +656,8 @@ public class dispensary_Pages extends StartupPage {
 	public Boolean closeNewSSUPatientRegistrationPopupByUsingJsExecutor() throws Exception {
 		boolean IsDisplayed = false;
 		try {
-			if(userActions.isDisplayed(closeButton)) {
-			  userActions.jsClick(closeButton);
+			if(commonEvents.isDisplayed(closeButton)) {
+			  commonEvents.jsClick(closeButton);
 			  Thread.sleep(3000);
 			  IsDisplayed=true;
 			}
@@ -682,12 +682,12 @@ public class dispensary_Pages extends StartupPage {
 	public String verifyToolTipOfAnElement() throws Exception {
 		String tooltipText = "";
 		try {
-			userActions.click(appointmentModule);
-			userActions.click(newOneSelectCounterElement);
-			userActions.waitTillElementVisible(keyboardButtonElement,50);
-			userActions.mouseHoverClick(keyboardButtonElement);
-			userActions.waitTillElementVisible(altPlusNtooltipMessageElement,50);
-			tooltipText = userActions.getText(altPlusNtooltipMessageElement);
+			commonEvents.click(appointmentModule);
+			commonEvents.click(newOneSelectCounterElement);
+			commonEvents.waitTillElementVisible(keyboardButtonElement,50);
+			commonEvents.mouseHoverClick(keyboardButtonElement);
+			commonEvents.waitTillElementVisible(altPlusNtooltipMessageElement,50);
+			tooltipText = commonEvents.getText(altPlusNtooltipMessageElement);
 			System.out.println("New Patient Tooltip text value is:" + tooltipText );
 		}catch(Exception e) {
 			throw e;
@@ -706,12 +706,12 @@ public class dispensary_Pages extends StartupPage {
 
 		String selectedCountryName = "" ;
 
-		userActions.click(saleSubModule);
-		userActions.performAltN();
+		commonEvents.click(saleSubModule);
+		commonEvents.performAltN();
 
 		try {
-			userActions.selectByVisibleText(countryDropdownByElement, expectedData.get("selectedCountryName"));
-			selectedCountryName = userActions.getFirstSelectedOptionFromDropdown(countryDropdownByElement, "elementName", "pageName");
+			commonEvents.selectByVisibleText(countryDropdownByElement, expectedData.get("selectedCountryName"));
+			selectedCountryName = commonEvents.getFirstSelectedOptionFromDropdown(countryDropdownByElement, "elementName", "pageName");
 			System.out.println("first selected option from country dropdown : " + selectedCountryName );
 			return selectedCountryName;
 		}catch(Exception e) {
@@ -728,9 +728,9 @@ public class dispensary_Pages extends StartupPage {
 	 */
 	public Boolean takingScreenshotOfTheCurrentPage() throws Exception {
 		boolean isDisplayed = false;
-		userActions.click(xButton);
+		commonEvents.click(xButton);
 		try {
-			userActions.takeScreenshot("Sale page of DIspensary Module");
+			commonEvents.takeScreenshot("Sale page of DIspensary Module");
 			isDisplayed = true;
 
 		}catch(Exception e) {
@@ -749,19 +749,19 @@ public class dispensary_Pages extends StartupPage {
 	public Boolean uploadImageInScannedImagesSection(String pathOfTheFile) throws Exception {
 		boolean isUploaded = false;
 		try {
-			userActions.click(procurementModule);
+			commonEvents.click(procurementModule);
 			Thread.sleep(3000);
-			userActions.click(settingsTab);
+			commonEvents.click(settingsTab);
 			Thread.sleep(3000);
-			userActions.click(invoiceHeadersSubTab);
+			commonEvents.click(invoiceHeadersSubTab);
 			Thread.sleep(3000);
-			userActions.click(addNewInvoiceHeaderButton);
+			commonEvents.click(addNewInvoiceHeaderButton);
 			Thread.sleep(3000);
-			userActions.jsClick(chooseFileButton);
+			commonEvents.jsClick(chooseFileButton);
 			Thread.sleep(3000);
 			System.out.println("path of the file" + pathOfTheFile );
 			Thread.sleep(5000);
-			userActions.fileUpload(pathOfTheFile);
+			commonEvents.fileUpload(pathOfTheFile);
 			Thread.sleep(3000);
 
 			isUploaded = true;
@@ -782,19 +782,19 @@ public class dispensary_Pages extends StartupPage {
 
 		boolean isPopupHandled = false;
 
-		userActions.click(addInvoiceHeaderCloseButtonElement);
+		commonEvents.click(addInvoiceHeaderCloseButtonElement);
 
 		try {
-			userActions.click(operationTheatreNavMenuElement);
+			commonEvents.click(operationTheatreNavMenuElement);
 			Thread.sleep(2000);
-			userActions.click(newOtBookingButtonElement);
+			commonEvents.click(newOtBookingButtonElement);
 			Thread.sleep(2000);
-			if(userActions.isDisplayed(addNewOtButtonElement)){
+			if(commonEvents.isDisplayed(addNewOtButtonElement)){
 				Thread.sleep(2000);
-				userActions.click(addNewOtButtonElement);
+				commonEvents.click(addNewOtButtonElement);
 				Thread.sleep(2000);
-				//				userActions.validateAlertMessage();
-				userActions.acceptAlert();
+				//				commonEvents.validateAlertMessage();
+				commonEvents.acceptAlert();
 				isPopupHandled = true;
 			}
 		}catch(Exception e) {
@@ -814,40 +814,40 @@ public class dispensary_Pages extends StartupPage {
 
 		boolean isCheckBoxSelected = false;
 
-		userActions.click(bookingOTSchedulePageCloseButtonElement);
+		commonEvents.click(bookingOTSchedulePageCloseButtonElement);
 
 		try {
-			if(userActions.isDisplayed(procurementModule)) {
-				userActions.click(procurementModule);
+			if(commonEvents.isDisplayed(procurementModule)) {
+				commonEvents.click(procurementModule);
 
-				userActions.click(procurementModuleSettingTabElement);
+				commonEvents.click(procurementModuleSettingTabElement);
 				Thread.sleep(2000);
 
-				userActions.click(othersChargesTab);	
+				commonEvents.click(othersChargesTab);	
 				Thread.sleep(2000);
 
-				userActions.click(addOtherChargesButton);
+				commonEvents.click(addOtherChargesButton);
 				Thread.sleep(2000);
 
-				userActions.click(isVATApplicableCheckBox);
+				commonEvents.click(isVATApplicableCheckBox);
 				Thread.sleep(2000);
 
-				userActions.click(isActiveCheckBox);
+				commonEvents.click(isActiveCheckBox);
 				Thread.sleep(2000);
 
-				userActions.click(isDefaultCheckBox);
+				commonEvents.click(isDefaultCheckBox);
 
-				userActions.isSelected(isVATApplicableCheckBox);
-				userActions.isSelected(isActiveCheckBox);
-				userActions.isSelected(isActiveCheckBox);
+				commonEvents.isSelected(isVATApplicableCheckBox);
+				commonEvents.isSelected(isActiveCheckBox);
+				commonEvents.isSelected(isActiveCheckBox);
 
-				if(userActions.isDisplayed(vatInPercentageTextFieldElement))
+				if(commonEvents.isDisplayed(vatInPercentageTextFieldElement))
 				{   
-					userActions.clear(vatInPercentageTextFieldElement);
-					userActions.sendKeys(vatInPercentageTextFieldElement,expectedData.get("vatInPercentageValue"));
+					commonEvents.clear(vatInPercentageTextFieldElement);
+					commonEvents.sendKeys(vatInPercentageTextFieldElement,expectedData.get("vatInPercentageValue"));
 				}
 
-//				userActions.click(addOtherChargesCloseButtonElement);
+//				commonEvents.click(addOtherChargesCloseButtonElement);
 
 				isCheckBoxSelected = true;
 			}

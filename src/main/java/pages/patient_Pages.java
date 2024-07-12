@@ -5,12 +5,12 @@ import java.util.Map;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 
-public class dynamicReport_Pages extends StartupPage {
+public class patient_Pages extends StartupPage {
 
 	By usernameTextfield=By.id("username_id");
 	
 	String pageName = this.getClass().getSimpleName();
-	public dynamicReport_Pages(WebDriver driver) {
+	public patient_Pages(WebDriver driver) {
 		super(driver);
 	}
 	
