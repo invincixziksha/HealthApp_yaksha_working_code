@@ -25,6 +25,7 @@
 	},
 	"healthAppErrorMessages":{
 		"FirstNameFieldErrorMessage":"First Name is required.",
+		"LastNameFieldErrorMessage":"Last Name is required",
 		"ConfirmationMessage":"Are you sure you want to Proceed ?"
 	},
 	"commonStringvalue":{
@@ -33,8 +34,8 @@
 	},
     "NewSSUPatientRegistrationPopup":{
 		"firstName":"Abhisek",
-		"middleName":"No",
-		"lastName":"Mohanta",
+		"middleName":"Mohanta",
+		"lastName":"Invincix",
 		"age":"24",
 		"phoneNo.":"7008777971",
 		"invalidPhoneNo.":"abhisek",
@@ -44,6 +45,7 @@
 		"RaceFieldPlaceHolder":"race",
 		"chooseTargetGroupDropdownFieldPlaceHolder":"Choose Target Group"
 	},
+
 	"allExpectedCountryOptions": [
         "Nepal", "Afghanistan", "Albania", "Algeria", "Andorra", "Angola",
         "Antigua and Barbuda", "Argentina", "Armenia", "Australia", "Austria",
@@ -109,5 +111,20 @@
 	},
 	"percentageValue":{
 		"vatInPercentageValue":"10"
+	},
+	"socialServiceModuleStringValue":{
+		"newSSUPatientRegistration":"New SSU Patient Registration",
+		"cottonSubCategoryName": "cotton",
+		"idNameOfeditInformationtexbox": "allPatWithOutIns",
+		"editInformationOfExistingPatientName" : "Suriiyaa"
+	},
+	"NewSSUPatientRegistrationForm":{
+		"firstName":"Surya",
+		"middleName":"Prakash",
+		"lastName":"Nayak",
+		"selectedCountryName":"India",
+		"HasTargetGroupCertificate?Yes":"Yes",
+		"targetGroupCertificateType":"Provisional",
+		"certificateNo": "C123A"
 	}
 }

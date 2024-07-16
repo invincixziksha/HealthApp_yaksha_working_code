@@ -10,7 +10,6 @@ public class StartupPage {
 	public WebDriver driver;
 	public CommonEvents commonEvents;
 //	public UserActions userActions;
-
 	
 	public StartupPage(WebDriver driver) {
 		this.driver = driver;

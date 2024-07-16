@@ -97,7 +97,7 @@ public class dispensary_testcase extends AppTestBase
 		locatorsFactoryInstance = new LocatorsFactory(driver);
 		Map<String, String> expectedData = new FileOperations().readJson(expectedDataFilePath, "healthAppErrorMessages");
 		Assert.assertEquals(dispensary_PagesInstance.validateErrorMessageInFirstnameTextfield(),expectedData.get("FirstNameFieldErrorMessage"),"Error message is not present in the current page, Please check manually") ;
-		Assert.assertTrue(locatorsFactoryInstance.errorMeesageInLastNameTextFieldErrorMessageIsPresent(driver).isDisplayed(), "Error message is not present in the current page, Please check manually");
+		Assert.assertTrue(locatorsFactoryInstance.verifyErrorMessageIsPresentInLastNameTextField(driver).isDisplayed(), "Error message is not present in the current page, Please check manually");
 	}
 	
 	@Test(priority = 7, groups = {"sanity"}, description="Fill all the text fields which are present inside the Add New Patient form and Validate entered values")

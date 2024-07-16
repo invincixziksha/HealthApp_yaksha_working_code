@@ -89,7 +89,6 @@ public class dispensary_Pages extends StartupPage {
 	By salesPageTooltipsValueElement = By.xpath("//div[@class='keydropdown']//ul");
 	By dispensarySalesNavigationMenuElement = By.xpath("//span[.='Sale']");
 
-
 	By appointmentTab=By.xpath("(//span[.='Appointment'])[1]");
 	By keyboardButton=By.xpath("//div[@title='Shortcut Keys']");
 	By tooltip=By.xpath("//li[contains(text(),'+')]");
@@ -124,8 +123,6 @@ public class dispensary_Pages extends StartupPage {
 	By medicineName = By.xpath("(//table[@class='table table-striped table-hover req_table']//tr[@style='text-align:center']//td)[1]");
 	By closeButton = By.xpath("//button[.=' Close ']");
 
-
-
 	//L2 Scenarios
 	By appointmentModule = By.xpath("(//span[.='Appointment'])[1]");
 	By newOneSelectCounterElement = By.xpath("//div[@class='counter-item']//h5[contains(text(), 'New-1 ')]");
@@ -143,7 +140,7 @@ public class dispensary_Pages extends StartupPage {
 	 * @param : Map<String, String>
 	 * @description : fill usernameTextbox & passwordTextbox and click on sign in button
 	 * @return : Boolean
-	 * @author : Yaksha
+	 * @author : YAKSHA
 	 */
 	public boolean loginToHealthAppByGivenValidCredetial(Map<String, String> expectedData) throws Exception {
 		Boolean textIsDisplayed = false;
@@ -177,7 +174,7 @@ public class dispensary_Pages extends StartupPage {
 	 * @param : null
 	 * @description : it will navigate to the URL and validate the title of the current page.
 	 * @return : String
-	 * @author : Yaksha
+	 * @author : YAKSHA
 	 */
 	public String verifyTitleOfThePage() throws Exception {
 		String pageTitle = "";
@@ -195,7 +192,7 @@ public class dispensary_Pages extends StartupPage {
 	 * @param : null
 	 * @description : it will navigate to the URL and validate the URL of the current page.
 	 * @return : String
-	 * @author : Yaksha
+	 * @author : YAKSHA
 	 */
 	public String verifyURLOfThePage() throws Exception {
 		String urlofThepage = "";
@@ -214,13 +211,13 @@ public class dispensary_Pages extends StartupPage {
 	 * @param : null
 	 * @description : vverify the Dispensary module is present or not
 	 * @return : Boolean
-	 * @author : Yaksha
+	 * @author : YAKSHA
 	 */
 	public Boolean verifyDispensaryModuleIsPresentOrNot() throws Exception {
 		boolean dispensaryModuleIsDisplayed = false;
 		try {
 			commonEvents.isDisplayed(dispensaryModule);
-			dispensaryModuleIsDisplayed=true;
+			dispensaryModuleIsDisplayed = true;
 		}catch(Exception e) {
 			throw e;
 		}	
@@ -232,7 +229,7 @@ public class dispensary_Pages extends StartupPage {
 	 * @param : null
 	 * @description : verify all sub-modules are displayed correctly after clicking on the expand icon of  "Dispensary" Module.
 	 * @return : Boolean
-	 * @author : Yaksha
+	 * @author : YAKSHA
 	 */
 	public Boolean verifyAllSubModulesArePresentAndClickOnDispensary() throws Exception {
 		boolean patientConsumptionSubModuleisDisplayed = false;
@@ -260,7 +257,7 @@ public class dispensary_Pages extends StartupPage {
 	 * @param : null
 	 * @description :scroll to the bottom of the "Sale" page and verify that "Print Invoice" button  , "Discard" button  ,"Invoice History" and  "Credit Limitis and Balance" text are peresent or not?
 	 * @return : Boolean
-	 * @author : Yaksha
+	 * @author : YAKSHA
 	 */
 	public Boolean scrollToButtomAndVerifytheFields() throws Exception {
 		boolean creditLimitsAndBalancesTextElementIsDisplayed = false;
@@ -289,7 +286,7 @@ public class dispensary_Pages extends StartupPage {
 	 * @param : null
 	 * @description :Perform the keyboard operation to open the "Add New Patient" popup Page  and verify that the popup is displayed or not.
 	 * @return : Boolean
-	 * @author : Yaksha
+	 * @author : YAKSHA
 	 */
 	public String performTheKeyboardOperationToOpenthePopup() throws Exception {
 		String pageName = "";
@@ -310,7 +307,7 @@ public class dispensary_Pages extends StartupPage {
 	 * @param : null
 	 * @description : Validate the error message in "Add New Patient" form's  firstname textfield after clicking on "Ok" Button without filling any information in the form
 	 * @return : String
-	 * @author : Yaksha
+	 * @author : YAKSHA
 	 */
 	public String validateErrorMessageInFirstnameTextfield() throws Exception {
 		String errorMessageText = "";
@@ -333,7 +330,7 @@ public class dispensary_Pages extends StartupPage {
 	 * @param : Map<String, String>
 	 * @description : fill First Name TextField and Verify First name
 	 * @return : String
-	 * @author : Yaksha
+	 * @author : YAKSHA
 	 */
 	public String fillfirstNameTextFieldVerifyTheFirstName(Map<String, String> expectedData) throws Exception {
 		String firstNameTextfieldValue= "";
@@ -358,7 +355,7 @@ public class dispensary_Pages extends StartupPage {
 	 * @param : Map<String, String>
 	 * @description : fill Middle Name TextField and Verify middle name
 	 * @return : String
-	 * @author : Yaksha
+	 * @author : YAKSHA
 	 */
 	public String fillmiddelNameTextFieldVerifyThemiddleName(Map<String, String> expectedData) throws Exception {
 		String middleNameTextfieldValue= "";
@@ -384,7 +381,7 @@ public class dispensary_Pages extends StartupPage {
 	 * @param : Map<String, String>
 	 * @description : fill Last Name TextField and Verify Last name
 	 * @return : String
-	 * @author : Yaksha
+	 * @author : YAKSHA
 	 */
 	public String filllastNameTextfieldVerifylastName(Map<String, String> expectedData) throws Exception {
 		String lastNameTextfieldValue= "";
@@ -410,7 +407,7 @@ public class dispensary_Pages extends StartupPage {
 	 * @param : Map<String, String>
 	 * @description : fill age and Verify the age.
 	 * @return : String
-	 * @author : Yaksha
+	 * @author : YAKSHA
 	 */
 	public String fillAgeTextFieldVerifyTheAge(Map<String, String> expectedData) throws Exception {
 		String ageTextfieldValue= "";
@@ -438,7 +435,7 @@ public class dispensary_Pages extends StartupPage {
 	 * @param : Map<String, String>
 	 * @description : fill Contact Number TextField and Verify Contact Number
 	 * @return : String
-	 * @author : Yaksha
+	 * @author : YAKSHA
 	 */
 	public String fillContactNumberTextFieldVerifyContactNumber(Map<String, String> expectedData) throws Exception {
 		String contactNumberTextfieldValue= "";
@@ -464,7 +461,7 @@ public class dispensary_Pages extends StartupPage {
 	 * @param : null
 	 * @description : On the "New Consumption Entry's page, validate the confirm! Message that is "Are you sure you want to Proceed ?"
 	 * @return : Boolean
-	 * @author : Yaksha
+	 * @author : YAKSHA
 	 */
 	public String validateTheConfirmMessageOnTheNewConsumptionEntryPage() throws Exception {
 		String confirmMessageText = "";
@@ -487,7 +484,7 @@ public class dispensary_Pages extends StartupPage {
 	 * @param : null
 	 * @description : on the Stock page,select Main store from Filter by store dropdown and verify that Main store is selected and stock value are filtered by the selected store name 
 	 * @return : Boolean
-	 * @author : Yaksha
+	 * @author : YAKSHA
 	 */
 	public Boolean selectMainStoreFromFilterSelectMainStoreFromFilter() throws Exception {
 		boolean mainStoreDropDownIsSelected = false;
@@ -514,7 +511,7 @@ public class dispensary_Pages extends StartupPage {
 	 * @param : null
 	 * @description : on the stock page , please validate clicking "Create Requisition" button navigate to "Add Requisitions" page and validate the page Name.
 	 * @return : Boolean
-	 * @author : Yaksha
+	 * @author : YAKSHA
 	 */
 	public String validateCreateRequisitionButtonIsPresentGoToThisPageThenValidateThePageName() throws Exception {
 		String addRequisitionsPageNameText = "";
@@ -538,7 +535,7 @@ public class dispensary_Pages extends StartupPage {
 	 * @param : null
 	 * @description : on the Add Requisition page, clicking the + icon button on right hand side of Remarks text box add a  the New set of elements to add a new records and validate New Item text field, Quantity Text field and Remark text box are present or not 2nd rows?
 	 * @return : Boolean
-	 * @author : Yaksha
+	 * @author : YAKSHA
 	 */
 	public Boolean byClickingOnThatButtonSomeTextFieldsAreDisplyed() throws Exception {
 		boolean isDisplayed = false;
@@ -561,7 +558,7 @@ public class dispensary_Pages extends StartupPage {
 	 * @param : null
 	 * @description : On the "Requisition" page, verify that view button under "action" navigate to the "Requisition Details Print" page and validate the page name is  "Requisition Details Print" 
 	 * @return : String
-	 * @author : Yaksha
+	 * @author : YAKSHA
 	 */
 	public String verifyPageNameOfRequisitionDetailsPage() throws Exception {
 		String pageName = "";
@@ -582,7 +579,7 @@ public class dispensary_Pages extends StartupPage {
 	 * @param : null
 	 * @description :  validate "print" and "Requisitions List" button are present
 	 * @return : Boolean
-	 * @author : Yaksha
+	 * @author : YAKSHA
 	 */
 	public Boolean validateTheButtonsArePresentOrNot() throws Exception {
 		boolean requisitionsListButtonisDisplayed = false;
@@ -605,7 +602,7 @@ public class dispensary_Pages extends StartupPage {
 	 * @param : null
 	 * @description :  On the "Requisition Details Print" page, Get the medicine name from the "Requisition Details Print" table and  validate the medicine name is not blank.
 	 * @return : Boolean
-	 * @author : Yaksha
+	 * @author : YAKSHA
 	 */
 	public Boolean getTheMedicineNameFromTable() throws Exception {
 		boolean medicineNameDisplayed = false;
@@ -629,7 +626,7 @@ public class dispensary_Pages extends StartupPage {
 	 * @param : null
 	 * @description : On the "New SSU Patient Registration" under social service module, get the place holder name of "Address" textfiled of  "New SSU Patient Registration" page and verify  the place holder name.
 	 * @return : String
-	 * @author : Yaksha
+	 * @author : YAKSHA
 	 */
 	public String inAddressFieldValidateThePlaceHolderNameAndPrintOnConsole() throws Exception {
 		String placeHolderValue = "";
@@ -651,7 +648,7 @@ public class dispensary_Pages extends StartupPage {
 	 * @param : null
 	 * @description : On the "New SSU Patient Registration" page, Close this "New SSU Patient Registration" popup page by using javaScript.
 	 * @return : Boolean
-	 * @author : Yaksha
+	 * @author : YAKSHA
 	 */
 	public Boolean closeNewSSUPatientRegistrationPopupByUsingJsExecutor() throws Exception {
 		boolean IsDisplayed = false;
@@ -666,9 +663,6 @@ public class dispensary_Pages extends StartupPage {
 		}	
 		return IsDisplayed;
 	}
-
-
-
 
 
 	//L2 Scenarios
