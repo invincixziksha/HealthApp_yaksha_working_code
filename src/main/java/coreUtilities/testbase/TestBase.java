@@ -1,7 +1,6 @@
 package coreUtilities.testbase;
 
 import java.net.HttpURLConnection;
-
 import java.net.URL;
 import java.time.Duration;
 import java.util.HashMap;
@@ -15,7 +14,6 @@ import org.openqa.selenium.firefox.FirefoxDriver;
 import org.openqa.selenium.firefox.FirefoxOptions;
 import org.openqa.selenium.safari.SafariDriver;
 
-import coreUtilities.utils.FileOperations;
 import io.github.bonigarcia.wdm.WebDriverManager;
 
 public class TestBase 

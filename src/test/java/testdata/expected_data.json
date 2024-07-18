@@ -126,5 +126,14 @@
 		"HasTargetGroupCertificate?Yes":"Yes",
 		"targetGroupCertificateType":"Provisional",
 		"certificateNo": "C123A"
+	},
+	"operationTheatreModule":{
+		"hospitalNumber":"Hospital Number",
+		"errorMessageOfAddExternalReferralForms": "Referrer Name is required",
+		"remarksValue" : "remarks",
+		"idLocatorsValueOfremarkTextbox": "HandoverRemarks_User",
+		"titleNameOfVaccinationPatientRegisterForm": "Vaccination Patient Register",
+		"visitTypeOptionValue": "Follow-Up Patient",
+		"errorNotificationPopupMessage":"Failed Failed!! Cannot create appointment. Check the Details Correctly."
 	}
 }

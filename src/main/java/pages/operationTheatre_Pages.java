@@ -3,37 +3,39 @@ package pages;
 import java.util.Map;
 
 import org.openqa.selenium.By;
+import org.openqa.selenium.Keys;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 
 public class operationTheatre_Pages extends StartupPage {
 
-	//	By usernameTextfield=By.id("username_id");
-	By usernameTextfield=By.id("username_id");
+	// Locators of L1 Scenarios
+	By usernameTextfield = By.id("username_id");
 	By usernameTextbox = By.xpath("//input[@id='username_id']");
 	By passwordTextbox = By.xpath("//input[@id='password']");
 	By signInButton = By.xpath("//button[@id='login']");
 	By registeredPatientTextElement = By.xpath("//p[contains(text(), 'Registered Patient')]");	
+	By operationTheatreModule = By.xpath("//span[.='OperationTheatre']");
 	By operationTheatreTab = By.xpath("//span[.='OperationTheatre']");
 
 	By newOTButtonElement = By.xpath("//button[contains(text(), 'New OT Booking')]");
 	By newOTButtonLink = By.xpath("//button[@class='btn btn-link']");
 	By searchTextBoxElement = By.xpath("//input[@id='quickFilterInput']");
 	By bookingOTSchedulePageElement = By.xpath("//span[contains(text(), 'Booking OT Schedule  | New Patient')]");
-	
+
 	By selectpatientTextboxElement = By.xpath("//input[@id='srch_PatientList']");
 	By diagnosisTextboxElement = By.xpath("//input[@id='Diagnosis']");
 	By surgeryTypeTextboxElement = By.xpath("//textarea[@id='surgeryType']");
 	By remarkTextboxElement = By.xpath("//textarea[@placeholder='Remarks']");
-	
-	
+
+
 	By surgenNameTextFieldElement = By.xpath("//input[@id='id_input_currentRequestedByDoctor_selectReferral']");
 	By anesthetistDoctorTextboxElement = By.xpath("//input[@id='AnesthetistDoctor']");
 	By surgenNameFirstButtonElement = By.xpath("//ul[@class='select-list']//li[1]");
-	
+
 	By externalCheckBoxElement = By.xpath("//label[@class='is-ref mt-checkbox mt-checkbox-outline']//span");
 	By plusIconButtonElement = By.xpath("//a[@class='btn blue btn-xs btn-ext']");
-	
+
 	By referrerNameTextFieldElement = By.xpath("//input[@id='referrerName']");
 	By extRefferAddressTextFieldElement = By.xpath("//input[@id='ExtRefferaddress']");
 	By contactNumberTextFieldElement = By.xpath("//input[@id='contactNum']");
@@ -41,15 +43,58 @@ public class operationTheatre_Pages extends StartupPage {
 	By isIncentiveApplicableCheckboxElement = By.xpath("(//div[@class='icheck-inline']//span)[2]");
 	By addButtonElement = By.xpath("//button[@id='add']");
 	By successNotificationPopupMessageElement = By.xpath("//div[@class='msg-text padding-8-all']");
-	
+
 	By successNotificationPopupMessageOneElement = By.xpath("//p[@class='msg-status']");
 	By successNotificationPopupMessageTwoElement = By.xpath("//p[@class='main-message']");
+
+	By hospitalNumberByElement = By.xpath("//span[contains(text(), 'Hospital Number')]");
+	By newOtButtonByElement = By.xpath("//button[contains(text(), 'New OT Booking')]");
+	By bookingOTScheduleFormsTitleNameByElement = By.xpath("//span[contains(text(), 'Booking OT Schedule  | New Patient')]");
+	By remarksTextAreaByElement = By.xpath("//textarea[@id='remarks']");
+	By addButtonOfAddExternalReferralByElement = By.xpath("//button[contains(text(), 'Add')]");
+	By errorMessageOfAddExternalReferralFormsByElement = By.xpath("//span[contains(text(), 'Referrer Name is required')]");
+	By titleOfaddExternalReferralFormsByElement = By.xpath("//span[contains(text(), 'Add External Referral')]");
+	By closeLinkOfBookingOTScheduleNewPatientFormsByElement = By.xpath("//a[.='X']");
+
+	By billingModuleExpandIconByElement = By.xpath("//span[@data-target='#Billing']");
+	By newOneCounterLinkByElement = By.xpath("//h5[contains(text(), 'New-1')]//span");
+
+	By handOverSubModuleLinkByElement = By.xpath("//span[contains(text(), 'Handover')]");
+	By remarksTextFieldOfBillingSubModulesByElement = By.xpath("//input[@id='HandoverRemarks_User']");
+	By handOverToUserButtonOfBillingSubModuleByElement = By.xpath("//input[@value='HandOver To User']");
+
+	By vaccinationModuleByElement = By.xpath("//a[@href='#/Vaccination']");
+	By vaccinationModulesToggleIconByElement = By.xpath("//span[@data-target='#Vaccination']");
+	By patientListSubModuleByElement = By.xpath("//a[@href='#/Vaccination/PatientList']//span[contains(text(), 'Patient List')]");
+	By titleNameOfVaccinationPatientRegisterFormByElement = By.xpath("//span[contains(text(), 'Vaccination Patient Register')]");
+
+	By appointmentModuleByElement = By.xpath("//a[@href='#/Appointment']");
+	By appointmentModulesToggleIconByElement = By.xpath("//span[@data-target='#Appointment']");
+	By bookingAppointmentSubModuleByElement = By.xpath("//a[@href='#/Appointment/CreateAppointment']//span[contains(text(), 'Book Appointment')]");
+
+	By newPatientButtonByElement = By.xpath("//a[contains(text(), 'New Patient')]");
+	
+	By monthRadioButtonByElement = By.xpath("//input[@value='M']");
+	By daysRadioButtonByElement = By.xpath("//input[@value='D']");
+	
+	By selectVisitTypeDropdownByElement = By.xpath("//select[@name='VistType']");
+	
+	By addAppointmentButtonByElement = By.xpath("//input[@value='Add Appointment']");
+	
+	By errorNotificationPopupMessageElement = By.xpath("//div[@class='msg-text padding-8-all']");
+	By statusErrorNotificationMessageByElement = By.xpath("//p[@class='msg-status']");
+	By mainErrorNotificationMessageByElement = By.xpath("//p[@class='main-message']");
+	By closeLinkOfVaccinationPatientRegisterForm = By.xpath("//a[.='X']");
+	
+	
+
+
 
 	String pageName = this.getClass().getSimpleName();
 	public operationTheatre_Pages(WebDriver driver) {
 		super(driver);
 	}
-	
+
 	/**@Test1
 	 * about this method loginTohealthAppByGivenValidCredetial() 
 	 * @param : Map<String, String>
@@ -89,7 +134,7 @@ public class operationTheatre_Pages extends StartupPage {
 	 * @param : null
 	 * @description : it will navigate to the URL and validate the title of the current page.
 	 * @return : String
-	 * @author : Yaksha
+	 * @author : YAKSHA
 	 */
 	public String verifyTitleOfThePage() throws Exception {
 		String pageTitle = "";
@@ -107,7 +152,7 @@ public class operationTheatre_Pages extends StartupPage {
 	 * @param : null
 	 * @description : it will navigate to the URL and validate the URL of the current page.
 	 * @return : String
-	 * @author : Yaksha
+	 * @author : YAKSHA
 	 */
 	public String verifyURLOfThePage() throws Exception {
 		String urlofThepage = "";
@@ -119,6 +164,451 @@ public class operationTheatre_Pages extends StartupPage {
 		}	
 		return urlofThepage;
 	}
-	
 
+	/**@Test2
+	 * about this method verifyOperationTheatreModuleIsPresentAndGoToOperationTheatreTab() 
+	 * @param : null
+	 * @description : Verify that OperationTheatre module is present and Go to OperationTheatre Tab.
+	 * @return : String
+	 * @author : YAKSHA
+	 */
+	public String goToOperationTheatreModuleVerifyTableHeaderName() throws Exception {
+		String tableHeaderNameIsDisplayed = "";
+		try {
+			if(commonEvents.isDisplayed(operationTheatreModule)){
+				commonEvents.click(operationTheatreModule);
+				Thread.sleep(3000);
+			}
+
+			if(commonEvents.isDisplayed(hospitalNumberByElement)) {
+				tableHeaderNameIsDisplayed = commonEvents.getText(hospitalNumberByElement);
+
+				System.out.println("table header name is : " + tableHeaderNameIsDisplayed);
+				return tableHeaderNameIsDisplayed;
+			}
+
+		}catch(Exception e) {
+			throw e;
+		}	
+		return tableHeaderNameIsDisplayed;
+	}
+
+
+	/**@Test3
+	 * about this method verifyBookingOTScheduleFormByClickingOnNewOTBookingButton() 
+	 * @param : null
+	 * @description : verify the button & text 
+	 * @return : String
+	 * @author : YAKSHA
+	 */
+	public String verifyBookingOTScheduleFormByClickingOnNewOTBookingButton() throws Exception {
+		String bookingOTScheduleFormsName = "";
+		try {
+			commonEvents.click(newOtButtonByElement);
+			Thread.sleep(2000);
+			bookingOTScheduleFormsName = commonEvents.getText(bookingOTScheduleFormsTitleNameByElement);
+			System.out.println("booking OT Schedule Form's Title Name" + bookingOTScheduleFormsName );
+		}catch(Exception e) {
+			throw e;
+		}	
+		return bookingOTScheduleFormsName;
+	}
+
+	/**@Test6
+	 * about this method verifyTexboxIsPresentAndValidateEnteredValue() 
+	 * @param : null
+	 * @description : verify text box , then send value to that text box and validate the entered value
+	 * @return : String
+	 * @author : YAKSHA
+	 */
+	public String verifyTexboxIsPresentAndValidateEnteredValue(Map<String, String> expectedData) throws Exception {
+
+		String selectPatientTextboxValue = "";
+		try {
+			if(commonEvents.isDisplayed(bookingOTScheduleFormsTitleNameByElement)) {
+				commonEvents.sendKeys(selectpatientTextboxElement, expectedData.get("patientName"));
+				commonEvents.sendKeys(diagnosisTextboxElement, expectedData.get("diagnosisValue"));
+				commonEvents.sendKeys(surgeryTypeTextboxElement, expectedData.get("surgeryTypeValue"));
+
+				selectPatientTextboxValue = commonEvents.getAttribute(selectpatientTextboxElement, "value");
+				System.out.println("attribute value of select patient Textbox : " + selectPatientTextboxValue );
+			}
+		}catch(Exception e) {
+			throw e;
+		}	
+		return selectPatientTextboxValue;
+	}
+
+	/**@Test5
+	 * about this method verifyPlaceholderNameOfTexboxIfTextboxIsEnabled() 
+	 * @param : null
+	 * @description : verify the placeholder name of text box if text box is enabled
+	 * @return : String
+	 * @author : YAKSHA
+	 */
+	public String verifyPlaceholderNameOfTexboxIfTextboxIsEnabled() throws Exception {
+		String placeholderNameOfRemarkasTextarea = "";
+		try {
+			if(commonEvents.isDisplayed(remarksTextAreaByElement) &&
+					commonEvents.isEnabled(remarksTextAreaByElement)) {
+				commonEvents.click(remarksTextAreaByElement);
+				Thread.sleep(2000);
+				placeholderNameOfRemarkasTextarea = commonEvents.getAttribute(remarksTextAreaByElement, "placeholder");
+				System.out.println("booking OT Schedule Form's Title Name" + placeholderNameOfRemarkasTextarea );
+				return placeholderNameOfRemarkasTextarea;
+			}
+		}catch(Exception e) {
+			throw e;
+		}	
+		return placeholderNameOfRemarkasTextarea;
+	}
+
+	/**@Test6
+	 * about this method verifyButtonIsPresentAfterSendValueToSurgenNameTextfield() 
+	 * @param : null
+	 * @description : verify the button is present after send the value to the text box
+	 * @return : String
+	 * @author : YAKSHA
+	 */
+	public String verifyButtonIsPresentAfterSendValueToSurgenNameTextfield(Map<String, String> expectedData) throws Exception {
+		String surgenNameButtonAttributeValue = "";
+		try {
+			if(commonEvents.isDisplayed(surgenNameTextFieldElement)) {
+				commonEvents.sendKeys(surgenNameTextFieldElement, expectedData.get("surgenNameValue1"));
+				commonEvents.sendKeys(surgenNameTextFieldElement, Keys.ENTER);
+				Thread.sleep(2000);
+				commonEvents.click(remarkTextboxElement);
+				Thread.sleep(2000);
+				commonEvents.isDisplayed(surgenNameFirstButtonElement);
+				surgenNameButtonAttributeValue = commonEvents.getText(surgenNameFirstButtonElement);
+				System.out.println("attribute value of surgen Name : " + surgenNameButtonAttributeValue );
+			}
+		}catch(Exception e) {
+			throw e;
+		}	
+		return surgenNameButtonAttributeValue;
+	}
+
+	/**@Test7
+	 * about this method verifyPlusButtonIsPresentAfterClickOnExternalCheckbox() 
+	 * @param : null
+	 * @description : click on check box and verify check box is selected or not and verify the + (plus) icon after click on check box
+	 * @return : Boolean
+	 * @author : YAKSHA
+	 */
+	public Boolean verifyPlusButtonIsPresentAfterClickOnExternalCheckbox() throws Exception {
+		boolean plusIconIsDisplayed = false;
+		try {
+			commonEvents.isDisplayed(externalCheckBoxElement);
+			commonEvents.click(externalCheckBoxElement);
+			Thread.sleep(3000);
+
+			commonEvents.isSelected(externalCheckBoxElement);
+			commonEvents.isDisplayed(plusIconButtonElement);
+			plusIconIsDisplayed = true;
+
+		}catch(Exception e) {
+			throw e;
+		}	
+		return plusIconIsDisplayed;
+	}
+
+	/**@Test8
+	 * about this method verifyErrorMessageInAddExternalReferralForms() 
+	 * @param : null
+	 * @description : verify the error message
+	 * @return : String
+	 * @author : YAKSHA
+	 */
+	public String verifyErrorMessageInAddExternalReferralForms() throws Exception {
+		String errorMessageOfAddExternalReferralForms = "";
+		try {
+			if(commonEvents.isDisplayed(plusIconButtonElement)) {
+				commonEvents.click(plusIconButtonElement);
+				Thread.sleep(2000);
+				commonEvents.click(addButtonOfAddExternalReferralByElement);
+				Thread.sleep(2000);
+				commonEvents.isDisplayed(errorMessageOfAddExternalReferralFormsByElement);
+				errorMessageOfAddExternalReferralForms = commonEvents.getText(errorMessageOfAddExternalReferralFormsByElement);
+				System.out.println("error Message Of Add External Referral Forms : " + errorMessageOfAddExternalReferralForms );
+				return errorMessageOfAddExternalReferralForms;
+			}
+		}catch(Exception e) {
+			throw e;
+		}
+		return errorMessageOfAddExternalReferralForms;
+	}
+
+	/**@Test9
+	 * about this method verifySuccessNotificationPopupMessage() 
+	 * @param : null
+	 * @description : it will navigate to the URL and validate the URL of the current page.
+	 * @return : String
+	 * @author : YAKSHA
+	 */
+	public String verifySuccessNotificationPopupMessage(Map<String, String> expectedData) throws Exception {
+		String successNotificationPopupMessageValue = "";
+		try {
+			Thread.sleep(10000);
+			if(commonEvents.isDisplayed(titleOfaddExternalReferralFormsByElement)) {
+
+				WebElement titleOfaddExternalReferralFormsWebElement = commonEvents.findElement(titleOfaddExternalReferralFormsByElement);
+				commonEvents.highlightElementAfterAction(titleOfaddExternalReferralFormsWebElement);
+
+				commonEvents.sendKeys(referrerNameTextFieldElement, expectedData.get("referrerName"));
+				commonEvents.sendKeys(extRefferAddressTextFieldElement, expectedData.get("ExtRefferaddress"));
+				commonEvents.sendKeys(contactNumberTextFieldElement, expectedData.get("contactNum"));
+				commonEvents.sendKeys(emailTextFieldElement, expectedData.get("email"));
+				Thread.sleep(1000);
+				commonEvents.click(isIncentiveApplicableCheckboxElement);
+				commonEvents.click(addButtonElement);
+
+				commonEvents.isDisplayed(successNotificationPopupMessageElement);
+
+				String actualNotificationValue = commonEvents.getText(successNotificationPopupMessageElement);
+				System.out.println("success notification popup message text Value : " + actualNotificationValue );
+
+				String notificationMessageOne = commonEvents.getText(successNotificationPopupMessageOneElement);
+				System.out.println("notification Message One " + notificationMessageOne);
+
+				String notificationMessageTwo = commonEvents.getText(successNotificationPopupMessageTwoElement);
+				System.out.println("notification Message two " + notificationMessageTwo);
+
+				successNotificationPopupMessageValue = notificationMessageOne + " " +notificationMessageTwo ;
+				System.out.println("success notification popup message text Value : " + successNotificationPopupMessageValue );
+
+			}
+		}catch(Exception e) {
+			throw e;
+		}	
+		return successNotificationPopupMessageValue;
+	}
+
+	/**@Test10
+	 * about this method closeBookingOTScheduleNewPatientFormsByUsingJsExecutor() 
+	 * @param : null
+	 * @description : On the "Booking OT Schedule New Patient" Forms, Close this ""Booking OT Schedule New Patient" Forms by using javaScript.
+	 * @return : Boolean
+	 * @author : YAKSHA
+	 */
+	public Boolean closeBookingOTScheduleNewPatientFormsByUsingJsExecutor() throws Exception {
+		boolean IsDisplayed = false;
+		try {
+			if (commonEvents.isDisplayed(closeLinkOfBookingOTScheduleNewPatientFormsByElement)) {
+				commonEvents.jsClick(closeLinkOfBookingOTScheduleNewPatientFormsByElement);
+				Thread.sleep(3000);
+				IsDisplayed=true;
+			}
+		}catch(Exception e) {
+			throw e;
+		}	
+		return IsDisplayed;
+	}
+
+	/**@Test11
+	 * about this method performScrollOperation() 
+	 * @param : null
+	 * @description : scroll to the bottom of the page and validate the button and text field is present
+	 * @return : Boolean
+	 * @author : YAKSHA
+	 */
+	public Boolean performScrollOperation(Map<String, String> expectedData) throws Exception {
+		boolean performScrollOperation = false;
+		try {
+			commonEvents.jsClick(billingModuleExpandIconByElement);
+			Thread.sleep(2000);
+
+			commonEvents.click(newOneCounterLinkByElement);
+			Thread.sleep(2000);
+
+			commonEvents.jsScrollPageTillElementVisible(handOverSubModuleLinkByElement, "billing", "handOverElement");
+			Thread.sleep(2000);
+
+			commonEvents.click(handOverSubModuleLinkByElement);
+			Thread.sleep(3000);
+
+			commonEvents.jsScrollToBottomOfThePage();
+			Thread.sleep(2000);
+
+			if(commonEvents.isDisplayed(remarksTextFieldOfBillingSubModulesByElement)&& 
+					commonEvents.isDisplayed(handOverToUserButtonOfBillingSubModuleByElement)) {
+				commonEvents.sendKeys(remarksTextFieldOfBillingSubModulesByElement, expectedData.get("remarksValue"));
+				Thread.sleep(2000);
+				commonEvents.click(handOverToUserButtonOfBillingSubModuleByElement);
+				System.out.println("Remarks textbox & HandOverToUser button are present");
+				performScrollOperation = true;
+			}
+		}catch(Exception e) {
+			throw e;
+		}	
+		return performScrollOperation;
+	}
+
+	/**@Test12
+	 * about this method verifyLocatorsValueOfELement() 
+	 * @param : Map<String, String>
+	 * @description : verify locators value of text box and send value to the text box and highlight that text box
+	 * @return : String
+	 * @author : YAKSHA
+	 */
+	public String verifyLocatorsValueOfELement(Map<String, String> expectedData) throws Exception {
+		String locatorsValue = "";
+		try {
+			Thread.sleep(3000);
+			if(commonEvents.isDisplayed(remarksTextFieldOfBillingSubModulesByElement)) {
+				Thread.sleep(3000);
+				commonEvents.click(remarksTextFieldOfBillingSubModulesByElement);
+				commonEvents.clear(remarksTextFieldOfBillingSubModulesByElement);
+				Thread.sleep(2000);
+				commonEvents.sendKeys(remarksTextFieldOfBillingSubModulesByElement, expectedData.get("remarksValue"));
+				locatorsValue = commonEvents.getAttribute(remarksTextFieldOfBillingSubModulesByElement,"id");
+				System.out.println("ID locators value of Remarks Texbox : " + locatorsValue);
+
+				WebElement  remarksTextFieldWebElement = commonEvents.findElement(remarksTextFieldOfBillingSubModulesByElement);
+				commonEvents.highlightElement(remarksTextFieldWebElement);
+
+			}
+		}catch(Exception e) {
+			throw e;
+		}
+		return locatorsValue;
+	}
+
+	/**@Test13
+	 * about this method performKeyboardOperation() 
+	 * @param : Map<String, String>
+	 * @description : perform the keyboard operation
+	 * @return : String
+	 * @author : YAKSHA
+	 */
+	public String performKeyboardOperation() throws Exception {
+		String titleNameOfVaccinationPatientRegisterForm = "";
+		try {
+			Thread.sleep(2000);
+			commonEvents.jsScrollPageTillElementVisible(vaccinationModuleByElement, "vaccinationModule", "vaccinationModule");
+			if (commonEvents.isDisplayed(vaccinationModuleByElement)) {
+				Thread.sleep(2000);
+				commonEvents.jsClick(vaccinationModulesToggleIconByElement);
+				Thread.sleep(2000);
+				commonEvents.jsClick(patientListSubModuleByElement);
+				Thread.sleep(5000);
+				commonEvents.performAltN();
+				Thread.sleep(2000);
+
+				titleNameOfVaccinationPatientRegisterForm = commonEvents.getText(titleNameOfVaccinationPatientRegisterFormByElement);
+				System.out.println("title Name Of Vaccination Patient Register form : " + titleNameOfVaccinationPatientRegisterForm);
+				return titleNameOfVaccinationPatientRegisterForm;
+			}
+		}catch(Exception e) {
+			throw e;
+		}
+		return titleNameOfVaccinationPatientRegisterForm;
+	}
+	
+	/**@Test14.1
+	 * about this method verifyRadioButton() 
+	 * @param : null
+	 * @description :
+	 * @return : Boolean
+	 * @author : YAKSHA
+	 */
+	public Boolean verifyRadioButton() throws Exception {
+		Boolean verifyRadioButton = false;
+		try {
+			commonEvents.click(closeLinkOfVaccinationPatientRegisterForm);
+			Thread.sleep(3000);
+			
+			commonEvents.jsScrollPageTillElementVisible(appointmentModuleByElement, "appointmentModule", "appointmentModule");
+			
+			if(commonEvents.isDisplayed(appointmentModuleByElement)) {
+				commonEvents.jsClick(appointmentModulesToggleIconByElement);
+				Thread.sleep(3000);
+				commonEvents.jsClick(bookingAppointmentSubModuleByElement);
+				Thread.sleep(3000);
+				commonEvents.click(newPatientButtonByElement);
+				Thread.sleep(3000);
+				
+				commonEvents.jsClick(monthRadioButtonByElement);
+
+				if(commonEvents.isSelected(monthRadioButtonByElement)) {
+					System.out.println("Month Radio button is selected");
+				}
+
+				commonEvents.jsClick(daysRadioButtonByElement);
+
+				if(!commonEvents.isSelected(monthRadioButtonByElement)) {
+					System.out.println("Month Radio button is De-Selected");
+				}
+
+				verifyRadioButton = true;
+			}
+		}catch(Exception e) {
+			throw e;
+		}	
+		return verifyRadioButton;
+	}
+	
+	/**@Test14.2
+	 * about this method verifyOptionIsSelectedFromDropdown() 
+	 * @param : get the data from json file as type Map<String, String> expectedData
+	 * @description : it will select the option as per JSON expected data
+	 * @return : String
+	 * @author : YAKSHA
+	 */
+	public String verifyOptionIsSelectedFromDropdown(Map<String, String> expectedData) throws Exception {
+
+		String selectedOption = "" ;
+
+		try {
+			commonEvents.selectByVisibleText(selectVisitTypeDropdownByElement, expectedData.get("visitTypeOptionValue"));
+			selectedOption = commonEvents.getFirstSelectedOptionFromDropdown(selectVisitTypeDropdownByElement, "elementName", "pageName");
+			System.out.println("first selected option from country dropdown : " + selectedOption );
+			return selectedOption;
+		}catch(Exception e) {
+			throw e;
+		}	
+	}
+	
+	/**@Test15
+	 * about this method verifyErrorNotificationPopupMessage() 
+	 * @param : null
+	 * @description : verify the error message using hard assert
+	 * @return : String
+	 * @author : YAKSHA
+	 */
+	public String verifyErrorNotificationPopupMessage() throws Exception {
+		String mainErrorNotificationPopupMessageValue = "";
+		try {
+			Thread.sleep(2000);
+			if(commonEvents.isDisplayed(addAppointmentButtonByElement)) {
+
+				WebElement addAppointmentButtonWebElement = commonEvents.findElement(addAppointmentButtonByElement);
+				commonEvents.highlightElementAfterAction(addAppointmentButtonWebElement);
+				
+				Thread.sleep(2000);
+				
+				commonEvents.click(addAppointmentButtonByElement);
+
+				commonEvents.isDisplayed(errorNotificationPopupMessageElement);
+
+				String actualNotificationErrorMessage = commonEvents.getText(errorNotificationPopupMessageElement);
+				System.out.println("Error notification popup message text Value : " + actualNotificationErrorMessage );
+
+				String statusOfErrorMessage = commonEvents.getText(statusErrorNotificationMessageByElement);
+				System.out.println("status error notification Message :  " + statusOfErrorMessage);
+
+				String mainNotificationErrorMessage = commonEvents.getText(mainErrorNotificationMessageByElement);
+				System.out.println("main notification Error Message :  " + mainNotificationErrorMessage);
+
+				mainErrorNotificationPopupMessageValue = statusOfErrorMessage + " " + mainNotificationErrorMessage ;
+				System.out.println("main error notification popup message text Value : " + mainErrorNotificationPopupMessageValue );
+				
+				return mainErrorNotificationPopupMessageValue;
+
+			}
+		}catch(Exception e) {
+			throw e;
+		}	
+		return mainErrorNotificationPopupMessageValue;
+	}
 }

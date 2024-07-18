@@ -1,10 +1,13 @@
 package testdata;
 
+import java.util.Map;
+
 import org.openqa.selenium.By;
+import org.openqa.selenium.Keys;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 
-import testcases.UserActions;
+import testBase.UserActions;
 
 public class LocatorsFactory extends UserActions {
 
@@ -116,24 +119,43 @@ public class LocatorsFactory extends UserActions {
 	By activeRadioButton = By.xpath("(//label//span)[2]");
 	By commonRadioButtonByElement = By.xpath("//input[@id='Common']");
 	By addSubCategoryButtonByElement = By.xpath("//input[@value='Add Sub Category']");
-	
-	
-	
+
+
+
 	//Social service Module(L2)
 
 	//	By saveButton = By.xpath("//button[.='Save']");
 	By submitButton = By.id("btn-add");
 	By accountOption = By.xpath("//span[.='Accounts']");
 	By printButton = By.xpath("//button[.='Print']");
-	
 
-	
+
+
 	//OperationTheatre Module(L1)
 
-//	By printButton = By.xpath("//button[.='Print']");
+	//	By printButton = By.xpath("//button[.='Print']");
 	By ssuPatientListText = By.xpath("//a[.=' SSU Patient List ']");
 	By vatInPercentageTextFieldElement = By.xpath("//input[@id='VAT']");
+	By newOTBookingButtonByElement = By.xpath("//button[contains(text(), 'New OT Booking')]");
+	By addNewOTButtonByElement = By.xpath("//input[@value='Add New OT']");
+	By surgeryTypeTextboxElement = By.xpath("//textarea[@id='surgeryType']");
+	By surgenNameFirstButtonElement = By.xpath("//ul[@class='select-list']//li[1]");
+	By plusIconButtonElement = By.xpath("//a[@class='btn blue btn-xs btn-ext']");
+	By errorMessageOfAddExternalReferralFormsByElement = By.xpath("//span[contains(text(), 'Referrer Name is required')]");
+	By successNotificationPopupMessageOneElement = By.xpath("//p[@class='msg-status']");
+	By successNotificationPopupMessageTwoElement = By.xpath("//p[@class='main-message']");
+	By successNotificationPopupMessageElement = By.xpath("//div[@class='msg-text padding-8-all']");
+	By monthRadioButtonByElement = By.xpath("//input[@value='M']");
+	By daysRadioButtonByElement = By.xpath("//input[@value='D']");
 
+	By selectVisitTypeDropdownByElement = By.xpath("//select[@name='VistType']");
+
+	By handOverToUserButtonOfBillingSubModuleByElement = By.xpath("//input[@value='HandOver To User']");
+	By remarksTextFieldOfBillingSubModulesByElement = By.xpath("//input[@id='HandoverRemarks_User']");
+	By titleNameOfVaccinationPatientRegisterFormByElement = By.xpath("//span[contains(text(), 'Vaccination Patient Register')]");
+	By errorNotificationPopupMessageElement = By.xpath("//div[@class='msg-text padding-8-all']");
+	By statusErrorNotificationMessageByElement = By.xpath("//p[@class='msg-status']");
+	By mainErrorNotificationMessageByElement = By.xpath("//p[@class='main-message']");
 
 
 	public LocatorsFactory(WebDriver driver) {
@@ -379,12 +401,12 @@ public class LocatorsFactory extends UserActions {
 		WebElement errorMeesageInLastNameTextFieldWebElement = driver.findElement(errorMeesageInLastNameTextField);
 		return errorMeesageInLastNameTextFieldWebElement;
 	}
-	
+
 	public WebElement verifyErrorMessageIsPresentInGenderDropdown(WebDriver driver) {
 		WebElement errorMeesageInGenderDropdownWebElement = driver.findElement(errorMeesageInGenderDropdownElement);
 		return errorMeesageInGenderDropdownWebElement;
 	}
-	
+
 	public WebElement confirmMessageIsPresent(WebDriver driver) {
 		WebElement confirmMessageWebElement = driver.findElement(confirmMessage);
 		return confirmMessageWebElement;
@@ -393,12 +415,12 @@ public class LocatorsFactory extends UserActions {
 		WebElement mainStoreDropDownWebElement = driver.findElement(mainStoreDropDown);
 		return mainStoreDropDownWebElement;
 	}
-	
+
 	public WebElement addRequisitionsPageNameIsPresent(WebDriver driver) {
 		WebElement addRequisitionsPageNameWebElement = driver.findElement(addRequisitionsPageName);
 		return addRequisitionsPageNameWebElement;
 	}
-	
+
 
 	public WebElement remarkTextFieldIsPresent(WebDriver driver) {
 		WebElement remarkTextFieldWebElement = driver.findElement(remarkTextField);
@@ -409,7 +431,7 @@ public class LocatorsFactory extends UserActions {
 		WebElement medicineQuantityWebElement = driver.findElement(medicineQuantity);
 		return medicineQuantityWebElement;
 	}
-	
+
 	public WebElement requisitionsListButtonIsPresent(WebDriver driver) {
 		WebElement requisitionsListButtonWebElement = driver.findElement(requisitionsListButton);
 		return requisitionsListButtonWebElement;
@@ -474,7 +496,7 @@ public class LocatorsFactory extends UserActions {
 		WebElement printInvoiceButtonElementWebElement = driver.findElement(printInvoiceButtonElement);
 		return printInvoiceButtonElementWebElement;
 	}
-	
+
 	public WebElement verifyRegisterButtonIsPresent(WebDriver driver) {
 		WebElement printInvoiceButtonElementWebElement = driver.findElement(registerButtonOfNewSSUPatientRegistrationForms);
 		return printInvoiceButtonElementWebElement;
@@ -512,12 +534,12 @@ public class LocatorsFactory extends UserActions {
 		WebElement dispatchedQtyFieldWebElement = driver.findElement(dispatchedQtyField);
 		return dispatchedQtyFieldWebElement;
 	}
-	
+
 	public WebElement verifySaveItemIsPresent(WebDriver driver) {
 		WebElement saveItemWebElement = driver.findElement(saveItemByElement);
 		return saveItemWebElement;
 	}
-	
+
 	public WebElement verifyAddSubCategoryIsPresent(WebDriver driver) {
 		WebElement saveItemaddSubCategoryButtonByWebElement = driver.findElement(addSubCategoryButtonByElement);
 		return saveItemaddSubCategoryButtonByWebElement;
@@ -537,7 +559,7 @@ public class LocatorsFactory extends UserActions {
 		}
 		return raceTextFieldPlaceHolder;
 	}
-	
+
 	public String verifyAttributesValueOfEditInformationTexbox() throws Exception {
 		String attributesValue = "";
 		try {
@@ -552,7 +574,7 @@ public class LocatorsFactory extends UserActions {
 		}
 		return attributesValue;
 	}
-	
+
 	public String veryfyTableData() throws Exception {
 		String cuttonSubCategoryName = "";
 		try {
@@ -565,7 +587,7 @@ public class LocatorsFactory extends UserActions {
 		}	
 		return cuttonSubCategoryName;
 	}
-	
+
 	public Boolean verifySocialServiceModuleRadioButtoIsSelected() throws Exception {
 		Boolean verifyRadioButton = false;
 		try {
@@ -578,16 +600,16 @@ public class LocatorsFactory extends UserActions {
 		}	
 		return verifyRadioButton;
 	}
-	
+
 	public Boolean verifyProcurementModuleRadioButton() throws Exception {
 		Boolean verifyRadioButton = false;
 		try {
 			Thread.sleep(3000);
-				
-				if(userActions.isSelected(commonRadioButtonByElement)) {
-					System.out.println("Common Radio button is selected");
-					verifyRadioButton = true;
-				}	
+
+			if(userActions.isSelected(commonRadioButtonByElement)) {
+				System.out.println("Common Radio button is selected");
+				verifyRadioButton = true;
+			}	
 		}catch(Exception e) {
 			throw e;
 		}	
@@ -598,17 +620,17 @@ public class LocatorsFactory extends UserActions {
 		WebElement listByPatientStatusRadioButtonWebElement = driver.findElement(listByPatientStatusRadioButton);
 		return listByPatientStatusRadioButtonWebElement;
 	}
-	
+
 	public WebElement verifyEditInformationTextboxIsPresent(WebDriver driver) {
 		WebElement editInformationTextboxWebElement = driver.findElement(editInformationOfExistingPatientNameByElement);
 		return editInformationTextboxWebElement;
 	}
-	
+
 	public WebElement verifySSUPatientListButtonIsPresent(WebDriver driver) {
 		WebElement SSUPatientListButtonWebElement = driver.findElement(SSUPatientListButton);
 		return SSUPatientListButtonWebElement;
 	}
-	
+
 	public WebElement saveButtonIsPresent(WebDriver driver) {
 		WebElement saveButtonWebElement = driver.findElement(saveButton);
 		return saveButtonWebElement;
@@ -646,13 +668,13 @@ public class LocatorsFactory extends UserActions {
 		WebElement editInformationOfTextFieldWebElement = driver.findElement(SSUPatientListButton);
 		return editInformationOfTextFieldWebElement;
 	}
-	
+
 	public WebElement newSSUPatientRegistrationFormsCloseButtonIsPresent(WebDriver driver) {
 		WebElement editInformationOfTextFieldWebElement = driver.findElement(newSSUPatientRegistrationFormsCloseButtonElement);
 		userActions.highlightElementAfterAction(editInformationOfTextFieldWebElement);
 		return editInformationOfTextFieldWebElement;
 	}
-	
+
 	public WebElement verifyPatientInformationTabIsPresent(WebDriver driver) {
 		WebElement patientInformationTabWebElement = driver.findElement(patientInformationTabElement);
 		userActions.highlightElementAfterAction(patientInformationTabWebElement);
@@ -682,7 +704,7 @@ public class LocatorsFactory extends UserActions {
 		}
 		return phoneNumberTextFieldValue;
 	}
-	
+
 	public String verifyValueIsPresentInLastNameTextbox() throws Exception {
 		String lastNameTextFieldValue = "";
 		try {
@@ -706,60 +728,121 @@ public class LocatorsFactory extends UserActions {
 		WebElement countryDropdownWebElement = driver.findElement(countryDropdown);
 		return countryDropdownWebElement;
 	}
-	
+
 	public WebElement verifyCertificateNoTextFieldIsPresent(WebDriver driver) {
 		WebElement certificateNoTextboxElement = driver.findElement(certificateNoTextbox);
 		userActions.highlightElementAfterAction(certificateNoTextboxElement);
 		return certificateNoTextboxElement;
 	}
-	
-	
+
+
 	//OperationTheatre module(L1)
-	
+
 	public WebElement printButtonWebElementIsPresent(WebDriver driver) {
 		WebElement printButtonWebElement = driver.findElement(printButton);
 		return printButtonWebElement;
 	}
-	
-	
+
+
 	public WebElement ssuPatientListTextIsPresent(WebDriver driver) {
 		WebElement ssuPatientListTextWebElement = driver.findElement(ssuPatientListText);
 		return ssuPatientListTextWebElement;
 	}
-	
+
 	public WebElement warningMessageIsPresent(WebDriver driver) {
 		WebElement warningMessageWebElement = driver.findElement(warningMessage);
 		return warningMessageWebElement;
 	}
-	
+
 	public WebElement hasTG_certificateDropdownIsPresent(WebDriver driver) {
 		WebElement hasTG_certificateDropdownWebElement = driver.findElement(hasTG_certificateDropdown);
 		return hasTG_certificateDropdownWebElement;
 	}
-	
+
 	public WebElement newSsuPatientRegistrationTextFieldIsPresent(WebDriver driver) {
 		WebElement newSsuPatientRegistrationTextFieldWebElement = driver.findElement(newSsuPatientRegistrationTextField);
 		return newSsuPatientRegistrationTextFieldWebElement;
 	}
-	
+
+	public WebElement verifyNewOTBookingButtonIsPresent(WebDriver driver) {
+		WebElement NewOtButtonIsPresentWebElement = driver.findElement(newOTBookingButtonByElement);
+		return NewOtButtonIsPresentWebElement;
+	}
+
+	public WebElement verifyAddNewOTButtonIsPresent(WebDriver driver) {
+		WebElement addNewOTButtonWebElement = driver.findElement(addNewOTButtonByElement);
+		return addNewOTButtonWebElement;
+	}
+
+	public String verifyValueIsPresentInTypeOfSurgeryTextbox() throws Exception {
+		String typeOfSurgeryTextboxValue = "";
+		try {
+			if(userActions.isDisplayed(surgeryTypeTextboxElement))
+			{
+				typeOfSurgeryTextboxValue = userActions.getAttribute(surgeryTypeTextboxElement, "value");
+				System.out.println("type of Surgery Textbox Value  : " + typeOfSurgeryTextboxValue);
+			}
+		}catch(Exception e) {
+			throw e;
+		}
+		return typeOfSurgeryTextboxValue;
+	}
+
+	public WebElement verifySurgenNameFirstButtonElementIsPresent(WebDriver driver) {
+		WebElement surgenNameFirstButtonWebElement = driver.findElement(surgenNameFirstButtonElement);
+		return surgenNameFirstButtonWebElement;
+	}
+
+	public WebElement verifyErrorMessageOfAddExternalReferralForms(WebDriver driver) {
+		WebElement errorMessageOfAddExternalReferralFormsWebElement = driver.findElement(errorMessageOfAddExternalReferralFormsByElement);
+		return errorMessageOfAddExternalReferralFormsWebElement;
+	}
+
+	public WebElement verifyPlusIconElementIsPresent(WebDriver driver) {
+		WebElement surgenNameFirstButtonWebElement = driver.findElement(plusIconButtonElement);
+		return surgenNameFirstButtonWebElement;
+	}
+
+
+	public String verifySuccessNotificationPopupMessageIsPresent() throws Exception {
+		String successNotificationPopupMessageValue = "";
+		try {
+			if(userActions.isDisplayed(successNotificationPopupMessageElement)) {
+
+				String notificationMessageOne = userActions.getText(successNotificationPopupMessageOneElement);
+				System.out.println("notification Message One " + notificationMessageOne);
+
+				String notificationMessageTwo = userActions.getText(successNotificationPopupMessageTwoElement);
+				System.out.println("notification Message two " + notificationMessageTwo);
+
+				successNotificationPopupMessageValue = notificationMessageOne + " " +notificationMessageTwo ;
+				System.out.println("success notification popup message text Value : " + successNotificationPopupMessageValue );
+			}
+		}catch(Exception e) {
+			throw e;
+		}	
+		return successNotificationPopupMessageValue;
+	}
+
+
 	//Social service module(L2)
-	
-//	public WebElement saveButtonIsPresent(WebDriver driver) {
-//		WebElement saveButtonWebElement = driver.findElement(saveButton);
-//		return saveButtonWebElement;
-//	}
-//	
-	
+
+	//	public WebElement saveButtonIsPresent(WebDriver driver) {
+	//		WebElement saveButtonWebElement = driver.findElement(saveButton);
+	//		return saveButtonWebElement;
+	//	}
+	//	
+
 	public WebElement submitButtonIsPresent(WebDriver driver) {
 		WebElement submitButtonWebElement = driver.findElement(submitButton);
 		return submitButtonWebElement;
 	}
-	
+
 	public WebElement accountOptionIsSelected(WebDriver driver) {
 		WebElement accountOptionWebElement = driver.findElement(accountOption);
 		return accountOptionWebElement;
 	}
-	
+
 	public Boolean vatInPercentageTextboxIsPresent() throws Exception {
 		Boolean vatInPercentageTextboxIsPresent = false;
 		try {
@@ -774,5 +857,89 @@ public class LocatorsFactory extends UserActions {
 			throw e;
 		}
 		return vatInPercentageTextboxIsPresent;
+	}
+
+	public Boolean verifyDaysRadioButtonIsSelected() throws Exception {
+		Boolean verifyRadioButton = false;
+		try {
+			Thread.sleep(3000);
+
+			if(userActions.isSelected(daysRadioButtonByElement)) {
+				System.out.println("Days Radio button is selected");
+				verifyRadioButton = true;
+			}	
+		}catch(Exception e) {
+			throw e;
+		}	
+		return verifyRadioButton;
+	}
+
+	public String verifyFollowUpPatientIsSelected() throws Exception {
+		String selectedOptionValue = "";
+		try {
+			if(userActions.isDisplayed(selectVisitTypeDropdownByElement))
+			{
+				selectedOptionValue = userActions.getFirstSelectedOptionFromDropdown(selectVisitTypeDropdownByElement, "elementName", "pageName");
+				System.out.println("selected dropdown value is  : " + selectedOptionValue);
+
+				return selectedOptionValue;
+			}
+		}catch(Exception e) {
+			throw e;
+		}
+		return selectedOptionValue;
+	}
+
+	public WebElement verifyHandoverToUserButtonIsPresent(WebDriver driver) {
+		WebElement handOverToUserButtonOfBillingSubModuleWebElement = driver.findElement(handOverToUserButtonOfBillingSubModuleByElement);
+		return handOverToUserButtonOfBillingSubModuleWebElement;
+	}
+
+	public String verifyValueIsPresentInTextbox() throws Exception {
+		String valueOfTextbox = "";
+		try {
+			valueOfTextbox = userActions.getAttribute(remarksTextFieldOfBillingSubModulesByElement,"value");
+			System.out.println("value of Texbox : " + valueOfTextbox);
+			return valueOfTextbox;
+		}catch(Exception e) {
+			throw e;
+		}
+	}
+
+	public String verifyTitleNameOfVaccinationPatientRegisterFormIsPresent() throws Exception {
+		String titleNameOfVaccinationPatientRegisterForm = "";
+		try {
+			if (userActions.isDisplayed(titleNameOfVaccinationPatientRegisterFormByElement)) {
+				titleNameOfVaccinationPatientRegisterForm = userActions.getText(titleNameOfVaccinationPatientRegisterFormByElement);
+				System.out.println("title Name Of Vaccination Patient Register Form : " + titleNameOfVaccinationPatientRegisterForm);
+				return titleNameOfVaccinationPatientRegisterForm;
+			}
+		}catch(Exception e) {
+			throw e;
+		}
+		return titleNameOfVaccinationPatientRegisterForm;
+	}
+
+	public String verifyErrorNotificationPopupMessageIsPresent() throws Exception {
+		String mainErrorNotificationPopupMessageValue = "";
+		try {
+			if(userActions.isDisplayed(errorNotificationPopupMessageElement)) {
+
+				String statusOfErrorMessage = userActions.getText(statusErrorNotificationMessageByElement);
+				System.out.println("status error notification Message :  " + statusOfErrorMessage);
+
+				String mainNotificationErrorMessage = userActions.getText(mainErrorNotificationMessageByElement);
+				System.out.println("main notification Error Message :  " + mainNotificationErrorMessage);
+
+				mainErrorNotificationPopupMessageValue = statusOfErrorMessage + " " + mainNotificationErrorMessage ;
+				System.out.println("main error notification popup message text Value : " + mainErrorNotificationPopupMessageValue );
+
+				return mainErrorNotificationPopupMessageValue;
+
+			}
+		}catch(Exception e) {
+			throw e;
+		}	
+		return mainErrorNotificationPopupMessageValue;
 	}
 }
