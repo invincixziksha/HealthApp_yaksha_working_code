@@ -134,6 +134,9 @@
 		"idLocatorsValueOfremarkTextbox": "HandoverRemarks_User",
 		"titleNameOfVaccinationPatientRegisterForm": "Vaccination Patient Register",
 		"visitTypeOptionValue": "Follow-Up Patient",
-		"errorNotificationPopupMessage":"Failed Failed!! Cannot create appointment. Check the Details Correctly."
+		"errorNotificationPopupMessage":"Failed Failed!! Cannot create appointment. Check the Details Correctly.",
+		"otAssistantName":"pooja",
+		"expectedOTAssistantName":"Dr. pooja Mishra",
+		"iframeTextValue":"Hi... Suriiyaa"
 	}
 }

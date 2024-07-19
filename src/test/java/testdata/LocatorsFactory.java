@@ -156,6 +156,13 @@ public class LocatorsFactory extends UserActions {
 	By errorNotificationPopupMessageElement = By.xpath("//div[@class='msg-text padding-8-all']");
 	By statusErrorNotificationMessageByElement = By.xpath("//p[@class='msg-status']");
 	By mainErrorNotificationMessageByElement = By.xpath("//p[@class='main-message']");
+	
+	By selectOTAssistantNameFieldByElement = By.xpath("//span[contains(text(), '---Select Ot Assistant Name---')]");
+	By searchTexboxOfSelectOTAssistantNameFieldByElement = By.xpath("//input[@placeholder='Search']");
+	By drPoojaMishraCheckBoxByElement = By.xpath("//label[contains(text(), 'Dr. pooja Mishra')]/..//input");
+	By selectOTAssistantNameDropdownByElement = By.xpath("//div[@class='cuppa-dropdown']");
+	
+	By discardButtonByElement = By.xpath("//input[@value='Discard Changes']");
 
 
 	public LocatorsFactory(WebDriver driver) {
@@ -942,4 +949,24 @@ public class LocatorsFactory extends UserActions {
 		}	
 		return mainErrorNotificationPopupMessageValue;
 	}
+	
+	public String verifySuggestionsIsSelected() throws Exception {
+		String selectedSuggestionValue = "";
+		try {
+			if(userActions.isDisplayed(selectOTAssistantNameDropdownByElement)) {
+				selectedSuggestionValue = userActions.getText(selectOTAssistantNameDropdownByElement);
+				System.out.println("selected suggestion value is : " + selectedSuggestionValue);
+				return selectedSuggestionValue;
+			}
+		}catch(Exception e) {
+			throw e;
+		}
+		return selectedSuggestionValue;
+	}
+	
+	public WebElement verifyDiscardButtonIsPresent(WebDriver driver) {
+		WebElement discardButtonWebElement = driver.findElement(discardButtonByElement);
+		return discardButtonWebElement;
+	}
+
 }

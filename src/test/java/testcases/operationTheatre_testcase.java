@@ -13,6 +13,7 @@ import coreUtilities.testutils.ApiHelper;
 import coreUtilities.utils.FileOperations;
 import pages.StartupPage;
 import pages.operationTheatre_Pages;
+import pages.socialService_Pages;
 import testBase.AppTestBase;
 import testdata.LocatorsFactory;
 
@@ -254,6 +255,73 @@ public class operationTheatre_testcase extends AppTestBase
 
 		Assert.assertEquals(operationTheatre_PagesInstance.verifyErrorNotificationPopupMessage(),expectedData.get("errorNotificationPopupMessage")) ;
 		Assert.assertEquals(locatorsFactoryInstance.verifyErrorNotificationPopupMessageIsPresent(),expectedData.get("errorNotificationPopupMessage")) ;
+	}
+
+	@Test(priority = 16, groups = {"sanity"}, description="Go to the Operation Theatre module\r\n"
+			+ "and click on\"New OT Booking\" button \r\n"
+			+ "and it will open the \"Booking OT Schedule | New Patient\" form.\r\n"
+			+ "Then Search for a OT Assistant Name as Pooja from the OT Assistant Name Field\r\n"
+			+ "and select the Dr. Pooja Mishra by handling auto suggestion\r\n"
+			+ "and validate Pooja Mishra is selected.")
+	public void handleAutoSuggesstion() throws Exception {
+		operationTheatre_PagesInstance = new operationTheatre_Pages(driver);
+		locatorsFactoryInstance = new LocatorsFactory(driver);
+		Map<String, String> expectedData = new FileOperations().readJson(expectedDataFilePath, "operationTheatreModule");
+
+		Assert.assertEquals(operationTheatre_PagesInstance.handleAutoSuggesstion(expectedData),expectedData.get("expectedOTAssistantName")) ;
+		Assert.assertEquals(locatorsFactoryInstance.verifySuggestionsIsSelected(),expectedData.get("expectedOTAssistantName")) ;
+	}
+
+	@Test(priority = 17, groups = {"sanity"}, description="On the \"Operation Theatre\" module,\r\n"
+			+ "Taking screenshot of the current page.")
+	public void takingScreenshotOfCurrentPage() throws Exception {
+		operationTheatre_PagesInstance = new operationTheatre_Pages(driver);
+		locatorsFactoryInstance = new LocatorsFactory(driver);
+		Assert.assertTrue(operationTheatre_PagesInstance.takingScreenshotOfTheCurrentPage(),"Not able to take the screenshot, please check manually");
+		Assert.assertTrue(locatorsFactoryInstance.verifyNewOTBookingButtonIsPresent(driver).isDisplayed(),"Race TextField is not present in the current page, Please check manually");
+	}
+
+	@Test(priority = 18, groups = {"sanity"}, description="On the Appointment module,\r\n"
+			+ "under the\"New visit\" tab,\r\n"
+			+ "verify tooltips which is present on keyboard icon.")
+	public void  verifyTooltipOfAnElement() throws Exception {
+		operationTheatre_PagesInstance = new operationTheatre_Pages(driver);
+		locatorsFactoryInstance = new LocatorsFactory(driver);
+
+		Map<String, String> expectedData = new FileOperations().readJson(expectedDataFilePath, "KeyBoardTooltip");
+		Assert.assertEquals(operationTheatre_PagesInstance.verifyToolTipOfAnElement(), expectedData.get("newPatientTooltipValue"),"Verification failed, please check manually");
+		Assert.assertTrue(locatorsFactoryInstance.tooltipTextIsPresent(driver).isDisplayed(), "Tooltip is not present in the current page, Please check manually");
+	}
+
+	@Test(priority = 19, groups = {"sanity"}, description="On Operation Theatre module, \r\n"
+			+ "clicking \"New OT Booking\" button will popup \"Booking OT Schedule | New Patient\" form.\r\n"
+			+ "Try to book a New OT Booking without patient Name should  popup\r\n"
+			+ "the alert message \"Patient not Selected! Please Select the patient first!\".\r\n"
+			+ "Handle the alert popup and validate the popup message.")
+	public void  handleAlertPopup() throws Exception {
+		operationTheatre_PagesInstance = new operationTheatre_Pages(driver);
+		locatorsFactoryInstance = new LocatorsFactory(driver);
+		Assert.assertTrue(operationTheatre_PagesInstance.handleAlertPopup(), "Unable to handle the alert popup, please check manually");	
+		Assert.assertTrue(locatorsFactoryInstance.addNewOTButtonIsPresent(driver).isDisplayed(), "Manage Role Tab is not present in the current page, Please check manually");
+	}
+
+	@Test(priority = 20, groups = {"sanity"}, description="On \"Procurement\" module's, \r\n"
+			+ "Upload a image in \"Add Invoice Header\" page.")
+	public void uploadImageInScannedImagesSection() throws Exception {
+		operationTheatre_PagesInstance = new operationTheatre_Pages(driver);
+		locatorsFactoryInstance = new LocatorsFactory(driver);
+		Assert.assertTrue(operationTheatre_PagesInstance.handleFileUpload(System.getProperty("user.dir") + "\\testImage\\uploadImage.png"),"Not able to upload the image, please check manually");
+		Assert.assertTrue(locatorsFactoryInstance.saveButtonIsPresent(driver).isDisplayed(),"Save button is not present in the current page, Please check manually");
+	}
+
+	@Test(priority = 21, groups = {"sanity"}, description="On \"Procurement\" module's, \r\n"
+			+ "Upload a image in \"Add Invoice Header\" page.")
+	public void handleIframe() throws Exception {
+		operationTheatre_PagesInstance = new operationTheatre_Pages(driver);
+		locatorsFactoryInstance = new LocatorsFactory(driver);
+		Map<String, String> expectedData = new FileOperations().readJson(expectedDataFilePath, "operationTheatreModule");
+		Assert.assertTrue(operationTheatre_PagesInstance.handleIframe(expectedData), "Unable to handle the iframe, please check manually");	
+		Assert.assertTrue(locatorsFactoryInstance.verifyDiscardButtonIsPresent(driver).isDisplayed(),"discard button is not present in the current page, Please check manually");
 	}
 
 	@AfterClass(alwaysRun = true)

@@ -73,20 +73,52 @@ public class operationTheatre_Pages extends StartupPage {
 	By bookingAppointmentSubModuleByElement = By.xpath("//a[@href='#/Appointment/CreateAppointment']//span[contains(text(), 'Book Appointment')]");
 
 	By newPatientButtonByElement = By.xpath("//a[contains(text(), 'New Patient')]");
-	
+
 	By monthRadioButtonByElement = By.xpath("//input[@value='M']");
 	By daysRadioButtonByElement = By.xpath("//input[@value='D']");
-	
+
 	By selectVisitTypeDropdownByElement = By.xpath("//select[@name='VistType']");
-	
+
 	By addAppointmentButtonByElement = By.xpath("//input[@value='Add Appointment']");
-	
+
 	By errorNotificationPopupMessageElement = By.xpath("//div[@class='msg-text padding-8-all']");
 	By statusErrorNotificationMessageByElement = By.xpath("//p[@class='msg-status']");
 	By mainErrorNotificationMessageByElement = By.xpath("//p[@class='main-message']");
 	By closeLinkOfVaccinationPatientRegisterForm = By.xpath("//a[.='X']");
+	By newOTBookingButtonByElement = By.xpath("//button[contains(text(), 'New OT Booking')]");
+
+	By selectOTAssistantNameFieldByElement = By.xpath("//span[contains(text(), '---Select Ot Assistant Name---')]");
+	By searchTexboxOfSelectOTAssistantNameFieldByElement = By.xpath("//input[@placeholder='Search']");
+	By drPoojaMishraCheckBoxByElement = By.xpath("//label[contains(text(), 'Dr. pooja Mishra')]/..//input");
+	By selectOTAssistantNameDropdownByElement = By.xpath("//div[@class='cuppa-dropdown']");
+
+	By closeLinkByElement = By.xpath("//a[.='X']");
+
+	//tootipsElements
+	By xButton = By.xpath("//a[.='X']");
+	By appointmentModule = By.xpath("(//span[.='Appointment'])[1]");
+	By newOneSelectCounterElement = By.xpath("//div[@class='counter-item']//h5[contains(text(), 'New-1 ')]");
+	By keyboardButtonElement = By.xpath("//div[@title='Shortcut Keys']");
+	By altPlusNtooltipMessageElement = By.xpath("//li[contains(text(),'+')]");
+
+	By addNewOtButtonElement = By.xpath("//input[@value='Add New OT']");
+
+	//file upload elements
+	By procurementModule = By.xpath("//span[.='Procurement']");
+	By settingsTab = By.xpath("//a[.=' Settings ']");
+	By invoiceHeadersSubTab = By.xpath("//a[.='Invoice Headers']");
+	By addNewInvoiceHeaderButton = By.xpath("//input[@value='Add New Invoice Header']");
+	By chooseFileButton = By.id("img");
 	
 	
+	//i frame elements
+	By procurementModuleByElement = By.xpath("//span[@data-target='#Procurement']");
+	By purchaseOrderSubmoduleByElement = By.xpath("//a[@href='#/ProcurementMain/PurchaseOrder/PurchaseOrderList']//span[contains(text(), 'Purchase Order')]");
+	By createPurchaseOrderButtonByElement = By.xpath("//input[@value='Create Purchase Order']");
+	
+	By addPurchaseOrderTitleByElement = By.xpath("//span[contains(text(), 'Add Purchase Order')]");
+	By iFrameTextEditorByElement = By.xpath("//body[@contenteditable='true']");
+
 
 
 
@@ -504,7 +536,7 @@ public class operationTheatre_Pages extends StartupPage {
 		}
 		return titleNameOfVaccinationPatientRegisterForm;
 	}
-	
+
 	/**@Test14.1
 	 * about this method verifyRadioButton() 
 	 * @param : null
@@ -517,9 +549,9 @@ public class operationTheatre_Pages extends StartupPage {
 		try {
 			commonEvents.click(closeLinkOfVaccinationPatientRegisterForm);
 			Thread.sleep(3000);
-			
+
 			commonEvents.jsScrollPageTillElementVisible(appointmentModuleByElement, "appointmentModule", "appointmentModule");
-			
+
 			if(commonEvents.isDisplayed(appointmentModuleByElement)) {
 				commonEvents.jsClick(appointmentModulesToggleIconByElement);
 				Thread.sleep(3000);
@@ -527,7 +559,7 @@ public class operationTheatre_Pages extends StartupPage {
 				Thread.sleep(3000);
 				commonEvents.click(newPatientButtonByElement);
 				Thread.sleep(3000);
-				
+
 				commonEvents.jsClick(monthRadioButtonByElement);
 
 				if(commonEvents.isSelected(monthRadioButtonByElement)) {
@@ -547,7 +579,7 @@ public class operationTheatre_Pages extends StartupPage {
 		}	
 		return verifyRadioButton;
 	}
-	
+
 	/**@Test14.2
 	 * about this method verifyOptionIsSelectedFromDropdown() 
 	 * @param : get the data from json file as type Map<String, String> expectedData
@@ -568,7 +600,7 @@ public class operationTheatre_Pages extends StartupPage {
 			throw e;
 		}	
 	}
-	
+
 	/**@Test15
 	 * about this method verifyErrorNotificationPopupMessage() 
 	 * @param : null
@@ -584,9 +616,9 @@ public class operationTheatre_Pages extends StartupPage {
 
 				WebElement addAppointmentButtonWebElement = commonEvents.findElement(addAppointmentButtonByElement);
 				commonEvents.highlightElementAfterAction(addAppointmentButtonWebElement);
-				
+
 				Thread.sleep(2000);
-				
+
 				commonEvents.click(addAppointmentButtonByElement);
 
 				commonEvents.isDisplayed(errorNotificationPopupMessageElement);
@@ -602,7 +634,7 @@ public class operationTheatre_Pages extends StartupPage {
 
 				mainErrorNotificationPopupMessageValue = statusOfErrorMessage + " " + mainNotificationErrorMessage ;
 				System.out.println("main error notification popup message text Value : " + mainErrorNotificationPopupMessageValue );
-				
+
 				return mainErrorNotificationPopupMessageValue;
 
 			}
@@ -610,5 +642,184 @@ public class operationTheatre_Pages extends StartupPage {
 			throw e;
 		}	
 		return mainErrorNotificationPopupMessageValue;
+	}
+
+	/**@Test16
+	 * about this method handleAutoSuggesstion() 
+	 * @param : Map<String, String>
+	 * @description : Search for a Select Item as Accounts and select Accounts  and validate Accounts is selected.
+	 * @return : Boolean
+	 * @author : YAKSHA
+	 */
+	public String handleAutoSuggesstion(Map<String, String> expectedData) throws Exception {
+		String selectedSuggestionValue = "";
+		try {
+			commonEvents.click(operationTheatreModule);
+			Thread.sleep(2000);
+			commonEvents.click(newOTBookingButtonByElement);
+			Thread.sleep(3000);
+			commonEvents.click(selectOTAssistantNameFieldByElement);
+			Thread.sleep(3000);
+			commonEvents.click(searchTexboxOfSelectOTAssistantNameFieldByElement);
+			Thread.sleep(3000);
+			commonEvents.sendKeys(searchTexboxOfSelectOTAssistantNameFieldByElement, expectedData.get("otAssistantName"));		
+			Thread.sleep(3000);
+			commonEvents.jsClick(drPoojaMishraCheckBoxByElement);
+			Thread.sleep(3000);
+			commonEvents.click(selectOTAssistantNameDropdownByElement);
+			Thread.sleep(3000);
+
+			if(commonEvents.isDisplayed(selectOTAssistantNameDropdownByElement)) {
+				selectedSuggestionValue = commonEvents.getText(selectOTAssistantNameDropdownByElement);
+				System.out.println("selected suggestion value is : " + selectedSuggestionValue);
+				return selectedSuggestionValue;
+			}
+		}catch(Exception e) {
+			throw e;
+		}
+		return selectedSuggestionValue;
+	}
+
+	/**@Test17
+	 * about this method takingScreenshotOfTheCurrentPage() 
+	 * @param : null
+	 * @description : Taking screenshot of the current page.
+	 * @return : Boolean
+	 * @author : YAKSHA
+	 */
+	public Boolean takingScreenshotOfTheCurrentPage() throws Exception {
+		boolean isDisplayed = false;
+		commonEvents.click(closeLinkByElement);
+		try {
+			commonEvents.takeScreenshot("Operation Theatre Module");
+			isDisplayed = true;
+
+		}catch(Exception e) {
+			throw e;
+		}
+		return isDisplayed;
+	}
+
+	/**@Test18
+	 * about this method verifyToolTipOfAnElement()
+	 * @param : null
+	 * @description :go to appointmentTab and verify the TOOLTIP value/text
+	 * @return : String
+	 * @author : YAKSHA
+	 */
+	public String verifyToolTipOfAnElement() throws Exception {
+		String tooltipText = "";
+		try {
+			commonEvents.click(appointmentModule);
+			Thread.sleep(3000);
+			commonEvents.click(newOneSelectCounterElement);
+			Thread.sleep(3000);
+			commonEvents.waitTillElementVisible(keyboardButtonElement,50);
+			commonEvents.mouseHoverClick(keyboardButtonElement);
+			commonEvents.waitTillElementVisible(altPlusNtooltipMessageElement,50);
+			tooltipText = commonEvents.getText(altPlusNtooltipMessageElement);
+			System.out.println("New Patient Tooltip text value is:" + tooltipText );
+		}catch(Exception e) {
+			throw e;
+		}
+		return tooltipText;
+	}
+
+	/**@Test19
+	 * about this method handleAlertPopup()
+	 * @param : null
+	 * @description : 
+	 * @return : boolean
+	 * @author : YAKSHA
+	 */
+	public boolean handleAlertPopup() throws Exception {
+
+		boolean isPopupHandled = false;
+
+		try {
+			Thread.sleep(2000);
+			commonEvents.click(operationTheatreModule);
+			Thread.sleep(2000);
+			commonEvents.click(newOTBookingButtonByElement);
+			Thread.sleep(2000);
+			if(commonEvents.isDisplayed(addNewOtButtonElement)){
+				Thread.sleep(2000);
+				commonEvents.click(addNewOtButtonElement);
+				Thread.sleep(2000);
+				// commonEvents.validateAlertMessage();
+				commonEvents.acceptAlert();
+				isPopupHandled = true;
+			}
+		}catch(Exception e) {
+			throw e;
+		}
+		return isPopupHandled;
+	}
+
+	/**@Test20
+	 * about this method handleFileUpload() 
+	 * @param : Map<String, String>
+	 * @description : Upload a image in Scanned Images section.
+	 * @return : Boolean
+	 * @author : YAKSHA
+	 */
+	public Boolean handleFileUpload(String pathOfTheFile) throws Exception {
+		boolean isUploaded = false;
+		try {
+			commonEvents.click(closeLinkByElement);
+			commonEvents.click(procurementModule);
+			Thread.sleep(3000);
+			commonEvents.click(settingsTab);
+			Thread.sleep(3000);
+			commonEvents.click(invoiceHeadersSubTab);
+			Thread.sleep(3000);
+			commonEvents.click(addNewInvoiceHeaderButton);
+			Thread.sleep(3000);
+			commonEvents.jsClick(chooseFileButton);
+			Thread.sleep(3000);
+			System.out.println("path of the file" + pathOfTheFile );
+			Thread.sleep(5000);
+			commonEvents.fileUpload(pathOfTheFile);
+			Thread.sleep(3000);
+			isUploaded = true;
+		}catch(Exception e) {
+			throw e;
+		}
+		return isUploaded;
+	}
+
+	/**@Test21
+	 * about this method handleIframe()
+	 * @param : null
+	 * @description : 
+	 * @return : boolean
+	 * @author : YAKSHA
+	 */
+	public boolean handleIframe(Map<String, String> expectedData) throws Exception {
+
+		boolean iSHandleIframe = false;
+
+		try {
+			commonEvents.click(closeLinkByElement);
+			Thread.sleep(3000);
+			commonEvents.jsClick(procurementModuleByElement);
+			commonEvents.jsClick(purchaseOrderSubmoduleByElement);		
+			commonEvents.jsClick(createPurchaseOrderButtonByElement);	
+		    WebElement addPurchaseOrderTitleWebElement = commonEvents.findElement(addPurchaseOrderTitleByElement);
+		    commonEvents.highlight(addPurchaseOrderTitleWebElement);	    
+		    String addPurchaseOrderTitleTextValue = commonEvents.getText(addPurchaseOrderTitleByElement);
+			System.out.println("title name of the : " + addPurchaseOrderTitleTextValue);			
+			commonEvents.jsScrollToBottomOfThePage();
+			Thread.sleep(3000);
+            driver.switchTo().frame(0);
+            commonEvents.sendKeys(iFrameTextEditorByElement, expectedData.get("iframeTextValue"));
+            Thread.sleep(3000);
+            driver.switchTo().defaultContent();
+
+			iSHandleIframe = true;
+		}catch(Exception e) {
+			throw e;
+		}
+		return iSHandleIframe;
 	}
 }
