@@ -4651,7 +4651,17 @@ public class CommonEvents
 
 		return new CommonEvents(driver);
 	}
-
-
-
+	
+	public CommonEvents switchToFrameByIndex(int index, String pageName) throws Exception
+	{
+		if(pageName==null)
+			throw new Exception("Page name should not be null");
+		List<WebElement> totalNumberOfFrames = getWebElements(By.tagName("iframe"));
+		if(index<=totalNumberOfFrames.size() && index>=0)
+			driver.switchTo()
+			.frame(index);
+		else
+			throw new IllegalArgumentException("Index value should in between 0 to "+totalNumberOfFrames.size());
+		return new CommonEvents(driver);
+	}
 }

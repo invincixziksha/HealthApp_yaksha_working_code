@@ -109,13 +109,13 @@ public class operationTheatre_Pages extends StartupPage {
 	By invoiceHeadersSubTab = By.xpath("//a[.='Invoice Headers']");
 	By addNewInvoiceHeaderButton = By.xpath("//input[@value='Add New Invoice Header']");
 	By chooseFileButton = By.id("img");
-	
-	
+
+
 	//i frame elements
 	By procurementModuleByElement = By.xpath("//span[@data-target='#Procurement']");
-	By purchaseOrderSubmoduleByElement = By.xpath("//a[@href='#/ProcurementMain/PurchaseOrder/PurchaseOrderList']//span[contains(text(), 'Purchase Order')]");
+	By purchaseOrderSubmoduleByElement = By.xpath("//span[contains(text(), 'Purchase Order')]");
 	By createPurchaseOrderButtonByElement = By.xpath("//input[@value='Create Purchase Order']");
-	
+
 	By addPurchaseOrderTitleByElement = By.xpath("//span[contains(text(), 'Add Purchase Order')]");
 	By iFrameTextEditorByElement = By.xpath("//body[@contenteditable='true']");
 
@@ -711,9 +711,8 @@ public class operationTheatre_Pages extends StartupPage {
 		String tooltipText = "";
 		try {
 			commonEvents.click(appointmentModule);
-			Thread.sleep(3000);
-			commonEvents.click(newOneSelectCounterElement);
-			Thread.sleep(3000);
+			Thread.sleep(2000);
+			//			commonEvents.click(newOneCounterLinkByElement);
 			commonEvents.waitTillElementVisible(keyboardButtonElement,50);
 			commonEvents.mouseHoverClick(keyboardButtonElement);
 			commonEvents.waitTillElementVisible(altPlusNtooltipMessageElement,50);
@@ -795,31 +794,30 @@ public class operationTheatre_Pages extends StartupPage {
 	 * @return : boolean
 	 * @author : YAKSHA
 	 */
-	public boolean handleIframe(Map<String, String> expectedData) throws Exception {
-
-		boolean iSHandleIframe = false;
-
+	public String handleIframe(Map<String, String> expectedData) throws Exception {
+		String textValueOfFrameEditor = "";	
 		try {
 			commonEvents.click(closeLinkByElement);
 			Thread.sleep(3000);
 			commonEvents.jsClick(procurementModuleByElement);
-			commonEvents.jsClick(purchaseOrderSubmoduleByElement);		
-			commonEvents.jsClick(createPurchaseOrderButtonByElement);	
-		    WebElement addPurchaseOrderTitleWebElement = commonEvents.findElement(addPurchaseOrderTitleByElement);
-		    commonEvents.highlight(addPurchaseOrderTitleWebElement);	    
-		    String addPurchaseOrderTitleTextValue = commonEvents.getText(addPurchaseOrderTitleByElement);
-			System.out.println("title name of the : " + addPurchaseOrderTitleTextValue);			
-			commonEvents.jsScrollToBottomOfThePage();
 			Thread.sleep(3000);
-            driver.switchTo().frame(0);
-            commonEvents.sendKeys(iFrameTextEditorByElement, expectedData.get("iframeTextValue"));
-            Thread.sleep(3000);
-            driver.switchTo().defaultContent();
-
-			iSHandleIframe = true;
+			commonEvents.jsClick(purchaseOrderSubmoduleByElement);	
+			Thread.sleep(3000);
+			commonEvents.jsClick(createPurchaseOrderButtonByElement);			
+			WebElement addPurchaseOrderTitleWebElement = commonEvents.findElement(addPurchaseOrderTitleByElement);
+			commonEvents.highlight(addPurchaseOrderTitleWebElement);		    
+			String addPurchaseOrderTitleTextValue = commonEvents.getText(addPurchaseOrderTitleByElement);
+			System.out.println("title name of the : " + addPurchaseOrderTitleTextValue);				
+			commonEvents.jsScrollToBottomOfThePage();	
+			Thread.sleep(2000);			
+			commonEvents.switchToFrameByIndex(0, "add Purchase Order Page");            
+			commonEvents.sendKeys(iFrameTextEditorByElement, expectedData.get("iframeTextValue"));           
+			textValueOfFrameEditor = commonEvents.getText(iFrameTextEditorByElement);
+			System.out.println("text value of frame editor : " + textValueOfFrameEditor);           
+			commonEvents.switchToDefaultContent();
 		}catch(Exception e) {
 			throw e;
 		}
-		return iSHandleIframe;
-	}
+		return textValueOfFrameEditor;
+	}	
 }

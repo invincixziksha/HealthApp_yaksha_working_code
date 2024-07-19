@@ -13,7 +13,6 @@ import coreUtilities.testutils.ApiHelper;
 import coreUtilities.utils.FileOperations;
 import pages.StartupPage;
 import pages.operationTheatre_Pages;
-import pages.socialService_Pages;
 import testBase.AppTestBase;
 import testdata.LocatorsFactory;
 
@@ -320,7 +319,7 @@ public class operationTheatre_testcase extends AppTestBase
 		operationTheatre_PagesInstance = new operationTheatre_Pages(driver);
 		locatorsFactoryInstance = new LocatorsFactory(driver);
 		Map<String, String> expectedData = new FileOperations().readJson(expectedDataFilePath, "operationTheatreModule");
-		Assert.assertTrue(operationTheatre_PagesInstance.handleIframe(expectedData), "Unable to handle the iframe, please check manually");	
+		Assert.assertEquals(operationTheatre_PagesInstance.handleIframe(expectedData), expectedData.get("iframeTextValue"),"Verification failed, please check manually");
 		Assert.assertTrue(locatorsFactoryInstance.verifyDiscardButtonIsPresent(driver).isDisplayed(),"discard button is not present in the current page, Please check manually");
 	}
 
