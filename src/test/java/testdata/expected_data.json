@@ -26,7 +26,9 @@
 	"healthAppErrorMessages":{
 		"FirstNameFieldErrorMessage":"First Name is required.",
 		"LastNameFieldErrorMessage":"Last Name is required",
-		"ConfirmationMessage":"Are you sure you want to Proceed ?"
+		"ConfirmationMessage":"Are you sure you want to Proceed ?",
+		"searchProblemFieldErrorMessage":"Select ICD-11 Code",
+		"PopupErrorMessage":"Enter Manditory fields"
 	},
 	"commonStringvalue":{
 		"createRequisitionsButtonValue":"Create Requisition ",
@@ -107,10 +109,12 @@
 	"PageTitle":{
 		"AddNewPatientPageTitle":"Add New Patient",
 		"AddRequisitionPageName":"Add Requisition",
-		"pageNameAfterClickingOnView":"REQUISITION DETAILS PRINT"
+		"pageNameAfterClickingOnView":"REQUISITION DETAILS PRINT",
+		"freeTextTemplatePageTitle":"Free Text Template"
 	},
 	"percentageValue":{
-		"vatInPercentageValue":"10"
+		"vatInPercentageValue":"10",
+		"TreatmentDuringHospitalStayPlaceHolderValue":"Treatment during hospital stay"
 	},
 	"socialServiceModuleStringValue":{
 		"newSSUPatientRegistration":"New SSU Patient Registration",
@@ -138,5 +142,13 @@
 		"otAssistantName":"pooja",
 		"expectedOTAssistantName":"Dr. pooja Mishra",
 		"iframeTextValue":"Hi... Suriiyaa, I'm Here.."
+	},
+	"DoctorName":{
+		"doctorNameWhereHospitalNumberIs2312000010":"Dr. Amit Shah"
+	},
+	"TextFieldDatas":{
+		"conditionOnDischargeFieldData":"Test@123",
+		"pendingReportsTextFieldData":"Test@1234"
 	}
+
 }

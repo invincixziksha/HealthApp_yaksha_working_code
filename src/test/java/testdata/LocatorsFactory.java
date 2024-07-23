@@ -129,6 +129,20 @@ public class LocatorsFactory extends UserActions {
 	By accountOption = By.xpath("//span[.='Accounts']");
 	By printButton = By.xpath("//button[.='Print']");
 
+	
+	By outPatientTab = By.xpath("//span[.='Out Patient']");	
+	By showDoctorWisePatientListCheckBox = By.id("showDoctorWisePatients");	
+	By neurosurgeryOption = By.xpath("//select//option[.='NEUROSURGERY']");	
+	By patientNameField = By.xpath("(//p[@class='col-md-4'])[1]");	
+	By doctorNameWhereHospitalNumberIs2312000010 = By.xpath("//div[.='Dr. Amit Shah']");
+	By searchProblemFieldErrorMessage = By.xpath("//span[.=' Select ICD-11 Code ']");
+	By saveButtonInsideIpdPage = By.xpath("(//input[@value='Save'])[2]");
+	By hospitalCourseTextArea = By.xpath("//textarea[@placeholder='Hospital Course']");
+	By treatmentDuringHospitalStayTextArea = By.xpath("//textarea[@placeholder='Treatment during hospital stay']");
+	By conditionOnDischargeTextArea = By.xpath("//textarea[@placeholder='Condition']");
+	By noRadioButton = By.id("IsReportWithResultNo");
+	By pendingReportsTextArea = By.xpath("//textarea[@placeholder='Pending Reports']");
+	By popupErrorMessage = By.xpath("//p[.='Enter Manditory fields']");
 
 
 	//OperationTheatre Module(L1)
@@ -967,6 +981,107 @@ public class LocatorsFactory extends UserActions {
 	public WebElement verifyDiscardButtonIsPresent(WebDriver driver) {
 		WebElement discardButtonWebElement = driver.findElement(discardButtonByElement);
 		return discardButtonWebElement;
+	}
+	
+	
+	
+	
+	public WebElement outPatientTabIsPresent(WebDriver driver) {
+		WebElement outPatientTabWebElement = userActions.findElement(outPatientTab);
+		return outPatientTabWebElement; 
+	}
+	
+	public WebElement showDoctorWisePatientListCheckBoxIsPresent(WebDriver driver) {
+		WebElement showDoctorWisePatientListCheckBoxWebElement = userActions.findElement(showDoctorWisePatientListCheckBox);
+		return showDoctorWisePatientListCheckBoxWebElement; 
+	}
+	
+	public WebElement neurosurgeryOptionIsPresent(WebDriver driver) {
+		WebElement neurosurgeryOptionWebElement = userActions.findElement(neurosurgeryOption);
+		return neurosurgeryOptionWebElement; 
+	}
+	
+	public WebElement patientNameFieldIsPresent(WebDriver driver) {
+		WebElement patientNameFieldWebElement = userActions.findElement(patientNameField);
+		return patientNameFieldWebElement; 
+	}
+	
+	public WebElement doctorNameIsPresent(WebDriver driver) {
+		WebElement doctorNameIsPresentWebElement = userActions.findElement(doctorNameWhereHospitalNumberIs2312000010);
+		return doctorNameIsPresentWebElement; 
+	}
+	
+	
+	public WebElement searchProblemFieldErrorMessageIsPresent(WebDriver driver) {
+		WebElement searchProblemFieldErrorMessageWebElement = userActions.findElement(searchProblemFieldErrorMessage);
+		return searchProblemFieldErrorMessageWebElement; 
+	}
+	
+
+	public WebElement saveButtonInsideIpdPageIsPresent(WebDriver driver) {
+		WebElement saveButtonInsideIpdPageWebElement = userActions.findElement(saveButtonInsideIpdPage);
+		return saveButtonInsideIpdPageWebElement; 
+	}
+	
+	public WebElement hospitalCourseTextAreaIsPresent(WebDriver driver) {
+		WebElement hospitalCourseTextAreaWebElement = userActions.findElement(hospitalCourseTextArea);
+		return hospitalCourseTextAreaWebElement; 
+	}
+
+	public String treatmentDuringHospitalStayTextAreaPlaceHolderIsPresent() throws Exception {
+		String treatmentDuringHospitalStayTextAreaPlaceHolder = "";
+		try {
+			if(userActions.isDisplayed(treatmentDuringHospitalStayTextArea))
+			{
+				Thread.sleep(3000);
+				treatmentDuringHospitalStayTextAreaPlaceHolder = userActions.getAttribute(treatmentDuringHospitalStayTextArea, "placeholder");
+				System.out.println("Race TextField place holder Value  : " + treatmentDuringHospitalStayTextAreaPlaceHolder);
+			}
+		}catch(Exception e) {
+			throw e;
+		}
+		return treatmentDuringHospitalStayTextAreaPlaceHolder;
+	}	
+	
+
+	public String conditionOnDischargeTextAreaValueIsPresent() throws Exception {
+		String conditionOnDischargeTextAreaValue = "";
+		try {
+			if(userActions.isDisplayed(conditionOnDischargeTextArea))
+			{
+				Thread.sleep(3000);
+				conditionOnDischargeTextAreaValue = userActions.getAttribute(conditionOnDischargeTextArea, "value");
+				System.out.println("Condition On Discharge TextArea Value is : " + conditionOnDischargeTextAreaValue);
+			}
+		}catch(Exception e) {
+			throw e;
+		}
+		return conditionOnDischargeTextAreaValue;
+	}
+	
+	public WebElement noRadioButtonIsPresent(WebDriver driver) {
+		WebElement noRadioButtonWebElement = userActions.findElement(noRadioButton);
+		return noRadioButtonWebElement; 
+	}
+
+	public String pendingReportsTextAreaValueIsPresent() throws Exception {
+		String pendingReportsTextAreaValue = "";
+		try {
+			if(userActions.isDisplayed(pendingReportsTextArea))
+			{
+				Thread.sleep(3000);
+				pendingReportsTextAreaValue = userActions.getAttribute(pendingReportsTextArea, "value");
+				System.out.println("Condition On Discharge TextArea Value is : " + pendingReportsTextAreaValue);
+			}
+		}catch(Exception e) {
+			throw e;
+		}
+		return pendingReportsTextAreaValue;
+	}
+	
+	public WebElement popupErrorMessageIsPresent(WebDriver driver) {
+		WebElement popupErrorMessageWebElement = userActions.findElement(popupErrorMessage);
+		return popupErrorMessageWebElement; 
 	}
 
 }

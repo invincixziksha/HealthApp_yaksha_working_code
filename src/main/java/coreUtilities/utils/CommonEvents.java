@@ -4664,4 +4664,24 @@ public class CommonEvents
 			throw new IllegalArgumentException("Index value should in between 0 to "+totalNumberOfFrames.size());
 		return new CommonEvents(driver);
 	}
+	
+	public CommonEvents highlightElementInYellow(WebElement element)
+	{
+		JavascriptExecutor jse = (JavascriptExecutor) driver;
+
+		// Add the highlight
+		jse.executeScript("arguments[0].setAttribute('style', 'border: solid 5px yellow');", element);
+
+		try {
+			// Wait for a specified time (e.g., 500 milliseconds)
+			Thread.sleep(500);
+		} catch (InterruptedException e) {
+			e.printStackTrace();
+		}
+
+		// Remove the highlight
+		jse.executeScript("arguments[0].setAttribute('style', '');", element);
+
+		return new CommonEvents(driver);
+	}
 }
