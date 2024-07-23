@@ -179,6 +179,7 @@ public class doctor_Pages extends StartupPage {
 		String selectedOption = "" ;
 
 		try {
+			commonEvents.click(inPatientDepartmentSubModule);
 			commonEvents.selectByVisibleText(departmentFilterDropdown, expectedData.get("departmentName"));
 			selectedOption = commonEvents.getFirstSelectedOptionFromDropdown(departmentFilterDropdown, "elementName", "pageName");
 			System.out.println("first selected option from dropdown : " + selectedOption );
@@ -415,7 +416,6 @@ public class doctor_Pages extends StartupPage {
 		return radioButtonIsDisplayed;
 	}
 	
-	
 	/**@Test14
 	 * about this method clickAndSendValueToThePendingReportsTextAreaUsingJavaScript() 
 	 * @param : Map<String, String>
@@ -437,8 +437,6 @@ public class doctor_Pages extends StartupPage {
 		}	
 		return pendingReportsTextAreaIsDisplayed;
 	}
-	
-	
 	
 	/**@Test15
 	 * about this method verifyTheNotificationPopupErrorMessageAfterClickOnSaveButton() 
