@@ -52,8 +52,8 @@ public class dispensary_testcase extends AppTestBase
 
 		Map<String, String> expectedData = new FileOperations().readJson(expectedDataFilePath, "healthApp");
 		Assert.assertEquals(dispensary_PagesInstance.verifyTitleOfThePage(),expectedData.get("dasboardTitle")) ;
-		Assert.assertEquals(dispensary_PagesInstance.verifyURLOfThePage(),expectedData.get("pageUrl")) ;
-		Assert.assertTrue(locatorsFactoryInstance.totalDoctorTextIsPresent(driver).isDisplayed(), "total doctors text is not present in the current page, Please check manually");
+		Assert.assertEquals(dispensary_PagesInstance.verifyURLOfThePage(),expectedData.get("homePageUrl")) ;
+		Assert.assertTrue(locatorsFactoryInstance.verifyDispensaryModuleIsPresent(driver).isDisplayed(), "Dispensary Module is not present in the current page, Please check manually");
 	}
 	
 	@Test(priority = 2, groups = {"sanity"}, description="verify the Dispensary module is present or not?")
@@ -61,7 +61,7 @@ public class dispensary_testcase extends AppTestBase
 		dispensary_PagesInstance = new dispensary_Pages(driver);
 		locatorsFactoryInstance = new LocatorsFactory(driver);
 		Assert.assertTrue(dispensary_PagesInstance.verifyDispensaryModuleIsPresentOrNot(), "Dispensary Module is not present, please check manually");
-		Assert.assertTrue(locatorsFactoryInstance.registeredPatientTextElementIsPresent(driver).isDisplayed(), "Registered Patient Text Element is not present in the current page, Please check manually");
+		Assert.assertTrue(locatorsFactoryInstance.verifyDispensaryModuleIsPresent(driver).isDisplayed(), "Dispensary Module is not present in the current page, Please check manually");
 	}
 	
 	@Test(priority = 3, groups = {"sanity"}, description="verify all sub-modules are displayed correctly after clicking on the expand icon of Dispensary Module")

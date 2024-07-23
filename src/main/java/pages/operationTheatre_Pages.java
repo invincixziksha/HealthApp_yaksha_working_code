@@ -149,10 +149,10 @@ public class operationTheatre_Pages extends StartupPage {
 			commonEvents.highlightElement(signinButtonWebElement);
 			commonEvents.click(signInButton);
 
-			if(commonEvents.isDisplayed(registeredPatientTextElement))
+			if(commonEvents.isDisplayed(operationTheatreModule))
 			{   
-				WebElement registeredPatientTextWebElement = commonEvents.findElement(registeredPatientTextElement);
-				commonEvents.highlightElement(registeredPatientTextWebElement);
+				WebElement operationTheatreModuleWebElement = commonEvents.findElement(operationTheatreModule);
+				commonEvents.highlightElement(operationTheatreModuleWebElement);
 				textIsDisplayed=true;
 			}
 		}catch(Exception e) {

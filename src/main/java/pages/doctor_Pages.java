@@ -53,7 +53,7 @@ public class doctor_Pages extends StartupPage {
 	 * @param : Map<String, String>
 	 * @description : fill usernameTextbox & passwordTextbox and click on sign in button
 	 * @return : Boolean
-	 * @author : Yaksha
+	 * @author : YAKSHA
 	 */
 	public boolean loginToHealthAppByGivenValidCredetial(Map<String, String> expectedData) throws Exception {
 		Boolean textIsDisplayed = false;

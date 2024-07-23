@@ -144,10 +144,10 @@ public class socialService_Pages extends StartupPage {
 			commonEvents.highlightElement(signinButtonWebElement);
 			commonEvents.click(signInButton);
 
-			if(commonEvents.isDisplayed(registeredPatientTextElement))
+			if(commonEvents.isDisplayed(socialServiceModule))
 			{   
-				WebElement registeredPatientTextWebElement = commonEvents.findElement(registeredPatientTextElement);
-				commonEvents.highlightElement(registeredPatientTextWebElement);
+				WebElement socialServiceModuleTextWebElement = commonEvents.findElement(socialServiceModule);
+				commonEvents.highlightElement(socialServiceModuleTextWebElement);
 				textIsDisplayed=true;
 			}
 		}catch(Exception e) {

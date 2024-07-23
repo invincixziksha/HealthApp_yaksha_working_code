@@ -157,10 +157,10 @@ public class dispensary_Pages extends StartupPage {
 			commonEvents.highlightElement(signinButtonWebElement);
 			commonEvents.click(signInButton);
 
-			if(commonEvents.isDisplayed(registeredPatientTextElement))
+			if(commonEvents.isDisplayed(dispensaryModule))
 			{   
-				WebElement registeredPatientTextWebElement = commonEvents.findElement(registeredPatientTextElement);
-				commonEvents.highlightElement(registeredPatientTextWebElement);
+				WebElement dispensaryModuleWebElement = commonEvents.findElement(dispensaryModule);
+				commonEvents.highlightElement(dispensaryModuleWebElement);
 				textIsDisplayed=true;
 			}
 		}catch(Exception e) {

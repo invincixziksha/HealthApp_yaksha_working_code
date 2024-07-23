@@ -51,10 +51,10 @@ public class socialService_testcase extends AppTestBase
 		Map<String, String> expectedData = new FileOperations().readJson(expectedDataFilePath, "healthApp");
 		Assert.assertEquals(socialService_PagesInstance.verifyTitleOfThePage(),expectedData.get("dasboardTitle")) ;
 		Assert.assertEquals(socialService_PagesInstance.verifyURLOfThePage(),expectedData.get("pageUrl")) ;
-		Assert.assertTrue(locatorsFactoryInstance.totalDoctorTextIsPresent(driver).isDisplayed(), "total doctors text is not present in the current page, Please check manually");
+		Assert.assertTrue(locatorsFactoryInstance.verifySocialServiceIsPresent(driver).isDisplayed(), "Social Service module is not present in the current page, Please check manually");
 	}
 	
-	@Test(priority = 2, groups = {"sanity"}, description="Verify that SocialService module is present or not ?                                                      \r\n"
+	@Test(priority = 2, groups = {"sanity"}, description="Verify that SocialService module is present or not ?\r\n"
 			+ "If Social Service Module is present then Then go to SocialService Page.")
 	public void verifySocialServiceModuleIsPresentAndGoToSocialServiceTab() throws Exception {
 		socialService_PagesInstance = new socialService_Pages(driver);

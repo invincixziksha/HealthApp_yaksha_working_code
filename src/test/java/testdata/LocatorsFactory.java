@@ -178,6 +178,10 @@ public class LocatorsFactory extends UserActions {
 
 	By doctorTab = By.xpath("//span[.='Doctor']");
 	By departmentFilterDropdown = By.id("departmentlist");	
+	
+	By dispensaryModule = By.xpath("//span[.='Dispensary']");
+	By socialServiceModule = By.xpath("//span[.='SocialService']");	
+	By operationTheatreModule = By.xpath("//span[.='OperationTheatre']");
 
 
 	public LocatorsFactory(WebDriver driver) {
@@ -1103,6 +1107,24 @@ public class LocatorsFactory extends UserActions {
 			throw e;
 		}
 		return selectedOption;
+	}
+	
+	public WebElement verifyDispensaryModuleIsPresent(WebDriver driver) {
+		WebElement dispensaryModuleWebElement = userActions.findElement(dispensaryModule);
+		userActions.highlightElement(dispensaryModuleWebElement);
+		return dispensaryModuleWebElement; 
+	}
+	
+	public WebElement verifySocialServiceIsPresent(WebDriver driver) {
+		WebElement socialServiceModuleWebElement = userActions.findElement(socialServiceModule);
+		userActions.highlightElement(socialServiceModuleWebElement);
+		return socialServiceModuleWebElement; 
+	}
+	
+	public WebElement verifyoperationTheatreModuleIsPresent(WebDriver driver) {
+		WebElement operationTheatreModuleWebElement = userActions.findElement(operationTheatreModule);
+		userActions.highlightElement(operationTheatreModuleWebElement);
+		return operationTheatreModuleWebElement; 
 	}
 
 
