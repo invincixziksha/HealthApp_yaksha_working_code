@@ -70,10 +70,10 @@ public class doctor_Pages extends StartupPage {
 			commonEvents.highlightElement(signinButtonWebElement);
 			commonEvents.click(signInButton);
 
-			if(commonEvents.isDisplayed(registeredPatientTextElement))
+			if(commonEvents.isDisplayed(doctorTab))
 			{   
-				WebElement registeredPatientTextWebElement = commonEvents.findElement(registeredPatientTextElement);
-				commonEvents.highlightElement(registeredPatientTextWebElement);
+				WebElement doctorTabWebElement = commonEvents.findElement(doctorTab);
+				commonEvents.highlightElement(doctorTabWebElement);
 				textIsDisplayed=true;
 			}
 		}catch(Exception e) {
@@ -167,34 +167,25 @@ public class doctor_Pages extends StartupPage {
 		return checkBoxIsDisplayed;
 	}
 	
-	
-	
 	/**@Test4
-	 * about this method validateThatNEUROSURGERYIsSelectedInDepartmentFilter() 
-	 * @param : null
-	 * @description : On the Doctor Module's "In Patient Department" Sub-Module, verify that "Department filter" dropdown is Present. 
-                      If present, then select the "NEUROSURGERY" from the "Department filter" dropdown and validate  "NEUROSURGERY" is selected or not?
-	 * @return : Boolean
-	 * @author : Yaksha
+	 * about this method selectNEUROSURGERYFromDepartmentDropdownAndVerifySelection() 
+	 * @param : get the data from JSON file as type Map<String, String> expectedData
+	 * @description : it will select the country as per JSON expected data
+	 * @return : String
+	 * @author : YAKSHA
 	 */
-	public Boolean validateThatNEUROSURGERYIsSelectedInDepartmentFilter() throws Exception {
-		boolean isselected = false;
-		try {
-			 commonEvents.click(inPatientDepartmentSubModule);
-			 if(commonEvents.isDisplayed(departmentFilterDropdown)) {
-				 commonEvents.click(departmentFilterDropdown);
-				 Thread.sleep(3000);
-				 commonEvents.click(neurosurgeryOption);
-				 Thread.sleep(3000);
-				 commonEvents.isSelected(departmentFilterDropdown);
-				 commonEvents.click(neurosurgeryOption);
+	public String selectNEUROSURGERYFromDepartmentDropdownAndVerifySelection(Map<String, String> expectedData) throws Exception {
 
-				 isselected=true;
-			 }
+		String selectedOption = "" ;
+
+		try {
+			commonEvents.selectByVisibleText(departmentFilterDropdown, expectedData.get("departmentName"));
+			selectedOption = commonEvents.getFirstSelectedOptionFromDropdown(departmentFilterDropdown, "elementName", "pageName");
+			System.out.println("first selected option from dropdown : " + selectedOption );
+			return selectedOption;
 		}catch(Exception e) {
 			throw e;
 		}	
-		return isselected;
 	}
 	
 	

@@ -1,9 +1,6 @@
 package testdata;
 
-import java.util.Map;
-
 import org.openqa.selenium.By;
-import org.openqa.selenium.Keys;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 
@@ -129,7 +126,7 @@ public class LocatorsFactory extends UserActions {
 	By accountOption = By.xpath("//span[.='Accounts']");
 	By printButton = By.xpath("//button[.='Print']");
 
-	
+
 	By outPatientTab = By.xpath("//span[.='Out Patient']");	
 	By showDoctorWisePatientListCheckBox = By.id("showDoctorWisePatients");	
 	By neurosurgeryOption = By.xpath("//select//option[.='NEUROSURGERY']");	
@@ -170,13 +167,17 @@ public class LocatorsFactory extends UserActions {
 	By errorNotificationPopupMessageElement = By.xpath("//div[@class='msg-text padding-8-all']");
 	By statusErrorNotificationMessageByElement = By.xpath("//p[@class='msg-status']");
 	By mainErrorNotificationMessageByElement = By.xpath("//p[@class='main-message']");
-	
+
 	By selectOTAssistantNameFieldByElement = By.xpath("//span[contains(text(), '---Select Ot Assistant Name---')]");
 	By searchTexboxOfSelectOTAssistantNameFieldByElement = By.xpath("//input[@placeholder='Search']");
 	By drPoojaMishraCheckBoxByElement = By.xpath("//label[contains(text(), 'Dr. pooja Mishra')]/..//input");
 	By selectOTAssistantNameDropdownByElement = By.xpath("//div[@class='cuppa-dropdown']");
-	
+
 	By discardButtonByElement = By.xpath("//input[@value='Discard Changes']");
+
+
+	By doctorTab = By.xpath("//span[.='Doctor']");
+	By departmentFilterDropdown = By.id("departmentlist");	
 
 
 	public LocatorsFactory(WebDriver driver) {
@@ -963,7 +964,7 @@ public class LocatorsFactory extends UserActions {
 		}	
 		return mainErrorNotificationPopupMessageValue;
 	}
-	
+
 	public String verifySuggestionsIsSelected() throws Exception {
 		String selectedSuggestionValue = "";
 		try {
@@ -977,52 +978,52 @@ public class LocatorsFactory extends UserActions {
 		}
 		return selectedSuggestionValue;
 	}
-	
+
 	public WebElement verifyDiscardButtonIsPresent(WebDriver driver) {
 		WebElement discardButtonWebElement = driver.findElement(discardButtonByElement);
 		return discardButtonWebElement;
 	}
-	
-	
-	
-	
+
+
+
+
 	public WebElement outPatientTabIsPresent(WebDriver driver) {
 		WebElement outPatientTabWebElement = userActions.findElement(outPatientTab);
 		return outPatientTabWebElement; 
 	}
-	
+
 	public WebElement showDoctorWisePatientListCheckBoxIsPresent(WebDriver driver) {
 		WebElement showDoctorWisePatientListCheckBoxWebElement = userActions.findElement(showDoctorWisePatientListCheckBox);
 		return showDoctorWisePatientListCheckBoxWebElement; 
 	}
-	
+
 	public WebElement neurosurgeryOptionIsPresent(WebDriver driver) {
 		WebElement neurosurgeryOptionWebElement = userActions.findElement(neurosurgeryOption);
 		return neurosurgeryOptionWebElement; 
 	}
-	
+
 	public WebElement patientNameFieldIsPresent(WebDriver driver) {
 		WebElement patientNameFieldWebElement = userActions.findElement(patientNameField);
 		return patientNameFieldWebElement; 
 	}
-	
+
 	public WebElement doctorNameIsPresent(WebDriver driver) {
 		WebElement doctorNameIsPresentWebElement = userActions.findElement(doctorNameWhereHospitalNumberIs2312000010);
 		return doctorNameIsPresentWebElement; 
 	}
-	
-	
+
+
 	public WebElement searchProblemFieldErrorMessageIsPresent(WebDriver driver) {
 		WebElement searchProblemFieldErrorMessageWebElement = userActions.findElement(searchProblemFieldErrorMessage);
 		return searchProblemFieldErrorMessageWebElement; 
 	}
-	
+
 
 	public WebElement saveButtonInsideIpdPageIsPresent(WebDriver driver) {
 		WebElement saveButtonInsideIpdPageWebElement = userActions.findElement(saveButtonInsideIpdPage);
 		return saveButtonInsideIpdPageWebElement; 
 	}
-	
+
 	public WebElement hospitalCourseTextAreaIsPresent(WebDriver driver) {
 		WebElement hospitalCourseTextAreaWebElement = userActions.findElement(hospitalCourseTextArea);
 		return hospitalCourseTextAreaWebElement; 
@@ -1042,7 +1043,7 @@ public class LocatorsFactory extends UserActions {
 		}
 		return treatmentDuringHospitalStayTextAreaPlaceHolder;
 	}	
-	
+
 
 	public String conditionOnDischargeTextAreaValueIsPresent() throws Exception {
 		String conditionOnDischargeTextAreaValue = "";
@@ -1058,7 +1059,7 @@ public class LocatorsFactory extends UserActions {
 		}
 		return conditionOnDischargeTextAreaValue;
 	}
-	
+
 	public WebElement noRadioButtonIsPresent(WebDriver driver) {
 		WebElement noRadioButtonWebElement = userActions.findElement(noRadioButton);
 		return noRadioButtonWebElement; 
@@ -1078,10 +1079,31 @@ public class LocatorsFactory extends UserActions {
 		}
 		return pendingReportsTextAreaValue;
 	}
-	
+
 	public WebElement popupErrorMessageIsPresent(WebDriver driver) {
 		WebElement popupErrorMessageWebElement = userActions.findElement(popupErrorMessage);
 		return popupErrorMessageWebElement; 
 	}
+
+	public WebElement verifyDoctorModuleIsPresent(WebDriver driver) {
+		WebElement doctorModuleWebElement = userActions.findElement(doctorTab);
+		userActions.highlightElement(doctorModuleWebElement);
+		return doctorModuleWebElement; 
+	}
+
+	public String verifyNEUROSURGERYIsSelected() throws Exception {
+		String selectedOption = "";
+		try {
+			if(userActions.isDisplayed(departmentFilterDropdown))
+			{
+				selectedOption = userActions.getFirstSelectedOptionFromDropdown(departmentFilterDropdown, "elementName", "pageName");
+				System.out.println("selected dropdown value is  : " + selectedOption);
+			}
+		}catch(Exception e) {
+			throw e;
+		}
+		return selectedOption;
+	}
+
 
 }

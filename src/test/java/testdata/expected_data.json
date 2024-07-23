@@ -149,6 +149,8 @@
 	"TextFieldDatas":{
 		"conditionOnDischargeFieldData":"Test@123",
 		"pendingReportsTextFieldData":"Test@1234"
+	},
+	"DoctotModule":{
+		"departmentName":"NEUROSURGERY"
 	}
-
 }

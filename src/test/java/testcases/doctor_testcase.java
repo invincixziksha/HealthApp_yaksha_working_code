@@ -13,6 +13,7 @@ import coreUtilities.testutils.ApiHelper;
 import coreUtilities.utils.FileOperations;
 import pages.StartupPage;
 import pages.doctor_Pages;
+import pages.socialService_Pages;
 import testBase.AppTestBase;
 import testdata.LocatorsFactory;
 
@@ -52,7 +53,7 @@ public class doctor_testcase extends AppTestBase
 		Map<String, String> expectedData = new FileOperations().readJson(expectedDataFilePath, "healthApp");
 		Assert.assertEquals(doctor_PagesInstance.verifyTitleOfThePage(),expectedData.get("dasboardTitle")) ;
 		Assert.assertEquals(doctor_PagesInstance.verifyURLOfThePage(),expectedData.get("pageUrl")) ;
-		Assert.assertTrue(locatorsFactoryInstance.totalDoctorTextIsPresent(driver).isDisplayed(), "total doctors text is not present in the current page, Please check manually");
+		Assert.assertTrue(locatorsFactoryInstance.verifyDoctorModuleIsPresent(driver).isDisplayed(), "doctors text is not present in the current page, Please check manually");
 	}
 	
 	@Test(priority = 2, groups = {"sanity"}, description="Verify that Doctor module is present or not ,If Present then expand the Doctor module and verify all presence of sub mudules under the Doctor module")
@@ -71,13 +72,18 @@ public class doctor_testcase extends AppTestBase
 		Assert.assertTrue(locatorsFactoryInstance.showDoctorWisePatientListCheckBoxIsPresent(driver).isDisplayed(), "Show Doctor Wise Patient List CheckBox is not selected in the current page, Please check manually");
 	}
 	
-
-	@Test(priority = 4, groups = {"sanity"}, description="verify that \"Department filter\" dropdown is Present.If present, then select the \"NEUROSURGERY\" from the \"Department filter\" dropdown and validate  \"NEUROSURGERY\" is selected or not")
-	public void verifyTheDropdown() throws Exception {
+	@Test(priority = 4, groups = {"sanity"}, description="On the Doctor Module's \"In Patient Department\" Sub-Module,\r\n"
+			+ "verify that \"Department filter\" dropdown is Present.\r\n"
+			+ "If present, then select the \"NEUROSURGERY\"\r\n"
+			+ "from the \"Department filter\" dropdown and \r\n"
+			+ "validate  \"NEUROSURGERY\" is selected or not?")
+	public void selectNEUROSURGERYFromDepartmentDropdownAndVerifySelection() throws Exception {
 		doctor_PagesInstance = new doctor_Pages(driver);
 		locatorsFactoryInstance = new LocatorsFactory(driver);
-		Assert.assertTrue(doctor_PagesInstance.validateThatNEUROSURGERYIsSelectedInDepartmentFilter(), "Neuro surgery Option is not present in the InDepartmentFilter dropdown, Please check manually");
-		Assert.assertTrue(locatorsFactoryInstance.neurosurgeryOptionIsPresent(driver).isSelected(), "Neuro surgery Option is not selected in the InDepartmentFilter dropdown, Please check manually");
+
+		Map<String, String> expectedData = new FileOperations().readJson(expectedDataFilePath, "DoctotModule");
+		Assert.assertEquals(doctor_PagesInstance.selectNEUROSURGERYFromDepartmentDropdownAndVerifySelection(expectedData), expectedData.get("departmentName"), "selected option is not matching with expected in page class, please check manually!");
+		Assert.assertEquals(locatorsFactoryInstance.verifyNEUROSURGERYIsSelected(), expectedData.get("departmentName"), "selected country is not matching with expected in locator class, please check manually!");
 	}
 	
 	
