@@ -712,7 +712,7 @@ public class operationTheatre_Pages extends StartupPage {
 		try {
 			commonEvents.click(appointmentModule);
 			Thread.sleep(2000);
-			//			commonEvents.click(newOneCounterLinkByElement);
+//						commonEvents.click(newOneCounterLinkByElement);
 			commonEvents.waitTillElementVisible(keyboardButtonElement,50);
 			commonEvents.mouseHoverClick(keyboardButtonElement);
 			commonEvents.waitTillElementVisible(altPlusNtooltipMessageElement,50);

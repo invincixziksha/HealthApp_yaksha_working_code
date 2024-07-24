@@ -152,6 +152,8 @@
 		"pendingReportsTextFieldData":"Test@1234"
 	},
 	"DoctotModule":{
-		"departmentName":"NEUROSURGERY"
+		"departmentName":"NEUROSURGERY",
+		"titleNameOfVaccinationPatientRegisterForm": "Vaccination Patient Register",
+		"membershipDropdownOption":"NHIF CAPITATION"
 	}
 }

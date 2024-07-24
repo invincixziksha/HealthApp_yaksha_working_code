@@ -15,7 +15,7 @@
 		<parameter name="browser" value="chrome" />
 		<parameter name="environment" value="dev" />
 		<classes>
-			<class name="testcases.socialService_testcase" />
+			<class name="testcases.doctor_testcase" />
 		</classes>
 	</test> <!-- Test -->
 </suite> <!-- Suite -->

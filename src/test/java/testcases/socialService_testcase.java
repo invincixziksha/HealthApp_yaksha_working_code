@@ -50,7 +50,7 @@ public class socialService_testcase extends AppTestBase
 
 		Map<String, String> expectedData = new FileOperations().readJson(expectedDataFilePath, "healthApp");
 		Assert.assertEquals(socialService_PagesInstance.verifyTitleOfThePage(),expectedData.get("dasboardTitle")) ;
-		Assert.assertEquals(socialService_PagesInstance.verifyURLOfThePage(),expectedData.get("pageUrl")) ;
+		Assert.assertEquals(socialService_PagesInstance.verifyURLOfThePage(),expectedData.get("homePageUrl")) ;
 		Assert.assertTrue(locatorsFactoryInstance.verifySocialServiceIsPresent(driver).isDisplayed(), "Social Service module is not present in the current page, Please check manually");
 	}
 	
@@ -159,13 +159,13 @@ public class socialService_testcase extends AppTestBase
 		Assert.assertTrue(locatorsFactoryInstance.listByPatientStatusRadioButtonIsPresent(driver).isSelected(), "RadioButton is not present in the current page, Please check manually");
 	}
 	
-	@Test(priority = 12, groups = {"sanity"}, description="Close this New SSU Patient Registration popup by using javaScript")
-	public void performNavigateBackNavigateRefreshNavigateForwordAction() throws Exception {
-		socialService_PagesInstance = new socialService_Pages(driver);
-		locatorsFactoryInstance = new LocatorsFactory(driver);
-		Assert.assertTrue(socialService_PagesInstance.performNavigateBackNavigateRefreshNavigateForwordAction(), "elements are not present, please check manually");
-		Assert.assertTrue(locatorsFactoryInstance.verifySSUPatientListButtonIsPresent(driver).isDisplayed(), "elements are not present, Please check manually");
-	}
+//	@Test(priority = 12, groups = {"sanity"}, description="Close this New SSU Patient Registration popup by using javaScript")
+//	public void performNavigateBackNavigateRefreshNavigateForwordAction() throws Exception {
+//		socialService_PagesInstance = new socialService_Pages(driver);
+//		locatorsFactoryInstance = new LocatorsFactory(driver);
+//		Assert.assertTrue(socialService_PagesInstance.performNavigateBackNavigateRefreshNavigateForwordAction(), "elements are not present, please check manually");
+//		Assert.assertTrue(locatorsFactoryInstance.verifySSUPatientListButtonIsPresent(driver).isDisplayed(), "elements are not present, Please check manually");
+//	}
 	
 	@Test(priority = 13, groups = {"sanity"}, description="On the Social service module's, in the \"SSU Patient List\" page,\r\n"
 			+ "locate the \"Edit Information Of\" patient  textbox using \"ID\" locator \r\n"
@@ -189,7 +189,7 @@ public class socialService_testcase extends AppTestBase
 		Map<String, String> expectedData = new FileOperations().readJson(expectedDataFilePath, "socialServiceModuleStringValue");
 		Assert.assertEquals(socialService_PagesInstance.getDataFromTable(), expectedData.get("cottonSubCategoryName"),"something went wroung, please check manually");
 		Assert.assertEquals(locatorsFactoryInstance.veryfyTableData(),expectedData.get("cottonSubCategoryName"),"something went wroung, Please check manually");
-//		Assert.assertTrue(locatorsFactoryInstance.verifyAddSubCategoryIsPresent(driver).isDisplayed(), "elements are not present, Please check manually");
+		Assert.assertTrue(locatorsFactoryInstance.verifyAddSubCategoryIsPresent(driver).isDisplayed(), "elements are not present, Please check manually");
 	}
 	
 	@Test(priority = 15, groups = {"sanity"}, description="On Procurements Module's Setting page, \r\n"

@@ -51,7 +51,7 @@ public class operationTheatre_testcase extends AppTestBase
 
 		Map<String, String> expectedData = new FileOperations().readJson(expectedDataFilePath, "healthApp");
 		Assert.assertEquals(operationTheatre_PagesInstance.verifyTitleOfThePage(),expectedData.get("dasboardTitle")) ;
-		Assert.assertEquals(operationTheatre_PagesInstance.verifyURLOfThePage(),expectedData.get("pageUrl")) ;
+		Assert.assertEquals(operationTheatre_PagesInstance.verifyURLOfThePage(),expectedData.get("homePageUrl")) ;
 		Assert.assertTrue(locatorsFactoryInstance.verifyoperationTheatreModuleIsPresent(driver).isDisplayed(), "operation Theatre Module is not present in the current page, Please check manually");
 	}
 

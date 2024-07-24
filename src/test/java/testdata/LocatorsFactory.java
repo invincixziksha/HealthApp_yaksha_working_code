@@ -182,6 +182,11 @@ public class LocatorsFactory extends UserActions {
 	By dispensaryModule = By.xpath("//span[.='Dispensary']");
 	By socialServiceModule = By.xpath("//span[.='SocialService']");	
 	By operationTheatreModule = By.xpath("//span[.='OperationTheatre']");
+	
+	By uploadButton = By.xpath("//input[@value='Upload']");
+	By outPatientMenuByElement = By.xpath("//a[contains(text(),'Out Patient')]");
+	
+	By membershipDropdownByElement = By.xpath("//select[@id='Scheme']");
 
 
 	public LocatorsFactory(WebDriver driver) {
@@ -1126,6 +1131,33 @@ public class LocatorsFactory extends UserActions {
 		userActions.highlightElement(operationTheatreModuleWebElement);
 		return operationTheatreModuleWebElement; 
 	}
+	
+	public WebElement verifyUploadButtonIsPresent(WebDriver driver) {
+		WebElement uploadButtonWebElement = userActions.findElement(uploadButton);
+		userActions.highlightElement(uploadButtonWebElement);
+		return uploadButtonWebElement; 
+	}
+	
+	public WebElement verifyOutPatientMenuIsPresent(WebDriver driver) {
+		WebElement outPatientMenuWebElement = userActions.findElement(outPatientMenuByElement);
+		userActions.highlightElement(outPatientMenuWebElement);
+		return outPatientMenuWebElement; 
+	}
+	
+	public String verifyNhifCapitationIsSelected() throws Exception {
+		String selectedOptionValue = "";
+		try {
+			if(userActions.isDisplayed(membershipDropdownByElement))
+			{
+				selectedOptionValue = userActions.getFirstSelectedOptionFromDropdown(membershipDropdownByElement, "elementName", "pageName");
+				System.out.println("selected dropdown value is  : " + selectedOptionValue);
+			}
+		}catch(Exception e) {
+			throw e;
+		}
+		return selectedOptionValue;
+	}
+
 
 
 }
