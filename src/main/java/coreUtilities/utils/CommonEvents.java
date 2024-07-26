@@ -4684,4 +4684,9 @@ public class CommonEvents
 
 		return new CommonEvents(driver);
 	}
+	
+	public CommonEvents jsScrollToTopOfThePage() {
+	    ((JavascriptExecutor) driver).executeScript("window.scrollTo(0, 0)");
+	    return new CommonEvents(driver);
+	}
 }

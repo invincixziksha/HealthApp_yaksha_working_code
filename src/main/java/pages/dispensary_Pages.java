@@ -197,6 +197,7 @@ public class dispensary_Pages extends StartupPage {
 	public String verifyURLOfThePage() throws Exception {
 		String urlofThepage = "";
 		try {
+			Thread.sleep(5000);
 			urlofThepage = commonEvents.getCurrentUrl();
 			System.out.println("URL of the page is  :" + urlofThepage );
 		}catch(Exception e) {

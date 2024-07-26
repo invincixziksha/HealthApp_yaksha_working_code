@@ -59,6 +59,7 @@ import com.assertthat.selenium_shutterbug.core.Capture;
 import com.assertthat.selenium_shutterbug.core.CaptureElement;
 import com.assertthat.selenium_shutterbug.core.Shutterbug;
 
+import coreUtilities.utils.CommonEvents;
 import coreUtilities.utils.CustomException;
 import ru.yandex.qatools.ashot.comparison.ImageDiff;
 import ru.yandex.qatools.ashot.comparison.ImageDiffer;
@@ -4616,6 +4617,69 @@ public class UserActions
 			System.out.println("No alert present: " + e.getMessage());
 		}
 		return alertMessageValue;
+	}
+	
+	public CommonEvents jsScrollToBottomOfThePage() {
+		((JavascriptExecutor) driver).executeScript("window.scrollTo(0, document.body.scrollHeight)");
+		return new CommonEvents(driver);
+	}
+
+	public CommonEvents highlight(WebElement element)
+	{
+		JavascriptExecutor jse = (JavascriptExecutor) driver;
+
+		// Add the highlight
+		jse.executeScript("arguments[0].setAttribute('style', 'border: solid 5px blue');", element);
+
+		try {
+			// Wait for a specified time (e.g., 500 milliseconds)
+			Thread.sleep(500);
+		} catch (InterruptedException e) {
+			e.printStackTrace();
+		}
+
+		// Remove the highlight
+		jse.executeScript("arguments[0].setAttribute('style', '');", element);
+
+		return new CommonEvents(driver);
+	}
+	
+	public CommonEvents switchToFrameByIndex(int index, String pageName) throws Exception
+	{
+		if(pageName==null)
+			throw new Exception("Page name should not be null");
+		List<WebElement> totalNumberOfFrames = getWebElements(By.tagName("iframe"));
+		if(index<=totalNumberOfFrames.size() && index>=0)
+			driver.switchTo()
+			.frame(index);
+		else
+			throw new IllegalArgumentException("Index value should in between 0 to "+totalNumberOfFrames.size());
+		return new CommonEvents(driver);
+	}
+	
+	public CommonEvents highlightElementInYellow(WebElement element)
+	{
+		JavascriptExecutor jse = (JavascriptExecutor) driver;
+
+		// Add the highlight
+		jse.executeScript("arguments[0].setAttribute('style', 'border: solid 5px yellow');", element);
+
+		try {
+			// Wait for a specified time (e.g., 500 milliseconds)
+			Thread.sleep(500);
+		} catch (InterruptedException e) {
+			e.printStackTrace();
+		}
+
+		// Remove the highlight
+		jse.executeScript("arguments[0].setAttribute('style', '');", element);
+
+		return new CommonEvents(driver);
+	}
+	
+	public CommonEvents jsScrollToTopOfThePage() {
+	    ((JavascriptExecutor) driver).executeScript("window.scrollTo(0, 0)");
+	    return new CommonEvents(driver);
 	}
 }
 
