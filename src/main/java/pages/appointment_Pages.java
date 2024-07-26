@@ -655,4 +655,205 @@ public class appointment_Pages extends StartupPage {
 		}	
 		return cuttonSubCategoryName;
 	}
+	
+	/**@Test16
+	 * about this method performKeyboardOperation() 
+	 * @param : Map<String, String>
+	 * @description : perform the keyboard operation
+	 * @return : String
+	 * @author : YAKSHA
+	 */
+	public String performKeyboardOperation() throws Exception {
+		String titleNameOfVaccinationPatientRegisterForm = "";
+		try {
+			Thread.sleep(5000);
+			commonEvents.jsScrollPageTillElementVisible(vaccinationModuleByElement, "vaccinationModule", "vaccinationModule");
+
+			commonEvents.waitTillElementLocated(vaccinationModuleByElement, 10);
+			if (commonEvents.isDisplayed(vaccinationModuleByElement)) {
+
+				commonEvents.waitTillElementLocated(vaccinationModulesToggleIconByElement, 10);
+				commonEvents.jsClick(vaccinationModulesToggleIconByElement);
+
+				commonEvents.waitTillElementLocated(patientListSubModuleByElement, 10);
+				commonEvents.jsClick(patientListSubModuleByElement);
+
+				commonEvents.waitTillElementLocated(newVaccinationPatientButtonByElement, 10);
+				commonEvents.performAltN();
+
+				commonEvents.waitTillElementLocated(titleNameOfVaccinationPatientRegisterFormByElement, 10);
+				titleNameOfVaccinationPatientRegisterForm = commonEvents.getText(titleNameOfVaccinationPatientRegisterFormByElement);
+				System.out.println("title Name Of Vaccination Patient Register form : " + titleNameOfVaccinationPatientRegisterForm);
+
+				return titleNameOfVaccinationPatientRegisterForm;
+			}
+		}catch(Exception e) {
+			throw e;
+		}
+		return titleNameOfVaccinationPatientRegisterForm;
+	}
+
+	/**@Test17
+	 * about this method verifyToolTipOfAnElement()
+	 * @param : null
+	 * @description :go to appointmentTab and verify the TOOLTIP value/text
+	 * @return : String
+	 * @author : YAKSHA
+	 */
+	public String verifyToolTipOfAnElement() throws Exception {
+		String tooltipText = "";
+		try {
+			commonEvents.waitTillElementLocated(appointmentModuleByElement, 10);
+			commonEvents.jsClick(appointmentModuleByElement);
+
+			commonEvents.waitTillElementVisible(keyboardButtonElement,50);
+			commonEvents.mouseHoverClick(keyboardButtonElement);
+			commonEvents.waitTillElementVisible(altPlusNtooltipMessageElement,50);
+			tooltipText = commonEvents.getText(altPlusNtooltipMessageElement);
+			System.out.println("New Patient Tooltip text value is:" + tooltipText );
+		}catch(Exception e) {
+			throw e;
+		}
+		return tooltipText;
+	}
+
+	/**@Test18
+	 * about this method handleAlertPopup()
+	 * @param : null
+	 * @description : 
+	 * @return : boolean
+	 * @author : YAKSHA
+	 */
+	public String handleAlertPopup(Map<String, String> expectedData) throws Exception {
+
+		String selectedOption = "";
+
+		try {
+			commonEvents.waitTillElementLocated(newPatientButtonLinkByElement, 10);
+			commonEvents.jsClick(newPatientButtonLinkByElement);
+
+			commonEvents.waitTillElementLocated(patientInformationTextByElement, 10);
+			WebElement patientInformationText = commonEvents.findElement(patientInformationTextByElement);
+			commonEvents.highlight(patientInformationText);
+
+			commonEvents.waitTillElementLocated(membershipDropdownByElement, 10);
+			commonEvents.selectByVisibleText(membershipDropdownByElement, expectedData.get("membershipDropdownOption"));
+
+			// commonEvents.validateAlertMessage();
+			commonEvents.acceptAlert();
+
+			selectedOption = commonEvents.getFirstSelectedOptionFromDropdown(membershipDropdownByElement, "elementName", "pageName");
+			System.out.println("first selected option from dropdown : " + selectedOption );
+
+			return selectedOption;
+
+		}catch(Exception e) {
+			throw e;
+		}
+	}
+
+	/**@Test19
+	 * about this method handleAutoSuggesstion() 
+	 * @param : Map<String, String>
+	 * @description : Search for a Select Item as Accounts and select Accounts  and validate Accounts is selected.
+	 * @return : Boolean
+	 * @author : YAKSHA
+	 */
+	public Boolean handleAutoSuggesstion(Map<String, String> expectedData) throws Exception {
+		boolean accountOptionisDisplayed = false;
+		try {
+			Thread.sleep(5000);
+			commonEvents.waitTillElementLocated(procurementModule, 10);
+			commonEvents.click(procurementModule);
+
+			commonEvents.waitTillElementLocated(reportsSubButton, 10);
+			commonEvents.click(reportsSubButton);
+
+			commonEvents.waitTillElementLocated(currentStockLevelButton, 10);
+			commonEvents.click(currentStockLevelButton);
+
+			commonEvents.waitTillElementLocated(selectedItemDropdown, 10);
+			commonEvents.click(selectedItemDropdown);
+
+			commonEvents.waitTillElementLocated(generalInventoryOption, 10);
+			commonEvents.click(generalInventoryOption);
+
+			commonEvents.waitTillElementLocated(selectedItemDropdown, 10);
+			commonEvents.click(selectedItemDropdown);
+
+			commonEvents.waitTillElementLocated(selectItemSearchBar, 10);
+			commonEvents.sendKeys(selectItemSearchBar,expectedData.get("searchBarData"));
+
+			commonEvents.waitTillElementLocated(accountsItemCheckBox, 10);
+			commonEvents.click(accountsItemCheckBox);
+			Thread.sleep(3000);
+
+			if(commonEvents.isDisplayed(accountOption)) {
+				accountOptionisDisplayed=true;
+			}
+		}catch(Exception e) {
+			throw e;
+		}
+		return accountOptionisDisplayed;
+	}
+
+	/**@Test20
+	 * about this method uploadImageInScannedImagesSection() 
+	 * @param : Map<String, String>
+	 * @description : Upload a image in Scanned Images section.
+	 * @return : Boolean
+	 * @author : YAKSHA
+	 */
+	public Boolean uploadImageInScannedImagesSection(String pathOfTheFile) throws Exception {
+		boolean isUploaded = false;
+		try {
+			commonEvents.waitTillElementLocated(procurementModule, 10);
+			commonEvents.click(procurementModule);
+
+			commonEvents.waitTillElementLocated(settingsTab, 10);
+			commonEvents.click(settingsTab);
+
+			commonEvents.waitTillElementLocated(invoiceHeadersSubTab, 10);
+			commonEvents.click(invoiceHeadersSubTab);
+
+			commonEvents.waitTillElementLocated(addNewInvoiceHeaderButton, 10);
+			commonEvents.click(addNewInvoiceHeaderButton);
+
+			Thread.sleep(3000);
+			commonEvents.waitTillElementLocated(chooseFileButton, 10);
+			commonEvents.jsClick(chooseFileButton);
+
+			Thread.sleep(3000);
+			System.out.println("path of the file" + pathOfTheFile );
+
+			Thread.sleep(5000);
+			commonEvents.fileUpload(pathOfTheFile);
+			Thread.sleep(3000);
+
+			isUploaded = true;
+		}catch(Exception e) {
+			throw e;
+		}
+		return isUploaded;
+	}
+
+	/**@Test21
+	 * about this method takingScreenshotOfTheCurrentPage() 
+	 * @param : null
+	 * @description : Taking screenshot of the current page.
+	 * @return : Boolean
+	 * @author : YAKSHA
+	 */
+	public Boolean takingScreenshotOfTheCurrentPage() throws Exception {
+		boolean isDisplayed = false;
+		commonEvents.click(xButton);
+		try {
+			commonEvents.takeScreenshot("Sale page of DIspensary Module");
+			isDisplayed = true;
+
+		}catch(Exception e) {
+			throw e;
+		}
+		return isDisplayed;
+	}
 }

@@ -1279,4 +1279,9 @@ public class LocatorsFactory extends UserActions {
 		userActions.highlightElementAfterAction(addSubCategoryButtonWebElement);
 		return addSubCategoryButtonWebElement;
 	}
+	
+	public WebElement verifyAddInvoiceHeaderButtonIsPresent(WebDriver driver) {
+		WebElement datePickerWebElement = driver.findElement(addNewInvoiceHeaderButton);
+		return datePickerWebElement;
+	}
 }

@@ -254,6 +254,72 @@ public class appointment_testcase extends AppTestBase
 //		Assert.assertEquals(locatorsFactoryInstance.veryfyTableData(),expectedData.get("cottonSubCategoryName"),"something went wroung locators class, Please check manually");
 		Assert.assertTrue(locatorsFactoryInstance.verifyAddSubCategoryButtonIsPresent(driver).isDisplayed(), "Add Sub Category Button is not present in the Locators page, Please check manually");
 	}
+	
+	@Test(priority = 16, groups = {"sanity"}, description="Scroll to the Vaccination Module's and Expand it.\r\n"
+			+ "Click on \"Patient List\" page\r\n"
+			+ "and perform the keyboard operation (\"Alt + N\") to open the \"Vaccination Patient Register\" form.\r\n"
+			+ "Then Validate the \"Vaccination Patient Register\" page Name.")
+	public void performKeyboardOperation() throws Exception {
+		appointment_PagesInstance = new appointment_Pages(driver);
+		locatorsFactoryInstance = new LocatorsFactory(driver);	
+		Map<String, String> expectedData = new FileOperations().readJson(expectedDataFilePath, "operationTheatreModule");
+		Assert.assertEquals(appointment_PagesInstance.performKeyboardOperation(), expectedData.get("titleNameOfVaccinationPatientRegisterForm"),"Error in Page class something went wroung, please check manually");
+		Assert.assertEquals(locatorsFactoryInstance.verifyTitleNameOfVaccinationPatientRegisterFormIsPresent(),expectedData.get("titleNameOfVaccinationPatientRegisterForm"),"title Name Of Vaccination Patient Register Form is not matching in current page(locators factory), Please check manually");
+	}
+	
+	@Test(priority = 17, groups = {"sanity"}, description="On the Appointment module, under the\"New visit\" tab,\r\n"
+			+ "verify tooltips which is present on keyboard icon.")
+	public void  verifyTooltipOfAnElement() throws Exception {
+		appointment_PagesInstance = new appointment_Pages(driver);
+		locatorsFactoryInstance = new LocatorsFactory(driver);	
+
+		Map<String, String> expectedData = new FileOperations().readJson(expectedDataFilePath, "KeyBoardTooltip");
+		Assert.assertEquals(appointment_PagesInstance.verifyToolTipOfAnElement(), expectedData.get("newPatientTooltipValue"),"Verification failed, please check manually");
+		Assert.assertTrue(locatorsFactoryInstance.tooltipTextIsPresent(driver).isDisplayed(), "Tooltip is not present in the current page, Please check manually");
+	}
+	
+	@Test(priority = 18, groups = {"sanity"}, description="On the Appointment module \"New Visit\" page,\r\n"
+			+ "clicking on the \"New Patient\" button it will navigate to \"New Visit\" page.\r\n"
+			+ "When user try to select \"NHIF CAPTION\" option from the Membership dropdown\r\n"
+			+ "it should popup the alert message :This will change Price Category as well.\r\n"
+			+ "Handle the alert popup and validate the popup message.\r\n"
+			+ "After handle the popup, validate that the \"NHIF CAPTATION\" is selected from  Membership dropdown or not?")
+	public void  handleAlertPopup() throws Exception {
+		appointment_PagesInstance = new appointment_Pages(driver);
+		locatorsFactoryInstance = new LocatorsFactory(driver);	
+		Map<String, String> expectedData = new FileOperations().readJson(expectedDataFilePath, "appointmentModule");
+		Assert.assertEquals(appointment_PagesInstance.handleAlertPopup(expectedData), expectedData.get("membershipDropdownOption"),"Verification failed, please check manually");
+		Assert.assertEquals(locatorsFactoryInstance.verifyNhifCapitationIsSelected(), expectedData.get("membershipDropdownOption"), "selected option is not matching with expected, please check manually!");
+	}
+	
+	@Test(priority = 19, groups = {"sanity"}, description="On the Procurement module's Reports Tab,\r\n"
+			+ "Search for a Select a Item as Accounts \r\n"
+			+ "and select Accounts  and validate Accounts is selected or not ?")
+	public void handleAutoSuggesstion() throws Exception {
+		appointment_PagesInstance = new appointment_Pages(driver);
+		locatorsFactoryInstance = new LocatorsFactory(driver);	
+		Map<String, String> expectedData = new FileOperations().readJson(expectedDataFilePath, "ProcurementModule");
+		Assert.assertTrue(appointment_PagesInstance.handleAutoSuggesstion(expectedData),"User is not abale to handle the search bar, please check manually");
+		Assert.assertTrue(locatorsFactoryInstance.accountOptionIsSelected(driver).isDisplayed(),"Account option is not selectde, Please check manually");
+	}
+	
+	@Test(priority = 20, groups = {"sanity"}, description="On \"Procurement\" module's , \r\n"
+			+ "Upload the image in \"Add Invoice Header\" page.")
+	public void uploadImageInScannedImagesSection() throws Exception {
+		appointment_PagesInstance = new appointment_Pages(driver);
+		locatorsFactoryInstance = new LocatorsFactory(driver);	
+		Assert.assertTrue(appointment_PagesInstance.uploadImageInScannedImagesSection(System.getProperty("user.dir") + "\\testImage\\uploadImage.png"),"Not able to upload the image, please check manually");
+		Assert.assertTrue(locatorsFactoryInstance.saveButtonIsPresent(driver).isDisplayed(),"Save button is not present in the current page, Please check manually");
+	}
+	
+	@Test(priority = 21, groups = {"sanity"}, description="On \"Procurement\" module's,Taking screenshot of the current page.")
+	public void takingScreenshotOfCurrentPage() throws Exception {
+		appointment_PagesInstance = new appointment_Pages(driver);
+		locatorsFactoryInstance = new LocatorsFactory(driver);	
+		Assert.assertTrue(appointment_PagesInstance.takingScreenshotOfTheCurrentPage(),"Not able to take the screenshot, please check manually");
+		Assert.assertTrue(locatorsFactoryInstance.verifyAddInvoiceHeaderButtonIsPresent(driver).isDisplayed(),"Add Invoice Header Button is not present in the current page, Please check manually");
+	}
+
 
 
 	@AfterClass(alwaysRun = true)
