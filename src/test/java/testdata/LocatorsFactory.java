@@ -207,6 +207,25 @@ public class LocatorsFactory extends UserActions {
 
 
 
+	// L1 Scenarios of Patient module
+
+	By patientModuleByElement = By.xpath("//a[@href='#/Patient']");
+	By printButtonByElement = By.xpath("//button[@title='Print grid data']");
+	By searchPatientTextboxByElement = By.xpath("//input[@id='quickFilterInput']");
+	By newPhotoButtonByElement = By.xpath("//button[@class='btn blue btn-sm']");
+	By errorMessageOfPhoneNumberTextboxByElement = By.xpath("//span[contains(text(), 'Primary Phone is required')]");
+	By firstNameTextboxByElement = By.xpath("//input[@id='regPatFirstName']");
+
+	By basicInformationLinkByElement = By.xpath("//a[contains(text(), 'Basic Information')]");
+	By emailTextboxByElement = By.xpath("//input[@type='email']");
+	By bloodGroupDropdownByElement = By.xpath("//label[contains(text(), 'Blood group')]/..//select");
+	By feMaleRadioButtonByElement = By.xpath("//input[@value='Female']/..//span");
+
+	By commentsTextboxByElement = By.xpath("//input[@placeholder='comments']");
+	By kinEmergencyContactLinkByElement = By.xpath("//a[@href='#/Patient/RegisterPatient/KinEmergencyContact']");
+	By alexAlexaTextNameByElement = By.xpath("//div[contains(text(), '2311000001')]/..//div[contains(text(), 'Alexa Alexa')]");
+
+
 
 	public LocatorsFactory(WebDriver driver) {
 		super(driver);
@@ -1183,36 +1202,36 @@ public class LocatorsFactory extends UserActions {
 		WebElement addAppointmentButtonWebElement = driver.findElement(addappointmentButtonByElement);
 		return addAppointmentButtonWebElement;
 	}
-	
+
 	public WebElement verifySelectCounterPopupsIsPresent(WebDriver driver) {
 		WebElement selectCounterPopupsWebElement = driver.findElement(selectCounterTitleNameByElement);
 		userActions.highlight(selectCounterPopupsWebElement);
 		return selectCounterPopupsWebElement;
 	}
-	
+
 	public WebElement verifyPatientInformationTextIsPresent(WebDriver driver) {
 		WebElement patientInformationTextWebElement = driver.findElement(patientInformationTextByElement);
 		userActions.highlight(patientInformationTextWebElement);
 		return patientInformationTextWebElement;
 	}
-	
+
 	public WebElement verifyPrintInvoiceButtonIsPresent(WebDriver driver) {
 		WebElement printInvoiceButtonWebElement = driver.findElement(printInvoiceButtonByElement);
 		return printInvoiceButtonWebElement;
 	}
-	
+
 	public WebElement verifyCareOfPersonTextboxIsPresent(WebDriver driver) {
 		WebElement careOfPersonTextboxWebElement = driver.findElement(careOfPersonTextboxByElement);
 		userActions.highlight(careOfPersonTextboxWebElement);
 		return careOfPersonTextboxWebElement;
 	}
-	
+
 	public WebElement verifyErrorMessageOfLastNameTextbox(WebDriver driver) {
 		WebElement errorMessageOfLastNameTextboxWebElement = driver.findElement(errorMessageOfLastNameTextboxByElement);
 		userActions.highlight(errorMessageOfLastNameTextboxWebElement);
 		return errorMessageOfLastNameTextboxWebElement;
 	}
-	
+
 	public String verifyValueIsPresentInPhoneNumberTextbox() throws Exception {
 		String phoneNumberTextboxValue = "";
 		try {
@@ -1226,12 +1245,12 @@ public class LocatorsFactory extends UserActions {
 		}
 		return phoneNumberTextboxValue;
 	}
-	
+
 	public WebElement verifyDatePickerElementIsPresent(WebDriver driver) {
 		WebElement datePickerWebElement = driver.findElement(dobDatePickerByElement);
 		return datePickerWebElement;
 	}
-	
+
 	public String verifyRelationWithPatientOptionIsSelected() throws Exception {
 		String selectedOptionValue = "";
 		try {
@@ -1247,7 +1266,7 @@ public class LocatorsFactory extends UserActions {
 		}
 		return selectedOptionValue;
 	}
-	
+
 	public String verifyLastnameTextboxValueIsPresent() throws Exception {
 		String lastNameTextboxValue = "";
 		try {
@@ -1261,27 +1280,158 @@ public class LocatorsFactory extends UserActions {
 		}
 		return lastNameTextboxValue;
 	}
-	
+
 	public WebElement verifyAppointmentModuleIsPresent(WebDriver driver) {
 		WebElement appointmentModuleWebElement = userActions.findElement(appointmentModuleByElement);
 		userActions.highlightElement(appointmentModuleWebElement);
 		return appointmentModuleWebElement; 
 	}
-	
+
 	public WebElement verifyAddItemButtonIsPresent(WebDriver driver) {
 		WebElement addItemButtonWebElement = driver.findElement(addItemButtonByElement);
 		userActions.highlightElementAfterAction(addItemButtonWebElement);
 		return addItemButtonWebElement;
 	}
-	
+
 	public WebElement verifyAddSubCategoryButtonIsPresent(WebDriver driver) {
 		WebElement addSubCategoryButtonWebElement = driver.findElement(addSubCategoryButtonByElement);
 		userActions.highlightElementAfterAction(addSubCategoryButtonWebElement);
 		return addSubCategoryButtonWebElement;
 	}
-	
+
 	public WebElement verifyAddInvoiceHeaderButtonIsPresent(WebDriver driver) {
 		WebElement datePickerWebElement = driver.findElement(addNewInvoiceHeaderButton);
 		return datePickerWebElement;
+	}
+
+
+	// Patient Modules
+
+	public WebElement verifyPatientModuleIsPresent(WebDriver driver) {
+		WebElement patientModuleWebElement = userActions.findElement(patientModuleByElement);
+		userActions.highlightElement(patientModuleWebElement);
+		return patientModuleWebElement; 
+	}
+
+	public WebElement verifyPrintIsPresent(WebDriver driver) {
+		WebElement printButtonWebElement = userActions.findElement(printButtonByElement);
+		userActions.highlightElement(printButtonWebElement);
+		return printButtonWebElement; 
+	}
+
+	public WebElement verifySearchPatientTextboxIsPresent(WebDriver driver) {
+		WebElement searchPatientTextboxWebElement = driver.findElement(searchPatientTextboxByElement);
+		userActions.highlight(searchPatientTextboxWebElement);
+		return searchPatientTextboxWebElement;
+	}
+
+	public WebElement verifyNewPhotoButtonIsPresent(WebDriver driver) {
+		WebElement newPhotoButtonWebElement = driver.findElement(newPhotoButtonByElement);
+		userActions.highlight(newPhotoButtonWebElement);
+		return newPhotoButtonWebElement;
+	}
+
+	public WebElement verifyErrorMessageOfPhoneNumberTextbox(WebDriver driver) {
+		WebElement errorMessageOfPhoneNumberTextboxWebElement = driver.findElement(errorMessageOfPhoneNumberTextboxByElement);
+		userActions.highlight(errorMessageOfPhoneNumberTextboxWebElement);
+		return errorMessageOfPhoneNumberTextboxWebElement;
+	}
+
+	public String verifyValueIsPresentInFirstNameTextbox() throws Exception {
+		String firstNameTextboxValue = "";
+		try {
+			if(userActions.isDisplayed(firstNameTextboxByElement)) {
+				firstNameTextboxValue = userActions.getAttribute(firstNameTextboxByElement, "value");
+				System.out.println("first name Textbox Value  : " + firstNameTextboxValue);
+				return firstNameTextboxValue;
+			}
+		}catch(Exception e) {
+			throw e;
+		}
+		return firstNameTextboxValue;
+	}
+
+	public WebElement verifyBasicInformationLinkIsPresent(WebDriver driver) {
+		WebElement basicInformationLinkWebElement = driver.findElement(basicInformationLinkByElement);
+		userActions.highlight(basicInformationLinkWebElement);
+		return basicInformationLinkWebElement;
+	}
+
+	public WebElement verifyEmailTextboxIsPresent(WebDriver driver) {
+		WebElement emailTextboxWebElement = driver.findElement(emailTextboxByElement);
+		userActions.highlight(emailTextboxWebElement);
+		return emailTextboxWebElement;
+	}
+
+	public String verifyBNegetiveBloodGroupOptionIsSelected() throws Exception {
+		String selectedOptionValue = "";
+		try {
+			selectedOptionValue = userActions.getFirstSelectedOptionFromDropdown(bloodGroupDropdownByElement, "", "");
+			System.out.println("first selected option from bloodGroup drop down : " + selectedOptionValue );
+
+			return selectedOptionValue;
+
+		}catch(Exception e) {
+			throw e;
+		}
+	}
+
+	public Boolean verifyFemaleRadioButtonIsSelected() throws Exception {
+		Boolean verifyRadioButton = false;
+		try {
+			Thread.sleep(3000);
+			userActions.isSelected(feMaleRadioButtonByElement);
+			System.out.println("Female Radio button is selected");
+			verifyRadioButton = true;	
+		}catch(Exception e) {
+			throw e;
+		}	
+		return verifyRadioButton;
+	}
+
+	public String verifyCommentsTextboxValueIsPresent() throws Exception {
+		String textboxValue = "";
+		try {
+			if(userActions.isDisplayed(commentsTextboxByElement)) {
+				WebElement commentsTextboxWebElement = userActions.findElement(commentsTextboxByElement);
+				userActions.highlight(commentsTextboxWebElement);
+				textboxValue = userActions.getAttribute(commentsTextboxByElement, "value");
+				System.out.println("comments Textbox Value  : " + textboxValue);
+				return textboxValue;
+			}
+		}catch(Exception e) {
+			throw e;
+		}
+		return textboxValue;
+	}
+
+	public String verifyTextIsPresent() throws Exception {
+		String linkTextValue = "";
+		try {
+			if(userActions.isDisplayed(kinEmergencyContactLinkByElement)) {
+				WebElement kinEmergencyContactLinkWebElement = userActions.findElement(kinEmergencyContactLinkByElement);
+				userActions.highlight(kinEmergencyContactLinkWebElement);
+				linkTextValue = userActions.getText(kinEmergencyContactLinkByElement);
+				System.out.println("Link text value of kin Emergency Contact Link : " + linkTextValue);
+				return linkTextValue;
+			}
+		}catch(Exception e) {
+			throw e;
+		}
+		return linkTextValue;
+	}
+
+	public String veryfyFirstPatientName() throws Exception {
+		String firstPatientName = "";
+		try {
+			if(userActions.isDisplayed(alexAlexaTextNameByElement)) {
+				firstPatientName = userActions.getText(alexAlexaTextNameByElement);
+				System.out.println("first patient name: " + firstPatientName);
+				return firstPatientName;
+			}
+		}catch(Exception e) {
+			throw e;
+		}	
+		return firstPatientName;
 	}
 }

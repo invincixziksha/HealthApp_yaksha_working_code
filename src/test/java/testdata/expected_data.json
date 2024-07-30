@@ -170,5 +170,21 @@
 		"idLocatorsValueOfAddPatientButton": "addappointment",
 		"errorNotificationPopupMessage":"Failed Failed!! Cannot create appointment. Check the Details Correctly.",
 		"membershipDropdownOption":"NHIF CAPITATION"
+	},
+	"patientModule":{
+		"placeholderNameOfSearchTextbox":"Search (Minimum 3 Character)",
+		"errorMessageOfPhonoNumberTextbox" : "Primary Phone is required",
+		"firstNameValue": "Suriiyaa",
+		"middleNameValue": "prakash",
+		"lastNameValue": "nayak",
+		"AgeValue": "27",
+		"phoneNumberValue": "9124564061",
+		"bloodGroup": "B-",
+		"NotificationPopupMessage" : "Notice-Message To fill the data by self checkbox, first you have to fill your address",
+		"comments" : "Hi Suriiyaa...",
+		"kinEmergencyContactLinkTextValue" : "Kin/Emergency Contact",
+		"patientName" : "Alexa Alexa",
+		"titleNameOfVaccinationPatientRegisterForm": "Vaccination Patient Register",
+		"bloodGroupValue" : "B negative"
 	}
 }
