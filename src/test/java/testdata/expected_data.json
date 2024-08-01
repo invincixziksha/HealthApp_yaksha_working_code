@@ -185,6 +185,7 @@
 		"kinEmergencyContactLinkTextValue" : "Kin/Emergency Contact",
 		"patientName" : "Alexa Alexa",
 		"titleNameOfVaccinationPatientRegisterForm": "Vaccination Patient Register",
-		"bloodGroupValue" : "B negative"
+		"bloodGroupValue" : "B negative",
+		"iframeTextValue":"Hi... Suriiyaa, I'm Here.."
 	}
 }

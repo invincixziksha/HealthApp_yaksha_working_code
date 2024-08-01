@@ -224,6 +224,13 @@ public class LocatorsFactory extends UserActions {
 	By commentsTextboxByElement = By.xpath("//input[@placeholder='comments']");
 	By kinEmergencyContactLinkByElement = By.xpath("//a[@href='#/Patient/RegisterPatient/KinEmergencyContact']");
 	By alexAlexaTextNameByElement = By.xpath("//div[contains(text(), '2311000001')]/..//div[contains(text(), 'Alexa Alexa')]");
+	
+	By chooseFileButtonByElement = By.xpath("//label[@for='fileFromLocalDisk']//i[contains(text(), 'Choose from Files')]");
+	By uploadDoneButtonByElement = By.xpath("//button[contains(text(), 'Done')]");
+	By cropButtonByElement = By.xpath("//button[contains(text(), 'Crop')]");
+	By addInsuranceButtonByElement = By.xpath("//input[@value='Add Insurance']");
+	
+	
 
 
 
@@ -1433,5 +1440,29 @@ public class LocatorsFactory extends UserActions {
 			throw e;
 		}	
 		return firstPatientName;
+	}
+	
+	public WebElement verifyChooseFileButtonIsPresent(WebDriver driver) {
+		WebElement chooseFileButtonWebElement = driver.findElement(chooseFileButtonByElement);
+		userActions.highlight(chooseFileButtonWebElement);
+		return chooseFileButtonWebElement;
+	}
+	
+	public WebElement verifyUploadDoneButtonIsPresent(WebDriver driver) {
+		WebElement uploadDoneButtonWebElement = driver.findElement(uploadDoneButtonByElement);
+		userActions.highlight(uploadDoneButtonWebElement);
+		return uploadDoneButtonWebElement;
+	}
+	
+	public WebElement verifyCropButtonIsPresent(WebDriver driver) {
+		WebElement cropButtonWebElement = driver.findElement(cropButtonByElement);
+		userActions.highlight(cropButtonWebElement);
+		return cropButtonWebElement;
+	}
+	
+	public WebElement verifyAddInsuranceButtonIsPresent(WebDriver driver) {
+		WebElement addInsuranceButtonWebElement = driver.findElement(addInsuranceButtonByElement);
+		userActions.highlight(addInsuranceButtonWebElement);
+		return addInsuranceButtonWebElement;
 	}
 }

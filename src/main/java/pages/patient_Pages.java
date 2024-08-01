@@ -64,6 +64,36 @@ public class patient_Pages extends StartupPage {
 	By titleNameOfVaccinationPatientRegisterFormByElement = By.xpath("//span[contains(text(), 'Vaccination Patient Register')]");
 
 
+	// L2 Scenario's locators
+	By chooseFileButtonByElement = By.xpath("//label[@for='fileFromLocalDisk']//i[contains(text(), 'Choose from Files')]");
+	By emergencyContactRadioButtonByElement = By.xpath("//input[@value='EmergencyContact']/..//span");
+	By insuranceLinkByElement = By.xpath("//a[contains(text(), 'Insurance')]");
+	By addInsuranceButtonByElement = By.xpath("//input[@value='Add Insurance']");
+
+	By appointmentModuleByElement = By.xpath("//a[@href='#/Appointment']");
+	By appointmentModuleToggleByElement = By.xpath("//span[@data-target='#Appointment']");
+	By selectCounterNewOneLinkByElement = By.xpath("//div[@class='counter-item']//h5[contains(text(), 'New-1')]");
+	By keyboardButtonElement = By.xpath("//div[@title='Shortcut Keys']");
+	By altPlusNtooltipMessageElement = By.xpath("//li[contains(text(),'+')]");
+	By newOneCounterLinkByElement = By.xpath("//h5[contains(text(), 'New-1')]//span");
+	
+	By procurementModuleByElement = By.xpath("//span[@data-target='#Procurement']");
+	By reportsSubButton = By.xpath("//a[.=' Reports ']");
+	By currentStockLevelButton = By.xpath("//i[.='Current Stock Level']");
+	By selectedItemDropdown = By.xpath("//div[@class='selected-list']");
+	By selectItemSearchBar = By.xpath("//input[@placeholder='Search']");
+	By accountsItemCheckBox = By.xpath("//label[.='Accounts']");
+	By generalInventoryOption = By.xpath("//span[@class='fa fa-remove']");
+	By accountOption = By.xpath("//span[.='Accounts']");
+	
+	//i frame elements
+	By procurementModuleToggleIconByElement = By.xpath("//a[@href='#/ProcurementMain']//span[@data-target='#Procurement']");
+	By purchaseOrderSubmoduleByElement = By.xpath("//span[contains(text(), 'Purchase Order')]");
+	By createPurchaseOrderButtonByElement = By.xpath("//input[@value='Create Purchase Order']");
+	By addPurchaseOrderTitleByElement = By.xpath("//span[contains(text(), 'Add Purchase Order')]");
+	By iFrameTextEditorByElement = By.xpath("//body[@contenteditable='true']");
+
+
 
 
 
@@ -384,12 +414,12 @@ public class patient_Pages extends StartupPage {
 			commonEvents.selectByVisibleText(bloodGroupDropdownByElement, expectedData.get("bloodGroup"));
 			selectedOption = commonEvents.getFirstSelectedOptionFromDropdown(bloodGroupDropdownByElement, "", "");
 			System.out.println("first selected option from bloodGroup drop down : " + selectedOption );
-			
+
 			// selectedOption = commonEvents.getText(bloodGroupDropdownByElement);
 			// System.out.println("first selected option from bloodGroup drop down : " + selectedOption );
 			// selectedOption = commonEvents.getAttribute(bloodGroupDropdownByElement, "value");
 			// System.out.println("first selected option from bloodGroup drop down : " + selectedOption );
-			
+
 			return selectedOption;
 		}catch(Exception e) {
 			throw e;
@@ -610,4 +640,221 @@ public class patient_Pages extends StartupPage {
 		}
 		return titleNameOfVaccinationPatientRegisterForm;
 	}
+
+	/**@Test16
+	 * about this method fileUploadOperation() 
+	 * @param : String
+	 * @description : Upload a image 
+	 * @return : Boolean
+	 * @author : YAKSHA
+	 */
+	public Boolean fileUploadOperation(String pathOfTheFile) throws Exception {
+		boolean isUploaded = false;
+		try {
+			commonEvents.jsScrollPageTillElementVisible(patientModuleByElement, "patientModuleByElement", "patientModuleByElement");
+
+			commonEvents.waitTillElementLocated(patientModuleByElement, 10);
+			commonEvents.jsClick(patientModuleToggleIconByElement);
+
+			commonEvents.waitTillElementLocated(registerPatientSubModuleByElement, 10);
+			commonEvents.jsClick(registerPatientSubModuleByElement);
+
+			commonEvents.waitTillElementLocated(cameraIconByElement, 10);
+			commonEvents.jsClick(cameraIconByElement);
+
+			commonEvents.waitTillElementLocated(newPhotoButtonByElement, 10);
+			commonEvents.jsClick(newPhotoButtonByElement);
+
+			commonEvents.waitTillElementLocated(chooseFileButtonByElement, 10);
+			commonEvents.jsClick(chooseFileButtonByElement);
+
+			Thread.sleep(3000);
+			System.out.println("path of the file" + pathOfTheFile );
+
+			Thread.sleep(5000);
+			commonEvents.fileUpload(pathOfTheFile);
+			Thread.sleep(3000);
+
+			isUploaded = true;
+		}catch(Exception e) {
+			throw e;
+		}
+		return isUploaded;
+	}
+
+	/**@Test17
+	 * about this method takingScreenshotOfTheCurrentPage() 
+	 * @param : null
+	 * @description : Taking screenshot of the current page.
+	 * @return : Boolean
+	 * @author : YAKSHA
+	 */
+	public Boolean takingScreenshotOfTheCurrentPage() throws Exception {
+		boolean isDisplayed = false;
+		try {
+			commonEvents.takeScreenshot("Sale page of DIspensary Module");
+			isDisplayed = true;
+
+		}catch(Exception e) {
+			throw e;
+		}
+		return isDisplayed;
+	}
+
+	/**@Test18
+	 * about this method handleAlertPopup()
+	 * @param : null
+	 * @description : 
+	 * @return : boolean
+	 * @author : YAKSHA
+	 */
+	public Boolean handleAlertPopup() throws Exception {
+
+		Boolean isAddInsuranceButtonIsDisplayed = false;
+
+		try {
+			commonEvents.waitTillElementLocated(cancelButtonByElement, 10);
+			commonEvents.jsClick(cancelButtonByElement);
+
+			commonEvents.waitTillElementLocated(kinEmergencyContactLinkByElement, 10);
+			commonEvents.jsClick(kinEmergencyContactLinkByElement);
+
+			commonEvents.waitTillElementLocated(emergencyContactRadioButtonByElement, 10);
+			commonEvents.jsClick(emergencyContactRadioButtonByElement);
+
+			commonEvents.waitTillElementLocated(insuranceLinkByElement, 10);
+			commonEvents.jsClick(insuranceLinkByElement);
+
+			// commonEvents.validateAlertMessage();
+			commonEvents.acceptAlert();
+
+			commonEvents.waitTillElementLocated(addInsuranceButtonByElement, 10);
+			WebElement addInsuranceButtonWebElement = commonEvents.findElement(addInsuranceButtonByElement);
+			commonEvents.highlight(addInsuranceButtonWebElement);
+
+			isAddInsuranceButtonIsDisplayed = true;
+
+		}catch(Exception e) {
+			throw e;
+		}
+		return isAddInsuranceButtonIsDisplayed;
+	}
+	
+	/**@Test19
+	 * about this method verifyToolTipOfAnElement()
+	 * @param : null
+	 * @description :go to appointmentTab and verify the TOOLTIP value/text
+	 * @return : String
+	 * @author : YAKSHA
+	 */
+	public String verifyToolTipOfAnElement() throws Exception {
+		String tooltipText = "";
+		try {
+			commonEvents.waitTillElementLocated(appointmentModuleByElement, 10);
+			commonEvents.jsClick(appointmentModuleByElement);
+			
+			commonEvents.waitTillElementLocated(newOneCounterLinkByElement, 10);
+			commonEvents.jsClick(newOneCounterLinkByElement);
+			
+			commonEvents.waitTillElementVisible(keyboardButtonElement,50);
+			commonEvents.mouseHoverClick(keyboardButtonElement);
+			
+			commonEvents.waitTillElementVisible(altPlusNtooltipMessageElement,50);
+			tooltipText = commonEvents.getText(altPlusNtooltipMessageElement);
+			System.out.println("New Patient Tooltip text value is:" + tooltipText );
+			
+		}catch(Exception e) {
+			throw e;
+		}
+		return tooltipText;
+	}
+	
+	/**@Test20
+	 * about this method handleAutoSuggesstion() 
+	 * @param : Map<String, String>
+	 * @description : Search for a Select Item as Accounts and select Accounts  and validate Accounts is selected.
+	 * @return : Boolean
+	 * @author : YAKSHA
+	 */
+	public Boolean handleAutoSuggesstion(Map<String, String> expectedData) throws Exception {
+		boolean accountOptionisDisplayed = false;
+		try {
+			Thread.sleep(5000);
+			commonEvents.waitTillElementLocated(procurementModuleByElement, 10);
+			commonEvents.jsClick(procurementModuleByElement);
+
+			commonEvents.waitTillElementLocated(reportsSubButton, 10);
+			commonEvents.click(reportsSubButton);
+
+			commonEvents.waitTillElementLocated(currentStockLevelButton, 10);
+			commonEvents.click(currentStockLevelButton);
+
+			commonEvents.waitTillElementLocated(selectedItemDropdown, 10);
+			commonEvents.click(selectedItemDropdown);
+
+			commonEvents.waitTillElementLocated(generalInventoryOption, 10);
+			commonEvents.click(generalInventoryOption);
+
+			commonEvents.waitTillElementLocated(selectedItemDropdown, 10);
+			commonEvents.click(selectedItemDropdown);
+
+			commonEvents.waitTillElementLocated(selectItemSearchBar, 10);
+			commonEvents.sendKeys(selectItemSearchBar,expectedData.get("searchBarData"));
+
+			commonEvents.waitTillElementLocated(accountsItemCheckBox, 10);
+			commonEvents.click(accountsItemCheckBox);
+			Thread.sleep(3000);
+
+			if(commonEvents.isDisplayed(accountOption)) {
+				accountOptionisDisplayed=true;
+			}
+		}catch(Exception e) {
+			throw e;
+		}
+		return accountOptionisDisplayed;
+	}
+	
+	/**@Test21
+	 * about this method handleIframe()
+	 * @param : null
+	 * @description : 
+	 * @return : boolean
+	 * @author : YAKSHA
+	 */
+	public String handleIframe(Map<String, String> expectedData) throws Exception {
+		String textValueOfFrameEditor = "";	
+		try {
+			commonEvents.waitTillElementLocated(procurementModuleByElement, 10);
+			commonEvents.jsClick(procurementModuleToggleIconByElement);
+			
+			commonEvents.waitTillElementLocated(purchaseOrderSubmoduleByElement, 10);
+			commonEvents.jsClick(purchaseOrderSubmoduleByElement);	
+			
+			commonEvents.waitTillElementLocated(createPurchaseOrderButtonByElement, 10);
+			commonEvents.jsClick(createPurchaseOrderButtonByElement);
+			
+			WebElement addPurchaseOrderTitleWebElement = commonEvents.findElement(addPurchaseOrderTitleByElement);
+			commonEvents.highlight(addPurchaseOrderTitleWebElement);		    
+			String addPurchaseOrderTitleTextValue = commonEvents.getText(addPurchaseOrderTitleByElement);
+			System.out.println("title name of the : " + addPurchaseOrderTitleTextValue);	
+			
+			commonEvents.jsScrollToBottomOfThePage();	
+			
+			Thread.sleep(2000);			
+			commonEvents.switchToFrameByIndex(0, "add Purchase Order Page");            
+			commonEvents.sendKeys(iFrameTextEditorByElement, expectedData.get("iframeTextValue"));    
+//			commonEvents.jsSendKeys(iFrameTextEditorByElement, expectedData.get("iframeTextValue"));
+			textValueOfFrameEditor = commonEvents.getText(iFrameTextEditorByElement);
+			System.out.println("text value of frame editor : " + textValueOfFrameEditor);           
+			commonEvents.switchToDefaultContent();
+			
+		}catch(Exception e) {
+			throw e;
+		}
+		return textValueOfFrameEditor;
+	}	
+	
+	
+
+	
 }

@@ -313,8 +313,14 @@ public class operationTheatre_testcase extends AppTestBase
 		Assert.assertTrue(locatorsFactoryInstance.saveButtonIsPresent(driver).isDisplayed(),"Save button is not present in the current page, Please check manually");
 	}
 
-	@Test(priority = 21, groups = {"sanity"}, description="On \"Procurement\" module's, \r\n"
-			+ "Upload a image in \"Add Invoice Header\" page.")
+	@Test(priority = 21, groups = {"sanity"}, description="Expand the Procurement module \r\n"
+			+ "and click on \"Purchase Order\" submodule.\r\n"
+			+ "Then click on \"Create Purchase order\" button\r\n"
+			+ "and validate the \"Add Purchase Order\" page name.\r\n"
+			+ "On the \"Add Purchase Order\" page, \r\n"
+			+ "Scroll to the button of the page\r\n"
+			+ "then send the value ( using javascript ) to the \"Select Terms & Conditions:\" Frame \r\n"
+			+ "by handling frames.")
 	public void handleIframe() throws Exception {
 		operationTheatre_PagesInstance = new operationTheatre_Pages(driver);
 		locatorsFactoryInstance = new LocatorsFactory(driver);
