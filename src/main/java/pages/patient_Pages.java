@@ -708,9 +708,9 @@ public class patient_Pages extends StartupPage {
 	 * @return : boolean
 	 * @author : YAKSHA
 	 */
-	public Boolean handleAlertPopup() throws Exception {
+	public String handleAndVerifyAlertPopupMessage() throws Exception {
 
-		Boolean isAddInsuranceButtonIsDisplayed = false;
+		String alertMessage = "";
 
 		try {
 			commonEvents.waitTillElementLocated(cancelButtonByElement, 10);
@@ -725,20 +725,53 @@ public class patient_Pages extends StartupPage {
 			commonEvents.waitTillElementLocated(insuranceLinkByElement, 10);
 			commonEvents.jsClick(insuranceLinkByElement);
 
-			// commonEvents.validateAlertMessage();
+			alertMessage = commonEvents.validateAlertMessage();
+			System.out.println("popup message when trying to click on Insurance Link" + alertMessage);
+			
 			commonEvents.acceptAlert();
 
 			commonEvents.waitTillElementLocated(addInsuranceButtonByElement, 10);
 			WebElement addInsuranceButtonWebElement = commonEvents.findElement(addInsuranceButtonByElement);
 			commonEvents.highlight(addInsuranceButtonWebElement);
-
-			isAddInsuranceButtonIsDisplayed = true;
+			
+			return alertMessage;
 
 		}catch(Exception e) {
 			throw e;
 		}
-		return isAddInsuranceButtonIsDisplayed;
 	}
+	
+//	public Boolean handleAlertPopup() throws Exception {
+//
+//		Boolean isAddInsuranceButtonIsDisplayed = false;
+//
+//		try {
+//			commonEvents.waitTillElementLocated(cancelButtonByElement, 10);
+//			commonEvents.jsClick(cancelButtonByElement);
+//
+//			commonEvents.waitTillElementLocated(kinEmergencyContactLinkByElement, 10);
+//			commonEvents.jsClick(kinEmergencyContactLinkByElement);
+//
+//			commonEvents.waitTillElementLocated(emergencyContactRadioButtonByElement, 10);
+//			commonEvents.jsClick(emergencyContactRadioButtonByElement);
+//
+//			commonEvents.waitTillElementLocated(insuranceLinkByElement, 10);
+//			commonEvents.jsClick(insuranceLinkByElement);
+//
+//			// commonEvents.validateAlertMessage();
+//			commonEvents.acceptAlert();
+//
+//			commonEvents.waitTillElementLocated(addInsuranceButtonByElement, 10);
+//			WebElement addInsuranceButtonWebElement = commonEvents.findElement(addInsuranceButtonByElement);
+//			commonEvents.highlight(addInsuranceButtonWebElement);
+//
+//			isAddInsuranceButtonIsDisplayed = true;
+//
+//		}catch(Exception e) {
+//			throw e;
+//		}
+//		return isAddInsuranceButtonIsDisplayed;
+//	}
 	
 	/**@Test19
 	 * about this method verifyToolTipOfAnElement()

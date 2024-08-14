@@ -186,6 +186,7 @@
 		"patientName" : "Alexa Alexa",
 		"titleNameOfVaccinationPatientRegisterForm": "Vaccination Patient Register",
 		"bloodGroupValue" : "B negative",
-		"iframeTextValue":"Hi... Suriiyaa, I'm Here.."
+		"iframeTextValue":"Hi... Suriiyaa, I'm Here..",
+		"registerPatientAlertMessage" : "This page contains unsaved changes. Do you want to continue ? Changes will be discarded."
 	}
 }

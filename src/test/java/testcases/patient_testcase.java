@@ -12,9 +12,6 @@ import org.testng.annotations.Test;
 import coreUtilities.testutils.ApiHelper;
 import coreUtilities.utils.FileOperations;
 import pages.StartupPage;
-import pages.appointment_Pages;
-import pages.dispensary_Pages;
-import pages.operationTheatre_Pages;
 import pages.patient_Pages;
 import testBase.AppTestBase;
 import testdata.LocatorsFactory;
@@ -308,10 +305,11 @@ public class patient_testcase extends AppTestBase
 			+ "This page contains unsaved changes.\r\n"
 			+ "Do you want to continue ? Changes will be discarded.\r\n"
 			+ "Then verify that the \"Add Insurance\" button is present or not")
-	public void  handleAlertPopup() throws Exception {
+	public void  handleAndVerifyAlertPopupMessage() throws Exception {
 		patient_PagesInstance = new patient_Pages(driver);
 		locatorsFactoryInstance = new LocatorsFactory(driver);	
-		Assert.assertTrue(patient_PagesInstance.handleAlertPopup(), "" + 
+		Map<String, String> expectedData = new FileOperations().readJson(expectedDataFilePath, "patientModule");
+		Assert.assertEquals(patient_PagesInstance.handleAndVerifyAlertPopupMessage(), expectedData.get("registerPatientAlertMessage"), "" + 
 				"Not able to handle alert popup" + "Error in Pages Classes, Please check manualy!");
 		Assert.assertTrue(locatorsFactoryInstance.verifyAddInsuranceButtonIsPresent(driver).isDisplayed(),"" + 
 				"Add Insurance Button is not present" + "Error in Locators Classes, Please check manualy!");

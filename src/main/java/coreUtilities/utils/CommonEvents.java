@@ -4620,7 +4620,8 @@ public class CommonEvents
 		try {
 			Alert alert = driver.switchTo().alert();
 			alertMessageValue = alert.getText();
-			alert.accept();
+			System.out.println("alert Popup Message" + alertMessageValue);
+//			alert.accept();
 		} catch (NoAlertPresentException e) {
 			System.out.println("No alert present: " + e.getMessage());
 		}
